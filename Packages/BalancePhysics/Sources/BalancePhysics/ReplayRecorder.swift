@@ -17,12 +17,14 @@ public struct Recording: Sendable, Equatable {
     public var culprit: String?
     /// 1-based move number that triggered the collapse.
     public var moveNumber: Int
+    /// Bodies that are not in the level file (placed supports), with their geometry.
+    public var extraPieces: [Piece]
 
     public init(levelId: String, ids: [String], times: [Double], frames: [[Pose]], removedOrigins: [String: Pose],
-                collapseTime: Double?, culprit: String?, moveNumber: Int) {
+                collapseTime: Double?, culprit: String?, moveNumber: Int, extraPieces: [Piece] = []) {
         self.levelId = levelId; self.ids = ids; self.times = times; self.frames = frames
         self.removedOrigins = removedOrigins; self.collapseTime = collapseTime; self.culprit = culprit
-        self.moveNumber = moveNumber
+        self.moveNumber = moveNumber; self.extraPieces = extraPieces
     }
 
     public var duration: Double { times.last ?? 0 }
@@ -78,12 +80,14 @@ public final class ReplayRecorder {
     private var times: [Double] = []
     private var frames: [[Pose]] = []
     private var removedOrigins: [String: Pose] = [:]
+    private var extraPieces: [Piece] = []
 
     public init() {}
 
-    public func begin(ids: [String], removedOrigins: [String: Pose]) {
+    public func begin(ids: [String], removedOrigins: [String: Pose], extraPieces: [Piece] = []) {
         self.ids = ids
         self.removedOrigins = removedOrigins
+        self.extraPieces = extraPieces
         times.removeAll(keepingCapacity: true)
         frames.removeAll(keepingCapacity: true)
     }
@@ -107,6 +111,6 @@ public final class ReplayRecorder {
 
     public func freeze(levelId: String, collapseTime: Double?, culprit: String?, moveNumber: Int) -> Recording {
         Recording(levelId: levelId, ids: ids, times: times, frames: frames, removedOrigins: removedOrigins,
-                  collapseTime: collapseTime, culprit: culprit, moveNumber: moveNumber)
+                  collapseTime: collapseTime, culprit: culprit, moveNumber: moveNumber, extraPieces: extraPieces)
     }
 }

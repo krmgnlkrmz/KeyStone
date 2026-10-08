@@ -191,7 +191,8 @@ open class SimulationScene: SKScene {
         evaluatingMove = move
         removedOrigins = origins
         evaluator = SettleEvaluator(structure: structure, dropTargets: dropTargets)
-        recorder.begin(ids: structure.presentIds, removedOrigins: origins)
+        let supports = structure.presentIds.filter(SupportToken.isSupport).compactMap { structure.piece($0) }
+        recorder.begin(ids: structure.presentIds, removedOrigins: origins, extraPieces: supports)
         recorder.record(time: 0, structure: structure)
         setPhase(.evaluating)
         phaseTime = 0

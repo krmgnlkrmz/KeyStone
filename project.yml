@@ -31,7 +31,7 @@ settings:
 packages:
   GoogleMobileAds:
     url: https://github.com/googleads/swift-package-manager-google-mobile-ads
-    from: 12.0.0   # resolved on CI, then pinned — see docs/ads-policy.md
+    exactVersion: 12.14.0   # latest stable resolved 2026-10-08 (UMP 3.1.0 comes with it); see docs/ads-policy.md
   BalanceCore:
     path: Packages/BalanceCore
   BalancePhysics:
@@ -106,7 +106,14 @@ targets:
   LevelForgeTests:
     type: bundle.unit-test
     platform: iOS
-    sources: [Tools/LevelForge]
+    sources:
+      - path: Tools/LevelForge
+        excludes:
+          - "drafts/**"
+          - "*.md"
+      - path: Tools/LevelForge/drafts
+        type: folder
+        buildPhase: resources
     dependencies:
       - target: DengeNoktasi
     settings:

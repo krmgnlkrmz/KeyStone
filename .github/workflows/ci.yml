@@ -72,7 +72,10 @@ jobs:
         run: swift test --package-path Packages/BalanceCore
 
       - name: BalancePhysics tests (macOS SpriteKit)
-        run: swift test --package-path Packages/BalancePhysics
+        run: |
+          rc=0; swift test --package-path Packages/BalancePhysics > physics.log 2>&1 || rc=$?
+          grep -E "error:|✘|✔|Test run with|skipped" physics.log | head -150 || true
+          exit $rc
 
       - name: Generate project
         run: |
@@ -84,11 +87,17 @@ jobs:
           xcodebuild -resolvePackageDependencies -project DengeNoktasi.xcodeproj -scheme DengeNoktasi -clonedSourcePackagesDirPath SourcePackages
           cat DengeNoktasi.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved || true
 
-      - name: Pick simulator
+      - name: Pick and boot simulator
         id: sim
-        run: echo "udid=$(./scripts/ci-pick-simulator.sh)" >> "$GITHUB_OUTPUT"
+        timeout-minutes: 15
+        run: |
+          UDID=$(./scripts/ci-pick-simulator.sh)
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+          xcrun simctl boot "$UDID" || true
+          xcrun simctl bootstatus "$UDID" -b
 
       - name: Build for testing
+        timeout-minutes: 30
         run: |
           set -o pipefail
           xcodebuild build-for-testing -project DengeNoktasi.xcodeproj -scheme DengeNoktasi \
@@ -98,6 +107,7 @@ jobs:
           echo "Warnings in our sources:"; grep -E "^/.*(App|Widget|Packages|Tests|Tools)/.*warning:" build.log | sort -u | head -100 || true
 
       - name: Unit tests (simulator)
+        timeout-minutes: 20
         run: |
           set -o pipefail
           xcodebuild test-without-building -project DengeNoktasi.xcodeproj -scheme DengeNoktasi \
@@ -105,13 +115,16 @@ jobs:
             -derivedDataPath DerivedData -resultBundlePath AppTests.xcresult CODE_SIGNING_ALLOWED=NO | xcbeautify --renderer github-actions
 
       - name: LevelForge smoke
+        timeout-minutes: 30
         if: ${{ github.event_name != 'workflow_dispatch' || inputs.forge == 'none' || inputs.forge == 'smoke' }}
         run: |
-          set -o pipefail
+          rc=0
           xcodebuild test -project DengeNoktasi.xcodeproj -scheme LevelForge \
             -destination "id=${{ steps.sim.outputs.udid }}" -clonedSourcePackagesDirPath SourcePackages \
             -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO \
-            -only-testing:LevelForgeTests/ForgeRunner/testCuratedSmoke | xcbeautify --renderer github-actions
+            -only-testing:LevelForgeTests/ForgeRunner/testCuratedSmoke > forge.log 2>&1 || rc=$?
+          grep -E "\[forge\]|error:|failed|passed|Executed" forge.log | head -300 || true
+          exit $rc
 
       - name: LevelForge (${{ inputs.forge }})
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.forge != 'none' && inputs.forge != 'smoke' }}
@@ -120,7 +133,7 @@ jobs:
           TEST_RUNNER_FORGE_COUNT: ${{ inputs.forge_count }}
           TEST_RUNNER_FORGE_SEED_BASE: ${{ inputs.forge_seed_base }}
         run: |
-          set -o pipefail
+          rc=0
           mkdir -p forge-out
           case "${{ inputs.forge }}" in
             validate) T=testValidateShippedLevels ;;
@@ -130,7 +143,9 @@ jobs:
           xcodebuild test -project DengeNoktasi.xcodeproj -scheme LevelForge \
             -destination "id=${{ steps.sim.outputs.udid }}" -clonedSourcePackagesDirPath SourcePackages \
             -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO \
-            -only-testing:LevelForgeTests/ForgeRunner/$T | xcbeautify --renderer github-actions
+            -only-testing:LevelForgeTests/ForgeRunner/$T > forge.log 2>&1 || rc=$?
+          grep -E "\[forge\]|error:|failed|passed|Executed" forge.log | tail -400 || true
+          exit $rc
 
       - name: Upload forge output
         if: ${{ always() && github.event_name == 'workflow_dispatch' && inputs.forge != 'none' }}
