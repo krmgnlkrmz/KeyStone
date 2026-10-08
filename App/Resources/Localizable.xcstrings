@@ -1198,6 +1198,23 @@
         }
       }
     },
+    "hint.offPath": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No hint from this position. Undo a move and try again."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu konumdan ipucu yok. Bir hamleyi geri alıp tekrar dene."
+          }
+        }
+      }
+    },
     "hint.offline.toast": {
       "extractionState": "manual",
       "localizations": {
@@ -1415,6 +1432,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "HAMLE"
+          }
+        }
+      }
+    },
+    "hud.pause": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pause"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duraklat"
           }
         }
       }

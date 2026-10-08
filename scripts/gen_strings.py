@@ -75,6 +75,7 @@ S = {
     "hud.moves": ("MOVES", "HAMLE"),
     "hud.done %lld %lld": ("%1$lld/%2$lld DONE", "%1$lld/%2$lld TAMAM"),
     "hud.undo": ("Undo", "Geri Al"),
+    "hud.pause": ("Pause", "Duraklat"),
     "hud.support": ("Support", "Destek"),
     "hud.placing": ("Placing…", "Yerleştiriliyor…"),
     "hud.hint": ("Hint", "İpucu"),
@@ -202,6 +203,7 @@ S = {
     "hint.show": ("Show Hint", "İpucunu Göster"),
     "hint.noSolution": ("No solution from here. Undo a move first.", "Buradan çözüm yok. Önce bir hamleyi geri al."),
     "hint.unavailable": ("Hints aren't available for this level.", "Bu bölümde ipucu yok."),
+    "hint.offPath": ("No hint from this position. Undo a move and try again.", "Bu konumdan ipucu yok. Bir hamleyi geri alıp tekrar dene."),
     "hint.notEarned": ("The ad closed early, so the hint stays hidden.", "Reklam erken kapandı, ipucu gizli kaldı."),
     "hint.offline.toast": ("Offline. Hints need an ad connection.", "Çevrimdışı. İpucu için reklam bağlantısı gerekir."),
 

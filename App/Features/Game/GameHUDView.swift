@@ -63,7 +63,7 @@ struct GameHUDView: View {
     }
 
     private var pauseButton: some View {
-        HUDCircleButton(systemImage: "pause.fill", label: "pause.title") {
+        HUDCircleButton(systemImage: "pause.fill", label: "hud.pause") {
             if session.phase == .playing || session.phase == .outOfMoves { session.overlay = .pause }
         }
     }

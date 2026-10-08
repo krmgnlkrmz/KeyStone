@@ -20,6 +20,10 @@ struct GameContainerView: View {
                 GameScreen(session: session, swap: swap)
                     .id(session.launch.id)
             }
+            if app.curtain {
+                // Interstitial curtain: stays up across the swap to the next level.
+                Palette.background.ignoresSafeArea().transition(.opacity)
+            }
         }
         .statusBarHidden(false)
         .interactiveDismissDisabled()
@@ -67,9 +71,6 @@ private struct GameScreen: View {
                 }
             default:
                 playLayer
-            }
-            if session.curtain {
-                Palette.background.ignoresSafeArea().transition(.opacity)
             }
             if let text = app.toast {
                 VStack { ToastView(text: text).padding(.top, 140); Spacer() }
@@ -133,7 +134,7 @@ private struct PieceAccessibilityLayer: View {
     let session: GameSession
 
     var body: some View {
-        if voiceOver, session.phase == .playing {
+        if voiceOver || AppConfig.isUITest, session.phase == .playing {
             let _ = session.layoutVersion
             ZStack(alignment: .topLeading) {
                 ForEach(session.scene.structure?.presentIds ?? [], id: \.self) { id in
@@ -144,9 +145,11 @@ private struct PieceAccessibilityLayer: View {
                             .position(x: frame.midX, y: frame.midY)
                             .accessibilityElement()
                             .accessibilityLabel(label)
+                            .accessibilityIdentifier("piece.\(id)")
                             .accessibilityAddTraits(.isButton)
                             .accessibilityHint(Text(session.selectedId == id ? "a11y.hint.remove" : "a11y.hint.select"))
                             .accessibilityAction { session.scene.activate(id) }
+                            .onTapGesture { session.scene.activate(id) }
                     }
                 }
             }

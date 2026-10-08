@@ -26,12 +26,12 @@ final class RewardedController: NSObject, FullScreenContentDelegate {
     }
 
     private func load() async -> RewardedAd? {
-        await withCheckedContinuation { (continuation: CheckedContinuation<RewardedAd?, Never>) in
+        await withCheckedContinuation { (continuation: CheckedContinuation<AdHandoff<RewardedAd>, Never>) in
             RewardedAd.load(with: AppConfig.AdUnit.rewarded, request: Request()) { [log] ad, error in
                 if let error { log.info("rewarded not loaded: \(error.localizedDescription)") }
-                continuation.resume(returning: ad)
+                continuation.resume(returning: AdHandoff(ad: ad))
             }
-        }
+        }.ad
     }
 
     /// Waits a moment for an in-flight load (the confirmation card gives us that time).

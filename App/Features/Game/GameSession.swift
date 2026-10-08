@@ -63,7 +63,6 @@ final class GameSession: GameSceneDelegate {
     /// Bumped whenever piece frames may have moved (accessibility overlay).
     private(set) var layoutVersion = 0
     var overlay: Overlay? { didSet { scene.isPaused = overlay == .pause; if overlay == nil { scene.resetFrameClock() } } }
-    var curtain = false
 
     @ObservationIgnored private var hintTask: Task<Void, Never>?
     @ObservationIgnored private var demoTask: Task<Void, Never>?
@@ -307,7 +306,9 @@ final class GameSession: GameSceneDelegate {
             return
         }
         guard let token = tension.hint(stateKey: moveLog.stateKey, movesLeft: movesLeft) else {
-            app.showToast(String(localized: "hint.noSolution"))
+            // Known state without a path = proven dead end; unknown state = no claim either way.
+            let known = tension.entry(for: moveLog.stateKey) != nil
+            app.showToast(String(localized: known ? "hint.noSolution" : "hint.offPath"))
             return
         }
         usedHint = true
@@ -429,12 +430,12 @@ final class GameSession: GameSceneDelegate {
         let fromEndCard = phase == .won || phase == .collapsed || phase == .outOfMoves
         let next = exit == .next ? nextLaunch() : nil
         if fromEndCard && app.ads.interstitialDue {
-            withAnimation(.easeIn(duration: 0.3)) { curtain = true }
+            withAnimation(.easeIn(duration: 0.3)) { app.curtain = true }
             try? await Task.sleep(for: .milliseconds(300))
             if let next { swap(next) }
             _ = await app.ads.showInterstitialIfDue()
             if next == nil { swap(nil) }
-            withAnimation(.easeOut(duration: 0.3)) { curtain = false }
+            withAnimation(.easeOut(duration: 0.3)) { app.curtain = false }
         } else {
             swap(next)
         }

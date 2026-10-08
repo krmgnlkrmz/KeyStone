@@ -42,6 +42,8 @@ final class AppModel {
     private(set) var catalog: LevelCatalog = .empty
     private(set) var launchPhase: LaunchPhase = .splash
     private(set) var toast: String?
+    /// 0.3 s ink curtain before an interstitial; kept here so it survives the swap to the next level.
+    var curtain = false
     @ObservationIgnored private var toastTask: Task<Void, Never>?
     @ObservationIgnored private var silhouetteCache: [String: Silhouette] = [:]
     @ObservationIgnored private var engineChecked = false
@@ -93,6 +95,7 @@ final class AppModel {
         if elapsed < .milliseconds(1200) { try? await Task.sleep(for: .milliseconds(1200) - elapsed) }
 
         if AppConfig.isRunningTests {
+            seedForUITests()
             launchPhase = .ready
             return
         }
@@ -114,6 +117,16 @@ final class AppModel {
         await ads.startIfAllowed()
         progress.completeOnboarding()
         withAnimation(.easeOut(duration: 0.3)) { launchPhase = .ready }
+    }
+
+    private func seedForUITests() {
+        let n = AppConfig.uiTestSeedLevels
+        guard n > 0 else { return }
+        for (i, level) in catalog.curated.prefix(n).enumerated() {
+            progress.recordCompletion(level.id, moves: level.goal.moveBudget, stars: [3, 2, 3, 1, 3][i % 5],
+                                      usedHint: false, countsTowardStars: true)
+        }
+        progress.recordDailyCompletion(dayKey: DailyLevelPicker.key(forDayNumber: (DailyLevelPicker.dayNumber(todayKey) ?? 1) - 1))
     }
 
     nonisolated private static func loadCatalog() async -> LevelCatalog {

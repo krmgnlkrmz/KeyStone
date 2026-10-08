@@ -41,6 +41,17 @@ enum AppConfig {
     }
 
     static var isRunningTests: Bool {
-        ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+        ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil || isUITest
+    }
+
+    /// Launched by the UI smoke test / screenshot run: no consent, no ads, in-memory store,
+    /// piece accessibility elements always on so the test can tap pieces.
+    static var isUITest: Bool { ProcessInfo.processInfo.arguments.contains("-uitest") }
+
+    /// UI tests can pre-complete the first N curated levels to show a populated map.
+    static var uiTestSeedLevels: Int {
+        let args = ProcessInfo.processInfo.arguments
+        guard let i = args.firstIndex(of: "-seedLevels"), i + 1 < args.count else { return 0 }
+        return Int(args[i + 1]) ?? 0
     }
 }

@@ -25,12 +25,12 @@ final class InterstitialController: NSObject, FullScreenContentDelegate {
 
     /// The SDK is entered on the main actor; the continuation hands the ad back here.
     private func load() async -> InterstitialAd? {
-        await withCheckedContinuation { (continuation: CheckedContinuation<InterstitialAd?, Never>) in
+        await withCheckedContinuation { (continuation: CheckedContinuation<AdHandoff<InterstitialAd>, Never>) in
             InterstitialAd.load(with: AppConfig.AdUnit.interstitial, request: Request()) { [log] ad, error in
                 if let error { log.info("interstitial not loaded: \(error.localizedDescription)") }
-                continuation.resume(returning: ad)
+                continuation.resume(returning: AdHandoff(ad: ad))
             }
-        }
+        }.ad
     }
 
     /// Presents and waits until it is dismissed. Returns false when nothing was loaded.

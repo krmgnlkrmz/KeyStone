@@ -239,17 +239,24 @@ public struct LevelGenerator {
         return (Goal(type: .removeTargetsKeepStanding, targetPieceIds: targets, moveBudget: 0, starThresholds: []), supports)
     }
 
-    /// Long beam on two posts with a heavy load: place a strut, then take the posts away.
+    /// Long beam on two posts with a heavy load: place a strut, then take posts away.
+    /// One strut can't balance a long beam alone, so either one post goes, or both go while a
+    /// middle post stays.
     private func bridge(_ b: inout Builder) -> (Goal, Int) {
         let span = q(double(220...270))
         let postH = q(double(90...130))
         let p1 = b.rect("post", .wood, x: -span / 2 + 12, bottom: b.floor, w: 24, h: postH)
         let p2 = b.rect("post", .wood, x: span / 2 - 12, bottom: b.floor, w: 24, h: postH)
+        let middle = chance(0.5)
+        if middle {
+            b.rect("post", .wood, x: q(double(-span / 6 ... span / 6)), bottom: b.floor, w: 20, h: postH)
+        }
         let beam = b.rect("beam", .wood, x: 0, bottom: Self.top(p1), w: span + 20, h: 18)
-        let lx = q(double(-span / 4 ... span / 4))
+        let lx = q(double(-span / 3 ... span / 3))
         b.rect("load", .stone, x: lx, bottom: Self.top(beam), w: q(double(44...60)), h: q(double(40...56)))
-        if chance(0.5) { b.rect("load", .stone, x: q(-lx * 0.6), bottom: Self.top(beam), w: 26, h: 26) }
-        return (Goal(type: .placeSupportThenRemove, targetPieceIds: [p1.id, p2.id], moveBudget: 0, starThresholds: []), 1)
+        if chance(0.5) { b.rect("load", .stone, x: q(-lx * 0.7), bottom: Self.top(beam), w: 26, h: 26) }
+        return (Goal(type: .placeSupportThenRemove, targetPieceIds: [p1.id, p2.id], requiredCount: middle ? 2 : 1,
+                     moveBudget: 0, starThresholds: []), 1)
     }
 
     /// A beam hanging from a fixed gantry on two ropes, loads on the beam, a post underneath.

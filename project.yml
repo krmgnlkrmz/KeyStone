@@ -102,6 +102,19 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID).tests
 
+  # Launches the real app: smoke-walks the main screens and saves real-UI screenshots.
+  DengeNoktasiUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [Tests/UITests]
+    dependencies:
+      - target: DengeNoktasi
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID).uitests
+        TEST_TARGET_NAME: DengeNoktasi
+
   # Offline level generator + validator (see §5.4 and Tools/LevelForge/README.md).
   LevelForgeTests:
     type: bundle.unit-test
@@ -137,6 +150,15 @@ schemes:
       config: Release
     archive:
       config: Release
+
+  UITests:
+    build:
+      targets:
+        DengeNoktasi: all
+        DengeNoktasiUITests: [test]
+    test:
+      config: Debug
+      targets: [DengeNoktasiUITests]
 
   LevelForge:
     build:
