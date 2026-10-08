@@ -84,6 +84,12 @@ from its threshold). Narrow levels never ship; a narrow level is exactly where t
   data format (`+sup@x r deg`) but multiply the search, so they wait for a level that needs them.
 - Ropes are `SKPhysicsJointLimit` joints; a rope with an `id` and `removable: true` can be cut (it is a
   move like removing a piece). Pins are `SKPhysicsJointPin`.
+- A rope leaves with either piece it ties: removing that piece removes the joint too, and from then on
+  the rope is no longer a move (`Level.availableRemovals(after:)`, used by the solver; the game simply
+  stops showing it). Goals count only ropes that were cut, never ones that vanished with a piece.
+- Bodies are rigid: a beam never sags. A post that only shares load with others can always go; what
+  makes a level is leverage — a load beyond a support, an end hanging from a rope, a column under a
+  balance. The generator's archetypes are built around exactly that (see `LevelGenerator`).
 
 ## Undo is replay
 
