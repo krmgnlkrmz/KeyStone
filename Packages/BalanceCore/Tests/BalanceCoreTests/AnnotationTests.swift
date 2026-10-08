@@ -124,4 +124,16 @@ struct MiscTests {
         #expect(catalog.regions.count == 1)
         #expect(catalog.regions[0].region == .woodScaffold)
     }
+
+    /// The app shows the menu with curated levels only and adds the pool a moment later.
+    @Test func poolCanArriveLater() throws {
+        var poolLevel = try Fixtures.level("c-003")
+        poolLevel.id = "p-table-1"; poolLevel.pack = .pool
+        let early = LevelCatalog(curated: [try Fixtures.level("c-001")], pool: [])
+        #expect(early.level(id: "p-table-1") == nil)
+        let full = early.adding(pool: [poolLevel])
+        #expect(full.curated.map(\.id) == ["c-001"])
+        #expect(full.level(id: "p-table-1")?.pack == .pool)
+        #expect(full.dailyCandidates == ["p-table-1"])
+    }
 }

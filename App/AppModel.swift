@@ -40,6 +40,8 @@ final class AppModel {
     let router = AppRouter()
 
     private(set) var catalog: LevelCatalog = .empty
+    /// The pool (Daily, Endless) loads right after the menu is up; until then those two wait.
+    private(set) var poolReady = false
     private(set) var launchPhase: LaunchPhase = .splash
     private(set) var toast: String?
     /// 0.3 s ink curtain before an interstitial; kept here so it survives the swap to the next level.
@@ -86,8 +88,7 @@ final class AppModel {
         catalog = await catalogLoad
         _ = await storeLoad
         ads.adsRemoved = store.adsRemoved
-        checkEngineFingerprint()
-        SharedSnapshotWriter.write(store: progress, catalog: catalog)
+        Task { await loadPool() }
         achievements.authenticate()
 
         // Keep the splash up for at least 1.2 s so it reads as intentional.
@@ -129,14 +130,33 @@ final class AppModel {
         progress.recordDailyCompletion(dayKey: DailyLevelPicker.key(forDayNumber: (DailyLevelPicker.dayNumber(todayKey) ?? 1) - 1))
     }
 
+    /// Curated levels only, before the menu: ~1 MB instead of ~15 MB on the cold-start path.
     nonisolated private static func loadCatalog() async -> LevelCatalog {
         guard let url = Bundle.main.url(forResource: "Levels", withExtension: nil) else { return .empty }
         do {
-            return try LevelCatalog.load(from: url)
+            return try LevelCatalog.loadCurated(from: url)
         } catch {
             Logger(subsystem: "Keystone", category: "app").error("level catalog failed: \(error.localizedDescription)")
             return .empty
         }
+    }
+
+    nonisolated private static func loadPoolLevels() async -> [Level] {
+        guard let url = Bundle.main.url(forResource: "Levels", withExtension: nil) else { return [] }
+        do {
+            return try LevelCatalog.loadPool(from: url)
+        } catch {
+            Logger(subsystem: "Keystone", category: "app").error("level pool failed: \(error.localizedDescription)")
+            return []
+        }
+    }
+
+    private func loadPool() async {
+        let pool = await Self.loadPoolLevels()
+        catalog = catalog.adding(pool: pool)
+        poolReady = true
+        checkEngineFingerprint()
+        SharedSnapshotWriter.write(store: progress, catalog: catalog)
     }
 
     /// Annotations made with other physics constants are ignored (tension and hints off, game playable).
@@ -153,7 +173,7 @@ final class AppModel {
         let key = DailyLevelPicker.dayKey(for: .now)
         if key != todayKey {
             todayKey = key
-            SharedSnapshotWriter.write(store: progress, catalog: catalog)
+            if poolReady { SharedSnapshotWriter.write(store: progress, catalog: catalog) }
         }
         ads.preload()
     }
@@ -199,8 +219,10 @@ final class AppModel {
         return catalog.curated.last
     }
 
+    /// Nil until the pool is in: the pick depends on the whole candidate list.
     var dailyLevel: Level? {
-        DailyLevelPicker.pick(dayKey: todayKey, candidates: catalog.dailyCandidates).flatMap { catalog.level(id: $0) }
+        guard poolReady else { return nil }
+        return DailyLevelPicker.pick(dayKey: todayKey, candidates: catalog.dailyCandidates).flatMap { catalog.level(id: $0) }
     }
 
     var dailySolvedToday: Bool { StreakRules.isSolved(todayKey: todayKey, lastCompletedKey: progress.streak.lastKey) }
@@ -209,7 +231,8 @@ final class AppModel {
     var endlessNumber: Int { progress.endlessCursor + 1 }
 
     func endlessLevel() -> Level? {
-        catalog.endlessLevel(seed: progress.endlessSeed, cursor: progress.endlessCursor)
+        guard poolReady else { return nil }
+        return catalog.endlessLevel(seed: progress.endlessSeed, cursor: progress.endlessCursor)
     }
 
     // MARK: Navigation

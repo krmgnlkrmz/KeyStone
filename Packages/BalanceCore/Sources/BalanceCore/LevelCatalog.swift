@@ -69,18 +69,33 @@ public struct LevelCatalog: Sendable {
 
     // MARK: Loading
 
+    /// Curated levels and the pool.
     public static func load(from directory: URL) throws -> LevelCatalog {
-        let fm = FileManager.default
-        func levels(in sub: String) throws -> [Level] {
-            let dir = directory.appendingPathComponent(sub, isDirectory: true)
-            guard let files = try? fm.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil) else { return [] }
-            var out: [Level] = []
-            for url in files.sorted(by: { $0.lastPathComponent < $1.lastPathComponent }) where url.pathExtension == "json" {
-                out += try decodeLevels(Data(contentsOf: url))
-            }
-            return out
+        LevelCatalog(curated: try levels(in: directory, "curated"), pool: try levels(in: directory, "pool"))
+    }
+
+    /// Curated levels only: what the menu and the map need. The app loads the pool after the menu is up.
+    public static func loadCurated(from directory: URL) throws -> LevelCatalog {
+        LevelCatalog(curated: try levels(in: directory, "curated"), pool: [])
+    }
+
+    public static func loadPool(from directory: URL) throws -> [Level] {
+        try levels(in: directory, "pool")
+    }
+
+    /// This catalog with pool levels added.
+    public func adding(pool more: [Level]) -> LevelCatalog {
+        LevelCatalog(curated: curated, pool: pool + more)
+    }
+
+    private static func levels(in directory: URL, _ sub: String) throws -> [Level] {
+        let dir = directory.appendingPathComponent(sub, isDirectory: true)
+        guard let files = try? FileManager.default.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil) else { return [] }
+        var out: [Level] = []
+        for url in files.sorted(by: { $0.lastPathComponent < $1.lastPathComponent }) where url.pathExtension == "json" {
+            out += try decodeLevels(Data(contentsOf: url))
         }
-        return LevelCatalog(curated: try levels(in: "curated"), pool: try levels(in: "pool"))
+        return out
     }
 
     /// Decodes a single level object or an array of levels.

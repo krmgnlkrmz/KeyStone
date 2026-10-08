@@ -149,7 +149,12 @@ final class ForgeRunner: XCTestCase {
             if r.rejection != nil || draft.id.hasPrefix("x-") {
                 for state in r.states { log("   \(draft.id) " + Self.describe(state)) }
             }
-            if let level = r.annotatedLevel, !draft.id.hasPrefix("x-") {
+            if var level = r.annotatedLevel, !draft.id.hasPrefix("x-") {
+                // Three stars always means the verified shortest solution, whatever the draft guessed.
+                if let len = r.solutionLength {
+                    let t = level.goal.normalizedThresholds, budget = level.goal.moveBudget
+                    level.goal.starThresholds = [len, min(max(t.count > 1 ? t[1] : len, len), budget), budget]
+                }
                 try write(level, to: outDir.appendingPathComponent("curated"))
             }
         }

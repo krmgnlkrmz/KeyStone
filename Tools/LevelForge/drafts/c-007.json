@@ -3,7 +3,7 @@
   "goal": {
     "moveBudget": 3,
     "starThresholds": [
-      2,
+      3,
       3,
       3
     ],

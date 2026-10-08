@@ -43,15 +43,20 @@ final class LevelsAndCopyTests: XCTestCase {
         }
     }
 
-    /// §11.15: the menu must be up within 2 s of a cold start, and the catalog loads before the splash
-    /// ends. The CI simulator is faster than an iPhone 12, so this keeps a wide safety factor.
+    /// §11.15: the menu must be up within 2 s of a cold start. Only curated levels load before the menu;
+    /// the pool (~1,400 levels) follows in the background. Bounds keep a wide factor for a loaded CI
+    /// simulator versus an iPhone 12.
     func testCatalogLoadsQuickly() throws {
         let url = try XCTUnwrap(Bundle.main.url(forResource: "Levels", withExtension: nil))
-        let start = ContinuousClock.now
-        let c = try LevelCatalog.load(from: url)
-        let elapsed = ContinuousClock.now - start
-        print("[perf] catalog: \(c.curated.count) curated + \(c.pool.count) pool levels in \(elapsed)")
-        XCTAssertLessThan(elapsed, .milliseconds(600), "catalog load took \(elapsed)")
+        var start = ContinuousClock.now
+        let curated = try LevelCatalog.loadCurated(from: url)
+        let curatedTime = ContinuousClock.now - start
+        start = ContinuousClock.now
+        let pool = try LevelCatalog.loadPool(from: url)
+        let poolTime = ContinuousClock.now - start
+        print("[perf] \(curated.curated.count) curated in \(curatedTime); \(pool.count) pool levels in \(poolTime) (background)")
+        XCTAssertLessThan(curatedTime, .milliseconds(300), "curated load took \(curatedTime)")
+        XCTAssertLessThan(poolTime, .seconds(4), "pool load took \(poolTime)")
     }
 
     func testGoalTextsAreLocalized() throws {
