@@ -183,7 +183,9 @@ jobs:
             xcodebuild test -project DengeNoktasi.xcodeproj -scheme UITests -destination "id=$UDID" \
               -clonedSourcePackagesDirPath SourcePackages -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO \
               -only-testing:DengeNoktasiUITests/SmokeUITests/testWalkThroughMainScreens \
-              -only-testing:DengeNoktasiUITests/SmokeUITests/testDailySheetOpens > ui-$UDID.log 2>&1 || echo "UI run on $NAME failed"
+              -only-testing:DengeNoktasiUITests/SmokeUITests/testDailySheetOpens \
+              -only-testing:DengeNoktasiUITests/SmokeUITests/testDarkLargeTextScreens \
+              -only-testing:DengeNoktasiUITests/SmokeUITests/testTurkishScreens > ui-$UDID.log 2>&1 || echo "UI run on $NAME failed"
             grep -E "failed|passed" ui-$UDID.log | tail -5 || true
           done
           if [ "${{ steps.forge.outputs.commit }}" = "true" ]; then

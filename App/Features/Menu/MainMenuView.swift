@@ -80,19 +80,19 @@ struct MainMenuView: View {
     private var menuList: some View {
         VStack(spacing: 0) {
             MenuRow(icon: "map", title: "menu.levels",
-                    value: Text(verbatim: "\(app.progress.completedIds.intersection(app.catalog.curated.map(\.id)).count) / \(app.catalog.curated.count)")) {
+                    value: Text(verbatim: "\(app.progress.completedIds.intersection(app.catalog.curated.map(\.id)).count) / \(app.catalog.curated.count)"), identifier: "menu.levels") {
                 app.router.path.append(.map)
             }
             divider
-            MenuRow(icon: "calendar", title: "menu.daily", value: dailyValue) {
+            MenuRow(icon: "calendar", title: "menu.daily", value: dailyValue, identifier: "menu.daily") {
                 app.router.sheet = .daily
             }
             divider
-            MenuRow(icon: "infinity", title: "menu.endless", value: Text("menu.endless.value")) {
+            MenuRow(icon: "infinity", title: "menu.endless", value: Text("menu.endless.value"), identifier: "menu.endless") {
                 app.router.path.append(.endless)
             }
             divider
-            MenuRow(icon: "gearshape", title: "menu.settings", value: nil) {
+            MenuRow(icon: "gearshape", title: "menu.settings", value: nil, identifier: "menu.settings") {
                 app.router.sheet = .settings
             }
         }
@@ -116,6 +116,8 @@ struct MenuRow: View {
     let icon: String
     let title: LocalizedStringKey
     let value: Text?
+    /// Stable id for UI tests (labels change with language and text size).
+    var identifier: String = ""
     let action: () -> Void
 
     var body: some View {
@@ -134,6 +136,7 @@ struct MenuRow: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(RowPressStyle())
+        .accessibilityIdentifier(identifier)
     }
 }
 

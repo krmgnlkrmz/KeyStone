@@ -49,6 +49,7 @@ struct DailyLevelView: View {
                 } icon: { Image(systemName: "play.fill") }
             }
             .buttonStyle(PrimaryButtonStyle())
+            .accessibilityIdentifier("daily.play")
             .disabled(app.dailyLevel == nil)
             Text("daily.footer").font(.footnote).foregroundStyle(Palette.text3).frame(maxWidth: .infinity)
         }

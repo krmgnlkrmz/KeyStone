@@ -35,6 +35,7 @@ struct LevelCellView: View {
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(Text(accessibilityText))
         .accessibilityAddTraits(.isButton)
+        .accessibilityIdentifier("level.\(level.index)")
     }
 
     @ViewBuilder private var tag: some View {

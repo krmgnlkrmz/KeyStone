@@ -56,6 +56,7 @@ struct LevelMapView: View {
                     Image(systemName: "gearshape").foregroundStyle(Palette.accent)
                 }
                 .accessibilityLabel(Text("menu.settings"))
+                .accessibilityIdentifier("map.settings")
             }
         }
         .safeAreaInset(edge: .bottom, spacing: 0) { BannerSlot() }

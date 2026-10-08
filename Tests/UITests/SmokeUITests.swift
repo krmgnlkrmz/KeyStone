@@ -87,6 +87,47 @@ final class SmokeUITests: XCTestCase {
         shot("07-settings")
     }
 
+    /// Dark mode with accessibility-size text (Dynamic Type "accessibility1"): menu, map, settings and
+    /// the daily sheet must lay out; screenshots let a person check nothing is clipped.
+    func testDarkLargeTextScreens() throws {
+        launch(["-appearance", "dark", "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityM"])
+        try walkStaticScreens(prefix: "ax-dark-")
+    }
+
+    /// Turkish UI (the second shipped language).
+    func testTurkishScreens() throws {
+        launch(["-AppleLanguages", "(tr)", "-AppleLocale", "tr_TR"])
+        try walkStaticScreens(prefix: "tr-")
+    }
+
+    /// Menu → map → a level → back; settings; daily — by identifier, so it works in any language.
+    private func walkStaticScreens(prefix: String) throws {
+        let levels = app.buttons["menu.levels"]
+        XCTAssertTrue(levels.waitForExistence(timeout: 15), "main menu did not appear")
+        shot(prefix + "01-menu")
+        levels.tap()
+        let first = app.buttons["level.1"]
+        XCTAssertTrue(first.waitForExistence(timeout: 8), "map did not appear")
+        sleep(1)
+        shot(prefix + "02-map")
+        first.tap()
+        sleep(3)
+        shot(prefix + "03-game")
+        app.terminate()
+        app.launch()
+        XCTAssertTrue(app.buttons["menu.settings"].waitForExistence(timeout: 15))
+        app.buttons["menu.settings"].tap()
+        sleep(1)
+        shot(prefix + "07-settings")
+        app.terminate()
+        app.launch()
+        XCTAssertTrue(app.buttons["menu.daily"].waitForExistence(timeout: 15))
+        app.buttons["menu.daily"].tap()
+        XCTAssertTrue(app.buttons["daily.play"].waitForExistence(timeout: 5), "daily sheet did not open")
+        sleep(1)
+        shot(prefix + "08-daily")
+    }
+
     func testDailySheetOpens() throws {
         launch()
         let daily = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] 'Daily Level'")).firstMatch
