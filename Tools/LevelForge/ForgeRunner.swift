@@ -143,6 +143,69 @@ final class ForgeRunner: XCTestCase {
         try lines.joined(separator: "\n").write(to: outDir.appendingPathComponent("curated-report.tsv"), atomically: true, encoding: .utf8)
     }
 
+    /// One curriculum slot in Tools/LevelForge/curation-plan.json.
+    struct Slot: Decodable {
+        var index: Int
+        var region: String
+        var archetype: String
+        var seed: UInt64
+        var attempts: Int?
+        var minLength: Int
+        var maxLength: Int
+        var slack: Int?
+        var minUnsafe: Double?
+        var goal: String?
+        var name: [String: String]
+    }
+
+    struct Plan: Decodable { var slots: [Slot] }
+
+    /// Fills each curriculum slot with the first generator candidate that passes the solver and the
+    /// slot's own bar (solution length, tension, goal type). Writes FORGE_OUT/curated/c-NNN.json.
+    @MainActor
+    func testCuratePlan() throws {
+        let path = try XCTUnwrap(env["FORGE_PLAN"], "FORGE_PLAN not set")
+        let plan = try JSONDecoder().decode(Plan.self, from: Data(contentsOf: URL(fileURLWithPath: path)))
+        let sim = try HeadlessSimulator()
+        try sim.selfTest()
+        var options = SolutionSolver.Options()
+        options.maxStates = 300
+        let solver = SolutionSolver(simulator: sim, options: options)
+        var lines: [String] = []
+        let started = Date()
+        for slot in plan.slots {
+            guard let archetype = LevelGenerator.Archetype(rawValue: slot.archetype), let region = Region(rawValue: slot.region) else {
+                lines.append("\(slot.index)\tBAD-SLOT"); continue
+            }
+            var found: (Level, SolutionSolver.Report, UInt64, Int)?
+            var tries = 0
+            for k in 0..<(slot.attempts ?? 40) {
+                tries = k + 1
+                let seed = slot.seed + UInt64(k)
+                let candidate = LevelGenerator(seed: seed).make(archetype: archetype, region: region, pack: .curated, index: slot.index)
+                if let g = slot.goal, g != candidate.goal.type.rawValue { continue }
+                let r = solver.solve(candidate, verifiedAt: Self.today)
+                guard let level = r.annotatedLevel, let len = r.solutionLength,
+                      (slot.minLength...slot.maxLength).contains(len), r.unsafeShare >= (slot.minUnsafe ?? 0.2) else { continue }
+                found = (level, r, seed, k)
+                break
+            }
+            guard let (level, report, seed, _) = found else {
+                let line = "\(slot.index)\tMISSING\t\(slot.archetype)\ttried \(tries) from seed \(slot.seed)"
+                log(line); lines.append(line); continue
+            }
+            var l = level.tightened(slack: slot.slack ?? 1)
+            l.id = String(format: "c-%03d", slot.index)
+            l.index = slot.index
+            l.name = slot.name
+            try write(l, to: outDir.appendingPathComponent("curated"))
+            let line = "\(slot.index)\t\(slot.archetype)\tseed \(seed)\tlen \(report.solutionLength ?? 0)\tbudget \(l.goal.moveBudget)\tmargin \(String(format: "%.2f", report.marginRatio ?? 0))\tunsafe \(String(format: "%.2f", report.unsafeShare))\ttries \(tries)\t\(String(format: "%.0fs", Date().timeIntervalSince(started)))"
+            log(line)
+            lines.append(line)
+        }
+        try lines.joined(separator: "\n").write(to: outDir.appendingPathComponent("curate-report.tsv"), atomically: true, encoding: .utf8)
+    }
+
     /// Generates, solves and filters pool candidates into FORGE_OUT/pool.
     @MainActor
     func testGeneratePool() throws {

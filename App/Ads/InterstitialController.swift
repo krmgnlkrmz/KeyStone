@@ -15,12 +15,21 @@ final class InterstitialController: NSObject, FullScreenContentDelegate {
     func preload() {
         guard ad == nil, !loading else { return }
         loading = true
-        InterstitialAd.load(with: AppConfig.AdUnit.interstitial, request: Request()) { [weak self] ad, error in
-            guard let self else { return }
-            self.loading = false
-            if let error { self.log.info("interstitial not loaded: \(error.localizedDescription)"); return }
-            ad?.fullScreenContentDelegate = self
-            self.ad = ad
+        Task {
+            let loaded = await load()
+            loading = false
+            loaded?.fullScreenContentDelegate = self
+            ad = loaded
+        }
+    }
+
+    /// The SDK is entered on the main actor; the continuation hands the ad back here.
+    private func load() async -> InterstitialAd? {
+        await withCheckedContinuation { (continuation: CheckedContinuation<InterstitialAd?, Never>) in
+            InterstitialAd.load(with: AppConfig.AdUnit.interstitial, request: Request()) { [log] ad, error in
+                if let error { log.info("interstitial not loaded: \(error.localizedDescription)") }
+                continuation.resume(returning: ad)
+            }
         }
     }
 

@@ -15,6 +15,7 @@ public enum NodeNames {
     public static let piecePrefix = "piece:"
     public static let floor = "floor"
     public static func piece(_ id: String) -> String { piecePrefix + id }
+    @MainActor
     public static func pieceId(of node: SKNode) -> String? {
         guard let name = node.name, name.hasPrefix(piecePrefix) else { return nil }
         return String(name.dropFirst(piecePrefix.count))

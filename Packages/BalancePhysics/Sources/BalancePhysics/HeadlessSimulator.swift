@@ -127,6 +127,33 @@ public final class HeadlessSimulator {
         return result
     }
 
+    /// Forward play in one scene: each move gets its own evaluation window, exactly like the game
+    /// without undo. Returns one result per move (stops early when the level ends).
+    public func runSequence(level: Level, moves: [Move.Kind], profile: StepProfile = .standard) throws -> [EvaluationResult] {
+        let scene = SimulationScene(level: level, size: CGSize(width: 600, height: 800))
+        renderer.scene = scene
+        defer { renderer.scene = nil; jobsRun += 1 }
+        var frame = 0
+        step(scene, dt: profile.dts[0])
+        scene.load(log: MoveLog())
+        let maxFrames = Int((PhysicsConstants.initialSettle + PhysicsConstants.maxSimSeconds * Double(max(1, moves.count)) + 2) * 240)
+        while scene.phase == .presettling {
+            step(scene, dt: profile.dts[frame % profile.dts.count]); frame += 1
+            if frame > maxFrames { throw HeadlessError.stalled("presettle \(level.id)") }
+        }
+        var results: [EvaluationResult] = []
+        for move in moves {
+            guard scene.phase == .ready else { break }
+            guard scene.apply(move) else { throw HeadlessError.rejectedMove(move.token) }
+            while scene.phase == .evaluating {
+                step(scene, dt: profile.dts[frame % profile.dts.count]); frame += 1
+                if frame > maxFrames { throw HeadlessError.stalled("sequence \(level.id)") }
+            }
+            if let r = scene.lastResult { results.append(r) }
+        }
+        return results
+    }
+
     private func step(_ scene: SimulationScene, dt: Double) {
         clock += dt
         renderer.update(atTime: clock)

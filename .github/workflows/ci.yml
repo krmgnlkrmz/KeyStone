@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       forge:
-        description: "LevelForge run: none | smoke | validate | curated | pool"
+        description: "LevelForge run: none | smoke | validate | curated | curate | pool | probe"
         required: false
         default: "none"
       forge_count:
@@ -17,6 +17,17 @@ on:
         description: "First generator seed (forge=pool)"
         required: false
         default: "9000"
+      forge_shard:
+        description: "Seed shard i/n (forge=pool)"
+        required: false
+        default: "0/1"
+      commit:
+        description: "Commit forge output back to this branch (true/false)"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
 
 concurrency:
   group: ci-${{ github.ref }}-${{ github.event_name }}
@@ -57,7 +68,7 @@ jobs:
   ios:
     name: iOS build + tests
     runs-on: macos-15
-    timeout-minutes: 90
+    timeout-minutes: ${{ github.event_name == 'workflow_dispatch' && 355 || 90 }}
     steps:
       - uses: actions/checkout@v4
 
@@ -136,20 +147,40 @@ jobs:
           TEST_RUNNER_FORGE_OUT: ${{ github.workspace }}/forge-out
           TEST_RUNNER_FORGE_COUNT: ${{ inputs.forge_count }}
           TEST_RUNNER_FORGE_SEED_BASE: ${{ inputs.forge_seed_base }}
+          TEST_RUNNER_FORGE_SHARD: ${{ inputs.forge_shard }}
+          TEST_RUNNER_FORGE_PLAN: ${{ github.workspace }}/Tools/LevelForge/curation-plan.json
+        timeout-minutes: 340
         run: |
           rc=0
           mkdir -p forge-out
           case "${{ inputs.forge }}" in
-            validate) T=testValidateShippedLevels ;;
-            curated) T=testAnnotateCurated ;;
-            pool) T=testGeneratePool ;;
+            validate) T="-only-testing:LevelForgeTests/ForgeRunner/testValidateShippedLevels" ;;
+            curated) T="-only-testing:LevelForgeTests/ForgeRunner/testAnnotateCurated" ;;
+            curate) T="-only-testing:LevelForgeTests/ForgeRunner/testAnnotateCurated -only-testing:LevelForgeTests/ForgeRunner/testCuratePlan" ;;
+            pool) T="-only-testing:LevelForgeTests/ForgeRunner/testGeneratePool" ;;
+            probe) T="-only-testing:LevelForgeTests/ForgeRunner/testAnnotateCurated -only-testing:LevelForgeTests/ForgeRunner/testGeneratePool" ;;
           esac
           xcodebuild test -project DengeNoktasi.xcodeproj -scheme LevelForge \
             -destination "id=${{ steps.sim.outputs.udid }}" -clonedSourcePackagesDirPath SourcePackages \
-            -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO \
-            -only-testing:LevelForgeTests/ForgeRunner/$T > forge.log 2>&1 || rc=$?
+            -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO $T > forge.log 2>&1 || rc=$?
           grep -E "\[forge\]|error:|failed|passed|Executed" forge.log | tail -400 || true
+          ls -R forge-out | head -50
           exit $rc
+
+      - name: Commit forge output
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.commit == 'true' && inputs.forge != 'none' }}
+        run: |
+          set -e
+          if [ -d forge-out/curated ]; then cp forge-out/curated/*.json App/Resources/Levels/curated/ 2>/dev/null || true; fi
+          if [ -d forge-out/pool ]; then mkdir -p App/Resources/Levels/pool; cp forge-out/pool/*.json App/Resources/Levels/pool/ 2>/dev/null || true; fi
+          mkdir -p Tools/LevelForge/reports
+          cp forge-out/*.txt forge-out/*.tsv Tools/LevelForge/reports/ 2>/dev/null || true
+          git config user.name "LevelForge (CI)"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add App/Resources/Levels Tools/LevelForge/reports
+          if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
+          git commit -m "LevelForge: ${{ inputs.forge }} output (shard ${{ inputs.forge_shard }}, seeds from ${{ inputs.forge_seed_base }})"
+          for i in 1 2 3 4; do git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break; sleep $((i * 5)); done
 
       - name: Upload forge output
         if: ${{ always() && github.event_name == 'workflow_dispatch' && inputs.forge != 'none' }}

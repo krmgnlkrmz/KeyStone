@@ -17,12 +17,20 @@ final class RewardedController: NSObject, FullScreenContentDelegate {
     func preload() {
         guard ad == nil, !loading else { return }
         loading = true
-        RewardedAd.load(with: AppConfig.AdUnit.rewarded, request: Request()) { [weak self] ad, error in
-            guard let self else { return }
-            self.loading = false
-            if let error { self.log.info("rewarded not loaded: \(error.localizedDescription)"); return }
-            ad?.fullScreenContentDelegate = self
-            self.ad = ad
+        Task {
+            let loaded = await load()
+            loading = false
+            loaded?.fullScreenContentDelegate = self
+            ad = loaded
+        }
+    }
+
+    private func load() async -> RewardedAd? {
+        await withCheckedContinuation { (continuation: CheckedContinuation<RewardedAd?, Never>) in
+            RewardedAd.load(with: AppConfig.AdUnit.rewarded, request: Request()) { [log] ad, error in
+                if let error { log.info("rewarded not loaded: \(error.localizedDescription)") }
+                continuation.resume(returning: ad)
+            }
         }
     }
 

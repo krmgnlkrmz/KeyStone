@@ -17,3 +17,8 @@ for fw in $(find "$ROOT/artifacts" -path "*ios-arm64_x86_64-simulator*" -name "*
 done
 echo "== SKAdNetwork list (Google)"
 ./scripts/update-skadnetworks.sh --print || true
+echo "== SDK privacy manifests"
+find "$ROOT/artifacts" -path "*ios-arm64_x86_64-simulator*" -name "PrivacyInfo.xcprivacy" 2>/dev/null | while read f; do
+  echo "-- $f"
+  plutil -convert json -o - "$f" 2>/dev/null | python3 -c 'import json,sys; d=json.load(sys.stdin); print("tracking:", d.get("NSPrivacyTracking")); print("domains:", d.get("NSPrivacyTrackingDomains")); print("data types:", [x.get("NSPrivacyCollectedDataType") for x in d.get("NSPrivacyCollectedDataTypes", [])]); print("apis:", [(x.get("NSPrivacyAccessedAPIType"), x.get("NSPrivacyAccessedAPITypeReasons")) for x in d.get("NSPrivacyAccessedAPITypes", [])])'
+done

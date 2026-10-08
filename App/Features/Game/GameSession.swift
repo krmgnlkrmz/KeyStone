@@ -86,6 +86,8 @@ final class GameSession: GameSceneDelegate {
         }
     }
 
+    func dismissTutorial() { tutorialVisible = false }
+
     func start() {
         app.progress.recordAttempt(level.id)
         tutorialVisible = level.tutorial != nil && !app.progress.completedIds.contains(level.id)

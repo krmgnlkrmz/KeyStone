@@ -51,7 +51,7 @@ struct GameHUDView: View {
                 } else if session.demo {
                     Chip(icon: "play.fill", tint: Palette.jade) { Text("demo.chip") }
                 } else if session.tutorialVisible, let kind = session.level.tutorial, session.phase == .playing {
-                    TutorialOverlay(kind: kind) { session.tutorialVisible = false }
+                    TutorialOverlay(kind: kind) { session.dismissTutorial() }
                 } else if session.isSettling && session.phase == .evaluating {
                     SettlingIndicator()
                 }
