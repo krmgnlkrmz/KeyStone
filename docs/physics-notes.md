@@ -46,6 +46,12 @@ decisions exactly and settled poses with a tolerance (`sameJobSameDecision`). Re
 levels (`testValidateShippedLevels`) accepts margin ≥ 1.25 against generation's 1.4 for the same reason.
 Replays are never re-simulated (below), so they are exact.
 
+**Sampling other orderings.** SpriteKit's body order follows memory addresses, so a fresh process (or a
+player's device) can resolve a chaotic structure differently. `Job.allocationJitter` allocates some
+ballast before the scene is built, which moves SpriteKit's objects to other addresses; the solver
+verifies each solution under 5 frame profiles × 3 such shifts, and the release gate checks the same 15
+combinations. Levels whose decisions depend on the ordering are rejected (curated) or pruned (pool).
+
 ## The decision rule (tolerant on purpose)
 
 `SettleRules.verdict` (BalanceCore, unit-tested on Linux) decides, from per-body measurements:
