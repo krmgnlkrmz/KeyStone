@@ -270,8 +270,9 @@ final class ForgeRunner: XCTestCase {
             } else {
                 rejections[r.rejection?.rawValue ?? "trivial", default: 0] += 1
             }
-            if k % 25 == 0 {
-                log("seed \(seed): \(accepted.count) accepted, \(String(format: "%.0f", Date().timeIntervalSince(started)))s, \(sim.framesSimulated) frames")
+            if k % 50 == 0 {
+                let perArchetype = byArchetype.sorted { $0.key < $1.key }.map { "\($0.key) \($0.value.ok)/\($0.value.tried)" }.joined(separator: " ")
+                log("seed \(seed): \(accepted.count) accepted, \(String(format: "%.0f", Date().timeIntervalSince(started)))s · \(perArchetype)")
             }
         }
         if !accepted.isEmpty { try writeChunk((accepted.count - 1) / 100) }
