@@ -1,188 +1,498 @@
 {
-  "floorY": -190.0,
-  "goal": {
-    "moveBudget": 5,
-    "requiredCount": 3,
-    "starThresholds": [
+  "annotation" : {
+    "difficulty" : 3.71,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 30.55,
+    "solutionPath" : [
+      "w1",
+      "w2",
+      "w5"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "s1",
+          "w1",
+          "w2",
+          "w3",
+          "w5"
+        ],
+        "severity" : {
+          "s1" : 0.034,
+          "t1" : 5.851,
+          "t2" : 2.149,
+          "w1" : 0.032,
+          "w2" : 0.032,
+          "w3" : 0.871,
+          "w4" : 2.785,
+          "w5" : 0.032
+        },
+        "state" : "",
+        "unsafe" : {
+          "t1" : "w4",
+          "t2" : "w4",
+          "w4" : "t2"
+        }
+      },
+      {
+        "safe" : [
+          "w3",
+          "w5"
+        ],
+        "severity" : {
+          "t1" : 5.59,
+          "t2" : 2.11,
+          "w1" : 7.86,
+          "w2" : 7.868,
+          "w3" : 0.865,
+          "w4" : 2.791,
+          "w5" : 0.021
+        },
+        "state" : "s1",
+        "unsafe" : {
+          "t1" : "w4",
+          "t2" : "w4",
+          "w1" : "w4",
+          "w2" : "w4",
+          "w4" : "w3"
+        }
+      },
+      {
+        "safe" : [
+          "w2",
+          "w5"
+        ],
+        "severity" : {
+          "s1" : 8.257,
+          "t1" : 5.84,
+          "t2" : 2.873,
+          "w2" : 0.032,
+          "w3" : 9.387,
+          "w4" : 2.783,
+          "w5" : 0.033
+        },
+        "state" : "w1",
+        "unsafe" : {
+          "s1" : "w4",
+          "t1" : "w4",
+          "t2" : "w4",
+          "w3" : "w4",
+          "w4" : "t2"
+        }
+      },
+      {
+        "safe" : [
+          "w5"
+        ],
+        "severity" : {
+          "s1" : 7.679,
+          "t1" : 7.844,
+          "t2" : 2.573,
+          "w1" : 5.678,
+          "w3" : 8.089,
+          "w4" : 2.934,
+          "w5" : 0.163
+        },
+        "state" : "w2",
+        "unsafe" : {
+          "s1" : "w4",
+          "t1" : "w3",
+          "t2" : "w4",
+          "w1" : "w3",
+          "w3" : "w1",
+          "w4" : "t2"
+        }
+      },
+      {
+        "safe" : [
+          "s1",
+          "w5"
+        ],
+        "severity" : {
+          "s1" : 0.806,
+          "t1" : 7.47,
+          "t2" : 7.293,
+          "w1" : 6.72,
+          "w2" : 7.901,
+          "w4" : 7.557,
+          "w5" : 0.806
+        },
+        "state" : "w3",
+        "unsafe" : {
+          "t1" : "w2",
+          "t2" : "w1",
+          "w1" : "w4",
+          "w2" : "w1",
+          "w4" : "w1"
+        }
+      },
+      {
+        "safe" : [
+          "s1",
+          "w1",
+          "w2",
+          "w3"
+        ],
+        "severity" : {
+          "s1" : 0.035,
+          "t1" : 5.95,
+          "t2" : 5.899,
+          "w1" : 0.032,
+          "w2" : 0.032,
+          "w3" : 0.841,
+          "w4" : 2.783
+        },
+        "state" : "w5",
+        "unsafe" : {
+          "t1" : "w4",
+          "t2" : "w4",
+          "w4" : "w3"
+        }
+      },
+      {
+        "safe" : [
+          "w5"
+        ],
+        "severity" : {
+          "t1" : 7.74,
+          "t2" : 7.517,
+          "w1" : 6.291,
+          "w2" : 8.5,
+          "w4" : 8.344,
+          "w5" : 0.806
+        },
+        "state" : "s1,w3",
+        "unsafe" : {
+          "t1" : "w2",
+          "t2" : "w1",
+          "w1" : "w2",
+          "w2" : "w1",
+          "w4" : "w2"
+        }
+      },
+      {
+        "safe" : [
+          "w3"
+        ],
+        "severity" : {
+          "t1" : 5.926,
+          "t2" : 5.923,
+          "w1" : 6.305,
+          "w2" : 6.36,
+          "w3" : 0.847,
+          "w4" : 2.789
+        },
+        "state" : "s1,w5",
+        "unsafe" : {
+          "t1" : "w4",
+          "t2" : "w4",
+          "w1" : "w4",
+          "w2" : "w4",
+          "w4" : "w3"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "s1" : 4.406,
+          "t1" : 7.264,
+          "t2" : 2.902,
+          "w3" : 5.458,
+          "w4" : 2.79,
+          "w5" : 0.033
+        },
+        "state" : "w1,w2",
+        "unsafe" : {
+          "s1" : "w4",
+          "t1" : "w3",
+          "t2" : "w4",
+          "w3" : "w4",
+          "w4" : "w3"
+        },
+        "win" : [
+          "w5"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "s1" : 6.433,
+          "t1" : 6.008,
+          "t2" : 6.22,
+          "w2" : 0.032,
+          "w3" : 8.524,
+          "w4" : 2.783
+        },
+        "state" : "w1,w5",
+        "unsafe" : {
+          "s1" : "w4",
+          "t1" : "w4",
+          "t2" : "w3",
+          "w3" : "w2",
+          "w4" : "w3"
+        },
+        "win" : [
+          "w2"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "s1" : 6.239,
+          "t1" : 6.247,
+          "t2" : 5.908,
+          "w1" : 0.033,
+          "w3" : 8.509,
+          "w4" : 2.784
+        },
+        "state" : "w2,w5",
+        "unsafe" : {
+          "s1" : "w4",
+          "t1" : "w3",
+          "t2" : "w4",
+          "w3" : "w1",
+          "w4" : "w3"
+        },
+        "win" : [
+          "w1"
+        ]
+      },
+      {
+        "safe" : [
+          "s1"
+        ],
+        "severity" : {
+          "s1" : 0.801,
+          "t1" : 7.773,
+          "t2" : 7.836,
+          "w1" : 6.972,
+          "w2" : 7.032,
+          "w4" : 6.764
+        },
+        "state" : "w3,w5",
+        "unsafe" : {
+          "t1" : "w2",
+          "t2" : "w1",
+          "w1" : "w2",
+          "w2" : "w1",
+          "w4" : "w1"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "t1" : 7.853,
+          "t2" : 7.827,
+          "w1" : 7.786,
+          "w2" : 7.708,
+          "w4" : 6.969
+        },
+        "state" : "s1,w3,w5",
+        "unsafe" : {
+          "t1" : "w2",
+          "t2" : "w1",
+          "w1" : "w2",
+          "w2" : "w1",
+          "w4" : "w1"
+        }
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 5,
+    "requiredCount" : 3,
+    "starThresholds" : [
       3,
       4,
       5
     ],
-    "targetPieceIds": [
+    "targetPieceIds" : [
       "w1",
       "w2",
       "w3",
       "w4",
       "w5"
     ],
-    "type": "removeTargetsKeepStanding"
+    "type" : "removeTargetsKeepStanding"
   },
-  "gravity": -9.8,
-  "id": "c-005",
-  "index": 5,
-  "joints": [],
-  "name": {
-    "en": "Pinned Lintel",
-    "tr": "Sabitli Lento"
+  "gravity" : -9.8,
+  "id" : "c-005",
+  "index" : 5,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Pinned Lintel",
+    "tr" : "Sabitli Lento"
   },
-  "pack": "curated",
-  "pieces": [
+  "pack" : "curated",
+  "pieces" : [
     {
-      "fixed": true,
-      "id": "b1",
-      "material": "stone",
-      "position": {
-        "x": -85.0,
-        "y": -160.0
+      "fixed" : true,
+      "id" : "b1",
+      "material" : "stone",
+      "position" : {
+        "x" : -85,
+        "y" : -160
       },
-      "removable": false,
-      "rotation": 0,
-      "shape": {
-        "h": 60.0,
-        "type": "rect",
-        "w": 70.0
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 60,
+        "type" : "rect",
+        "w" : 70
       }
     },
     {
-      "fixed": true,
-      "id": "b2",
-      "material": "stone",
-      "position": {
-        "x": 85.0,
-        "y": -160.0
+      "fixed" : true,
+      "id" : "b2",
+      "material" : "stone",
+      "position" : {
+        "x" : 85,
+        "y" : -160
       },
-      "removable": false,
-      "rotation": 0,
-      "shape": {
-        "h": 60.0,
-        "type": "rect",
-        "w": 70.0
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 60,
+        "type" : "rect",
+        "w" : 70
       }
     },
     {
-      "fixed": false,
-      "id": "s1",
-      "material": "steel",
-      "position": {
-        "x": 0.0,
-        "y": -105.0
+      "fixed" : false,
+      "id" : "s1",
+      "material" : "steel",
+      "position" : {
+        "x" : 0,
+        "y" : -105
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 170.0,
-        "type": "rect",
-        "w": 16.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 170,
+        "type" : "rect",
+        "w" : 16
       }
     },
     {
-      "fixed": false,
-      "id": "w1",
-      "material": "wood",
-      "position": {
-        "x": -88.0,
-        "y": -75.0
+      "fixed" : false,
+      "id" : "w1",
+      "material" : "wood",
+      "position" : {
+        "x" : -88,
+        "y" : -75
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 110.0,
-        "type": "rect",
-        "w": 28.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 110,
+        "type" : "rect",
+        "w" : 28
       }
     },
     {
-      "fixed": false,
-      "id": "w2",
-      "material": "wood",
-      "position": {
-        "x": 88.0,
-        "y": -75.0
+      "fixed" : false,
+      "id" : "w2",
+      "material" : "wood",
+      "position" : {
+        "x" : 88,
+        "y" : -75
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 110.0,
-        "type": "rect",
-        "w": 28.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 110,
+        "type" : "rect",
+        "w" : 28
       }
     },
     {
-      "fixed": false,
-      "id": "w3",
-      "material": "wood",
-      "position": {
-        "x": 0.0,
-        "y": -10.0
+      "fixed" : false,
+      "id" : "w3",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : -10
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 20.0,
-        "type": "rect",
-        "w": 260.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 20,
+        "type" : "rect",
+        "w" : 260
       }
     },
     {
-      "fixed": false,
-      "id": "t1",
-      "material": "stone",
-      "position": {
-        "x": -61.0,
-        "y": 27.5
+      "fixed" : false,
+      "id" : "t1",
+      "material" : "stone",
+      "position" : {
+        "x" : -61,
+        "y" : 27.5
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 55.0,
-        "type": "rect",
-        "w": 54.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 55,
+        "type" : "rect",
+        "w" : 54
       }
     },
     {
-      "fixed": false,
-      "id": "t2",
-      "material": "stone",
-      "position": {
-        "x": 61.0,
-        "y": 27.5
+      "fixed" : false,
+      "id" : "t2",
+      "material" : "stone",
+      "position" : {
+        "x" : 61,
+        "y" : 27.5
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 55.0,
-        "type": "rect",
-        "w": 54.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 55,
+        "type" : "rect",
+        "w" : 54
       }
     },
     {
-      "fixed": false,
-      "id": "w4",
-      "material": "wood",
-      "position": {
-        "x": 0.0,
-        "y": 64.0
+      "fixed" : false,
+      "id" : "w4",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : 64
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 18.0,
-        "type": "rect",
-        "w": 204.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 18,
+        "type" : "rect",
+        "w" : 204
       }
     },
     {
-      "fixed": false,
-      "id": "k",
-      "material": "brass",
-      "position": {
-        "x": 0.0,
-        "y": 95.5
+      "fixed" : false,
+      "id" : "k",
+      "material" : "brass",
+      "position" : {
+        "x" : 0,
+        "y" : 95.5
       },
-      "removable": false,
-      "rotation": 0,
-      "shape": {
-        "points": [
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "points" : [
           [
             -16.8,
             -22.5
@@ -192,35 +502,35 @@
             -22.5
           ],
           [
-            28.0,
+            28,
             22.5
           ],
           [
-            -28.0,
+            -28,
             22.5
           ]
         ],
-        "type": "polygon"
+        "type" : "polygon"
       }
     },
     {
-      "fixed": false,
-      "id": "w5",
-      "material": "wood",
-      "position": {
-        "x": 67.0,
-        "y": 103.0
+      "fixed" : false,
+      "id" : "w5",
+      "material" : "wood",
+      "position" : {
+        "x" : 67,
+        "y" : 103
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 60.0,
-        "type": "rect",
-        "w": 70.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 60,
+        "type" : "rect",
+        "w" : 70
       }
     }
   ],
-  "region": "wood_scaffold",
-  "schema": 1,
-  "supportsAllowed": 0
+  "region" : "wood_scaffold",
+  "schema" : 1,
+  "supportsAllowed" : 0
 }

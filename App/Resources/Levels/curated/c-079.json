@@ -1,0 +1,487 @@
+{
+  "annotation" : {
+    "difficulty" : 3.07,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 2.15,
+    "solutionPath" : [
+      "block2",
+      "block4",
+      "shim2"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "block2",
+          "block3",
+          "shim1",
+          "block4",
+          "shim2"
+        ],
+        "severity" : {
+          "block2" : 0.031,
+          "block3" : 0.029,
+          "block4" : 0.031,
+          "block5" : 5.238,
+          "shim1" : 0.476,
+          "shim2" : 0.465
+        },
+        "state" : "",
+        "unsafe" : {
+          "block5" : "shim2"
+        }
+      },
+      {
+        "safe" : [
+          "shim1",
+          "block4",
+          "shim2"
+        ],
+        "severity" : {
+          "block3" : 1.658,
+          "block4" : 0.036,
+          "block5" : 5.271,
+          "shim1" : 0.477,
+          "shim2" : 0.456
+        },
+        "state" : "block2",
+        "unsafe" : {
+          "block3" : "block4",
+          "block5" : "shim2"
+        }
+      },
+      {
+        "safe" : [
+          "shim1",
+          "block4",
+          "shim2"
+        ],
+        "severity" : {
+          "block2" : 1.618,
+          "block4" : 0.031,
+          "block5" : 5.268,
+          "shim1" : 0.44,
+          "shim2" : 0.457
+        },
+        "state" : "block3",
+        "unsafe" : {
+          "block2" : "block4",
+          "block5" : "shim2"
+        }
+      },
+      {
+        "safe" : [
+          "block2",
+          "block3",
+          "block4",
+          "shim2"
+        ],
+        "severity" : {
+          "block2" : 0.46,
+          "block3" : 0.461,
+          "block4" : 0.461,
+          "block5" : 4.358,
+          "shim2" : 0.885
+        },
+        "state" : "shim1",
+        "unsafe" : {
+          "block5" : "block4"
+        }
+      },
+      {
+        "safe" : [
+          "shim2"
+        ],
+        "severity" : {
+          "block2" : 2.226,
+          "block3" : 2.309,
+          "block5" : 1.46,
+          "shim1" : 2.826,
+          "shim2" : 0.465
+        },
+        "state" : "block4",
+        "unsafe" : {
+          "block2" : "shim2",
+          "block3" : "shim2",
+          "block5" : "shim2",
+          "shim1" : "shim2"
+        }
+      },
+      {
+        "safe" : [
+          "block2",
+          "block3",
+          "shim1",
+          "block4"
+        ],
+        "severity" : {
+          "block2" : 0.411,
+          "block3" : 0.411,
+          "block4" : 0.408,
+          "block5" : 4.295,
+          "shim1" : 0.874
+        },
+        "state" : "shim2",
+        "unsafe" : {
+          "block5" : "block4"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block3" : 3.814,
+          "block4" : 4.6,
+          "block5" : 3.889,
+          "shim2" : 1.049
+        },
+        "state" : "block2,shim1",
+        "unsafe" : {
+          "block3" : "shim2",
+          "block4" : "block3",
+          "block5" : "block4",
+          "shim2" : "block4"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block3" : 1.294,
+          "block5" : 1.464,
+          "shim1" : 4.563,
+          "shim2" : 0.469
+        },
+        "state" : "block2,block4",
+        "unsafe" : {
+          "block3" : "shim2",
+          "block5" : "shim2",
+          "shim1" : "block3"
+        },
+        "win" : [
+          "shim2"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block3" : 1.48,
+          "block4" : 0.403,
+          "block5" : 4.293,
+          "shim1" : 1.112
+        },
+        "state" : "block2,shim2",
+        "unsafe" : {
+          "block3" : "block4",
+          "block5" : "block4",
+          "shim1" : "block4"
+        },
+        "win" : [
+          "block4"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 2.32,
+          "block4" : 0.466,
+          "block5" : 7.038,
+          "shim2" : 0.839
+        },
+        "state" : "block3,shim1",
+        "unsafe" : {
+          "block2" : "shim2",
+          "block5" : "shim2"
+        },
+        "win" : [
+          "block4",
+          "shim2"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 1.373,
+          "block5" : 1.461,
+          "shim1" : 3.21,
+          "shim2" : 0.467
+        },
+        "state" : "block3,block4",
+        "unsafe" : {
+          "block2" : "shim2",
+          "block5" : "shim2",
+          "shim1" : "shim2"
+        },
+        "win" : [
+          "shim2"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 1.693,
+          "block4" : 0.416,
+          "block5" : 4.378,
+          "shim1" : 0.88
+        },
+        "state" : "block3,shim2",
+        "unsafe" : {
+          "block2" : "block4",
+          "block5" : "block4"
+        },
+        "win" : [
+          "shim1",
+          "block4"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 4.438,
+          "block3" : 2.953,
+          "block5" : 2.074,
+          "shim2" : 4.676
+        },
+        "state" : "block4,shim1",
+        "unsafe" : {
+          "block2" : "block3",
+          "block3" : "shim2",
+          "block5" : "block3",
+          "shim2" : "block5"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 1.083,
+          "block3" : 0.877,
+          "block4" : 0.875,
+          "block5" : 4.558
+        },
+        "state" : "shim1,shim2",
+        "unsafe" : {
+          "block2" : "block4",
+          "block5" : "block4"
+        },
+        "win" : [
+          "block3",
+          "block4"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 0.412,
+          "block3" : 0.407,
+          "block5" : 1.847,
+          "shim1" : 0.879
+        },
+        "state" : "block4,shim2",
+        "unsafe" : {
+          "block5" : "shim1"
+        },
+        "win" : [
+          "block2",
+          "block3",
+          "shim1"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 5,
+    "requiredCount" : 3,
+    "starThresholds" : [
+      3,
+      4,
+      5
+    ],
+    "targetPieceIds" : [
+      "block2",
+      "block3",
+      "shim1",
+      "block4",
+      "block5",
+      "shim2"
+    ],
+    "type" : "removeTargetsKeepStanding"
+  },
+  "gravity" : -9.8,
+  "id" : "c-079",
+  "index" : 79,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Keystone Set",
+    "tr" : "Kilit Yerinde"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : true,
+      "id" : "block1",
+      "material" : "stone",
+      "position" : {
+        "x" : -83,
+        "y" : -168
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 44,
+        "type" : "rect",
+        "w" : 64
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block2",
+      "material" : "stone",
+      "position" : {
+        "x" : 0,
+        "y" : -168
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 44,
+        "type" : "rect",
+        "w" : 64
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block3",
+      "material" : "stone",
+      "position" : {
+        "x" : 83,
+        "y" : -168
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 44,
+        "type" : "rect",
+        "w" : 64
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "shim1",
+      "material" : "wood",
+      "position" : {
+        "x" : -2,
+        "y" : -140
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 12,
+        "type" : "rect",
+        "w" : 211
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block4",
+      "material" : "stone",
+      "position" : {
+        "x" : -41,
+        "y" : -115.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 37,
+        "type" : "rect",
+        "w" : 71
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block5",
+      "material" : "stone",
+      "position" : {
+        "x" : 41,
+        "y" : -115.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 37,
+        "type" : "rect",
+        "w" : 71
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "shim2",
+      "material" : "wood",
+      "position" : {
+        "x" : -9,
+        "y" : -91
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 12,
+        "type" : "rect",
+        "w" : 129.46
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "k",
+      "material" : "brass",
+      "position" : {
+        "x" : 9,
+        "y" : -64
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "points" : [
+          [
+            -23.7,
+            -21
+          ],
+          [
+            23.7,
+            -21
+          ],
+          [
+            39.5,
+            21
+          ],
+          [
+            -39.5,
+            21
+          ]
+        ],
+        "type" : "polygon"
+      }
+    }
+  ],
+  "region" : "keystone",
+  "schema" : 1,
+  "seed" : 179000,
+  "supportsAllowed" : 0
+}
