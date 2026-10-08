@@ -62,6 +62,8 @@ final class GameSession: GameSceneDelegate {
     private(set) var tutorialVisible = false
     /// Bumped whenever piece frames may have moved (accessibility overlay).
     private(set) var layoutVersion = 0
+    /// What the last strut request did (UI tests read it to tell a lost tap from a refused move).
+    private(set) var lastSupportEvent = ""
     var overlay: Overlay? { didSet { scene.isPaused = overlay == .pause; if overlay == nil { scene.resetFrameClock() } } }
 
     @ObservationIgnored private var hintTask: Task<Void, Never>?
@@ -125,11 +127,16 @@ final class GameSession: GameSceneDelegate {
     }
 
     func placeSupport(_ placement: SupportPlacement) {
-        guard phase == .playing, placement.isValid else { return }
+        guard phase == .playing, placement.isValid else {
+            lastSupportEvent = "ignored \(placement.token) phase=\(phase) valid=\(placement.isValid)"
+            return
+        }
         guard scene.apply(.placeSupport(position: placement.footPosition, rotation: placement.rotation)) else {
+            lastSupportEvent = "refused \(placement.token) scene=\(scene.phase)"
             rejectSupport()
             return
         }
+        lastSupportEvent = "placed \(placement.token)"
         afterMove()
         app.sound.play(.place)
         app.haptics.pieceRemoved()

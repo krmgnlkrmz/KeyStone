@@ -108,6 +108,14 @@ private struct GameScreen: View {
                         )
                         .accessibilityHidden(true)
                     PieceAccessibilityLayer(session: session)
+                    if AppConfig.isUITest {
+                        Color.clear
+                            .frame(width: 1, height: 1)
+                            .accessibilityElement()
+                            .accessibilityLabel(Text(verbatim: session.lastSupportEvent.isEmpty ? "none" : session.lastSupportEvent))
+                            .accessibilityIdentifier("debug.supportEvent")
+                            .allowsHitTesting(false)
+                    }
                     Color.black.opacity(session.collapsing && session.phase == .evaluating ? (reduceMotion ? 0.12 : 0.15) : 0)
                         .allowsHitTesting(false)
                         .animation(.easeOut(duration: 0.2), value: session.collapsing)
@@ -153,11 +161,13 @@ private struct PieceAccessibilityLayer: View {
                     }
                 }
                 // Support spots: VoiceOver (and the UI soak test) place a strut by choosing a spot, not by dragging.
+                // Spots can sit a few points apart; each one gets only its own slice so no spot covers a neighbour.
                 let spots = session.supportSpots
+                let centers = spots.map { session.scene.viewPoint(fromScene: CGPoint(x: $0.x, y: ($0.bottomY + $0.topY) / 2)) }
                 ForEach(Array(spots.enumerated()), id: \.element.token) { i, spot in
-                    let center = session.scene.viewPoint(fromScene: CGPoint(x: spot.x, y: (spot.bottomY + spot.topY) / 2))
+                    let center = centers[i]
                     Color.clear
-                        .frame(width: 44, height: 44)
+                        .frame(width: Self.spotWidth(at: i, centers: centers), height: 44)
                         .contentShape(Rectangle())
                         .position(center)
                         .accessibilityElement()
@@ -171,5 +181,14 @@ private struct PieceAccessibilityLayer: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         }
+    }
+
+    /// 44 pt wide unless a neighbouring spot (at about the same height) is closer; then the gap, so they meet halfway.
+    private static func spotWidth(at i: Int, centers: [CGPoint]) -> CGFloat {
+        var width: CGFloat = 44
+        for (j, other) in centers.enumerated() where j != i && abs(other.y - centers[i].y) < 44 {
+            width = min(width, abs(other.x - centers[i].x))
+        }
+        return max(width, 4)
     }
 }

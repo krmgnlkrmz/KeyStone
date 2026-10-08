@@ -38,18 +38,33 @@ final class SoakUITests: XCTestCase {
         return XCTWaiter().wait(for: [gone], timeout: timeout) == .completed
     }
 
-    /// Screenshot + accessibility tree, attached and (with SCREENSHOT_DIR) written next to the screenshots.
+    /// Screenshot (attached, and with SCREENSHOT_DIR written next to the screenshots) plus the game's
+    /// tap targets, any on-screen text and the last strut request, printed for the CI log.
     private func evidence(_ name: String) {
         let image = XCUIScreen.main.screenshot()
         let attachment = XCTAttachment(screenshot: image)
         attachment.name = name
         attachment.lifetime = .keepAlways
         add(attachment)
-        print("[soak] \(name) accessibility tree:\n\(app.debugDescription.prefix(6000))")
+        let event = supportEvent
+        print("[soak] \(name): last strut request: \(event.exists ? event.label : "(not shown)")")
+        let marked = app.descendants(matching: .any)
+            .matching(NSPredicate(format: "identifier BEGINSWITH 'support.' OR identifier BEGINSWITH 'piece.'"))
+        for element in marked.allElementsBoundByIndex.prefix(40) {
+            print("[soak]   \(element.identifier) frame \(element.frame) hittable \(element.isHittable)")
+        }
+        for text in app.staticTexts.allElementsBoundByIndex.prefix(30) where !text.label.isEmpty {
+            print("[soak]   text: \(text.label)")
+        }
         if let dir = env["SCREENSHOT_DIR"] {
             let url = URL(fileURLWithPath: dir).appendingPathComponent("\(name).png")
             try? image.pngRepresentation.write(to: url)
         }
+    }
+
+    /// UI-test-only element in the game screen: what the last strut request did ("placed +sup@-112", "refused …").
+    private var supportEvent: XCUIElement {
+        app.descendants(matching: .any).matching(identifier: "debug.supportEvent").firstMatch
     }
 
     private func button(_ format: String, _ text: String) -> XCUIElement {
@@ -92,6 +107,10 @@ final class SoakUITests: XCTestCase {
                     evidence("soak-fail-L\(level.index)-\(token)")
                     XCTFail("level \(level.index): move \(token) was not taken (frame \(element.frame), hittable \(element.isHittable))")
                     return
+                }
+                if token.hasPrefix("+sup@") {
+                    // Neighbouring spots sit a few points apart; the tap must have placed this one, not a neighbour.
+                    XCTAssertEqual(supportEvent.label, "placed \(token)", "level \(level.index): the tap placed another strut")
                 }
                 XCTAssertEqual(app.state, .runningForeground)
             }
