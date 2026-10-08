@@ -167,6 +167,7 @@ jobs:
           rc=0
           xcodebuild test -project DengeNoktasi.xcodeproj -scheme UITests \
             -destination "id=${{ steps.sim.outputs.udid }}" -clonedSourcePackagesDirPath SourcePackages \
+            -test-timeouts-enabled YES -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 4000 \
             -derivedDataPath DerivedData -resultBundlePath UITests.xcresult CODE_SIGNING_ALLOWED=NO > ui.log 2>&1 || rc=$?
           grep -E "error:|failed|passed|Executed|XCTAssert|\[soak\]" ui.log | tail -120 || true
           ls -R docs/screenshots 2>/dev/null | head -30 || true
@@ -174,27 +175,37 @@ jobs:
 
       - name: Screenshots on more devices
         if: ${{ !cancelled() && steps.forge.outputs.mode == 'screens' }}
+        timeout-minutes: 45
         env:
           TEST_RUNNER_SCREENSHOT_DIR: ${{ github.workspace }}/docs/screenshots
         run: |
+          # Commits after every device, so a simulator that hangs later never loses earlier shots.
+          commit_shots() {
+            [ "${{ steps.forge.outputs.commit }}" = "true" ] || return 0
+            git config user.name "Screenshots (CI)"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add docs/screenshots
+            git diff --cached --quiet && return 0
+            git commit -m "Screenshots from the real UI ($1)"
+            for i in 1 2 3 4; do git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break; sleep $((i * 5)); done
+          }
+          commit_shots "iPhone 16"
           for NAME in "iPhone 17 Pro Max" "iPhone 16 Plus" "iPhone SE (3rd generation)"; do
             UDID=$(xcrun simctl list devices available -j | python3 -c "import json,sys; d=json.load(sys.stdin)['devices']; print(next((x['udid'] for r,v in d.items() if 'iOS' in r for x in v if x['name']=='$NAME'), ''))")
             [ -z "$UDID" ] && { echo "no $NAME"; continue; }
+            xcrun simctl boot "$UDID" || true
+            xcrun simctl bootstatus "$UDID" -b || { echo "$NAME did not boot"; continue; }
             xcodebuild test -project DengeNoktasi.xcodeproj -scheme UITests -destination "id=$UDID" \
               -clonedSourcePackagesDirPath SourcePackages -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO \
+              -test-timeouts-enabled YES -default-test-execution-time-allowance 240 -maximum-test-execution-time-allowance 420 \
               -only-testing:DengeNoktasiUITests/SmokeUITests/testWalkThroughMainScreens \
               -only-testing:DengeNoktasiUITests/SmokeUITests/testDailySheetOpens \
               -only-testing:DengeNoktasiUITests/SmokeUITests/testDarkLargeTextScreens \
               -only-testing:DengeNoktasiUITests/SmokeUITests/testTurkishScreens > ui-$UDID.log 2>&1 || echo "UI run on $NAME failed"
-            grep -E "failed|passed" ui-$UDID.log | tail -5 || true
+            grep -E "failed|passed" ui-$UDID.log | tail -6 || true
+            xcrun simctl shutdown "$UDID" || true
+            commit_shots "$NAME"
           done
-          if [ "${{ steps.forge.outputs.commit }}" = "true" ]; then
-            git config user.name "Screenshots (CI)"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add docs/screenshots
-            git diff --cached --quiet || git commit -m "Screenshots from the real UI (CI simulators)"
-            for i in 1 2 3 4; do git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break; sleep $((i * 5)); done
-          fi
 
       - name: LevelForge smoke
         timeout-minutes: 30
