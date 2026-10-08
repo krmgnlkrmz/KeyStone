@@ -178,8 +178,6 @@ jobs:
             -test-timeouts-enabled YES -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 4000 \
             -derivedDataPath DerivedData -resultBundlePath UITests.xcresult CODE_SIGNING_ALLOWED=NO > ui.log 2>&1 || rc=$?
           grep -E "error:|failed|passed|Executed|XCTAssert|\[soak\]" ui.log | tail -120 || true
-          # Soak failures dump the accessibility tree; show it.
-          grep -A80 "accessibility tree" ui.log | head -160 || true
           ls -R docs/screenshots 2>/dev/null | head -30 || true
           exit $rc
 
