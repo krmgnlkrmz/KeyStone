@@ -73,14 +73,14 @@ public final class HeadlessSimulator {
 
     private let device: any MTLDevice
     private var renderer: SKRenderer
-    private var clock: TimeInterval = Self.clockOrigin
+    private var clock: TimeInterval = HeadlessSimulator.clockOrigin
     public private(set) var framesSimulated = 0
     public private(set) var jobsRun = 0
 
     /// SpriteKit derives each frame's dt from absolute timestamps, so the same dt sequence started at a
     /// different absolute time rounds differently and the physics drifts. Every job therefore starts on a
     /// fresh renderer at the same clock origin: identical jobs see bit-identical frame times.
-    private static let clockOrigin: TimeInterval = 1000
+    private nonisolated static let clockOrigin: TimeInterval = 1000
 
     public init() throws {
         guard let device = MTLCreateSystemDefaultDevice() else { throw HeadlessError.noMetalDevice }
