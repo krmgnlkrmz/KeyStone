@@ -17,8 +17,31 @@ Environment variables reach the test process through xcodebuild's `TEST_RUNNER_`
 (`TEST_RUNNER_FORGE_OUT`, `TEST_RUNNER_FORGE_COUNT`, `TEST_RUNNER_FORGE_SEED_BASE`,
 `TEST_RUNNER_FORGE_SHARD=i/n`). The Makefile does this for you.
 
-On GitHub Actions: run the **CI** workflow manually (`workflow_dispatch`) with `forge` set to
-`validate`, `curated` or `pool`; outputs are uploaded as the `forge-out` artifact.
+On GitHub Actions a forge run is started either manually (`workflow_dispatch`, input `forge`) or by a
+tag in the head commit's message:
+
+| Tag | Runs |
+|---|---|
+| `[forge:smoke]` | curated solutions replay at 60 Hz (also part of every normal CI run) |
+| `[forge:validate]` | release gate over every shipped level |
+| `[forge:curated commit]` | annotate `drafts/` |
+| `[forge:curate commit]` | annotate `drafts/`, then fill curriculum slots 8–80 from `curation-plan.json` |
+| `[forge:pool commit count=2400 seed=20000 shard=0/1]` | generate and verify pool levels |
+| `[forge:probe commit count=70 seed=500]` | drafts + a small pool sample (speed and yield check) |
+| `[forge:screens commit]` | UI walk-through screenshots on several simulators |
+
+With `commit`, the run copies its output into `App/Resources/Levels` (and reports into
+`Tools/LevelForge/reports/`) and pushes it to the same branch — even when the run fails or times out
+part-way, since everything written is already verified. Every forge run has its own concurrency group,
+so later pushes never cancel it. Pool files are named by seed base and shard and never overwrite each
+other; use a fresh seed range for each run.
+
+Drafts whose id starts with `x-` are geometry trials: they are verified and every explored state is
+printed to the log, but they are never written to the output. Rejected drafts print their states too.
+
+Measured on the CI simulator (macOS 15 runner, iPhone 16, iOS 26): about 0.8 s per pool candidate
+(rebuild + settle + move + 2 s window per edge, ~20 k frames per candidate), with roughly a third of
+candidates accepted.
 
 ## How it is fast without breaking determinism
 
