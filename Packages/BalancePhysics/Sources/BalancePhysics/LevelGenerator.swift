@@ -274,16 +274,17 @@ public struct LevelGenerator {
 
     /// A beam on two posts with one end overhanging, the overhang held up by a rope from a fixed gantry
     /// and loaded with stone. Goal: cut every rope and keep it standing. Cut the overhang's rope while
-    /// its load is still there and the beam tips off the inner post, so the load comes off first (or the
-    /// far side is weighted). Cranes are steel, may carry a decoy rope over the inner post and a second
-    /// load stacked on the first.
+    /// its load is still there and the beam tips off the inner post, so the load comes off first. Cranes
+    /// are steel, may carry a decoy rope over the inner post and a second load stacked on the first.
     private func hanger(_ b: inout Builder, crane: Bool) -> Goal {
         let side: Double = chance(0.5) ? 1 : -1                     // which end overhangs
         let beamW = q(double(210...260))
         let postH = q(double(90...130))
         let beamX = q(double(-15...15))
         let farX = q(beamX - side * (beamW / 2 - 14))               // post under the far end
-        let innerX = q(beamX + side * double(25...45))              // inner post just past the middle
+        // Inner post just past the middle: the beam's own weight must not out-lever the overhang's load,
+        // or cutting the rope first would be safe and the level a one-mover.
+        let innerX = q(beamX + side * double(5...15))
         b.rect("post", .wood, x: farX, bottom: b.floor, w: 20, h: postH)
         b.rect("post", crane ? .steel : .wood, x: innerX, bottom: b.floor, w: 20, h: postH)
         let beam = b.rect("beam", crane ? .steel : .wood, x: beamX, bottom: b.floor + postH, w: beamW, h: 16)
@@ -307,12 +308,11 @@ public struct LevelGenerator {
             ropes.append(id)
         }
 
-        // The overhang's load; optionally a second one on it, a weight over the far post, a decoy block.
+        // The overhang's load; optionally a second one stacked on it, and a light decoy block.
         let overhangMid = ((innerX + side * 10) + (beamX + side * beamW / 2)) / 2
         let size = q(double(30...40))
         let load = b.rect("load", .stone, x: q(overhangMid), bottom: Self.top(beam), w: size, h: size)
         if crane && chance(0.5) { b.rect("load", .stone, x: load.position.x, bottom: Self.top(load), w: 24, h: 24) }
-        if chance(0.4) { b.rect("load", .stone, x: q(farX + side * 20), bottom: Self.top(beam), w: 26, h: 26) }
         if chance(0.4) { b.rect("block", .wood, x: q(beamX - side * 20), bottom: Self.top(beam), w: 24, h: 30) }
         return Goal(type: .removeTargetsKeepStanding, targetPieceIds: ropes, moveBudget: 0, starThresholds: [])
     }
