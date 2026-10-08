@@ -230,7 +230,8 @@ jobs:
           exit $rc
 
       - name: Commit forge output
-        if: ${{ !cancelled() && steps.forgerun.outcome == 'success' && steps.forge.outputs.commit == 'true' }}
+        # Also after a failed or timed-out forge run: everything written to forge-out is already verified.
+        if: ${{ !cancelled() && (steps.forgerun.outcome == 'success' || steps.forgerun.outcome == 'failure') && steps.forge.outputs.commit == 'true' }}
         run: |
           set -e
           if [ -d forge-out/curated ]; then cp forge-out/curated/*.json App/Resources/Levels/curated/ 2>/dev/null || true; fi

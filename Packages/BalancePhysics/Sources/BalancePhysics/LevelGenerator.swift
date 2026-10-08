@@ -200,8 +200,10 @@ public struct LevelGenerator {
             b.rect("block", .stone, x: q(x), bottom: Self.top(beam), w: blockW, h: blockH)
         }
         b.keystone(x: 0, bottom: Self.top(beam) + blockH, w: kw, h: kh)
-        if chance(0.4) {
-            b.rect("weight", .stone, x: q(double(-lintelW / 2 + 20 ... -kw / 2 - 20)), bottom: Self.top(beam), w: 26, h: 26)
+        // A side weight needs room between the lintel's end and the keystone blocks.
+        let weightRoom = (lo: -lintelW / 2 + 20, hi: -kw / 2 - 20)
+        if chance(0.4), weightRoom.lo <= weightRoom.hi {
+            b.rect("weight", .stone, x: q(double(weightRoom.lo...weightRoom.hi)), bottom: Self.top(beam), w: 26, h: 26)
         }
         return Goal(type: .dropOnlyTarget, targetPieceIds: ["k"], moveBudget: 0, starThresholds: [])
     }

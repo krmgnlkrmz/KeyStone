@@ -125,22 +125,37 @@ final class ForgeRunner: XCTestCase {
     // MARK: - Production
 
     /// Solves and annotates the hand-made drafts (Tools/LevelForge/drafts) into FORGE_OUT/curated.
+    /// Drafts whose id starts with "x-" are geometry variants under trial: verified and logged, never shipped.
+    /// Hand-made levels may be gentle on the first move (tutorials), so the "too easy" gate is off here.
     @MainActor
     func testAnnotateCurated() throws {
         let sim = try HeadlessSimulator()
         try sim.selfTest()
-        let solver = SolutionSolver(simulator: sim)
+        var options = SolutionSolver.Options()
+        options.rejectTooEasy = false
+        let solver = SolutionSolver(simulator: sim, options: options)
         var lines: [String] = []
         for draft in try drafts() {
             let r = solver.solve(draft, verifiedAt: Self.today)
-            let line = "\(draft.id)\t\(r.rejection?.rawValue ?? "ok")\tlen=\(r.solutionLength.map(String.init) ?? "-")\tmargin=\(r.marginRatio.map { String(format: "%.2f", $0) } ?? "-")\tstates=\(r.exploredStates)\tevals=\(r.evaluations)\t\(String(format: "%.1fs", r.seconds))\t\(r.detail)"
+            let line = "\(draft.id)\t\(r.rejection?.rawValue ?? "ok")\tlen=\(r.solutionLength.map(String.init) ?? "-")\tmargin=\(r.marginRatio.map { String(format: "%.2f", $0) } ?? "-")\tunsafe=\(String(format: "%.2f", r.unsafeShare))\tstates=\(r.exploredStates)\tevals=\(r.evaluations)\t\(String(format: "%.1fs", r.seconds))\t\(r.detail)\t\(r.annotatedLevel?.annotation?.solutionPath.joined(separator: ",") ?? "")"
             log(line)
             lines.append(line)
-            if let level = r.annotatedLevel {
+            if r.rejection != nil || draft.id.hasPrefix("x-") {
+                for state in r.states { log("   \(draft.id) " + Self.describe(state)) }
+            }
+            if let level = r.annotatedLevel, !draft.id.hasPrefix("x-") {
                 try write(level, to: outDir.appendingPathComponent("curated"))
             }
         }
         try lines.joined(separator: "\n").write(to: outDir.appendingPathComponent("curated-report.tsv"), atomically: true, encoding: .utf8)
+    }
+
+    /// "'w1,w5' safe[w2] unsafe[t1→w4 1.8] win[w2]" — one line per explored state in the forge log.
+    static func describe(_ s: StateMoves) -> String {
+        let unsafe = s.unsafeMoves.sorted { $0.key < $1.key }
+            .map { "\($0.key)→\($0.value) \(String(format: "%.2f", s.severity?[$0.key] ?? 0))" }
+        let safe = s.safe.map { "\($0) \(String(format: "%.2f", s.severity?[$0] ?? 0))" }
+        return "'\(s.state)' safe[\(safe.joined(separator: ", "))] unsafe[\(unsafe.joined(separator: ", "))] win[\((s.win ?? []).joined(separator: ", "))]"
     }
 
     /// One curriculum slot in Tools/LevelForge/curation-plan.json.
@@ -224,6 +239,16 @@ final class ForgeRunner: XCTestCase {
         var rejections: [String: Int] = [:]
         var byArchetype: [String: (tried: Int, ok: Int)] = [:]
         let started = Date()
+        // Files of 100 levels, written as they fill so a crash late in a long run keeps earlier work.
+        // The seed base is in the name: runs with different bases never overwrite each other.
+        let dir = outDir.appendingPathComponent("pool")
+        try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.sortedKeys]
+        func writeChunk(_ i: Int) throws {
+            let chunk = Array(accepted[(i * 100)..<min(i * 100 + 100, accepted.count)])
+            try encoder.encode(chunk).write(to: dir.appendingPathComponent("pool-\(base)-\(shard.index)of\(shard.of)-\(i).json"))
+        }
         for k in 0..<count {
             let seed = base + UInt64(k)
             guard Int(seed % UInt64(shard.of)) == shard.index else { continue }
@@ -236,6 +261,7 @@ final class ForgeRunner: XCTestCase {
                 l.index = accepted.count + 1
                 accepted.append(l)
                 byArchetype[archetype]!.ok += 1
+                if accepted.count % 20 == 0 { try writeChunk((accepted.count - 1) / 100) }
             } else {
                 rejections[r.rejection?.rawValue ?? "trivial", default: 0] += 1
             }
@@ -243,17 +269,7 @@ final class ForgeRunner: XCTestCase {
                 log("seed \(seed): \(accepted.count) accepted, \(String(format: "%.0f", Date().timeIntervalSince(started)))s, \(sim.framesSimulated) frames")
             }
         }
-        // Chunk into files of 100 levels.
-        let dir = outDir.appendingPathComponent("pool")
-        try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = [.sortedKeys]
-        for (i, start) in stride(from: 0, to: accepted.count, by: 100).enumerated() {
-            let chunk = Array(accepted[start..<min(start + 100, accepted.count)])
-            // Seed base in the name: runs with different bases never overwrite each other.
-            let name = "pool-\(base)-\(shard.index)of\(shard.of)-\(i).json"
-            try encoder.encode(chunk).write(to: dir.appendingPathComponent(name))
-        }
+        if !accepted.isEmpty { try writeChunk((accepted.count - 1) / 100) }
         let summary = """
         candidates: \(count) (shard \(shard.index)/\(shard.of)), accepted: \(accepted.count)
         rejections: \(rejections.sorted { $0.key < $1.key }.map { "\($0.key)=\($0.value)" }.joined(separator: ", "))

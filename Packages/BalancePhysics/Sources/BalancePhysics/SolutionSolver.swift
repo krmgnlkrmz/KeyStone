@@ -41,6 +41,8 @@ public final class SolutionSolver {
         /// [3★, 2★, 1★] bounds derived from the shortest solution.
         public var suggestedThresholds: [Int]?
         public var unsafeShare: Double
+        /// Every explored state's neighbourhood, in BFS order (diagnostics for rejected levels).
+        public var states: [StateMoves] = []
 
         public var accepted: Bool { rejection == nil }
     }
@@ -65,6 +67,8 @@ public final class SolutionSolver {
         evaluations = 0
         var level = input
         level.annotation = nil
+        var states: [String: StateMoves] = [:]
+        var order: [String] = []
         func report(_ r: Rejection?, _ detail: String, explored: Int = 0, path: [String]? = nil, margin: Double? = nil,
                     annotated: Level? = nil, unsafeShare: Double = 0) -> Report {
             let len = path?.count
@@ -72,7 +76,7 @@ public final class SolutionSolver {
                           marginRatio: margin, exploredStates: explored, evaluations: evaluations,
                           seconds: Date().timeIntervalSince(started),
                           suggestedThresholds: len.map { [$0, min($0 + 1, level.goal.moveBudget), level.goal.moveBudget] },
-                          unsafeShare: unsafeShare)
+                          unsafeShare: unsafeShare, states: order.compactMap { states[$0] })
         }
 
         let problems = level.validate()
@@ -93,8 +97,6 @@ public final class SolutionSolver {
             }
 
             // 2. Breadth-first over states.
-            var states: [String: StateMoves] = [:]
-            var order: [String] = []
             var parents: [String: (parent: String, move: String)] = [:]
             var queue: [Node] = [Node(key: "", log: MoveLog(), depth: 0)]
             var seen: Set<String> = [""]

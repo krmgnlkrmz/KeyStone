@@ -13,7 +13,7 @@
     "type": "dropOnlyTarget"
   },
   "gravity": -9.8,
-  "id": "c-004",
+  "id": "x-004b",
   "index": 4,
   "joints": [],
   "name": {
@@ -76,12 +76,12 @@
       "material": "stone",
       "position": {
         "x": -45.0,
-        "y": -60.0
+        "y": -56.0
       },
       "removable": true,
       "rotation": 0,
       "shape": {
-        "h": 64.0,
+        "h": 72.0,
         "type": "rect",
         "w": 30.0
       }
@@ -92,12 +92,12 @@
       "material": "stone",
       "position": {
         "x": 0.0,
-        "y": -60.0
+        "y": -56.0
       },
       "removable": true,
       "rotation": 0,
       "shape": {
-        "h": 64.0,
+        "h": 72.0,
         "type": "rect",
         "w": 30.0
       }
@@ -108,12 +108,12 @@
       "material": "stone",
       "position": {
         "x": 45.0,
-        "y": -60.0
+        "y": -56.0
       },
       "removable": true,
       "rotation": 0,
       "shape": {
-        "h": 64.0,
+        "h": 72.0,
         "type": "rect",
         "w": 30.0
       }
@@ -124,7 +124,7 @@
       "material": "brass",
       "position": {
         "x": 0.0,
-        "y": -8.0
+        "y": 0.0
       },
       "removable": false,
       "rotation": 0,
