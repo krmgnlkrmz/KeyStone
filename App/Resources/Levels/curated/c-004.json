@@ -1,157 +1,293 @@
 {
-  "floorY": -190.0,
-  "goal": {
-    "moveBudget": 3,
-    "starThresholds": [
+  "annotation" : {
+    "difficulty" : 2.24,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 1.65,
+    "solutionPath" : [
+      "sl",
+      "sc"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "sl",
+          "sc",
+          "sr"
+        ],
+        "severity" : {
+          "bm" : 3.718,
+          "pa" : 6.36,
+          "pb" : 6.33,
+          "sc" : 0.033,
+          "sl" : 0.033,
+          "sr" : 0.033
+        },
+        "state" : "",
+        "unsafe" : {
+          "bm" : "pb",
+          "pa" : "bm",
+          "pb" : "bm"
+        }
+      },
+      {
+        "safe" : [
+          "sr"
+        ],
+        "severity" : {
+          "bm" : 4.49,
+          "pa" : 6.289,
+          "pb" : 6.359,
+          "sc" : 0.075,
+          "sr" : 0.033
+        },
+        "state" : "sl",
+        "unsafe" : {
+          "bm" : "pb",
+          "pa" : "bm",
+          "pb" : "bm"
+        },
+        "win" : [
+          "sc"
+        ]
+      },
+      {
+        "safe" : [
+          "bm"
+        ],
+        "severity" : {
+          "bm" : 0.683,
+          "pa" : 6.513,
+          "pb" : 6.36,
+          "sl" : 0.076,
+          "sr" : 0.056
+        },
+        "state" : "sc",
+        "unsafe" : {
+          "pa" : "bm",
+          "pb" : "bm"
+        },
+        "win" : [
+          "sl",
+          "sr"
+        ]
+      },
+      {
+        "safe" : [
+          "sl"
+        ],
+        "severity" : {
+          "bm" : 4.211,
+          "pa" : 6.392,
+          "pb" : 6.266,
+          "sc" : 0.057,
+          "sl" : 0.033
+        },
+        "state" : "sr",
+        "unsafe" : {
+          "bm" : "pa",
+          "pa" : "bm",
+          "pb" : "bm"
+        },
+        "win" : [
+          "sc"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "bm" : 3.717,
+          "pa" : 2.905,
+          "pb" : 2.87,
+          "sc" : 0.033
+        },
+        "state" : "sl,sr",
+        "unsafe" : {
+          "bm" : "sc",
+          "pa" : "bm",
+          "pb" : "bm"
+        },
+        "win" : [
+          "sc"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "pa" : 3.707,
+          "pb" : 3.772,
+          "sl" : 5.251,
+          "sr" : 5.195
+        },
+        "state" : "bm,sc",
+        "unsafe" : {
+          "pa" : "pb",
+          "pb" : "pa",
+          "sl" : "pa",
+          "sr" : "pb"
+        }
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 3,
+    "starThresholds" : [
       2,
       3,
       3
     ],
-    "targetPieceIds": [
+    "targetPieceIds" : [
       "k"
     ],
-    "type": "dropOnlyTarget"
+    "type" : "dropOnlyTarget"
   },
-  "gravity": -9.8,
-  "id": "c-004",
-  "index": 4,
-  "joints": [],
-  "name": {
-    "en": "Clean Drop",
-    "tr": "Temiz Düşüş"
+  "gravity" : -9.8,
+  "id" : "c-004",
+  "index" : 4,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Clean Drop",
+    "tr" : "Temiz Düşüş"
   },
-  "pack": "curated",
-  "pieces": [
+  "pack" : "curated",
+  "pieces" : [
     {
-      "fixed": false,
-      "id": "pa",
-      "material": "wood",
-      "position": {
-        "x": -68.0,
-        "y": -150.0
+      "fixed" : false,
+      "id" : "pa",
+      "material" : "wood",
+      "position" : {
+        "x" : -68,
+        "y" : -150
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 80.0,
-        "type": "rect",
-        "w": 24.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 80,
+        "type" : "rect",
+        "w" : 24
       }
     },
     {
-      "fixed": false,
-      "id": "pb",
-      "material": "wood",
-      "position": {
-        "x": 68.0,
-        "y": -150.0
+      "fixed" : false,
+      "id" : "pb",
+      "material" : "wood",
+      "position" : {
+        "x" : 68,
+        "y" : -150
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 80.0,
-        "type": "rect",
-        "w": 24.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 80,
+        "type" : "rect",
+        "w" : 24
       }
     },
     {
-      "fixed": false,
-      "id": "bm",
-      "material": "wood",
-      "position": {
-        "x": 0.0,
-        "y": -101.0
+      "fixed" : false,
+      "id" : "bm",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : -101
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 18.0,
-        "type": "rect",
-        "w": 200.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 18,
+        "type" : "rect",
+        "w" : 200
       }
     },
     {
-      "fixed": false,
-      "id": "sl",
-      "material": "stone",
-      "position": {
-        "x": -45.0,
-        "y": -50.0
+      "fixed" : false,
+      "id" : "sl",
+      "material" : "stone",
+      "position" : {
+        "x" : -45,
+        "y" : -50
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 84.0,
-        "type": "rect",
-        "w": 30.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 84,
+        "type" : "rect",
+        "w" : 30
       }
     },
     {
-      "fixed": false,
-      "id": "sc",
-      "material": "stone",
-      "position": {
-        "x": 0.0,
-        "y": -50.0
+      "fixed" : false,
+      "id" : "sc",
+      "material" : "stone",
+      "position" : {
+        "x" : 0,
+        "y" : -50
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 84.0,
-        "type": "rect",
-        "w": 30.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 84,
+        "type" : "rect",
+        "w" : 30
       }
     },
     {
-      "fixed": false,
-      "id": "sr",
-      "material": "stone",
-      "position": {
-        "x": 45.0,
-        "y": -50.0
+      "fixed" : false,
+      "id" : "sr",
+      "material" : "stone",
+      "position" : {
+        "x" : 45,
+        "y" : -50
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 84.0,
-        "type": "rect",
-        "w": 30.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 84,
+        "type" : "rect",
+        "w" : 30
       }
     },
     {
-      "fixed": false,
-      "id": "k",
-      "material": "brass",
-      "position": {
-        "x": 0.0,
-        "y": 12.0
+      "fixed" : false,
+      "id" : "k",
+      "material" : "brass",
+      "position" : {
+        "x" : 0,
+        "y" : 12
       },
-      "removable": false,
-      "rotation": 0,
-      "shape": {
-        "points": [
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "points" : [
           [
-            -30.0,
-            -20.0
+            -30,
+            -20
           ],
           [
-            30.0,
-            -20.0
+            30,
+            -20
           ],
           [
-            50.0,
-            20.0
+            50,
+            20
           ],
           [
-            -50.0,
-            20.0
+            -50,
+            20
           ]
         ],
-        "type": "polygon"
+        "type" : "polygon"
       }
     }
   ],
-  "region": "wood_scaffold",
-  "schema": 1,
-  "supportsAllowed": 0
+  "region" : "wood_scaffold",
+  "schema" : 1,
+  "supportsAllowed" : 0
 }

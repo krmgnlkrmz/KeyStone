@@ -1,11 +1,11 @@
 {
   "annotation" : {
-    "difficulty" : 2.36,
+    "difficulty" : 2.2,
     "engineFingerprint" : "spk-1-60hz-f029",
-    "marginRatio" : 15.79,
+    "marginRatio" : 9.86,
     "solutionPath" : [
       "post1",
-      "+sup@32",
+      "+sup@16",
       "post2"
     ],
     "stateMoves" : [
@@ -14,27 +14,19 @@
           "post1",
           "post3",
           "load1",
-          "load2",
-          "+sup@-88",
-          "+sup@0",
-          "+sup@32",
-          "+sup@40",
-          "+sup@56",
-          "+sup@88"
+          "+sup@-96",
+          "+sup@16",
+          "+sup@96"
         ],
         "severity" : {
-          "+sup@-88" : 0.033,
-          "+sup@0" : 0.033,
-          "+sup@32" : 0.033,
-          "+sup@40" : 0.033,
-          "+sup@56" : 0.033,
-          "+sup@88" : 0.033,
-          "beam1" : 5.289,
+          "+sup@-96" : 0.033,
+          "+sup@16" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 10.366,
           "load1" : 0.033,
-          "load2" : 0.033,
-          "post1" : 0.033,
-          "post2" : 10.448,
-          "post3" : 0.032
+          "post1" : 0.032,
+          "post2" : 5.159,
+          "post3" : 0.033
         },
         "state" : "",
         "unsafe" : {
@@ -45,26 +37,18 @@
       {
         "safe" : [
           "load1",
-          "load2",
-          "+sup@-88",
-          "+sup@0",
-          "+sup@32",
-          "+sup@40",
-          "+sup@56",
-          "+sup@88"
+          "+sup@-96",
+          "+sup@16",
+          "+sup@96"
         ],
         "severity" : {
-          "+sup@-88" : 0.033,
-          "+sup@0" : 0.033,
-          "+sup@32" : 0.033,
-          "+sup@40" : 0.033,
-          "+sup@56" : 0.033,
-          "+sup@88" : 0.033,
-          "beam1" : 5.289,
+          "+sup@-96" : 0.033,
+          "+sup@16" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 10.426,
           "load1" : 0.033,
-          "load2" : 0.033,
-          "post2" : 10.368,
-          "post3" : 10.385
+          "post2" : 5.149,
+          "post3" : 2.329
         },
         "state" : "post1",
         "unsafe" : {
@@ -76,34 +60,26 @@
       {
         "safe" : [
           "load1",
-          "load2",
-          "+sup@-88",
-          "+sup@-32",
-          "+sup@-24",
+          "+sup@-96",
+          "+sup@-8",
           "+sup@0",
-          "+sup@32",
-          "+sup@40",
-          "+sup@56",
-          "+sup@88"
+          "+sup@16",
+          "+sup@96"
         ],
         "severity" : {
-          "+sup@-24" : 0.033,
-          "+sup@-32" : 0.033,
-          "+sup@-88" : 0.033,
+          "+sup@-8" : 0.033,
+          "+sup@-96" : 0.033,
           "+sup@0" : 0.033,
-          "+sup@32" : 0.033,
-          "+sup@40" : 0.033,
-          "+sup@56" : 0.033,
-          "+sup@88" : 0.033,
-          "beam1" : 5.29,
+          "+sup@16" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 5.68,
           "load1" : 0.033,
-          "load2" : 0.033,
-          "post1" : 10.39,
-          "post2" : 7.915
+          "post1" : 2.329,
+          "post2" : 5.439
         },
         "state" : "post3",
         "unsafe" : {
-          "beam1" : "load2",
+          "beam1" : "load1",
           "post1" : "beam1",
           "post2" : "beam1"
         }
@@ -112,644 +88,21 @@
         "safe" : [
           "post1",
           "post3",
-          "load2",
-          "+sup@-88",
-          "+sup@0",
-          "+sup@88"
+          "beam1",
+          "+sup@-96",
+          "+sup@96"
         ],
         "severity" : {
-          "+sup@-88" : 0.033,
-          "+sup@0" : 0.033,
-          "+sup@88" : 0.033,
-          "beam1" : 10.393,
-          "load2" : 0.033,
+          "+sup@-96" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 0.033,
           "post1" : 0.032,
-          "post2" : 8.741,
+          "post2" : 3.122,
           "post3" : 0.033
         },
         "state" : "load1",
         "unsafe" : {
-          "beam1" : "post3",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "post3",
-          "load1",
-          "+sup@-88",
-          "+sup@0",
-          "+sup@32",
-          "+sup@40",
-          "+sup@56",
-          "+sup@88"
-        ],
-        "severity" : {
-          "+sup@-88" : 0.033,
-          "+sup@0" : 0.033,
-          "+sup@32" : 0.033,
-          "+sup@40" : 0.033,
-          "+sup@56" : 0.033,
-          "+sup@88" : 0.033,
-          "beam1" : 5.289,
-          "load1" : 0.033,
-          "post1" : 0.032,
-          "post2" : 7.81,
-          "post3" : 0.032
-        },
-        "state" : "load2",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "post3",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.288,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post1" : 0.033,
-          "post2" : 10.377,
-          "post3" : 0.033
-        },
-        "state" : "+sup@-88",
-        "unsafe" : {
-          "beam1" : "post3",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "post3",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post1" : 0.032,
-          "post2" : 5.772,
-          "post3" : 0.032
-        },
-        "state" : "+sup@0",
-        "unsafe" : {
-          "beam1" : "post3",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "post2",
-          "post3",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 6.444,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post1" : 0.033,
-          "post2" : 0.063,
-          "post3" : 0.033
-        },
-        "state" : "+sup@32",
-        "unsafe" : {
-          "beam1" : "post3"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "post2",
-          "post3",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 10.28,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post1" : 0.032,
-          "post2" : 0.037,
-          "post3" : 0.033
-        },
-        "state" : "+sup@40",
-        "unsafe" : {
-          "beam1" : "post3"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "post2",
-          "post3",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 6.615,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post1" : 0.033,
-          "post2" : 0.033,
-          "post3" : 0.033
-        },
-        "state" : "+sup@56",
-        "unsafe" : {
-          "beam1" : "load1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "post2",
-          "post3",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post1" : 0.033,
-          "post2" : 0.033,
-          "post3" : 0.033
-        },
-        "state" : "+sup@88",
-        "unsafe" : {
-          "beam1" : "post3"
-        }
-      },
-      {
-        "safe" : [
-          "load2",
-          "+sup@-88",
-          "+sup@0",
-          "+sup@88"
-        ],
-        "severity" : {
-          "+sup@-88" : 0.033,
-          "+sup@0" : 0.033,
-          "+sup@88" : 0.033,
-          "beam1" : 10.265,
-          "load2" : 0.033,
-          "post2" : 8.791,
-          "post3" : 10.298
-        },
-        "state" : "load1,post1",
-        "unsafe" : {
-          "beam1" : "post3",
-          "post2" : "beam1",
-          "post3" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "load1",
-          "+sup@-88",
-          "+sup@0",
-          "+sup@32",
-          "+sup@40",
-          "+sup@56",
-          "+sup@88"
-        ],
-        "severity" : {
-          "+sup@-88" : 0.033,
-          "+sup@0" : 0.033,
-          "+sup@32" : 0.033,
-          "+sup@40" : 0.033,
-          "+sup@56" : 0.033,
-          "+sup@88" : 0.033,
-          "beam1" : 5.289,
-          "load1" : 0.033,
-          "post2" : 7.825,
-          "post3" : 4.02
-        },
-        "state" : "load2,post1",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post2" : "beam1",
-          "post3" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post3",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post2" : 10.331,
-          "post3" : 0.033
-        },
-        "state" : "+sup@-88,post1",
-        "unsafe" : {
-          "beam1" : "post3",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post3",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post2" : 5.77,
-          "post3" : 0.035
-        },
-        "state" : "+sup@0,post1",
-        "unsafe" : {
-          "beam1" : "post3",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.458,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post2" : 0.061,
-          "post3" : 6.386
-        },
-        "state" : "+sup@32,post1",
-        "unsafe" : {
-          "beam1" : "post3",
-          "post3" : "beam1"
-        },
-        "win" : [
-          "post2"
-        ]
-      },
-      {
-        "safe" : [
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 10.472,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post2" : 0.041,
-          "post3" : 6.286
-        },
-        "state" : "+sup@40,post1",
-        "unsafe" : {
-          "beam1" : "post3",
-          "post3" : "beam1"
-        },
-        "win" : [
-          "post2"
-        ]
-      },
-      {
-        "safe" : [
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 6.482,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post2" : 0.033,
-          "post3" : 5.998
-        },
-        "state" : "+sup@56,post1",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post3" : "beam1"
-        },
-        "win" : [
-          "post2"
-        ]
-      },
-      {
-        "safe" : [
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post2" : 0.032,
-          "post3" : 10.279
-        },
-        "state" : "+sup@88,post1",
-        "unsafe" : {
-          "beam1" : "post3",
-          "post3" : "beam1"
-        },
-        "win" : [
-          "post2"
-        ]
-      },
-      {
-        "safe" : [
-          "load2",
-          "+sup@-88",
-          "+sup@-32",
-          "+sup@-24",
-          "+sup@0",
-          "+sup@88"
-        ],
-        "severity" : {
-          "+sup@-24" : 0.033,
-          "+sup@-32" : 0.033,
-          "+sup@-88" : 0.033,
-          "+sup@0" : 0.033,
-          "+sup@88" : 0.033,
-          "beam1" : 5.289,
-          "load2" : 0.033,
-          "post1" : 10.304,
-          "post2" : 1.988
-        },
-        "state" : "load1,post3",
-        "unsafe" : {
-          "beam1" : "load2",
-          "post1" : "beam1",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "load1",
-          "+sup@-88",
-          "+sup@0",
-          "+sup@32",
-          "+sup@40",
-          "+sup@56",
-          "+sup@88"
-        ],
-        "severity" : {
-          "+sup@-88" : 0.033,
-          "+sup@0" : 0.033,
-          "+sup@32" : 0.033,
-          "+sup@40" : 0.033,
-          "+sup@56" : 0.033,
-          "+sup@88" : 0.033,
-          "beam1" : 5.289,
-          "load1" : 0.033,
-          "post1" : 4.023,
-          "post2" : 7.571
-        },
-        "state" : "load2,post3",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post1" : "beam1",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.29,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post1" : 0.032,
-          "post2" : 7.954
-        },
-        "state" : "+sup@-88,post3",
-        "unsafe" : {
-          "beam1" : "load2",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post1" : 0.032,
-          "post2" : 10.263
-        },
-        "state" : "+sup@-32,post3",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post1" : 0.032,
-          "post2" : 9.885
-        },
-        "state" : "+sup@-24,post3",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.29,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post1" : 0.036,
-          "post2" : 5.838
-        },
-        "state" : "+sup@0,post3",
-        "unsafe" : {
-          "beam1" : "load2",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post2",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.29,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post1" : 6.378,
-          "post2" : 0.032
-        },
-        "state" : "+sup@32,post3",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post1" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post2",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.29,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post1" : 6.276,
-          "post2" : 0.032
-        },
-        "state" : "+sup@40,post3",
-        "unsafe" : {
-          "beam1" : "load2",
-          "post1" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post2",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 6.733,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post1" : 6.262,
-          "post2" : 0.032
-        },
-        "state" : "+sup@56,post3",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post1" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post2",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.29,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post1" : 10.47,
-          "post2" : 0.033
-        },
-        "state" : "+sup@88,post3",
-        "unsafe" : {
-          "beam1" : "load2",
-          "post1" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "post3",
-          "beam1",
-          "+sup@-88",
-          "+sup@0",
-          "+sup@88"
-        ],
-        "severity" : {
-          "+sup@-88" : 0.033,
-          "+sup@0" : 0.033,
-          "+sup@88" : 0.033,
-          "beam1" : 0.033,
-          "post1" : 0.032,
-          "post2" : 2.717,
-          "post3" : 0.033
-        },
-        "state" : "load1,load2",
-        "unsafe" : {
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "post3",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 10.352,
-          "load2" : 0.033,
-          "post1" : 0.033,
-          "post2" : 8.741,
-          "post3" : 0.033
-        },
-        "state" : "+sup@-88,load1",
-        "unsafe" : {
-          "beam1" : "post3",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "post2",
-          "post3",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 3.444,
-          "load2" : 0.033,
-          "post1" : 0.033,
-          "post2" : 0.126,
-          "post3" : 0.033
-        },
-        "state" : "+sup@0,load1",
-        "unsafe" : {
-          "beam1" : "post3"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "post2",
-          "post3",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 10.356,
-          "load2" : 0.033,
-          "post1" : 0.033,
-          "post2" : 0.033,
-          "post3" : 0.032
-        },
-        "state" : "+sup@88,load1",
-        "unsafe" : {
-          "beam1" : "post3"
+          "post2" : "post3"
         }
       },
       {
@@ -759,54 +112,16 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 5.289,
-          "load1" : 0.033,
-          "post1" : 0.033,
-          "post2" : 7.81,
-          "post3" : 0.032
-        },
-        "state" : "+sup@-88,load2",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "post3",
-          "load1"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
+          "beam1" : 10.366,
           "load1" : 0.033,
           "post1" : 0.032,
-          "post2" : 5.819,
+          "post2" : 5.159,
           "post3" : 0.033
         },
-        "state" : "+sup@0,load2",
+        "state" : "+sup@-96",
         "unsafe" : {
-          "beam1" : "load1",
+          "beam1" : "post3",
           "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "post2",
-          "post3",
-          "load1"
-        ],
-        "severity" : {
-          "beam1" : 3.573,
-          "load1" : 0.033,
-          "post1" : 0.032,
-          "post2" : 0.089,
-          "post3" : 0.033
-        },
-        "state" : "+sup@32,load2",
-        "unsafe" : {
-          "beam1" : "load1"
         }
       },
       {
@@ -818,13 +133,13 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 0.725,
+          "beam1" : 0.668,
           "load1" : 0.033,
-          "post1" : 0.032,
-          "post2" : 0.04,
-          "post3" : 0.032
+          "post1" : 0.033,
+          "post2" : 0.105,
+          "post3" : 0.033
         },
-        "state" : "+sup@40,load2",
+        "state" : "+sup@16",
         "unsafe" : {
 
         }
@@ -837,305 +152,52 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 6.614,
+          "beam1" : 10.366,
           "load1" : 0.033,
-          "post1" : 0.032,
-          "post2" : 0.033,
-          "post3" : 0.033
-        },
-        "state" : "+sup@56,load2",
-        "unsafe" : {
-          "beam1" : "load1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "post2",
-          "post3",
-          "load1"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load1" : 0.033,
-          "post1" : 0.032,
+          "post1" : 0.033,
           "post2" : 0.033,
           "post3" : 0.032
         },
-        "state" : "+sup@88,load2",
-        "unsafe" : {
-          "beam1" : "load1"
-        }
-      },
-      {
-        "safe" : [
-          "post3",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 9.619,
-          "load1" : 0.032,
-          "load2" : 0.036,
-          "post1" : 0.036,
-          "post3" : 0.034
-        },
-        "state" : "+sup@32,post2",
-        "unsafe" : {
-          "beam1" : "post3"
-        },
-        "win" : [
-          "post1"
-        ]
-      },
-      {
-        "safe" : [
-          "post1",
-          "post2",
-          "post3",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 10.385,
-          "load2" : 0.033,
-          "post1" : 0.032,
-          "post2" : 0.041,
-          "post3" : 0.033
-        },
-        "state" : "+sup@32,load1",
+        "state" : "+sup@96",
         "unsafe" : {
           "beam1" : "post3"
         }
-      },
-      {
-        "safe" : [
-          "post3",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 10.172,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post1" : 0.033,
-          "post3" : 0.032
-        },
-        "state" : "+sup@40,post2",
-        "unsafe" : {
-          "beam1" : "post3"
-        },
-        "win" : [
-          "post1"
-        ]
-      },
-      {
-        "safe" : [
-          "post1",
-          "post2",
-          "post3",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 10.385,
-          "load2" : 0.033,
-          "post1" : 0.032,
-          "post2" : 0.04,
-          "post3" : 0.033
-        },
-        "state" : "+sup@40,load1",
-        "unsafe" : {
-          "beam1" : "post3"
-        }
-      },
-      {
-        "safe" : [
-          "post3",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 7.486,
-          "load1" : 0.032,
-          "load2" : 0.033,
-          "post1" : 0.033,
-          "post3" : 0.032
-        },
-        "state" : "+sup@56,post2",
-        "unsafe" : {
-          "beam1" : "load1"
-        },
-        "win" : [
-          "post1"
-        ]
-      },
-      {
-        "safe" : [
-          "post1",
-          "post2",
-          "post3",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 10.385,
-          "load2" : 0.033,
-          "post1" : 0.032,
-          "post2" : 0.033,
-          "post3" : 0.032
-        },
-        "state" : "+sup@56,load1",
-        "unsafe" : {
-          "beam1" : "post3"
-        }
-      },
-      {
-        "safe" : [
-          "post3",
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.296,
-          "load1" : 0.033,
-          "load2" : 0.032,
-          "post1" : 0.033,
-          "post3" : 0.031
-        },
-        "state" : "+sup@88,post2",
-        "unsafe" : {
-          "beam1" : "post3"
-        },
-        "win" : [
-          "post1"
-        ]
       },
       {
         "safe" : [
           "beam1",
-          "+sup@-88",
-          "+sup@0",
-          "+sup@88"
+          "+sup@-96",
+          "+sup@96"
         ],
         "severity" : {
-          "+sup@-88" : 0.033,
-          "+sup@0" : 0.033,
-          "+sup@88" : 0.033,
+          "+sup@-96" : 0.033,
+          "+sup@96" : 0.033,
           "beam1" : 0.033,
-          "post2" : 2.717,
-          "post3" : 2.001
+          "post2" : 3.135,
+          "post3" : 2.175
         },
-        "state" : "load1,load2,post1",
+        "state" : "load1,post1",
         "unsafe" : {
-          "post2" : "beam1",
+          "post2" : "post3",
           "post3" : "beam1"
         }
       },
       {
         "safe" : [
           "post3",
-          "load2"
+          "load1"
         ],
         "severity" : {
-          "beam1" : 10.199,
-          "load2" : 0.033,
-          "post2" : 8.791,
+          "beam1" : 10.426,
+          "load1" : 0.033,
+          "post2" : 5.149,
           "post3" : 0.033
         },
-        "state" : "+sup@-88,load1,post1",
+        "state" : "+sup@-96,post1",
         "unsafe" : {
           "beam1" : "post3",
           "post2" : "beam1"
         }
-      },
-      {
-        "safe" : [
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 3.386,
-          "load2" : 0.033,
-          "post2" : 0.126,
-          "post3" : 3.551
-        },
-        "state" : "+sup@0,load1,post1",
-        "unsafe" : {
-          "beam1" : "post3",
-          "post3" : "post2"
-        },
-        "win" : [
-          "post2"
-        ]
-      },
-      {
-        "safe" : [
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 10.265,
-          "load2" : 0.033,
-          "post2" : 0.032,
-          "post3" : 10.332
-        },
-        "state" : "+sup@88,load1,post1",
-        "unsafe" : {
-          "beam1" : "post3",
-          "post3" : "beam1"
-        },
-        "win" : [
-          "post2"
-        ]
-      },
-      {
-        "safe" : [
-          "post3",
-          "load1"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load1" : 0.033,
-          "post2" : 7.825,
-          "post3" : 0.032
-        },
-        "state" : "+sup@-88,load2,post1",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post3",
-          "load1"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load1" : 0.033,
-          "post2" : 5.813,
-          "post3" : 0.033
-        },
-        "state" : "+sup@0,load2,post1",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "load1"
-        ],
-        "severity" : {
-          "beam1" : 3.466,
-          "load1" : 0.033,
-          "post2" : 0.089,
-          "post3" : 5.318
-        },
-        "state" : "+sup@32,load2,post1",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post3" : "beam1"
-        },
-        "win" : [
-          "post2"
-        ]
       },
       {
         "safe" : [
@@ -1143,12 +205,12 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 0.724,
+          "beam1" : 0.667,
           "load1" : 0.033,
-          "post2" : 0.043,
-          "post3" : 7.915
+          "post2" : 0.102,
+          "post3" : 5.821
         },
-        "state" : "+sup@40,load2,post1",
+        "state" : "+sup@16,post1",
         "unsafe" : {
           "post3" : "beam1"
         },
@@ -1161,122 +223,12 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 6.617,
+          "beam1" : 10.426,
           "load1" : 0.033,
-          "post2" : 0.034,
-          "post3" : 8.295
-        },
-        "state" : "+sup@56,load2,post1",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post3" : "beam1"
-        },
-        "win" : [
-          "post2"
-        ]
-      },
-      {
-        "safe" : [
-          "load1"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load1" : 0.033,
-          "post2" : 0.033,
-          "post3" : 6.724
-        },
-        "state" : "+sup@88,load2,post1",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post3" : "beam1"
-        },
-        "win" : [
-          "post2"
-        ]
-      },
-      {
-        "safe" : [
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.298,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post2" : 8.403
-        },
-        "state" : "+sup@-88,post1,post3",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.298,
-          "load1" : 3.569,
-          "load2" : 0.032,
-          "post2" : 5.806
-        },
-        "state" : "+sup@0,post1,post3",
-        "unsafe" : {
-          "beam1" : "load1",
-          "load1" : "post2",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 10.259,
-          "load2" : 0.033,
-          "post2" : 0.041,
-          "post3" : 4.139
-        },
-        "state" : "+sup@32,load1,post1",
-        "unsafe" : {
-          "beam1" : "post3",
-          "post3" : "beam1"
-        },
-        "win" : [
-          "post2"
-        ]
-      },
-      {
-        "safe" : [
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 10.265,
-          "load2" : 0.033,
-          "post2" : 0.038,
-          "post3" : 3.647
-        },
-        "state" : "+sup@40,load1,post1",
-        "unsafe" : {
-          "beam1" : "post3",
-          "post3" : "beam1"
-        },
-        "win" : [
-          "post2"
-        ]
-      },
-      {
-        "safe" : [
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 10.265,
-          "load2" : 0.033,
           "post2" : 0.032,
-          "post3" : 2.803
+          "post3" : 7.299
         },
-        "state" : "+sup@56,load1,post1",
+        "state" : "+sup@96,post1",
         "unsafe" : {
           "beam1" : "post3",
           "post3" : "beam1"
@@ -1288,19 +240,19 @@
       {
         "safe" : [
           "beam1",
-          "+sup@-88",
+          "+sup@-96",
           "+sup@0",
-          "+sup@88"
+          "+sup@96"
         ],
         "severity" : {
-          "+sup@-88" : 0.033,
+          "+sup@-96" : 0.033,
           "+sup@0" : 0.033,
-          "+sup@88" : 0.033,
+          "+sup@96" : 0.033,
           "beam1" : 0.033,
-          "post1" : 2.028,
-          "post2" : 2.025
+          "post1" : 2.173,
+          "post2" : 2.17
         },
-        "state" : "load1,load2,post3",
+        "state" : "load1,post3",
         "unsafe" : {
           "post1" : "beam1",
           "post2" : "beam1"
@@ -1309,100 +261,15 @@
       {
         "safe" : [
           "post1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load2" : 0.033,
-          "post1" : 0.033,
-          "post2" : 1.958
-        },
-        "state" : "+sup@-88,load1,post3",
-        "unsafe" : {
-          "beam1" : "load2",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "beam1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 0.724,
-          "load2" : 0.033,
-          "post1" : 0.033,
-          "post2" : 8.524
-        },
-        "state" : "+sup@-32,load1,post3",
-        "unsafe" : {
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "beam1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 0.724,
-          "load2" : 0.033,
-          "post1" : 0.033,
-          "post2" : 5.936
-        },
-        "state" : "+sup@-24,load1,post3",
-        "unsafe" : {
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post2",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load2" : 0.033,
-          "post1" : 3.552,
-          "post2" : 0.036
-        },
-        "state" : "+sup@0,load1,post3",
-        "unsafe" : {
-          "beam1" : "load2",
-          "post1" : "post2"
-        }
-      },
-      {
-        "safe" : [
-          "post2",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load2" : 0.033,
-          "post1" : 2.866,
-          "post2" : 0.032
-        },
-        "state" : "+sup@88,load1,post3",
-        "unsafe" : {
-          "beam1" : "load2",
-          "post1" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
           "load1"
         ],
         "severity" : {
-          "beam1" : 5.289,
+          "beam1" : 5.68,
           "load1" : 0.033,
-          "post1" : 0.032,
-          "post2" : 7.892
+          "post1" : 0.033,
+          "post2" : 2.477
         },
-        "state" : "+sup@-88,load2,post3",
+        "state" : "+sup@-96,post3",
         "unsafe" : {
           "beam1" : "load1",
           "post2" : "beam1"
@@ -1414,12 +281,12 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 5.289,
+          "beam1" : 10.41,
           "load1" : 0.033,
           "post1" : 0.033,
-          "post2" : 5.821
+          "post2" : 4.363
         },
-        "state" : "+sup@0,load2,post3",
+        "state" : "+sup@-8,post3",
         "unsafe" : {
           "beam1" : "load1",
           "post2" : "beam1"
@@ -1427,35 +294,36 @@
       },
       {
         "safe" : [
-          "post2",
-          "load1"
-        ],
-        "severity" : {
-          "beam1" : 3.577,
-          "load1" : 0.033,
-          "post1" : 5.299,
-          "post2" : 0.032
-        },
-        "state" : "+sup@32,load2,post3",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post1" : "beam1"
-        }
-      },
-      {
-        "safe" : [
+          "post1",
           "post2",
           "beam1",
           "load1"
         ],
         "severity" : {
-          "beam1" : 0.725,
+          "beam1" : 0.723,
           "load1" : 0.033,
-          "post1" : 7.943,
+          "post1" : 0.051,
+          "post2" : 0.078
+        },
+        "state" : "+sup@0,post3",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 10.421,
+          "load1" : 0.033,
+          "post1" : 5.822,
           "post2" : 0.032
         },
-        "state" : "+sup@40,load2,post3",
+        "state" : "+sup@16,post3",
         "unsafe" : {
+          "beam1" : "load1",
           "post1" : "beam1"
         }
       },
@@ -1465,218 +333,14 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 7.045,
+          "beam1" : 5.68,
           "load1" : 0.033,
-          "post1" : 8.232,
-          "post2" : 0.033
-        },
-        "state" : "+sup@56,load2,post3",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post1" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post2",
-          "load1"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load1" : 0.033,
-          "post1" : 7.278,
-          "post2" : 0.033
-        },
-        "state" : "+sup@88,load2,post3",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post1" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.293,
-          "load1" : 0.031,
-          "load2" : 0.031,
-          "post2" : 10.389
-        },
-        "state" : "+sup@-32,post1,post3",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "load1"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load1" : 0.033,
-          "post1" : 0.032,
-          "post2" : 8.417
-        },
-        "state" : "+sup@-32,load2,post3",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.293,
-          "load1" : 0.033,
-          "load2" : 0.033,
-          "post2" : 9.676
-        },
-        "state" : "+sup@-24,post1,post3",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "load1"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load1" : 0.033,
-          "post1" : 0.032,
-          "post2" : 7.041
-        },
-        "state" : "+sup@-24,load2,post3",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post2" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.639,
-          "load1" : 0.031,
-          "load2" : 0.031,
-          "post1" : 6.429
-        },
-        "state" : "+sup@32,post2,post3",
-        "unsafe" : {
-          "beam1" : "load1",
-          "post1" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post2",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load2" : 0.033,
-          "post1" : 4.129,
+          "post1" : 2.276,
           "post2" : 0.032
         },
-        "state" : "+sup@32,load1,post3",
-        "unsafe" : {
-          "beam1" : "load2",
-          "post1" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.295,
-          "load1" : 0.033,
-          "load2" : 0.031,
-          "post1" : 9.519
-        },
-        "state" : "+sup@40,post2,post3",
-        "unsafe" : {
-          "beam1" : "load2",
-          "post1" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post2",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load2" : 0.033,
-          "post1" : 3.646,
-          "post2" : 0.032
-        },
-        "state" : "+sup@40,load1,post3",
-        "unsafe" : {
-          "beam1" : "load2",
-          "post1" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 6.751,
-          "load1" : 0.031,
-          "load2" : 0.031,
-          "post1" : 6.049
-        },
-        "state" : "+sup@56,post2,post3",
+        "state" : "+sup@96,post3",
         "unsafe" : {
           "beam1" : "load1",
-          "post1" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "post2",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.289,
-          "load2" : 0.033,
-          "post1" : 2.8,
-          "post2" : 0.032
-        },
-        "state" : "+sup@56,load1,post3",
-        "unsafe" : {
-          "beam1" : "load2",
-          "post1" : "beam1"
-        }
-      },
-      {
-        "safe" : [
-          "load1",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 5.296,
-          "load1" : 0.032,
-          "load2" : 0.032,
-          "post1" : 10.27
-        },
-        "state" : "+sup@88,post2,post3",
-        "unsafe" : {
-          "beam1" : "load2",
           "post1" : "beam1"
         }
       },
@@ -1687,11 +351,11 @@
           "post3"
         ],
         "severity" : {
-          "post1" : 0.033,
+          "post1" : 0.032,
           "post2" : 0.033,
           "post3" : 0.032
         },
-        "state" : "beam1,load1,load2",
+        "state" : "beam1,load1",
         "unsafe" : {
 
         }
@@ -1704,13 +368,13 @@
         ],
         "severity" : {
           "beam1" : 0.033,
-          "post1" : 0.032,
-          "post2" : 2.773,
+          "post1" : 0.033,
+          "post2" : 3.12,
           "post3" : 0.033
         },
-        "state" : "+sup@-88,load1,load2",
+        "state" : "+sup@-96,load1",
         "unsafe" : {
-          "post2" : "beam1"
+          "post2" : "post3"
         }
       },
       {
@@ -1723,103 +387,10 @@
         "severity" : {
           "beam1" : 0.033,
           "post1" : 0.032,
-          "post2" : 0.237,
-          "post3" : 0.032
-        },
-        "state" : "+sup@0,load1,load2",
-        "unsafe" : {
-
-        }
-      },
-      {
-        "safe" : [
-          "post1",
-          "post2",
-          "post3",
-          "beam1"
-        ],
-        "severity" : {
-          "beam1" : 0.033,
-          "post1" : 0.032,
-          "post2" : 0.032,
+          "post2" : 0.033,
           "post3" : 0.033
         },
-        "state" : "+sup@88,load1,load2",
-        "unsafe" : {
-
-        }
-      },
-      {
-        "safe" : [
-          "post3",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 3.376,
-          "load2" : 0.06,
-          "post1" : 0.064,
-          "post3" : 0.056
-        },
-        "state" : "+sup@0,load1,post2",
-        "unsafe" : {
-          "beam1" : "post3"
-        },
-        "win" : [
-          "post1"
-        ]
-      },
-      {
-        "safe" : [
-          "post3",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 10.421,
-          "load2" : 0.032,
-          "post1" : 0.032,
-          "post3" : 0.033
-        },
-        "state" : "+sup@88,load1,post2",
-        "unsafe" : {
-          "beam1" : "post3"
-        },
-        "win" : [
-          "post1"
-        ]
-      },
-      {
-        "safe" : [
-          "post3",
-          "load1"
-        ],
-        "severity" : {
-          "beam1" : 7.345,
-          "load1" : 0.034,
-          "post1" : 0.034,
-          "post3" : 0.033
-        },
-        "state" : "+sup@32,load2,post2",
-        "unsafe" : {
-          "beam1" : "load1"
-        },
-        "win" : [
-          "post1"
-        ]
-      },
-      {
-        "safe" : [
-          "post1",
-          "post2",
-          "post3",
-          "beam1"
-        ],
-        "severity" : {
-          "beam1" : 0.033,
-          "post1" : 0.032,
-          "post2" : 0.05,
-          "post3" : 0.033
-        },
-        "state" : "+sup@32,load1,load2",
+        "state" : "+sup@96,load1",
         "unsafe" : {
 
         }
@@ -1831,12 +402,12 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 0.737,
-          "load1" : 0.032,
-          "post1" : 0.033,
-          "post3" : 0.032
+          "beam1" : 0.673,
+          "load1" : 0.088,
+          "post1" : 0.087,
+          "post3" : 0.082
         },
-        "state" : "+sup@40,load2,post2",
+        "state" : "+sup@16,post2",
         "unsafe" : {
 
         },
@@ -1848,16 +419,348 @@
         "safe" : [
           "post1",
           "post2",
+          "load1"
+        ],
+        "severity" : {
+          "load1" : 0.105,
+          "post1" : 0.66,
+          "post2" : 0.66,
+          "post3" : 9.971
+        },
+        "state" : "+sup@16,beam1",
+        "unsafe" : {
+          "post3" : "load1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
           "post3",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.094,
+          "post3" : 0.033
+        },
+        "state" : "+sup@16,load1",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post3",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 10.437,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post3" : 0.032
+        },
+        "state" : "+sup@96,post2",
+        "unsafe" : {
+          "beam1" : "post3"
+        },
+        "win" : [
+          "post1"
+        ]
+      },
+      {
+        "safe" : [
+          "post2",
+          "post3"
+        ],
+        "severity" : {
+          "post2" : 0.032,
+          "post3" : 0.033
+        },
+        "state" : "beam1,load1,post1",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post3",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post2" : 3.136,
+          "post3" : 0.033
+        },
+        "state" : "+sup@-96,load1,post1",
+        "unsafe" : {
+          "post2" : "post3"
+        }
+      },
+      {
+        "safe" : [
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post2" : 0.032,
+          "post3" : 2.043
+        },
+        "state" : "+sup@96,load1,post1",
+        "unsafe" : {
+          "post3" : "beam1"
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 5.688,
+          "load1" : 0.032,
+          "post2" : 7.408
+        },
+        "state" : "+sup@-96,post1,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "load1" : 0.105,
+          "post2" : 0.66,
+          "post3" : 8.959
+        },
+        "state" : "+sup@16,beam1,post1",
+        "unsafe" : {
+          "post3" : "load1"
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post2" : 0.093,
+          "post3" : 3.143
+        },
+        "state" : "+sup@16,load1,post1",
+        "unsafe" : {
+          "post3" : "post2"
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2"
+        ],
+        "severity" : {
+          "post1" : 0.032,
+          "post2" : 0.033
+        },
+        "state" : "beam1,load1,post3",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.033,
+          "post2" : 2.034
+        },
+        "state" : "+sup@-96,load1,post3",
+        "unsafe" : {
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.081,
+          "post2" : 0.082
+        },
+        "state" : "+sup@0,load1,post3",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 2.034,
+          "post2" : 0.032
+        },
+        "state" : "+sup@96,load1,post3",
+        "unsafe" : {
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 10.449,
+          "load1" : 0.032,
+          "post2" : 4.463
+        },
+        "state" : "+sup@-8,post1,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.038,
+          "post2" : 2.271
+        },
+        "state" : "+sup@-8,load1,post3",
+        "unsafe" : {
+          "post2" : "post1"
+        }
+      },
+      {
+        "safe" : [
+          "beam1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 0.734,
+          "load1" : 0.032,
+          "post2" : 0.019
+        },
+        "state" : "+sup@0,post1,post3",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "beam1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 0.735,
+          "load1" : 0.033,
+          "post1" : 0.02
+        },
+        "state" : "+sup@0,post2,post3",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "post1"
+        ]
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
           "load1"
         ],
         "severity" : {
           "load1" : 0.033,
           "post1" : 0.726,
-          "post2" : 0.726,
-          "post3" : 0.726
+          "post2" : 0.726
         },
-        "state" : "+sup@40,beam1,load2",
+        "state" : "+sup@0,beam1,post3",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 10.43,
+          "load1" : 0.031,
+          "post1" : 5.968
+        },
+        "state" : "+sup@16,post2,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 3.139,
+          "post2" : 0.033
+        },
+        "state" : "+sup@16,load1,post3",
+        "unsafe" : {
+          "post1" : "post2"
+        }
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 5.688,
+          "load1" : 0.033,
+          "post1" : 7.25
+        },
+        "state" : "+sup@96,post2,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post3"
+        ],
+        "severity" : {
+          "post1" : 0.032,
+          "post3" : 0.033
+        },
+        "state" : "beam1,load1,post2",
         "unsafe" : {
 
         }
@@ -1866,16 +769,14 @@
         "safe" : [
           "post1",
           "post2",
-          "post3",
-          "beam1"
+          "post3"
         ],
         "severity" : {
-          "beam1" : 0.033,
-          "post1" : 0.033,
-          "post2" : 0.035,
+          "post1" : 0.032,
+          "post2" : 0.033,
           "post3" : 0.032
         },
-        "state" : "+sup@40,load1,load2",
+        "state" : "+sup@-96,beam1,load1",
         "unsafe" : {
 
         }
@@ -1883,17 +784,16 @@
       {
         "safe" : [
           "post3",
-          "load1"
+          "beam1"
         ],
         "severity" : {
-          "beam1" : 6.683,
-          "load1" : 0.033,
+          "beam1" : 0.033,
           "post1" : 0.033,
           "post3" : 0.032
         },
-        "state" : "+sup@56,load2,post2",
+        "state" : "+sup@96,load1,post2",
         "unsafe" : {
-          "beam1" : "load1"
+
         },
         "win" : [
           "post1"
@@ -1903,34 +803,30 @@
         "safe" : [
           "post1",
           "post2",
-          "post3",
-          "beam1"
+          "post3"
         ],
         "severity" : {
-          "beam1" : 0.033,
           "post1" : 0.032,
           "post2" : 0.033,
           "post3" : 0.033
         },
-        "state" : "+sup@56,load1,load2",
+        "state" : "+sup@96,beam1,load1",
         "unsafe" : {
 
         }
       },
       {
         "safe" : [
-          "post3",
           "load1"
         ],
         "severity" : {
-          "beam1" : 5.295,
-          "load1" : 0.033,
-          "post1" : 0.033,
-          "post3" : 0.031
+          "load1" : 0.105,
+          "post1" : 0.66,
+          "post3" : 9.975
         },
-        "state" : "+sup@88,load2,post2",
+        "state" : "+sup@16,beam1,post2",
         "unsafe" : {
-          "beam1" : "load1"
+          "post3" : "load1"
         },
         "win" : [
           "post1"
@@ -1939,59 +835,36 @@
       {
         "safe" : [
           "post3",
-          "load2"
+          "beam1"
         ],
         "severity" : {
-          "beam1" : 10.451,
-          "load2" : 0.033,
+          "beam1" : 0.033,
+          "post1" : 0.078,
+          "post3" : 0.064
+        },
+        "state" : "+sup@16,load1,post2",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "post1"
+        ]
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3"
+        ],
+        "severity" : {
           "post1" : 0.033,
+          "post2" : 0.032,
           "post3" : 0.033
         },
-        "state" : "+sup@32,load1,post2",
+        "state" : "+sup@16,beam1,load1",
         "unsafe" : {
-          "beam1" : "post3"
-        },
-        "win" : [
-          "post1"
-        ]
-      },
-      {
-        "safe" : [
-          "post3",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 10.217,
-          "load2" : 0.033,
-          "post1" : 0.032,
-          "post3" : 0.033
-        },
-        "state" : "+sup@40,load1,post2",
-        "unsafe" : {
-          "beam1" : "post3"
-        },
-        "win" : [
-          "post1"
-        ]
-      },
-      {
-        "safe" : [
-          "post3",
-          "load2"
-        ],
-        "severity" : {
-          "beam1" : 10.362,
-          "load2" : 0.033,
-          "post1" : 0.032,
-          "post3" : 0.032
-        },
-        "state" : "+sup@56,load1,post2",
-        "unsafe" : {
-          "beam1" : "post3"
-        },
-        "win" : [
-          "post1"
-        ]
+
+        }
       }
     ],
     "verifiedAt" : "2026-10-08"
@@ -2028,13 +901,13 @@
       "id" : "post1",
       "material" : "wood",
       "position" : {
-        "x" : -108,
-        "y" : -130.5
+        "x" : -121,
+        "y" : -125.5
       },
       "removable" : true,
       "rotation" : 0,
       "shape" : {
-        "h" : 119,
+        "h" : 129,
         "type" : "rect",
         "w" : 24
       }
@@ -2044,13 +917,13 @@
       "id" : "post2",
       "material" : "wood",
       "position" : {
-        "x" : 108,
-        "y" : -130.5
+        "x" : 121,
+        "y" : -125.5
       },
       "removable" : true,
       "rotation" : 0,
       "shape" : {
-        "h" : 119,
+        "h" : 129,
         "type" : "rect",
         "w" : 24
       }
@@ -2060,13 +933,13 @@
       "id" : "post3",
       "material" : "wood",
       "position" : {
-        "x" : -39,
-        "y" : -130.5
+        "x" : -15,
+        "y" : -125.5
       },
       "removable" : true,
       "rotation" : 0,
       "shape" : {
-        "h" : 119,
+        "h" : 129,
         "type" : "rect",
         "w" : 20
       }
@@ -2077,14 +950,14 @@
       "material" : "wood",
       "position" : {
         "x" : 0,
-        "y" : -62
+        "y" : -52
       },
       "removable" : true,
       "rotation" : 0,
       "shape" : {
         "h" : 18,
         "type" : "rect",
-        "w" : 260
+        "w" : 286
       }
     },
     {
@@ -2092,36 +965,20 @@
       "id" : "load1",
       "material" : "stone",
       "position" : {
-        "x" : 41,
-        "y" : -26
+        "x" : 3,
+        "y" : -21
       },
       "removable" : true,
       "rotation" : 0,
       "shape" : {
-        "h" : 54,
+        "h" : 44,
         "type" : "rect",
-        "w" : 50
-      }
-    },
-    {
-      "fixed" : false,
-      "id" : "load2",
-      "material" : "stone",
-      "position" : {
-        "x" : -29,
-        "y" : -40
-      },
-      "removable" : true,
-      "rotation" : 0,
-      "shape" : {
-        "h" : 26,
-        "type" : "rect",
-        "w" : 26
+        "w" : 45
       }
     }
   ],
   "region" : "counterweight",
   "schema" : 1,
-  "seed" : 158003,
+  "seed" : 158002,
   "supportsAllowed" : 1
 }

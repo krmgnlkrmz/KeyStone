@@ -1,10 +1,10 @@
 8	kept	c-008	len 2
 9	kept	c-009	len 2
 10	kept	c-010	len 2
-11	tower	seed 111000	len 2	budget 3	margin 21.76	unsafe 0.65	tries 1	1s
+11	kept	c-011	len 2
 12	kept	c-012	len 2
 13	kept	c-013	len 2
-14	pyramid	seed 114036	len 2	budget 3	margin 2.06	unsafe 0.31	tries 37	22s
+14	kept	c-014	len 2
 15	kept	c-015	len 3
 16	kept	c-016	len 2
 17	kept	c-017	len 3
@@ -42,32 +42,32 @@
 49	MISSING	hanger	tried 60 from seed 149000
 50	kept	c-050	len 4
 51	kept	c-051	len 3
-52	kept	c-052	len 3
+52	bridge	seed 152000	len 3	budget 4	margin 7.18	unsafe 0.30	tries 1	209s
 53	kept	c-053	len 3
-54	kept	c-054	len 3
+54	bridge	seed 154000	len 3	budget 4	margin 25.82	unsafe 0.25	tries 1	210s
 55	kept	c-055	len 3
-56	kept	c-056	len 3
+56	bridge	seed 156005	len 3	budget 4	margin 7.20	unsafe 0.24	tries 6	215s
 57	kept	c-057	len 3
-58	kept	c-058	len 3
+58	bridge	seed 158002	len 3	budget 4	margin 9.86	unsafe 0.23	tries 3	217s
 59	kept	c-059	len 3
-60	kept	c-060	len 3
+60	bridge	seed 160001	len 3	budget 4	margin 30.32	unsafe 0.20	tries 2	219s
 61	kept	c-061	len 4
 62	kept	c-062	len 3
 63	kept	c-063	len 4
 64	kept	c-064	len 3
 65	kept	c-065	len 4
-66	bridge	seed 166001	len 3	budget 5	margin 5.08	unsafe 0.25	tries 2	368s
+66	kept	c-066	len 3
 67	kept	c-067	len 5
-68	bridge	seed 168000	len 3	budget 5	margin 6.31	unsafe 0.22	tries 1	370s
+68	kept	c-068	len 3
 69	kept	c-069	len 5
-70	bridge	seed 170001	len 3	budget 5	margin 29.93	unsafe 0.27	tries 2	373s
+70	kept	c-070	len 3
 71	kept	c-071	len 3
 72	kept	c-072	len 3
 73	kept	c-073	len 3
 74	kept	c-074	len 3
 75	kept	c-075	len 3
 76	kept	c-076	len 4
-77	pyramid	seed 177008	len 3	budget 5	margin 2.11	unsafe 0.62	tries 9	379s
+77	kept	c-077	len 3
 78	kept	c-078	len 4
-79	pyramid	seed 179000	len 3	budget 5	margin 2.15	unsafe 0.52	tries 1	380s
+79	kept	c-079	len 3
 80	kept	c-080	len 4
