@@ -185,7 +185,7 @@ jobs:
 
       - name: Screenshots on more devices
         if: ${{ !cancelled() && steps.forge.outputs.mode == 'screens' }}
-        timeout-minutes: 45
+        timeout-minutes: 70
         env:
           TEST_RUNNER_SCREENSHOT_DIR: ${{ github.workspace }}/docs/screenshots
         run: |
@@ -200,12 +200,20 @@ jobs:
             for i in 1 2 3 4; do git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break; sleep $((i * 5)); done
           }
           commit_shots "iPhone 16"
-          for NAME in "iPhone 17 Pro Max" "iPhone 16 Plus" "iPhone SE (3rd generation)"; do
-            UDID=$(xcrun simctl list devices available -j | python3 -c "import json,sys; d=json.load(sys.stdin)['devices']; print(next((x['udid'] for r,v in d.items() if 'iOS' in r for x in v if x['name']=='$NAME'), ''))")
-            [ -z "$UDID" ] && { echo "no $NAME"; continue; }
+          # One simulator at a time: a second boot next to the primary one stalled on "Waiting on BackBoard".
+          # Each size class takes the first device name the runner has; boots are bounded (perl alarm).
+          xcrun simctl shutdown all || true
+          for GROUP in "iPhone 17 Pro Max|iPhone 16 Pro Max" "iPhone 16 Plus|iPhone 17 Plus|iPhone Air" "iPhone SE (3rd generation)|iPhone 16e"; do
+            IFS='|' read -r -a NAMES <<< "$GROUP"
+            UDID=$(./scripts/ci-pick-simulator.sh "${NAMES[@]}" 2> pick.err || true)
+            [ -z "$UDID" ] && { echo "none of: $GROUP"; continue; }
+            NAME=$(sed -e 's/^Using //' -e 's/ on .*//' pick.err)
+            echo "::group::$NAME"
             xcrun simctl boot "$UDID" || true
-            xcrun simctl bootstatus "$UDID" -b || { echo "$NAME did not boot"; continue; }
-            xcodebuild test -project DengeNoktasi.xcodeproj -scheme UITests -destination "id=$UDID" \
+            if ! perl -e 'alarm shift; exec @ARGV' 420 xcrun simctl bootstatus "$UDID" -b > boot.log 2>&1; then
+              tail -5 boot.log; echo "$NAME did not boot in 7 min"; xcrun simctl shutdown "$UDID" || true; echo "::endgroup::"; continue
+            fi
+            perl -e 'alarm shift; exec @ARGV' 900 xcodebuild test -project DengeNoktasi.xcodeproj -scheme UITests -destination "id=$UDID" \
               -clonedSourcePackagesDirPath SourcePackages -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO \
               -test-timeouts-enabled YES -default-test-execution-time-allowance 240 -maximum-test-execution-time-allowance 420 \
               -only-testing:DengeNoktasiUITests/SmokeUITests/testWalkThroughMainScreens \
@@ -214,6 +222,7 @@ jobs:
               -only-testing:DengeNoktasiUITests/SmokeUITests/testTurkishScreens > ui-$UDID.log 2>&1 || echo "UI run on $NAME failed"
             grep -E "failed|passed" ui-$UDID.log | tail -6 || true
             xcrun simctl shutdown "$UDID" || true
+            echo "::endgroup::"
             commit_shots "$NAME"
           done
 
