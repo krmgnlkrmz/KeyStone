@@ -107,7 +107,8 @@ public final class HeadlessSimulator {
         step(scene, dt: job.profile.dts[0])
         scene.load(log: job.base)
 
-        let maxFrames = Int((PhysicsConstants.initialSettle + PhysicsConstants.maxSimSeconds + 2) * 240)
+        let seconds: Double = PhysicsConstants.initialSettle + PhysicsConstants.maxSimSeconds + 2
+        let maxFrames = Int(seconds * 240)
         while scene.phase == .presettling {
             step(scene, dt: job.profile.dts[frame % job.profile.dts.count]); frame += 1
             if frame > maxFrames { throw HeadlessError.stalled("presettle \(job.level.id)") }
@@ -136,7 +137,9 @@ public final class HeadlessSimulator {
         var frame = 0
         step(scene, dt: profile.dts[0])
         scene.load(log: MoveLog())
-        let maxFrames = Int((PhysicsConstants.initialSettle + PhysicsConstants.maxSimSeconds * Double(max(1, moves.count)) + 2) * 240)
+        let windows: Double = PhysicsConstants.maxSimSeconds * Double(max(1, moves.count))
+        let seconds: Double = PhysicsConstants.initialSettle + windows + 2
+        let maxFrames = Int(seconds * 240)
         while scene.phase == .presettling {
             step(scene, dt: profile.dts[frame % profile.dts.count]); frame += 1
             if frame > maxFrames { throw HeadlessError.stalled("presettle \(level.id)") }

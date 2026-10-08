@@ -1,0 +1,1109 @@
+{
+ "slots": [
+  {
+   "index": 8,
+   "region": "wood_scaffold",
+   "archetype": "table",
+   "seed": 108000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 2,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Short Span",
+    "tr": "Kısa Açıklık"
+   }
+  },
+  {
+   "index": 9,
+   "region": "wood_scaffold",
+   "archetype": "tower",
+   "seed": 109000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 2,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Two Floors",
+    "tr": "İki Kat"
+   }
+  },
+  {
+   "index": 10,
+   "region": "wood_scaffold",
+   "archetype": "table",
+   "seed": 110000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 2,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Loose Plank",
+    "tr": "Gevşek Tahta"
+   }
+  },
+  {
+   "index": 11,
+   "region": "stone_arch",
+   "archetype": "lintel",
+   "seed": 111000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 2,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Lintel",
+    "tr": "Lento"
+   }
+  },
+  {
+   "index": 12,
+   "region": "stone_arch",
+   "archetype": "pyramid",
+   "seed": 112000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 2,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Quiet Pyramid",
+    "tr": "Sessiz Piramit"
+   }
+  },
+  {
+   "index": 13,
+   "region": "stone_arch",
+   "archetype": "tower",
+   "seed": 113000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 2,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Column Stack",
+    "tr": "Sütun Yığını"
+   }
+  },
+  {
+   "index": 14,
+   "region": "stone_arch",
+   "archetype": "lintel",
+   "seed": 114000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 2,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Held Breath",
+    "tr": "Tutulan Nefes"
+   }
+  },
+  {
+   "index": 15,
+   "region": "stone_arch",
+   "archetype": "pyramid",
+   "seed": 115000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Corbel",
+    "tr": "Konsol"
+   }
+  },
+  {
+   "index": 16,
+   "region": "stone_arch",
+   "archetype": "tower",
+   "seed": 116000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Gate of Blocks",
+    "tr": "Bloklu Kapı"
+   }
+  },
+  {
+   "index": 17,
+   "region": "stone_arch",
+   "archetype": "lintel",
+   "seed": 117000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Two Pillars",
+    "tr": "İki Ayak"
+   }
+  },
+  {
+   "index": 18,
+   "region": "stone_arch",
+   "archetype": "pyramid",
+   "seed": 118000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Stepped Base",
+    "tr": "Basamaklı Taban"
+   }
+  },
+  {
+   "index": 19,
+   "region": "stone_arch",
+   "archetype": "tower",
+   "seed": 119000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Capstone",
+    "tr": "Başlık Taşı"
+   }
+  },
+  {
+   "index": 20,
+   "region": "stone_arch",
+   "archetype": "lintel",
+   "seed": 120000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Last Arch",
+    "tr": "Son Kemer"
+   }
+  },
+  {
+   "index": 21,
+   "region": "iron_truss",
+   "archetype": "table",
+   "seed": 121000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Rivet Line",
+    "tr": "Perçin Hattı"
+   }
+  },
+  {
+   "index": 22,
+   "region": "iron_truss",
+   "archetype": "tower",
+   "seed": 122000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Girder Table",
+    "tr": "Putrel Masa"
+   }
+  },
+  {
+   "index": 23,
+   "region": "iron_truss",
+   "archetype": "table",
+   "seed": 123000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Cold Frame",
+    "tr": "Soğuk Çerçeve"
+   }
+  },
+  {
+   "index": 24,
+   "region": "iron_truss",
+   "archetype": "tower",
+   "seed": 124000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Iron Stack",
+    "tr": "Demir Yığın"
+   }
+  },
+  {
+   "index": 25,
+   "region": "iron_truss",
+   "archetype": "table",
+   "seed": 125000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Bolted",
+    "tr": "Cıvatalı"
+   }
+  },
+  {
+   "index": 26,
+   "region": "iron_truss",
+   "archetype": "tower",
+   "seed": 126000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Cross Member",
+    "tr": "Ara Eleman"
+   }
+  },
+  {
+   "index": 27,
+   "region": "iron_truss",
+   "archetype": "table",
+   "seed": 127000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Truss Deck",
+    "tr": "Kafes Döşeme"
+   }
+  },
+  {
+   "index": 28,
+   "region": "iron_truss",
+   "archetype": "tower",
+   "seed": 128000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Steel Shelf",
+    "tr": "Çelik Raf"
+   }
+  },
+  {
+   "index": 29,
+   "region": "iron_truss",
+   "archetype": "table",
+   "seed": 129000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Load Path",
+    "tr": "Yük Yolu"
+   }
+  },
+  {
+   "index": 30,
+   "region": "iron_truss",
+   "archetype": "tower",
+   "seed": 130000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Foundry",
+    "tr": "Dökümhane"
+   }
+  },
+  {
+   "index": 31,
+   "region": "rope_bridge",
+   "archetype": "hanger",
+   "seed": 131000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 2,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "First Rope",
+    "tr": "İlk Halat"
+   }
+  },
+  {
+   "index": 32,
+   "region": "rope_bridge",
+   "archetype": "hanger",
+   "seed": 132000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 2,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Hanging Deck",
+    "tr": "Asılı Döşeme"
+   }
+  },
+  {
+   "index": 33,
+   "region": "rope_bridge",
+   "archetype": "hanger",
+   "seed": 133000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 2,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Slack",
+    "tr": "Boşluk"
+   }
+  },
+  {
+   "index": 34,
+   "region": "rope_bridge",
+   "archetype": "hanger",
+   "seed": 134000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 2,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Two Lines",
+    "tr": "İki Hat"
+   }
+  },
+  {
+   "index": 35,
+   "region": "rope_bridge",
+   "archetype": "hanger",
+   "seed": 135000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Swing",
+    "tr": "Salınım"
+   }
+  },
+  {
+   "index": 36,
+   "region": "rope_bridge",
+   "archetype": "hanger",
+   "seed": 136000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Plumb Line",
+    "tr": "Çekül"
+   }
+  },
+  {
+   "index": 37,
+   "region": "rope_bridge",
+   "archetype": "hanger",
+   "seed": 137000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Ferry",
+    "tr": "Sal"
+   }
+  },
+  {
+   "index": 38,
+   "region": "rope_bridge",
+   "archetype": "hanger",
+   "seed": 138000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Tether",
+    "tr": "Bağ"
+   }
+  },
+  {
+   "index": 39,
+   "region": "rope_bridge",
+   "archetype": "hanger",
+   "seed": 139000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Knot",
+    "tr": "Düğüm"
+   }
+  },
+  {
+   "index": 40,
+   "region": "rope_bridge",
+   "archetype": "hanger",
+   "seed": 140000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Rope Walk",
+    "tr": "Halat Yolu"
+   }
+  },
+  {
+   "index": 41,
+   "region": "steel_crane",
+   "archetype": "hanger",
+   "seed": 141000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Jib",
+    "tr": "Bom"
+   }
+  },
+  {
+   "index": 42,
+   "region": "steel_crane",
+   "archetype": "counterweight",
+   "seed": 142000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Hook Load",
+    "tr": "Kanca Yükü"
+   }
+  },
+  {
+   "index": 43,
+   "region": "steel_crane",
+   "archetype": "hanger",
+   "seed": 143000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Mast",
+    "tr": "Kule Direği"
+   }
+  },
+  {
+   "index": 44,
+   "region": "steel_crane",
+   "archetype": "counterweight",
+   "seed": 144000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Trolley",
+    "tr": "Araba"
+   }
+  },
+  {
+   "index": 45,
+   "region": "steel_crane",
+   "archetype": "hanger",
+   "seed": 145000,
+   "attempts": 60,
+   "minLength": 2,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Balance Arm",
+    "tr": "Denge Kolu"
+   }
+  },
+  {
+   "index": 46,
+   "region": "steel_crane",
+   "archetype": "counterweight",
+   "seed": 146000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Hoist",
+    "tr": "Vinç"
+   }
+  },
+  {
+   "index": 47,
+   "region": "steel_crane",
+   "archetype": "hanger",
+   "seed": 147000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Outrigger",
+    "tr": "Destek Ayağı"
+   }
+  },
+  {
+   "index": 48,
+   "region": "steel_crane",
+   "archetype": "counterweight",
+   "seed": 148000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Gantry",
+    "tr": "Portal"
+   }
+  },
+  {
+   "index": 49,
+   "region": "steel_crane",
+   "archetype": "hanger",
+   "seed": 149000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Ballast",
+    "tr": "Safra"
+   }
+  },
+  {
+   "index": 50,
+   "region": "steel_crane",
+   "archetype": "counterweight",
+   "seed": 150000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Topping Out",
+    "tr": "Tepe Töreni"
+   }
+  },
+  {
+   "index": 51,
+   "region": "counterweight",
+   "archetype": "bridge",
+   "seed": 151000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "First Prop",
+    "tr": "İlk Payanda"
+   },
+   "goal": "placeSupportThenRemove"
+  },
+  {
+   "index": 52,
+   "region": "counterweight",
+   "archetype": "bridge",
+   "seed": 152000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Shore",
+    "tr": "Dayanak"
+   },
+   "goal": "placeSupportThenRemove"
+  },
+  {
+   "index": 53,
+   "region": "counterweight",
+   "archetype": "bridge",
+   "seed": 153000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Under the Load",
+    "tr": "Yükün Altında"
+   },
+   "goal": "placeSupportThenRemove"
+  },
+  {
+   "index": 54,
+   "region": "counterweight",
+   "archetype": "bridge",
+   "seed": 154000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Jack Post",
+    "tr": "Kriko Direği"
+   },
+   "goal": "placeSupportThenRemove"
+  },
+  {
+   "index": 55,
+   "region": "counterweight",
+   "archetype": "bridge",
+   "seed": 155000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 3,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Temporary Works",
+    "tr": "Geçici İşler"
+   },
+   "goal": "placeSupportThenRemove"
+  },
+  {
+   "index": 56,
+   "region": "counterweight",
+   "archetype": "bridge",
+   "seed": 156000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Seesaw",
+    "tr": "Tahterevalli"
+   },
+   "goal": "placeSupportThenRemove"
+  },
+  {
+   "index": 57,
+   "region": "counterweight",
+   "archetype": "bridge",
+   "seed": 157000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Even Keel",
+    "tr": "Dengede"
+   },
+   "goal": "placeSupportThenRemove"
+  },
+  {
+   "index": 58,
+   "region": "counterweight",
+   "archetype": "bridge",
+   "seed": 158000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Pivot",
+    "tr": "Mil"
+   },
+   "goal": "placeSupportThenRemove"
+  },
+  {
+   "index": 59,
+   "region": "counterweight",
+   "archetype": "bridge",
+   "seed": 159000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Spread Load",
+    "tr": "Yayılı Yük"
+   },
+   "goal": "placeSupportThenRemove"
+  },
+  {
+   "index": 60,
+   "region": "counterweight",
+   "archetype": "bridge",
+   "seed": 160000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 1,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Needle Beam",
+    "tr": "İğne Kiriş"
+   },
+   "goal": "placeSupportThenRemove"
+  },
+  {
+   "index": 61,
+   "region": "counterweight",
+   "archetype": "counterweight",
+   "seed": 161000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Fulcrum",
+    "tr": "Dayanak Noktası"
+   }
+  },
+  {
+   "index": 62,
+   "region": "counterweight",
+   "archetype": "bridge",
+   "seed": 162000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Scales",
+    "tr": "Terazi"
+   }
+  },
+  {
+   "index": 63,
+   "region": "counterweight",
+   "archetype": "counterweight",
+   "seed": 163000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Shoring",
+    "tr": "Payandalama"
+   }
+  },
+  {
+   "index": 64,
+   "region": "counterweight",
+   "archetype": "bridge",
+   "seed": 164000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Tip Point",
+    "tr": "Devrilme Noktası"
+   }
+  },
+  {
+   "index": 65,
+   "region": "counterweight",
+   "archetype": "counterweight",
+   "seed": 165000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Counterpoise",
+    "tr": "Karşılık"
+   }
+  },
+  {
+   "index": 66,
+   "region": "counterweight",
+   "archetype": "bridge",
+   "seed": 166000,
+   "attempts": 60,
+   "minLength": 4,
+   "maxLength": 5,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Dead Load",
+    "tr": "Ölü Yük"
+   }
+  },
+  {
+   "index": 67,
+   "region": "counterweight",
+   "archetype": "counterweight",
+   "seed": 167000,
+   "attempts": 60,
+   "minLength": 4,
+   "maxLength": 5,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Live Load",
+    "tr": "Hareketli Yük"
+   }
+  },
+  {
+   "index": 68,
+   "region": "counterweight",
+   "archetype": "bridge",
+   "seed": 168000,
+   "attempts": 60,
+   "minLength": 4,
+   "maxLength": 5,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Propped",
+    "tr": "Desteklenmiş"
+   }
+  },
+  {
+   "index": 69,
+   "region": "counterweight",
+   "archetype": "counterweight",
+   "seed": 169000,
+   "attempts": 60,
+   "minLength": 4,
+   "maxLength": 5,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Equilibrium",
+    "tr": "Denge"
+   }
+  },
+  {
+   "index": 70,
+   "region": "counterweight",
+   "archetype": "bridge",
+   "seed": 170000,
+   "attempts": 60,
+   "minLength": 4,
+   "maxLength": 5,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Moment",
+    "tr": "Moment"
+   }
+  },
+  {
+   "index": 71,
+   "region": "keystone",
+   "archetype": "pyramid",
+   "seed": 171000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Voussoir",
+    "tr": "Kemer Taşı"
+   }
+  },
+  {
+   "index": 72,
+   "region": "keystone",
+   "archetype": "lintel",
+   "seed": 172000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Springing",
+    "tr": "Kemer Ayağı"
+   }
+  },
+  {
+   "index": 73,
+   "region": "keystone",
+   "archetype": "pyramid",
+   "seed": 173000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Crown",
+    "tr": "Tepe"
+   }
+  },
+  {
+   "index": 74,
+   "region": "keystone",
+   "archetype": "lintel",
+   "seed": 174000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Haunch",
+    "tr": "Kemer Omzu"
+   }
+  },
+  {
+   "index": 75,
+   "region": "keystone",
+   "archetype": "pyramid",
+   "seed": 175000,
+   "attempts": 60,
+   "minLength": 3,
+   "maxLength": 4,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Centering",
+    "tr": "Kemer Kalıbı"
+   }
+  },
+  {
+   "index": 76,
+   "region": "keystone",
+   "archetype": "lintel",
+   "seed": 176000,
+   "attempts": 60,
+   "minLength": 4,
+   "maxLength": 5,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Thrust",
+    "tr": "İtki"
+   }
+  },
+  {
+   "index": 77,
+   "region": "keystone",
+   "archetype": "pyramid",
+   "seed": 177000,
+   "attempts": 60,
+   "minLength": 4,
+   "maxLength": 5,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Corbel Vault",
+    "tr": "Bindirme Tonoz"
+   }
+  },
+  {
+   "index": 78,
+   "region": "keystone",
+   "archetype": "lintel",
+   "seed": 178000,
+   "attempts": 60,
+   "minLength": 4,
+   "maxLength": 5,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Abutment",
+    "tr": "Yan Ayak"
+   }
+  },
+  {
+   "index": 79,
+   "region": "keystone",
+   "archetype": "pyramid",
+   "seed": 179000,
+   "attempts": 60,
+   "minLength": 4,
+   "maxLength": 5,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Keystone Set",
+    "tr": "Kilit Yerinde"
+   }
+  },
+  {
+   "index": 80,
+   "region": "keystone",
+   "archetype": "lintel",
+   "seed": 180000,
+   "attempts": 60,
+   "minLength": 4,
+   "maxLength": 5,
+   "slack": 2,
+   "minUnsafe": 0.2,
+   "name": {
+    "en": "Point of Balance",
+    "tr": "Denge Noktası"
+   }
+  }
+ ]
+}

@@ -29,8 +29,9 @@ on:
 permissions:
   contents: write
 
+# Forge runs (dispatch or "[forge:…]" commits) get their own group so later pushes never cancel them.
 concurrency:
-  group: ci-${{ github.ref }}-${{ github.event_name }}
+  group: ci-${{ github.ref }}-${{ (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[forge:')) && github.sha || 'build' }}
   cancel-in-progress: true
 
 jobs:
@@ -68,7 +69,7 @@ jobs:
   ios:
     name: iOS build + tests
     runs-on: macos-15
-    timeout-minutes: ${{ github.event_name == 'workflow_dispatch' && 355 || 90 }}
+    timeout-minutes: ${{ (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[forge:')) && 355 || 90 }}
     steps:
       - uses: actions/checkout@v4
 
@@ -102,6 +103,28 @@ jobs:
           xcodebuild -resolvePackageDependencies -project DengeNoktasi.xcodeproj -scheme DengeNoktasi -clonedSourcePackagesDirPath SourcePackages
           cat DengeNoktasi.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved || true
 
+      - name: Resolve forge mode
+        id: forge
+        env:
+          MSG: ${{ github.event.head_commit.message }}
+        run: |
+          FORGE="${{ inputs.forge }}"; COMMIT="${{ inputs.commit }}"; COUNT="${{ inputs.forge_count }}"
+          SEED="${{ inputs.forge_seed_base }}"; SHARD="${{ inputs.forge_shard }}"
+          TAG=$(printf '%s' "$MSG" | grep -oE '\[forge:[^]]+\]' | head -1 | tr -d '[]' || true)
+          if [ -n "$TAG" ]; then
+            FORGE=$(echo "$TAG" | sed -E 's/^forge:([a-z]+).*/\1/')
+            echo "$TAG" | grep -q ' commit' && COMMIT=true
+            COUNT=$(echo "$TAG" | grep -oE 'count=[0-9]+' | cut -d= -f2)
+            SEED=$(echo "$TAG" | grep -oE 'seed=[0-9]+' | cut -d= -f2)
+            SHARD=$(echo "$TAG" | grep -oE 'shard=[0-9]+/[0-9]+' | cut -d= -f2)
+          fi
+          echo "mode=${FORGE:-none}" >> "$GITHUB_OUTPUT"
+          echo "commit=${COMMIT:-false}" >> "$GITHUB_OUTPUT"
+          echo "count=${COUNT:-1200}" >> "$GITHUB_OUTPUT"
+          echo "seed=${SEED:-9000}" >> "$GITHUB_OUTPUT"
+          echo "shard=${SHARD:-0/1}" >> "$GITHUB_OUTPUT"
+          echo "forge mode: ${FORGE:-none} commit=${COMMIT:-false} count=${COUNT:-1200} seed=${SEED:-9000} shard=${SHARD:-0/1}"
+
       - name: Pick and boot simulator
         id: sim
         timeout-minutes: 15
@@ -112,6 +135,7 @@ jobs:
           xcrun simctl bootstatus "$UDID" -b
 
       - name: Build for testing
+        id: build
         timeout-minutes: 30
         run: |
           set -o pipefail
@@ -123,6 +147,7 @@ jobs:
 
       - name: Unit tests (simulator)
         timeout-minutes: 20
+        continue-on-error: ${{ steps.forge.outputs.mode != 'none' }}
         run: |
           set -o pipefail
           xcodebuild test-without-building -project DengeNoktasi.xcodeproj -scheme DengeNoktasi \
@@ -131,7 +156,7 @@ jobs:
 
       - name: LevelForge smoke
         timeout-minutes: 30
-        if: ${{ github.event_name != 'workflow_dispatch' || inputs.forge == 'none' || inputs.forge == 'smoke' }}
+        if: ${{ steps.forge.outputs.mode == 'none' || steps.forge.outputs.mode == 'smoke' }}
         run: |
           rc=0
           xcodebuild test -project DengeNoktasi.xcodeproj -scheme LevelForge \
@@ -141,19 +166,20 @@ jobs:
           grep -E "\[forge\]|error:|failed|passed|Executed" forge.log | head -300 || true
           exit $rc
 
-      - name: LevelForge (${{ inputs.forge }})
-        if: ${{ github.event_name == 'workflow_dispatch' && inputs.forge != 'none' && inputs.forge != 'smoke' }}
+      - name: LevelForge (${{ steps.forge.outputs.mode }})
+        id: forgerun
+        if: ${{ !cancelled() && steps.build.outcome == 'success' && steps.forge.outputs.mode != 'none' && steps.forge.outputs.mode != 'smoke' }}
         env:
           TEST_RUNNER_FORGE_OUT: ${{ github.workspace }}/forge-out
-          TEST_RUNNER_FORGE_COUNT: ${{ inputs.forge_count }}
-          TEST_RUNNER_FORGE_SEED_BASE: ${{ inputs.forge_seed_base }}
-          TEST_RUNNER_FORGE_SHARD: ${{ inputs.forge_shard }}
+          TEST_RUNNER_FORGE_COUNT: ${{ steps.forge.outputs.count }}
+          TEST_RUNNER_FORGE_SEED_BASE: ${{ steps.forge.outputs.seed }}
+          TEST_RUNNER_FORGE_SHARD: ${{ steps.forge.outputs.shard }}
           TEST_RUNNER_FORGE_PLAN: ${{ github.workspace }}/Tools/LevelForge/curation-plan.json
         timeout-minutes: 340
         run: |
           rc=0
           mkdir -p forge-out
-          case "${{ inputs.forge }}" in
+          case "${{ steps.forge.outputs.mode }}" in
             validate) T="-only-testing:LevelForgeTests/ForgeRunner/testValidateShippedLevels" ;;
             curated) T="-only-testing:LevelForgeTests/ForgeRunner/testAnnotateCurated" ;;
             curate) T="-only-testing:LevelForgeTests/ForgeRunner/testAnnotateCurated -only-testing:LevelForgeTests/ForgeRunner/testCuratePlan" ;;
@@ -168,7 +194,7 @@ jobs:
           exit $rc
 
       - name: Commit forge output
-        if: ${{ github.event_name == 'workflow_dispatch' && inputs.commit == 'true' && inputs.forge != 'none' }}
+        if: ${{ !cancelled() && steps.forgerun.outcome == 'success' && steps.forge.outputs.commit == 'true' }}
         run: |
           set -e
           if [ -d forge-out/curated ]; then cp forge-out/curated/*.json App/Resources/Levels/curated/ 2>/dev/null || true; fi
@@ -179,11 +205,11 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add App/Resources/Levels Tools/LevelForge/reports
           if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
-          git commit -m "LevelForge: ${{ inputs.forge }} output (shard ${{ inputs.forge_shard }}, seeds from ${{ inputs.forge_seed_base }})"
+          git commit -m "LevelForge: ${{ steps.forge.outputs.mode }} output (shard ${{ steps.forge.outputs.shard }}, seeds from ${{ steps.forge.outputs.seed }})"
           for i in 1 2 3 4; do git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break; sleep $((i * 5)); done
 
       - name: Upload forge output
-        if: ${{ always() && github.event_name == 'workflow_dispatch' && inputs.forge != 'none' }}
+        if: ${{ always() && steps.forge.outputs.mode != 'none' }}
         uses: actions/upload-artifact@v4
         with:
           name: forge-out
