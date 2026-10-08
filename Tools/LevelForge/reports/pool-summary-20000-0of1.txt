@@ -1,0 +1,7 @@
+candidates: 2400 (shard 0/1), accepted: 1026
+rejections: inconsistent=52, initialUnstable=52, narrowMargin=525, simulationError=180, tooEasy=40, tooShort=280, trivial=5, unsolvable=240
+archetypes: bridge 309/337, counterweight 148/359, hanger 0/342, lintel 33/350, pyramid 35/336, table 167/333, tower 334/343
+mean margin: 21.32
+solution lengths: [(key: 2, value: 298), (key: 3, value: 414), (key: 4, value: 158), (key: 5, value: 128), (key: 6, value: 27), (key: 7, value: 1)]
+seconds: 2275, frames: 55595228, evaluations: 453924
+fingerprint: spk-1-60hz-f029
