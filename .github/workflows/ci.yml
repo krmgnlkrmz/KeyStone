@@ -31,6 +31,25 @@ jobs:
       - uses: actions/checkout@v4
       - run: swift test --package-path Packages/BalanceCore
 
+  # Prints the resolved Google Mobile Ads / UMP surface and Google's SKAdNetwork list.
+  # Kept as its own job so the whole report fits in a short log.
+  sdk-report:
+    name: Ads SDK report
+    runs-on: macos-15
+    timeout-minutes: 20
+    if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[sdk-report]') }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: brew install xcodegen
+      - run: |
+          XC=$(ls -d /Applications/Xcode_*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$XC"
+          cp Config/Release.example.xcconfig Config/Release.xcconfig
+          xcodegen generate
+          xcodebuild -resolvePackageDependencies -project DengeNoktasi.xcodeproj -scheme DengeNoktasi -clonedSourcePackagesDirPath SourcePackages > /dev/null
+          cat DengeNoktasi.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+          ./scripts/ci-sdk-report.sh SourcePackages
+
   ios:
     name: iOS build + tests
     runs-on: macos-15
@@ -64,9 +83,6 @@ jobs:
         run: |
           xcodebuild -resolvePackageDependencies -project DengeNoktasi.xcodeproj -scheme DengeNoktasi -clonedSourcePackagesDirPath SourcePackages
           cat DengeNoktasi.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved || true
-
-      - name: Ads SDK surface (for docs/ads-policy.md)
-        run: ./scripts/ci-sdk-report.sh SourcePackages || true
 
       - name: Pick simulator
         id: sim

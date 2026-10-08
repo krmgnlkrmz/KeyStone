@@ -1,0 +1,135 @@
+import BalanceCore
+import CoreGraphics
+import Foundation
+import Metal
+import SpriteKit
+
+/// Frame-timing profile for a headless run. `dts` repeats; each entry is one simulated frame.
+public struct StepProfile: Sendable, Hashable, CustomStringConvertible {
+    public var name: String
+    public var dts: [Double]
+
+    public init(name: String, dts: [Double]) {
+        self.name = name
+        self.dts = dts
+    }
+
+    public var description: String { name }
+
+    /// What the game runs: a steady 60 Hz.
+    public static let standard = StepProfile(name: "60hz", dts: [1.0 / 60])
+    /// ProMotion panel stepping at 120 Hz.
+    public static let promotion = StepProfile(name: "120hz", dts: [1.0 / 120])
+    /// A dropped frame every seventh frame.
+    public static let dropEvery7 = StepProfile(name: "drop7", dts: Array(repeating: 1.0 / 60, count: 6) + [2.0 / 60])
+    /// Display-link jitter around 60 Hz.
+    public static let jitter = StepProfile(name: "jitter", dts: [0.0158, 0.0175, 0.0162, 0.0171, 0.0167, 0.0160, 0.0174])
+    /// A struggling device at 45 Hz.
+    public static let slow = StepProfile(name: "45hz", dts: [1.0 / 45])
+
+    /// The five validation runs (§4.2 rule 4).
+    public static let validationSet: [StepProfile] = [.standard, .promotion, .dropEvery7, .jitter, .slow]
+}
+
+public enum HeadlessError: Error, CustomStringConvertible {
+    case noMetalDevice
+    case physicsNotStepping
+    case stalled(String)
+    case rejectedMove(String)
+
+    public var description: String {
+        switch self {
+        case .noMetalDevice: return "no Metal device for SKRenderer"
+        case .physicsNotStepping: return "SKRenderer.update does not advance physics on this system"
+        case let .stalled(s): return "simulation stalled: \(s)"
+        case let .rejectedMove(m): return "move rejected: \(m)"
+        }
+    }
+}
+
+/// Runs `SimulationScene` without a view, as fast as the CPU allows, with exact frame times.
+///
+/// SpriteKit has no public "step the world by dt" call, but `SKRenderer.update(atTime:)` runs one
+/// full frame cycle (update → actions → physics → didSimulatePhysics) for the time we pass in. The
+/// game scene runs the very same frame cycle from SKView at 60 Hz, so the decision code is shared and
+/// only the clock differs. `selfTest()` checks the assumption on the running system.
+@MainActor
+public final class HeadlessSimulator {
+    public struct Job: Sendable {
+        public var level: Level
+        /// Moves already made (rebuilt from scratch, then a quiet settle).
+        public var base: MoveLog
+        /// The move to evaluate, or nil to evaluate the base state alone.
+        public var move: Move.Kind?
+        public var profile: StepProfile
+        /// Recording tail after collapse. The solver only needs enough frames to blame a piece.
+        public var collapseTail: Double
+
+        public init(level: Level, base: MoveLog = MoveLog(), move: Move.Kind?, profile: StepProfile = .standard,
+                    collapseTail: Double = 0.6) {
+            self.level = level; self.base = base; self.move = move; self.profile = profile; self.collapseTail = collapseTail
+        }
+    }
+
+    private let renderer: SKRenderer
+    private var clock: TimeInterval = 1000
+    public private(set) var framesSimulated = 0
+    public private(set) var jobsRun = 0
+
+    public init() throws {
+        guard let device = MTLCreateSystemDefaultDevice() else { throw HeadlessError.noMetalDevice }
+        renderer = SKRenderer(device: device)
+        renderer.ignoresSiblingOrder = true
+        renderer.shouldCullNonVisibleNodes = false
+    }
+
+    /// Drops a box for half a second and checks it fell.
+    public func selfTest() throws {
+        let probe = Level(id: "probe", pack: .pool, region: Region.woodScaffold.rawValue, index: 0, floorY: -1000,
+                          goal: Goal(type: .removeTargetsKeepStanding, targetPieceIds: [], moveBudget: 1, starThresholds: [1, 1, 1]),
+                          pieces: [Piece(id: "box", material: .stone, shape: .rect(w: 20, h: 20), position: .zero)])
+        let scene = SimulationScene(level: probe, size: CGSize(width: 400, height: 400))
+        renderer.scene = scene
+        scene.load(log: MoveLog())
+        for _ in 0..<30 { step(scene, dt: 1.0 / 60) }
+        guard let y = scene.structure?.pose("box")?.y, y < -10 else { throw HeadlessError.physicsNotStepping }
+        renderer.scene = nil
+    }
+
+    public func run(_ job: Job) throws -> EvaluationResult {
+        let scene = SimulationScene(level: job.level, size: CGSize(width: 600, height: 800))
+        scene.collapseTail = job.collapseTail
+        renderer.scene = scene
+        defer { renderer.scene = nil; jobsRun += 1 }
+
+        // One warm-up frame so SpriteKit's own clock starts before the structure exists.
+        var frame = 0
+        step(scene, dt: job.profile.dts[0])
+        scene.load(log: job.base)
+
+        let maxFrames = Int((PhysicsConstants.initialSettle + PhysicsConstants.maxSimSeconds + 2) * 240)
+        while scene.phase == .presettling {
+            step(scene, dt: job.profile.dts[frame % job.profile.dts.count]); frame += 1
+            if frame > maxFrames { throw HeadlessError.stalled("presettle \(job.level.id)") }
+        }
+        guard scene.phase == .ready else { throw HeadlessError.stalled("not ready after presettle") }
+
+        if let move = job.move {
+            guard scene.apply(move) else { throw HeadlessError.rejectedMove("\(move.token) in \(job.level.id) @ \(job.base.stateKey)") }
+        } else {
+            scene.evaluateWithoutMove()
+        }
+        while scene.phase == .evaluating {
+            step(scene, dt: job.profile.dts[frame % job.profile.dts.count]); frame += 1
+            if frame > maxFrames { throw HeadlessError.stalled("window \(job.level.id)") }
+        }
+        guard let result = scene.lastResult else { throw HeadlessError.stalled("no result") }
+        return result
+    }
+
+    private func step(_ scene: SimulationScene, dt: Double) {
+        clock += dt
+        renderer.update(atTime: clock)
+        framesSimulated += 1
+    }
+}

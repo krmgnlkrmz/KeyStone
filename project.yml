@@ -58,6 +58,7 @@ targets:
       - target: DailyWidget
       - sdk: StoreKit.framework
       - sdk: GameKit.framework
+      - sdk: JavaScriptCore.framework
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID)
@@ -68,7 +69,6 @@ targets:
         CODE_SIGN_ENTITLEMENTS: App/DengeNoktasi.entitlements
         CODE_SIGN_STYLE: Automatic
         ENABLE_PREVIEWS: YES
-        OTHER_LDFLAGS: $(inherited) -ObjC
 
   DailyWidget:
     type: app-extension
