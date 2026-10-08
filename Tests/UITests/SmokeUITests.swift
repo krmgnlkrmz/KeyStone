@@ -30,7 +30,8 @@ final class SmokeUITests: XCTestCase {
     }
 
     private func tapPiece(_ id: String, file: StaticString = #filePath, line: UInt = #line) {
-        let piece = app.otherElements["piece.\(id)"].firstMatch
+        // Pieces are invisible accessibility buttons over the SpriteKit view; match by identifier, any type.
+        let piece = app.descendants(matching: .any).matching(identifier: "piece.\(id)").firstMatch
         XCTAssertTrue(piece.waitForExistence(timeout: 8), "piece \(id) not found", file: file, line: line)
         piece.tap()
     }

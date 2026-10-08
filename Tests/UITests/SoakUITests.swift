@@ -64,11 +64,11 @@ final class SoakUITests: XCTestCase {
             for token in level.path {
                 let element: XCUIElement
                 if token.hasPrefix("+sup@") {
-                    element = app.otherElements["support.\(token)"].firstMatch
+                    element = app.descendants(matching: .any).matching(identifier: "support.\(token)").firstMatch
                     XCTAssertTrue(element.waitForExistence(timeout: 15), "level \(level.index): support spot \(token) not offered")
                     element.tap()
                 } else {
-                    element = app.otherElements["piece.\(token)"].firstMatch
+                    element = app.descendants(matching: .any).matching(identifier: "piece.\(token)").firstMatch
                     XCTAssertTrue(element.waitForExistence(timeout: 15), "level \(level.index): piece \(token) not found")
                     element.tap()   // select
                     element.tap()   // remove
