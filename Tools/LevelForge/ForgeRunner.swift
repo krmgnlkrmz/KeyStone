@@ -250,7 +250,8 @@ final class ForgeRunner: XCTestCase {
         encoder.outputFormatting = [.sortedKeys]
         for (i, start) in stride(from: 0, to: accepted.count, by: 100).enumerated() {
             let chunk = Array(accepted[start..<min(start + 100, accepted.count)])
-            let name = String(format: "pool-%02d-%03d.json", shard.index, i)
+            // Seed base in the name: runs with different bases never overwrite each other.
+            let name = "pool-\(base)-\(shard.index)of\(shard.of)-\(i).json"
             try encoder.encode(chunk).write(to: dir.appendingPathComponent(name))
         }
         let summary = """
@@ -263,6 +264,6 @@ final class ForgeRunner: XCTestCase {
         fingerprint: \(PhysicsConstants.fingerprint)
         """
         log(summary)
-        try summary.write(to: outDir.appendingPathComponent("pool-summary-\(shard.index).txt"), atomically: true, encoding: .utf8)
+        try summary.write(to: outDir.appendingPathComponent("pool-summary-\(base)-\(shard.index)of\(shard.of).txt"), atomically: true, encoding: .utf8)
     }
 }
