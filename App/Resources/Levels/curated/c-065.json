@@ -1,0 +1,337 @@
+{
+  "annotation" : {
+    "difficulty" : 5.16,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 25.76,
+    "solutionPath" : [
+      "w2",
+      "w3",
+      "w1",
+      "w4"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "w2",
+          "w4"
+        ],
+        "severity" : {
+          "beam1" : 4.577,
+          "column1" : 4.08,
+          "pad1" : 1.118,
+          "w1" : 6.811,
+          "w2" : 0.037,
+          "w3" : 8.069,
+          "w4" : 0.037
+        },
+        "state" : "",
+        "unsafe" : {
+          "beam1" : "pad1",
+          "column1" : "beam1",
+          "pad1" : "beam1",
+          "w1" : "beam1",
+          "w3" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "w3",
+          "w4"
+        ],
+        "severity" : {
+          "beam1" : 4.712,
+          "column1" : 4.148,
+          "pad1" : 1.116,
+          "w1" : 9.514,
+          "w3" : 0.039,
+          "w4" : 0.04
+        },
+        "state" : "w2",
+        "unsafe" : {
+          "beam1" : "w1",
+          "column1" : "pad1",
+          "pad1" : "beam1",
+          "w1" : "pad1"
+        }
+      },
+      {
+        "safe" : [
+          "w1",
+          "w2"
+        ],
+        "severity" : {
+          "beam1" : 4.578,
+          "column1" : 4.071,
+          "pad1" : 1.118,
+          "w1" : 0.037,
+          "w2" : 0.037,
+          "w3" : 9.014
+        },
+        "state" : "w4",
+        "unsafe" : {
+          "beam1" : "w1",
+          "column1" : "pad1",
+          "pad1" : "beam1",
+          "w3" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "w1"
+        ],
+        "severity" : {
+          "beam1" : 4.577,
+          "column1" : 4.062,
+          "pad1" : 1.118,
+          "w1" : 0.037,
+          "w4" : 8.242
+        },
+        "state" : "w2,w3",
+        "unsafe" : {
+          "beam1" : "pad1",
+          "column1" : "pad1",
+          "pad1" : "beam1",
+          "w4" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 4.579,
+          "column1" : 4.063,
+          "pad1" : 1.118,
+          "w1" : 8.461,
+          "w3" : 8.247
+        },
+        "state" : "w2,w4",
+        "unsafe" : {
+          "beam1" : "pad1",
+          "column1" : "pad1",
+          "pad1" : "column1",
+          "w1" : "beam1",
+          "w3" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 4.581,
+          "column1" : 4.064,
+          "pad1" : 1.118,
+          "w2" : 8.394,
+          "w3" : 8.468
+        },
+        "state" : "w1,w4",
+        "unsafe" : {
+          "beam1" : "pad1",
+          "column1" : "pad1",
+          "pad1" : "beam1",
+          "w2" : "beam1",
+          "w3" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 4.58,
+          "column1" : 4.063,
+          "pad1" : 1.159,
+          "w4" : 0.036
+        },
+        "state" : "w1,w2,w3",
+        "unsafe" : {
+          "beam1" : "pad1",
+          "column1" : "pad1",
+          "pad1" : "beam1"
+        },
+        "win" : [
+          "w4"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 6,
+    "starThresholds" : [
+      4,
+      5,
+      6
+    ],
+    "targetPieceIds" : [
+      "w1",
+      "w2",
+      "w3",
+      "w4"
+    ],
+    "type" : "removeTargetsKeepStanding"
+  },
+  "gravity" : -9.8,
+  "id" : "c-065",
+  "index" : 65,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Counterpoise",
+    "tr" : "Karşılık"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : false,
+      "id" : "column1",
+      "material" : "steel",
+      "position" : {
+        "x" : 0,
+        "y" : -137.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 105,
+        "type" : "rect",
+        "w" : 22
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam1",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : -77
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 16,
+        "type" : "rect",
+        "w" : 279
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "w1",
+      "material" : "stone",
+      "position" : {
+        "x" : -114,
+        "y" : -55
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 28,
+        "type" : "rect",
+        "w" : 28
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "w2",
+      "material" : "stone",
+      "position" : {
+        "x" : -68,
+        "y" : -53.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 31,
+        "type" : "rect",
+        "w" : 31
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "w3",
+      "material" : "stone",
+      "position" : {
+        "x" : 107,
+        "y" : -53
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 32,
+        "type" : "rect",
+        "w" : 32
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "w4",
+      "material" : "stone",
+      "position" : {
+        "x" : 47,
+        "y" : -53.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 31,
+        "type" : "rect",
+        "w" : 31
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "pad1",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : -54
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 30,
+        "type" : "rect",
+        "w" : 30
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "k",
+      "material" : "brass",
+      "position" : {
+        "x" : 0,
+        "y" : -19
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "points" : [
+          [
+            -18,
+            -20
+          ],
+          [
+            18,
+            -20
+          ],
+          [
+            30,
+            20
+          ],
+          [
+            -30,
+            20
+          ]
+        ],
+        "type" : "polygon"
+      }
+    }
+  ],
+  "region" : "counterweight",
+  "schema" : 1,
+  "seed" : 165007,
+  "supportsAllowed" : 0
+}

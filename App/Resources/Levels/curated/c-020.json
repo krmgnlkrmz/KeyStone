@@ -1,125 +1,95 @@
 {
   "annotation" : {
-    "difficulty" : 3,
+    "difficulty" : 3.56,
     "engineFingerprint" : "spk-1-60hz-f029",
-    "marginRatio" : 3.34,
+    "marginRatio" : 1.85,
     "solutionPath" : [
-      "cl",
-      "cr",
-      "sp"
+      "block1",
+      "block2",
+      "beam1"
     ],
     "stateMoves" : [
       {
         "safe" : [
-          "cl",
-          "cr"
+          "block1",
+          "block2"
         ],
         "severity" : {
-          "cl" : 0.189,
-          "cr" : 0.188,
-          "pl" : 3.097,
-          "pr" : 3.097,
-          "sp" : 4.478
+          "beam1" : 5.709,
+          "block1" : 0.029,
+          "block2" : 0.022,
+          "pillar1" : 7.067,
+          "pillar2" : 7.778
         },
         "state" : "",
         "unsafe" : {
-          "pl" : "cl",
-          "pr" : "cr",
-          "sp" : "pr"
+          "beam1" : "block1",
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
         }
       },
       {
         "safe" : [
-          "pl",
-          "cr"
+          "block2"
         ],
         "severity" : {
-          "cr" : 0.208,
-          "pl" : 0.208,
-          "pr" : 3.097,
-          "sp" : 9.196
+          "beam1" : 5.661,
+          "block2" : 0.029,
+          "pillar1" : 6.694,
+          "pillar2" : 4.275
         },
-        "state" : "cl",
+        "state" : "block1",
         "unsafe" : {
-          "pr" : "cr",
-          "sp" : "pr"
+          "beam1" : "block2",
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
         }
       },
       {
         "safe" : [
-          "pr",
-          "cl"
+          "block1"
         ],
         "severity" : {
-          "cl" : 0.208,
-          "pl" : 3.097,
-          "pr" : 0.208,
-          "sp" : 10.251
+          "beam1" : 5.661,
+          "block1" : 0.013,
+          "pillar1" : 4.918,
+          "pillar2" : 6.701
         },
-        "state" : "cr",
+        "state" : "block2",
         "unsafe" : {
-          "pl" : "cl",
-          "sp" : "pl"
+          "beam1" : "block1",
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
         }
       },
       {
         "safe" : [
-          "cr"
-        ],
-        "severity" : {
-          "cr" : 0.208,
-          "pr" : 3.097,
-          "sp" : 5.423
-        },
-        "state" : "cl,pl",
-        "unsafe" : {
-          "pr" : "cr",
-          "sp" : "pr"
-        }
-      },
-      {
-        "safe" : [
-          "pl",
-          "pr"
-        ],
-        "severity" : {
-          "pl" : 0.188,
-          "pr" : 0.208,
-          "sp" : 0
-        },
-        "state" : "cl,cr",
-        "unsafe" : {
 
+        ],
+        "severity" : {
+          "beam1" : 0.004,
+          "pillar1" : 1.351,
+          "pillar2" : 1.371
+        },
+        "state" : "block1,block2",
+        "unsafe" : {
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
         },
         "win" : [
-          "sp"
+          "beam1"
         ]
-      },
-      {
-        "safe" : [
-          "cl"
-        ],
-        "severity" : {
-          "cl" : 0.208,
-          "pl" : 3.097,
-          "sp" : 8.552
-        },
-        "state" : "cr,pr",
-        "unsafe" : {
-          "pl" : "cl",
-          "sp" : "pl"
-        }
       }
     ],
     "verifiedAt" : "2026-10-08"
   },
   "floorY" : -190,
   "goal" : {
-    "moveBudget" : 3,
+    "moveBudget" : 4,
     "starThresholds" : [
-      2,
       3,
-      3
+      4,
+      4
     ],
     "targetPieceIds" : [
       "k"
@@ -127,127 +97,127 @@
     "type" : "dropOnlyTarget"
   },
   "gravity" : -9.8,
-  "id" : "c-007",
-  "index" : 7,
+  "id" : "c-020",
+  "index" : 20,
   "joints" : [
 
   ],
   "name" : {
-    "en" : "Twin Piers",
-    "tr" : "İkiz Ayak"
+    "en" : "Last Arch",
+    "tr" : "Son Kemer"
   },
   "pack" : "curated",
   "pieces" : [
     {
       "fixed" : true,
-      "id" : "bl",
+      "id" : "base1",
       "material" : "stone",
       "position" : {
-        "x" : -90,
-        "y" : -165
+        "x" : -89,
+        "y" : -163.5
       },
       "removable" : false,
       "rotation" : 0,
       "shape" : {
-        "h" : 50,
+        "h" : 53,
         "type" : "rect",
-        "w" : 60
+        "w" : 67
       }
     },
     {
       "fixed" : true,
-      "id" : "br",
+      "id" : "base2",
       "material" : "stone",
       "position" : {
-        "x" : 90,
-        "y" : -165
+        "x" : 89,
+        "y" : -163.5
       },
       "removable" : false,
       "rotation" : 0,
       "shape" : {
-        "h" : 50,
+        "h" : 53,
         "type" : "rect",
-        "w" : 60
+        "w" : 67
       }
     },
     {
       "fixed" : false,
-      "id" : "pl",
+      "id" : "pillar1",
       "material" : "wood",
       "position" : {
-        "x" : -90,
-        "y" : -100
+        "x" : -89,
+        "y" : -99
       },
       "removable" : true,
       "rotation" : 0,
       "shape" : {
-        "h" : 80,
+        "h" : 76,
         "type" : "rect",
         "w" : 28
       }
     },
     {
       "fixed" : false,
-      "id" : "pr",
-      "material" : "wood",
+      "id" : "pillar2",
+      "material" : "stone",
       "position" : {
-        "x" : 90,
-        "y" : -100
+        "x" : 89,
+        "y" : -99
       },
       "removable" : true,
       "rotation" : 0,
       "shape" : {
-        "h" : 80,
+        "h" : 76,
         "type" : "rect",
         "w" : 28
       }
     },
     {
       "fixed" : false,
-      "id" : "cl",
-      "material" : "stone",
-      "position" : {
-        "x" : -77,
-        "y" : -45
-      },
-      "removable" : true,
-      "rotation" : 0,
-      "shape" : {
-        "h" : 30,
-        "type" : "rect",
-        "w" : 74
-      }
-    },
-    {
-      "fixed" : false,
-      "id" : "cr",
-      "material" : "stone",
-      "position" : {
-        "x" : 77,
-        "y" : -45
-      },
-      "removable" : true,
-      "rotation" : 0,
-      "shape" : {
-        "h" : 30,
-        "type" : "rect",
-        "w" : 74
-      }
-    },
-    {
-      "fixed" : false,
-      "id" : "sp",
-      "material" : "steel",
+      "id" : "beam1",
+      "material" : "wood",
       "position" : {
         "x" : 0,
-        "y" : -110
+        "y" : -51.5
       },
       "removable" : true,
       "rotation" : 0,
       "shape" : {
-        "h" : 160,
+        "h" : 19,
         "type" : "rect",
-        "w" : 14
+        "w" : 246
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block1",
+      "material" : "stone",
+      "position" : {
+        "x" : -29,
+        "y" : -23
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 38,
+        "type" : "rect",
+        "w" : 29
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block2",
+      "material" : "stone",
+      "position" : {
+        "x" : 29,
+        "y" : -23
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 38,
+        "type" : "rect",
+        "w" : 29
       }
     },
     {
@@ -256,34 +226,35 @@
       "material" : "brass",
       "position" : {
         "x" : 0,
-        "y" : -10
+        "y" : 16.5
       },
       "removable" : false,
       "rotation" : 0,
       "shape" : {
         "points" : [
           [
-            -42,
-            -20
+            -29.7,
+            -20.5
           ],
           [
-            42,
-            -20
+            29.7,
+            -20.5
           ],
           [
-            70,
-            20
+            49.5,
+            20.5
           ],
           [
-            -70,
-            20
+            -49.5,
+            20.5
           ]
         ],
         "type" : "polygon"
       }
     }
   ],
-  "region" : "wood_scaffold",
+  "region" : "stone_arch",
   "schema" : 1,
+  "seed" : 120031,
   "supportsAllowed" : 0
 }

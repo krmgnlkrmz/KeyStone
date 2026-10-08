@@ -1,0 +1,377 @@
+{
+  "annotation" : {
+    "difficulty" : 5.02,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 2.35,
+    "solutionPath" : [
+      "w1",
+      "w3",
+      "w2",
+      "w4"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "w1",
+          "w2",
+          "w4"
+        ],
+        "severity" : {
+          "beam1" : 6.461,
+          "column1" : 3.589,
+          "pad1" : 2.188,
+          "w1" : 0.422,
+          "w2" : 0.42,
+          "w3" : 6.164,
+          "w4" : 0.345
+        },
+        "state" : "",
+        "unsafe" : {
+          "beam1" : "column1",
+          "column1" : "beam1",
+          "pad1" : "w4",
+          "w3" : "w1"
+        }
+      },
+      {
+        "safe" : [
+          "w3",
+          "w4"
+        ],
+        "severity" : {
+          "beam1" : 6.685,
+          "column1" : 3.581,
+          "pad1" : 2,
+          "w2" : 7.762,
+          "w3" : 0.414,
+          "w4" : 0.346
+        },
+        "state" : "w1",
+        "unsafe" : {
+          "beam1" : "column1",
+          "column1" : "beam1",
+          "pad1" : "w4",
+          "w2" : "pad1"
+        }
+      },
+      {
+        "safe" : [
+          "w3",
+          "w4"
+        ],
+        "severity" : {
+          "beam1" : 6.484,
+          "column1" : 4.106,
+          "pad1" : 4.188,
+          "w1" : 7.813,
+          "w3" : 0.413,
+          "w4" : 0.346
+        },
+        "state" : "w2",
+        "unsafe" : {
+          "beam1" : "column1",
+          "column1" : "beam1",
+          "pad1" : "w4",
+          "w1" : "pad1"
+        }
+      },
+      {
+        "safe" : [
+          "w1",
+          "w2"
+        ],
+        "severity" : {
+          "beam1" : 4.18,
+          "column1" : 3.617,
+          "pad1" : 1.134,
+          "w1" : 0.035,
+          "w2" : 0.035,
+          "w3" : 9.789
+        },
+        "state" : "w4",
+        "unsafe" : {
+          "beam1" : "w3",
+          "column1" : "pad1",
+          "pad1" : "beam1",
+          "w3" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "w2"
+        ],
+        "severity" : {
+          "beam1" : 6.621,
+          "column1" : 3.577,
+          "pad1" : 2.504,
+          "w2" : 0.407,
+          "w4" : 8.177
+        },
+        "state" : "w1,w3",
+        "unsafe" : {
+          "beam1" : "column1",
+          "column1" : "w4",
+          "pad1" : "w4",
+          "w4" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 4.104,
+          "column1" : 3.61,
+          "pad1" : 1.133,
+          "w2" : 8.591,
+          "w3" : 8.568
+        },
+        "state" : "w1,w4",
+        "unsafe" : {
+          "beam1" : "w2",
+          "column1" : "pad1",
+          "pad1" : "beam1",
+          "w2" : "beam1",
+          "w3" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "w1"
+        ],
+        "severity" : {
+          "beam1" : 6.51,
+          "column1" : 4.212,
+          "pad1" : 5.187,
+          "w1" : 0.406,
+          "w4" : 7.98
+        },
+        "state" : "w2,w3",
+        "unsafe" : {
+          "beam1" : "column1",
+          "column1" : "beam1",
+          "pad1" : "w4",
+          "w4" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 4.179,
+          "column1" : 3.604,
+          "pad1" : 1.133,
+          "w1" : 8.591,
+          "w3" : 8.538
+        },
+        "state" : "w2,w4",
+        "unsafe" : {
+          "beam1" : "w1",
+          "column1" : "pad1",
+          "pad1" : "beam1",
+          "w1" : "beam1",
+          "w3" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 6.387,
+          "column1" : 4.434,
+          "pad1" : 4.232,
+          "w4" : 0.344
+        },
+        "state" : "w1,w2,w3",
+        "unsafe" : {
+          "beam1" : "column1",
+          "column1" : "beam1",
+          "pad1" : "w4"
+        },
+        "win" : [
+          "w4"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 5,
+    "starThresholds" : [
+      4,
+      5,
+      5
+    ],
+    "targetPieceIds" : [
+      "w1",
+      "w2",
+      "w3",
+      "w4"
+    ],
+    "type" : "removeTargetsKeepStanding"
+  },
+  "gravity" : -9.8,
+  "id" : "c-050",
+  "index" : 50,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Topping Out",
+    "tr" : "Tepe Töreni"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : false,
+      "id" : "column1",
+      "material" : "steel",
+      "position" : {
+        "x" : 0,
+        "y" : -144
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 92,
+        "type" : "rect",
+        "w" : 23
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam1",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : -90
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 16,
+        "type" : "rect",
+        "w" : 246
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "w1",
+      "material" : "stone",
+      "position" : {
+        "x" : -99,
+        "y" : -69.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 25,
+        "type" : "rect",
+        "w" : 25
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "w2",
+      "material" : "stone",
+      "position" : {
+        "x" : -50,
+        "y" : -65
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 34,
+        "type" : "rect",
+        "w" : 34
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "w3",
+      "material" : "stone",
+      "position" : {
+        "x" : 107,
+        "y" : -67.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 29,
+        "type" : "rect",
+        "w" : 29
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "w4",
+      "material" : "stone",
+      "position" : {
+        "x" : 26,
+        "y" : -65
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 34,
+        "type" : "rect",
+        "w" : 34
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "pad1",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : -67
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 30,
+        "type" : "rect",
+        "w" : 30
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "k",
+      "material" : "brass",
+      "position" : {
+        "x" : 0,
+        "y" : -32
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "points" : [
+          [
+            -18,
+            -20
+          ],
+          [
+            18,
+            -20
+          ],
+          [
+            30,
+            20
+          ],
+          [
+            -30,
+            20
+          ]
+        ],
+        "type" : "polygon"
+      }
+    }
+  ],
+  "region" : "steel_crane",
+  "schema" : 1,
+  "seed" : 150011,
+  "supportsAllowed" : 0
+}

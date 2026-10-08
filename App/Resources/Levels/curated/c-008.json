@@ -1,0 +1,342 @@
+{
+  "annotation" : {
+    "difficulty" : 1.41,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 2.64,
+    "solutionPath" : [
+      "post2",
+      "post3"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "post2",
+          "post3",
+          "post4",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 6.249,
+          "load1" : 0.031,
+          "post1" : 5.366,
+          "post2" : 0.03,
+          "post3" : 0.032,
+          "post4" : 0.054
+        },
+        "state" : "",
+        "unsafe" : {
+          "beam1" : "post1",
+          "post1" : "load1"
+        }
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 6.533,
+          "load1" : 0.033,
+          "post1" : 6.096,
+          "post3" : 0.075,
+          "post4" : 0.03
+        },
+        "state" : "post2",
+        "unsafe" : {
+          "beam1" : "post1",
+          "post1" : "beam1"
+        },
+        "win" : [
+          "post3",
+          "post4"
+        ]
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 6.27,
+          "load1" : 0.033,
+          "post1" : 5.44,
+          "post2" : 0.031,
+          "post4" : 0.033
+        },
+        "state" : "post3",
+        "unsafe" : {
+          "beam1" : "post1",
+          "post1" : "load1"
+        },
+        "win" : [
+          "post2",
+          "post4"
+        ]
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 6.266,
+          "load1" : 0.033,
+          "post1" : 5.429,
+          "post2" : 0.033,
+          "post3" : 0.03
+        },
+        "state" : "post4",
+        "unsafe" : {
+          "beam1" : "post1",
+          "post1" : "load1"
+        },
+        "win" : [
+          "post2",
+          "post3"
+        ]
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "post4",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.035,
+          "post1" : 0.03,
+          "post2" : 0.03,
+          "post3" : 0.157,
+          "post4" : 0.033
+        },
+        "state" : "load1",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.036,
+          "post1" : 2.154,
+          "post3" : 0.41,
+          "post4" : 0.436
+        },
+        "state" : "load1,post2",
+        "unsafe" : {
+          "post1" : "post3"
+        },
+        "win" : [
+          "post3",
+          "post4"
+        ]
+      },
+      {
+        "safe" : [
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.033,
+          "post2" : 0.407,
+          "post4" : 2.346
+        },
+        "state" : "load1,post3",
+        "unsafe" : {
+          "post4" : "post2"
+        },
+        "win" : [
+          "post1",
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.378,
+          "post1" : 0.028,
+          "post2" : 0.052,
+          "post3" : 2.346
+        },
+        "state" : "load1,post4",
+        "unsafe" : {
+          "post3" : "post2"
+        },
+        "win" : [
+          "post1",
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.035,
+          "post2" : 2.174,
+          "post3" : 0.033,
+          "post4" : 0.03
+        },
+        "state" : "load1,post1",
+        "unsafe" : {
+          "post2" : "post4"
+        },
+        "win" : [
+          "post3",
+          "post4"
+        ]
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "post4"
+        ],
+        "severity" : {
+          "post1" : 0.033,
+          "post2" : 0.033,
+          "post3" : 0.033,
+          "post4" : 0.033
+        },
+        "state" : "beam1,load1",
+        "unsafe" : {
+
+        }
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 3,
+    "requiredCount" : 2,
+    "starThresholds" : [
+      2,
+      3,
+      3
+    ],
+    "targetPieceIds" : [
+      "post1",
+      "post2",
+      "post3",
+      "post4"
+    ],
+    "type" : "removeTargetsKeepStanding"
+  },
+  "gravity" : -9.8,
+  "id" : "c-008",
+  "index" : 8,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Short Span",
+    "tr" : "Kısa Açıklık"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : false,
+      "id" : "post1",
+      "material" : "wood",
+      "position" : {
+        "x" : -109,
+        "y" : -145
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 90,
+        "type" : "rect",
+        "w" : 22
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post2",
+      "material" : "wood",
+      "position" : {
+        "x" : -20,
+        "y" : -145
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 90,
+        "type" : "rect",
+        "w" : 22
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post3",
+      "material" : "wood",
+      "position" : {
+        "x" : 30,
+        "y" : -145
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 90,
+        "type" : "rect",
+        "w" : 22
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post4",
+      "material" : "wood",
+      "position" : {
+        "x" : 109,
+        "y" : -145
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 90,
+        "type" : "rect",
+        "w" : 22
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam1",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : -92.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 15,
+        "type" : "rect",
+        "w" : 259
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "load1",
+      "material" : "stone",
+      "position" : {
+        "x" : -92,
+        "y" : -60.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 49,
+        "type" : "rect",
+        "w" : 52
+      }
+    }
+  ],
+  "region" : "wood_scaffold",
+  "schema" : 1,
+  "seed" : 108003,
+  "supportsAllowed" : 0
+}

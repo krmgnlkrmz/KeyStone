@@ -1,95 +1,500 @@
 {
-  "floorY": -190.0,
-  "goal": {
-    "moveBudget": 4,
-    "starThresholds": [
+  "annotation" : {
+    "difficulty" : 2.24,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 14.47,
+    "solutionPath" : [
+      "+sup@0",
+      "p1",
+      "p2"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "st",
+          "+sup@-16",
+          "+sup@0",
+          "+sup@16"
+        ],
+        "severity" : {
+          "+sup@-16" : 0.033,
+          "+sup@0" : 0.033,
+          "+sup@16" : 0.033,
+          "bm" : 5.312,
+          "p1" : 5.391,
+          "p2" : 5.529,
+          "st" : 0.033
+        },
+        "state" : "",
+        "unsafe" : {
+          "bm" : "st",
+          "p1" : "bm",
+          "p2" : "bm"
+        }
+      },
+      {
+        "safe" : [
+          "bm",
+          "+sup@0"
+        ],
+        "severity" : {
+          "+sup@0" : 0.033,
+          "bm" : 0.033,
+          "p1" : 1.958,
+          "p2" : 1.961
+        },
+        "state" : "st",
+        "unsafe" : {
+          "p1" : "bm",
+          "p2" : "bm"
+        }
+      },
+      {
+        "safe" : [
+          "p1",
+          "st"
+        ],
+        "severity" : {
+          "bm" : 7.214,
+          "p1" : 0.034,
+          "p2" : 7.261,
+          "st" : 0.033
+        },
+        "state" : "+sup@-16",
+        "unsafe" : {
+          "bm" : "st",
+          "p2" : "bm"
+        }
+      },
+      {
+        "safe" : [
+          "p1",
+          "p2",
+          "bm",
+          "st"
+        ],
+        "severity" : {
+          "bm" : 0.724,
+          "p1" : 0.067,
+          "p2" : 0.067,
+          "st" : 0.033
+        },
+        "state" : "+sup@0",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "p2",
+          "st"
+        ],
+        "severity" : {
+          "bm" : 7.216,
+          "p1" : 7.252,
+          "p2" : 0.033,
+          "st" : 0.033
+        },
+        "state" : "+sup@16",
+        "unsafe" : {
+          "bm" : "st",
+          "p1" : "bm"
+        }
+      },
+      {
+        "safe" : [
+          "p1",
+          "p2"
+        ],
+        "severity" : {
+          "p1" : 0.032,
+          "p2" : 0.033
+        },
+        "state" : "bm,st",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "p1",
+          "p2",
+          "bm"
+        ],
+        "severity" : {
+          "bm" : 0.033,
+          "p1" : 0.135,
+          "p2" : 0.137
+        },
+        "state" : "+sup@0,st",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "st"
+        ],
+        "severity" : {
+          "bm" : 7.221,
+          "p2" : 7.123,
+          "st" : 0.03
+        },
+        "state" : "+sup@-16,p1",
+        "unsafe" : {
+          "bm" : "st",
+          "p2" : "bm"
+        }
+      },
+      {
+        "safe" : [
+          "p1",
+          "bm"
+        ],
+        "severity" : {
+          "bm" : 0.033,
+          "p1" : 0.032,
+          "p2" : 3.19
+        },
+        "state" : "+sup@-16,st",
+        "unsafe" : {
+          "p2" : "p1"
+        }
+      },
+      {
+        "safe" : [
+          "bm",
+          "st"
+        ],
+        "severity" : {
+          "bm" : 0.734,
+          "p2" : 0.02,
+          "st" : 0.031
+        },
+        "state" : "+sup@0,p1",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "p2"
+        ]
+      },
+      {
+        "safe" : [
+          "bm",
+          "st"
+        ],
+        "severity" : {
+          "bm" : 0.734,
+          "p1" : 0.022,
+          "st" : 0.032
+        },
+        "state" : "+sup@0,p2",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "p1"
+        ]
+      },
+      {
+        "safe" : [
+          "p1",
+          "p2",
+          "st"
+        ],
+        "severity" : {
+          "p1" : 0.726,
+          "p2" : 0.726,
+          "st" : 0.033
+        },
+        "state" : "+sup@0,bm",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "st"
+        ],
+        "severity" : {
+          "bm" : 7.218,
+          "p1" : 7.352,
+          "st" : 0.031
+        },
+        "state" : "+sup@16,p2",
+        "unsafe" : {
+          "bm" : "st",
+          "p1" : "bm"
+        }
+      },
+      {
+        "safe" : [
+          "p2",
+          "bm"
+        ],
+        "severity" : {
+          "bm" : 0.033,
+          "p1" : 3.189,
+          "p2" : 0.033
+        },
+        "state" : "+sup@16,st",
+        "unsafe" : {
+          "p1" : "p2"
+        }
+      },
+      {
+        "safe" : [
+          "p2"
+        ],
+        "severity" : {
+          "p2" : 0
+        },
+        "state" : "bm,p1,st",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "p1"
+        ],
+        "severity" : {
+          "p1" : 0
+        },
+        "state" : "bm,p2,st",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "bm"
+        ],
+        "severity" : {
+          "bm" : 0.033,
+          "p2" : 0.051
+        },
+        "state" : "+sup@0,p1,st",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "p2"
+        ]
+      },
+      {
+        "safe" : [
+          "bm"
+        ],
+        "severity" : {
+          "bm" : 0.033,
+          "p1" : 0.048
+        },
+        "state" : "+sup@0,p2,st",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "p1"
+        ]
+      },
+      {
+        "safe" : [
+          "p1",
+          "p2"
+        ],
+        "severity" : {
+          "p1" : 0.032,
+          "p2" : 0.033
+        },
+        "state" : "+sup@0,bm,st",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "bm"
+        ],
+        "severity" : {
+          "bm" : 0.032,
+          "p2" : 3.184
+        },
+        "state" : "+sup@-16,p1,st",
+        "unsafe" : {
+          "p2" : "bm"
+        }
+      },
+      {
+        "safe" : [
+          "p1",
+          "p2"
+        ],
+        "severity" : {
+          "p1" : 0.032,
+          "p2" : 0.033
+        },
+        "state" : "+sup@-16,bm,st",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "st"
+        ],
+        "severity" : {
+          "p2" : 0.726,
+          "st" : 0.033
+        },
+        "state" : "+sup@0,bm,p1",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "p2"
+        ]
+      },
+      {
+        "safe" : [
+          "st"
+        ],
+        "severity" : {
+          "p1" : 0.726,
+          "st" : 0.033
+        },
+        "state" : "+sup@0,bm,p2",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "p1"
+        ]
+      },
+      {
+        "safe" : [
+          "bm"
+        ],
+        "severity" : {
+          "bm" : 0.033,
+          "p1" : 3.184
+        },
+        "state" : "+sup@16,p2,st",
+        "unsafe" : {
+          "p1" : "bm"
+        }
+      },
+      {
+        "safe" : [
+          "p1",
+          "p2"
+        ],
+        "severity" : {
+          "p1" : 0.032,
+          "p2" : 0.033
+        },
+        "state" : "+sup@16,bm,st",
+        "unsafe" : {
+
+        }
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 4,
+    "starThresholds" : [
       3,
       4,
       4
     ],
-    "targetPieceIds": [
+    "targetPieceIds" : [
       "p1",
       "p2"
     ],
-    "type": "placeSupportThenRemove"
+    "type" : "placeSupportThenRemove"
   },
-  "gravity": -9.8,
-  "id": "c-003",
-  "index": 3,
-  "joints": [],
-  "name": {
-    "en": "One Support",
-    "tr": "Tek Destek"
+  "gravity" : -9.8,
+  "id" : "c-003",
+  "index" : 3,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "One Support",
+    "tr" : "Tek Destek"
   },
-  "pack": "curated",
-  "pieces": [
+  "pack" : "curated",
+  "pieces" : [
     {
-      "fixed": false,
-      "id": "p1",
-      "material": "wood",
-      "position": {
-        "x": -98.0,
-        "y": -130.0
+      "fixed" : false,
+      "id" : "p1",
+      "material" : "wood",
+      "position" : {
+        "x" : -98,
+        "y" : -130
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 120.0,
-        "type": "rect",
-        "w": 24.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 120,
+        "type" : "rect",
+        "w" : 24
       }
     },
     {
-      "fixed": false,
-      "id": "p2",
-      "material": "wood",
-      "position": {
-        "x": 98.0,
-        "y": -130.0
+      "fixed" : false,
+      "id" : "p2",
+      "material" : "wood",
+      "position" : {
+        "x" : 98,
+        "y" : -130
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 120.0,
-        "type": "rect",
-        "w": 24.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 120,
+        "type" : "rect",
+        "w" : 24
       }
     },
     {
-      "fixed": false,
-      "id": "bm",
-      "material": "wood",
-      "position": {
-        "x": 0.0,
-        "y": -61.0
+      "fixed" : false,
+      "id" : "bm",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : -61
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 18.0,
-        "type": "rect",
-        "w": 260.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 18,
+        "type" : "rect",
+        "w" : 260
       }
     },
     {
-      "fixed": false,
-      "id": "st",
-      "material": "stone",
-      "position": {
-        "x": 0.0,
-        "y": -27.0
+      "fixed" : false,
+      "id" : "st",
+      "material" : "stone",
+      "position" : {
+        "x" : 0,
+        "y" : -27
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 50.0,
-        "type": "rect",
-        "w": 50.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 50,
+        "type" : "rect",
+        "w" : 50
       }
     }
   ],
-  "region": "wood_scaffold",
-  "schema": 1,
-  "supportsAllowed": 1,
-  "tutorial": 3
+  "region" : "wood_scaffold",
+  "schema" : 1,
+  "supportsAllowed" : 1,
+  "tutorial" : 3
 }

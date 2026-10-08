@@ -1,0 +1,357 @@
+{
+  "annotation" : {
+    "difficulty" : 4.38,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 30.24,
+    "solutionPath" : [
+      "load1",
+      "beam2",
+      "post3",
+      "post4"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "beam1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 0.628,
+          "beam2" : 3.258,
+          "load1" : 0.033,
+          "post1" : 6.213,
+          "post2" : 5.992,
+          "post3" : 1.399,
+          "post4" : 1.344
+        },
+        "state" : "",
+        "unsafe" : {
+          "beam2" : "beam1",
+          "post1" : "beam1",
+          "post2" : "beam1",
+          "post3" : "beam2",
+          "post4" : "beam2"
+        }
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam2" : 6.657,
+          "load1" : 0.587,
+          "post1" : 3.344,
+          "post2" : 3.324,
+          "post3" : 1.898,
+          "post4" : 1.956
+        },
+        "state" : "beam1",
+        "unsafe" : {
+          "beam2" : "load1",
+          "post1" : "beam2",
+          "post2" : "beam2",
+          "post3" : "beam2",
+          "post4" : "beam2"
+        }
+      },
+      {
+        "safe" : [
+          "beam1",
+          "beam2"
+        ],
+        "severity" : {
+          "beam1" : 0.606,
+          "beam2" : 0.033,
+          "post1" : 6.883,
+          "post2" : 6.742,
+          "post3" : 1.343,
+          "post4" : 1.326
+        },
+        "state" : "load1",
+        "unsafe" : {
+          "post1" : "beam1",
+          "post2" : "post1",
+          "post3" : "beam1",
+          "post4" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "beam2"
+        ],
+        "severity" : {
+          "beam2" : 0.589,
+          "post1" : 3.323,
+          "post2" : 3.325,
+          "post3" : 1.729,
+          "post4" : 1.797
+        },
+        "state" : "beam1,load1",
+        "unsafe" : {
+          "post1" : "post4",
+          "post2" : "post3",
+          "post3" : "post2",
+          "post4" : "post2"
+        }
+      },
+      {
+        "safe" : [
+          "beam1",
+          "post3",
+          "post4"
+        ],
+        "severity" : {
+          "beam1" : 0.587,
+          "post1" : 6.817,
+          "post2" : 6.761,
+          "post3" : 0.033,
+          "post4" : 0.033
+        },
+        "state" : "beam2,load1",
+        "unsafe" : {
+          "post1" : "beam1",
+          "post2" : "post1"
+        }
+      },
+      {
+        "safe" : [
+          "post3",
+          "post4"
+        ],
+        "severity" : {
+          "post1" : 3.403,
+          "post2" : 3.351,
+          "post3" : 0.588,
+          "post4" : 0.588
+        },
+        "state" : "beam1,beam2,load1",
+        "unsafe" : {
+          "post1" : "post3",
+          "post2" : "post4"
+        }
+      },
+      {
+        "safe" : [
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.587,
+          "post1" : 6.744,
+          "post2" : 5.971,
+          "post4" : 0.033
+        },
+        "state" : "beam2,load1,post3",
+        "unsafe" : {
+          "post1" : "post2",
+          "post2" : "beam1"
+        },
+        "win" : [
+          "post4"
+        ]
+      },
+      {
+        "safe" : [
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.584,
+          "post1" : 5.28,
+          "post2" : 6.654,
+          "post3" : 0.033
+        },
+        "state" : "beam2,load1,post4",
+        "unsafe" : {
+          "post1" : "beam1",
+          "post2" : "post1"
+        },
+        "win" : [
+          "post3"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "post1" : 0.588,
+          "post2" : 3.403,
+          "post4" : 0.033
+        },
+        "state" : "beam1,beam2,load1,post3",
+        "unsafe" : {
+          "post2" : "post4"
+        },
+        "win" : [
+          "post1",
+          "post4"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "post1" : 3.403,
+          "post2" : 0.588,
+          "post3" : 0.033
+        },
+        "state" : "beam1,beam2,load1,post4",
+        "unsafe" : {
+          "post1" : "post3"
+        },
+        "win" : [
+          "post2",
+          "post3"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 5,
+    "requiredCount" : 3,
+    "starThresholds" : [
+      4,
+      5,
+      5
+    ],
+    "targetPieceIds" : [
+      "post1",
+      "post2",
+      "post3",
+      "post4",
+      "load1"
+    ],
+    "type" : "removeTargetsKeepStanding"
+  },
+  "gravity" : -9.8,
+  "id" : "c-030",
+  "index" : 30,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Foundry",
+    "tr" : "Dökümhane"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : false,
+      "id" : "post1",
+      "material" : "steel",
+      "position" : {
+        "x" : -78,
+        "y" : -154
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 72,
+        "type" : "rect",
+        "w" : 17
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post2",
+      "material" : "steel",
+      "position" : {
+        "x" : 79,
+        "y" : -154
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 72,
+        "type" : "rect",
+        "w" : 17
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam1",
+      "material" : "steel",
+      "position" : {
+        "x" : 6,
+        "y" : -110
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 16,
+        "type" : "rect",
+        "w" : 198
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post3",
+      "material" : "steel",
+      "position" : {
+        "x" : -83,
+        "y" : -68
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 68,
+        "type" : "rect",
+        "w" : 21
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post4",
+      "material" : "steel",
+      "position" : {
+        "x" : 82,
+        "y" : -68
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 68,
+        "type" : "rect",
+        "w" : 21
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam2",
+      "material" : "steel",
+      "position" : {
+        "x" : 2,
+        "y" : -26
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 16,
+        "type" : "rect",
+        "w" : 205
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "load1",
+      "material" : "stone",
+      "position" : {
+        "x" : -3,
+        "y" : 3.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 43,
+        "type" : "rect",
+        "w" : 54
+      }
+    }
+  ],
+  "region" : "iron_truss",
+  "schema" : 1,
+  "seed" : 130001,
+  "supportsAllowed" : 0
+}

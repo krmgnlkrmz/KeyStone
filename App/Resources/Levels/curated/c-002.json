@@ -1,113 +1,336 @@
 {
-  "floorY": -190.0,
-  "goal": {
-    "moveBudget": 3,
-    "requiredCount": 2,
-    "starThresholds": [
+  "annotation" : {
+    "difficulty" : 1.56,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 30.25,
+    "solutionPath" : [
+      "pl",
+      "pr"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "pl",
+          "pm",
+          "pr",
+          "bm",
+          "st"
+        ],
+        "severity" : {
+          "bm" : 0.666,
+          "pl" : 0.033,
+          "pm" : 0.033,
+          "pr" : 0.033,
+          "st" : 0.033
+        },
+        "state" : "",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "bm",
+          "st"
+        ],
+        "severity" : {
+          "bm" : 0.666,
+          "pm" : 1.754,
+          "pr" : 0.033,
+          "st" : 0.033
+        },
+        "state" : "pl",
+        "unsafe" : {
+          "pm" : "bm"
+        },
+        "win" : [
+          "pr"
+        ]
+      },
+      {
+        "safe" : [
+          "st"
+        ],
+        "severity" : {
+          "bm" : 4.051,
+          "pl" : 1.752,
+          "pr" : 1.753,
+          "st" : 0.033
+        },
+        "state" : "pm",
+        "unsafe" : {
+          "bm" : "pl",
+          "pl" : "bm",
+          "pr" : "bm"
+        }
+      },
+      {
+        "safe" : [
+          "bm",
+          "st"
+        ],
+        "severity" : {
+          "bm" : 0.668,
+          "pl" : 0.032,
+          "pm" : 1.768,
+          "st" : 0.033
+        },
+        "state" : "pr",
+        "unsafe" : {
+          "pm" : "bm"
+        },
+        "win" : [
+          "pl"
+        ]
+      },
+      {
+        "safe" : [
+          "pl",
+          "pr",
+          "st"
+        ],
+        "severity" : {
+          "pl" : 0.653,
+          "pm" : 4.051,
+          "pr" : 0.653,
+          "st" : 0.033
+        },
+        "state" : "bm",
+        "unsafe" : {
+          "pm" : "pr"
+        }
+      },
+      {
+        "safe" : [
+          "pl",
+          "pm",
+          "pr",
+          "bm"
+        ],
+        "severity" : {
+          "bm" : 0.033,
+          "pl" : 0.032,
+          "pm" : 0.032,
+          "pr" : 0.032
+        },
+        "state" : "st",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "st"
+        ],
+        "severity" : {
+          "pm" : 4.051,
+          "pr" : 0.653,
+          "st" : 0.033
+        },
+        "state" : "bm,pl",
+        "unsafe" : {
+          "pm" : "st"
+        },
+        "win" : [
+          "pr"
+        ]
+      },
+      {
+        "safe" : [
+          "bm"
+        ],
+        "severity" : {
+          "bm" : 0.033,
+          "pm" : 1.751,
+          "pr" : 0.033
+        },
+        "state" : "pl,st",
+        "unsafe" : {
+          "pm" : "bm"
+        },
+        "win" : [
+          "pr"
+        ]
+      },
+      {
+        "safe" : [
+          "bm"
+        ],
+        "severity" : {
+          "bm" : 0.033,
+          "pl" : 1.753,
+          "pr" : 1.756
+        },
+        "state" : "pm,st",
+        "unsafe" : {
+          "pl" : "bm",
+          "pr" : "bm"
+        }
+      },
+      {
+        "safe" : [
+          "st"
+        ],
+        "severity" : {
+          "pl" : 0.653,
+          "pm" : 4.051,
+          "st" : 0.033
+        },
+        "state" : "bm,pr",
+        "unsafe" : {
+          "pm" : "st"
+        },
+        "win" : [
+          "pl"
+        ]
+      },
+      {
+        "safe" : [
+          "bm"
+        ],
+        "severity" : {
+          "bm" : 0.033,
+          "pl" : 0.032,
+          "pm" : 1.756
+        },
+        "state" : "pr,st",
+        "unsafe" : {
+          "pm" : "bm"
+        },
+        "win" : [
+          "pl"
+        ]
+      },
+      {
+        "safe" : [
+          "pl",
+          "pm",
+          "pr"
+        ],
+        "severity" : {
+          "pl" : 0.033,
+          "pm" : 0.033,
+          "pr" : 0.033
+        },
+        "state" : "bm,st",
+        "unsafe" : {
+
+        }
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 3,
+    "requiredCount" : 2,
+    "starThresholds" : [
       2,
       3,
       3
     ],
-    "targetPieceIds": [
+    "targetPieceIds" : [
       "pl",
       "pm",
       "pr"
     ],
-    "type": "removeTargetsKeepStanding"
+    "type" : "removeTargetsKeepStanding"
   },
-  "gravity": -9.8,
-  "id": "c-002",
-  "index": 2,
-  "joints": [],
-  "name": {
-    "en": "Three Posts",
-    "tr": "Üç Direk"
+  "gravity" : -9.8,
+  "id" : "c-002",
+  "index" : 2,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Three Posts",
+    "tr" : "Üç Direk"
   },
-  "pack": "curated",
-  "pieces": [
+  "pack" : "curated",
+  "pieces" : [
     {
-      "fixed": false,
-      "id": "pl",
-      "material": "wood",
-      "position": {
-        "x": -80.0,
-        "y": -145.0
+      "fixed" : false,
+      "id" : "pl",
+      "material" : "wood",
+      "position" : {
+        "x" : -80,
+        "y" : -145
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 90.0,
-        "type": "rect",
-        "w": 20.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 90,
+        "type" : "rect",
+        "w" : 20
       }
     },
     {
-      "fixed": false,
-      "id": "pm",
-      "material": "wood",
-      "position": {
-        "x": 0.0,
-        "y": -145.0
+      "fixed" : false,
+      "id" : "pm",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : -145
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 90.0,
-        "type": "rect",
-        "w": 20.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 90,
+        "type" : "rect",
+        "w" : 20
       }
     },
     {
-      "fixed": false,
-      "id": "pr",
-      "material": "wood",
-      "position": {
-        "x": 80.0,
-        "y": -145.0
+      "fixed" : false,
+      "id" : "pr",
+      "material" : "wood",
+      "position" : {
+        "x" : 80,
+        "y" : -145
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 90.0,
-        "type": "rect",
-        "w": 20.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 90,
+        "type" : "rect",
+        "w" : 20
       }
     },
     {
-      "fixed": false,
-      "id": "bm",
-      "material": "wood",
-      "position": {
-        "x": 0.0,
-        "y": -91.0
+      "fixed" : false,
+      "id" : "bm",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : -91
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 18.0,
-        "type": "rect",
-        "w": 220.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 18,
+        "type" : "rect",
+        "w" : 220
       }
     },
     {
-      "fixed": false,
-      "id": "st",
-      "material": "stone",
-      "position": {
-        "x": 0.0,
-        "y": -57.0
+      "fixed" : false,
+      "id" : "st",
+      "material" : "stone",
+      "position" : {
+        "x" : 0,
+        "y" : -57
       },
-      "removable": true,
-      "rotation": 0,
-      "shape": {
-        "h": 50.0,
-        "type": "rect",
-        "w": 60.0
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 50,
+        "type" : "rect",
+        "w" : 60
       }
     }
   ],
-  "region": "wood_scaffold",
-  "schema": 1,
-  "supportsAllowed": 0,
-  "tutorial": 2
+  "region" : "wood_scaffold",
+  "schema" : 1,
+  "supportsAllowed" : 0,
+  "tutorial" : 2
 }

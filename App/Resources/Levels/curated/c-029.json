@@ -1,0 +1,402 @@
+{
+  "annotation" : {
+    "difficulty" : 3.42,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 1.89,
+    "solutionPath" : [
+      "beam2",
+      "load2",
+      "load1"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "post2",
+          "post3",
+          "beam2",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 6.076,
+          "beam2" : 0.529,
+          "load1" : 1.902,
+          "load2" : 0.033,
+          "post1" : 7.827,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "",
+        "unsafe" : {
+          "beam1" : "post2",
+          "load1" : "beam2",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "beam2",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.057,
+          "beam2" : 0.53,
+          "load1" : 1.874,
+          "load2" : 0.033,
+          "post1" : 7.839,
+          "post3" : 9.126
+        },
+        "state" : "post2",
+        "unsafe" : {
+          "beam1" : "beam2",
+          "load1" : "beam2",
+          "post1" : "beam1",
+          "post3" : "beam2"
+        }
+      },
+      {
+        "safe" : [
+          "beam2",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 6.032,
+          "beam2" : 0.528,
+          "load1" : 1.904,
+          "load2" : 0.033,
+          "post1" : 7.819,
+          "post2" : 8.843
+        },
+        "state" : "post3",
+        "unsafe" : {
+          "beam1" : "post2",
+          "load1" : "beam2",
+          "post1" : "beam1",
+          "post2" : "beam2"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "post3",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 6.221,
+          "load1" : 2.42,
+          "load2" : 0.033,
+          "post1" : 7.36,
+          "post2" : 0.553,
+          "post3" : 0.552
+        },
+        "state" : "beam2",
+        "unsafe" : {
+          "beam1" : "post2",
+          "load1" : "beam1",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "post3",
+          "beam2"
+        ],
+        "severity" : {
+          "beam1" : 5.791,
+          "beam2" : 0.033,
+          "load1" : 1.878,
+          "post1" : 5.961,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "load2",
+        "unsafe" : {
+          "beam1" : "post2",
+          "load1" : "beam1",
+          "post1" : "load1"
+        }
+      },
+      {
+        "safe" : [
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.606,
+          "load1" : 2.422,
+          "load2" : 0.033,
+          "post1" : 10.448,
+          "post3" : 10.408
+        },
+        "state" : "beam2,post2",
+        "unsafe" : {
+          "beam1" : "load1",
+          "load1" : "beam1",
+          "post1" : "load1",
+          "post3" : "load1"
+        }
+      },
+      {
+        "safe" : [
+          "beam2"
+        ],
+        "severity" : {
+          "beam1" : 4.055,
+          "beam2" : 0.033,
+          "load1" : 1.879,
+          "post1" : 5.773,
+          "post3" : 2.444
+        },
+        "state" : "load2,post2",
+        "unsafe" : {
+          "beam1" : "load1",
+          "load1" : "beam1",
+          "post1" : "beam1",
+          "post3" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 6.186,
+          "load1" : 2.422,
+          "load2" : 0.033,
+          "post1" : 7.402,
+          "post2" : 10.407
+        },
+        "state" : "beam2,post3",
+        "unsafe" : {
+          "beam1" : "post2",
+          "load1" : "beam1",
+          "post1" : "beam1",
+          "post2" : "load1"
+        }
+      },
+      {
+        "safe" : [
+          "beam2"
+        ],
+        "severity" : {
+          "beam1" : 5.859,
+          "beam2" : 0.033,
+          "load1" : 1.878,
+          "post1" : 5.943,
+          "post2" : 2.538
+        },
+        "state" : "load2,post3",
+        "unsafe" : {
+          "beam1" : "post2",
+          "load1" : "beam1",
+          "post1" : "load1",
+          "post2" : "load1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "post3"
+        ],
+        "severity" : {
+          "beam1" : 5.843,
+          "load1" : 0.033,
+          "post1" : 4.516,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "beam2,load2",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post1" : "post3"
+        },
+        "win" : [
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 4.05,
+          "load1" : 0.033,
+          "post1" : 3.678,
+          "post3" : 1.625
+        },
+        "state" : "beam2,load2,post2",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post1" : "beam1",
+          "post3" : "beam1"
+        },
+        "win" : [
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 5.884,
+          "load1" : 0.033,
+          "post1" : 4.578,
+          "post2" : 1.63
+        },
+        "state" : "beam2,load2,post3",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post1" : "post2",
+          "post2" : "beam1"
+        },
+        "win" : [
+          "load1"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 4,
+    "starThresholds" : [
+      3,
+      4,
+      4
+    ],
+    "targetPieceIds" : [
+      "load1",
+      "load2"
+    ],
+    "type" : "removeTargetsKeepStanding"
+  },
+  "gravity" : -9.8,
+  "id" : "c-029",
+  "index" : 29,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Load Path",
+    "tr" : "Yük Yolu"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : false,
+      "id" : "post1",
+      "material" : "steel",
+      "position" : {
+        "x" : -94,
+        "y" : -145
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 90,
+        "type" : "rect",
+        "w" : 19
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post2",
+      "material" : "steel",
+      "position" : {
+        "x" : 1,
+        "y" : -145
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 90,
+        "type" : "rect",
+        "w" : 19
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post3",
+      "material" : "steel",
+      "position" : {
+        "x" : 94,
+        "y" : -145
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 90,
+        "type" : "rect",
+        "w" : 19
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam1",
+      "material" : "steel",
+      "position" : {
+        "x" : 0,
+        "y" : -92
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 16,
+        "type" : "rect",
+        "w" : 219
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "load1",
+      "material" : "stone",
+      "position" : {
+        "x" : -32,
+        "y" : -60
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 48,
+        "type" : "rect",
+        "w" : 51
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam2",
+      "material" : "wood",
+      "position" : {
+        "x" : -32,
+        "y" : -29
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 14,
+        "type" : "rect",
+        "w" : 91
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "load2",
+      "material" : "stone",
+      "position" : {
+        "x" : -39,
+        "y" : -8
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 28,
+        "type" : "rect",
+        "w" : 28
+      }
+    }
+  ],
+  "region" : "iron_truss",
+  "schema" : 1,
+  "seed" : 129000,
+  "supportsAllowed" : 0
+}

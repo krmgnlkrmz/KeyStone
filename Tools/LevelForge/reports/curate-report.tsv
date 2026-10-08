@@ -1,0 +1,73 @@
+8	table	seed 108003	len 2	budget 3	margin 2.64	unsafe 0.21	tries 4	4s
+9	tower	seed 109003	len 2	budget 3	margin 18.46	unsafe 0.59	tries 4	6s
+10	table	seed 110000	len 2	budget 3	margin 30.53	unsafe 0.59	tries 1	7s
+11	MISSING	lintel	tried 60 from seed 111000
+12	pyramid	seed 112012	len 2	budget 3	margin 2.07	unsafe 0.38	tries 13	67s
+13	tower	seed 113000	len 2	budget 3	margin 29.61	unsafe 0.67	tries 1	68s
+14	MISSING	lintel	tried 60 from seed 114000
+15	pyramid	seed 115001	len 3	budget 4	margin 1.96	unsafe 0.55	tries 2	121s
+16	tower	seed 116001	len 2	budget 3	margin 19.99	unsafe 0.59	tries 2	122s
+17	lintel	seed 117001	len 3	budget 4	margin 1.71	unsafe 0.69	tries 2	122s
+18	pyramid	seed 118011	len 3	budget 4	margin 2.01	unsafe 0.41	tries 12	130s
+19	tower	seed 119000	len 2	budget 3	margin 30.72	unsafe 0.55	tries 1	130s
+20	lintel	seed 120031	len 3	budget 4	margin 1.85	unsafe 0.69	tries 32	162s
+21	table	seed 121002	len 2	budget 3	margin 30.20	unsafe 0.43	tries 3	163s
+22	tower	seed 122000	len 3	budget 4	margin 30.35	unsafe 0.76	tries 1	163s
+23	table	seed 123004	len 3	budget 4	margin 32.29	unsafe 0.43	tries 5	166s
+24	tower	seed 124000	len 3	budget 4	margin 30.50	unsafe 0.67	tries 1	166s
+25	table	seed 125002	len 3	budget 4	margin 30.21	unsafe 0.37	tries 3	169s
+26	tower	seed 126000	len 4	budget 5	margin 30.61	unsafe 0.73	tries 1	170s
+27	table	seed 127010	len 4	budget 5	margin 2.82	unsafe 0.71	tries 11	172s
+28	tower	seed 128001	len 3	budget 4	margin 30.20	unsafe 0.79	tries 2	173s
+29	table	seed 129000	len 3	budget 4	margin 1.89	unsafe 0.64	tries 1	174s
+30	tower	seed 130001	len 4	budget 5	margin 30.24	unsafe 0.60	tries 2	175s
+31	MISSING	hanger	tried 60 from seed 131000
+32	MISSING	hanger	tried 60 from seed 132000
+33	MISSING	hanger	tried 60 from seed 133000
+34	MISSING	hanger	tried 60 from seed 134000
+35	MISSING	hanger	tried 60 from seed 135000
+36	MISSING	hanger	tried 60 from seed 136000
+37	MISSING	hanger	tried 60 from seed 137000
+38	MISSING	hanger	tried 60 from seed 138000
+39	MISSING	hanger	tried 60 from seed 139000
+40	MISSING	hanger	tried 60 from seed 140000
+41	MISSING	hanger	tried 60 from seed 141000
+42	MISSING	counterweight	tried 60 from seed 142000
+43	MISSING	hanger	tried 60 from seed 143000
+44	MISSING	counterweight	tried 60 from seed 144000
+45	MISSING	hanger	tried 60 from seed 145000
+46	counterweight	seed 146049	len 4	budget 5	margin 27.50	unsafe 0.61	tries 50	940s
+47	MISSING	hanger	tried 60 from seed 147000
+48	counterweight	seed 148001	len 4	budget 5	margin 4.33	unsafe 0.61	tries 2	953s
+49	MISSING	hanger	tried 60 from seed 149000
+50	counterweight	seed 150011	len 4	budget 5	margin 2.35	unsafe 0.76	tries 12	1013s
+51	bridge	seed 151004	len 3	budget 4	margin 30.24	unsafe 0.30	tries 5	1019s
+52	bridge	seed 152001	len 3	budget 4	margin 12.78	unsafe 0.23	tries 2	1021s
+53	bridge	seed 153000	len 3	budget 4	margin 4.72	unsafe 0.21	tries 1	1022s
+54	bridge	seed 154001	len 3	budget 4	margin 4.71	unsafe 0.27	tries 2	1027s
+55	bridge	seed 155000	len 3	budget 4	margin 24.92	unsafe 0.23	tries 1	1028s
+56	bridge	seed 156000	len 3	budget 4	margin 17.56	unsafe 0.26	tries 1	1032s
+57	bridge	seed 157004	len 3	budget 4	margin 16.62	unsafe 0.28	tries 5	1040s
+58	bridge	seed 158003	len 3	budget 4	margin 15.79	unsafe 0.29	tries 4	1045s
+59	bridge	seed 159000	len 3	budget 4	margin 30.22	unsafe 0.22	tries 1	1047s
+60	bridge	seed 160001	len 3	budget 4	margin 29.94	unsafe 0.21	tries 2	1050s
+61	counterweight	seed 161014	len 4	budget 6	margin 21.48	unsafe 0.70	tries 15	1097s
+62	bridge	seed 162001	len 3	budget 5	margin 4.51	unsafe 0.20	tries 2	1099s
+63	counterweight	seed 163016	len 4	budget 6	margin 4.59	unsafe 0.60	tries 17	1148s
+64	bridge	seed 164001	len 3	budget 5	margin 2.96	unsafe 0.26	tries 2	1151s
+65	counterweight	seed 165007	len 4	budget 6	margin 25.76	unsafe 0.79	tries 8	1175s
+66	MISSING	bridge	tried 60 from seed 166000
+67	counterweight	seed 167001	len 5	budget 7	margin 18.70	unsafe 0.65	tries 2	1258s
+68	MISSING	bridge	tried 60 from seed 168000
+69	counterweight	seed 169000	len 5	budget 7	margin 3.02	unsafe 0.53	tries 1	1335s
+70	MISSING	bridge	tried 60 from seed 170000
+71	pyramid	seed 171002	len 3	budget 5	margin 2.01	unsafe 0.63	tries 3	1419s
+72	lintel	seed 172013	len 3	budget 5	margin 1.41	unsafe 0.69	tries 14	1427s
+73	pyramid	seed 173018	len 3	budget 5	margin 2.07	unsafe 0.48	tries 19	1440s
+74	lintel	seed 174001	len 3	budget 5	margin 1.73	unsafe 0.69	tries 2	1441s
+75	pyramid	seed 175019	len 3	budget 5	margin 2.01	unsafe 0.68	tries 20	1457s
+76	lintel	seed 176009	len 4	budget 6	margin 1.89	unsafe 0.63	tries 10	1466s
+77	MISSING	pyramid	tried 60 from seed 177000
+78	lintel	seed 178007	len 4	budget 6	margin 1.56	unsafe 0.64	tries 8	1517s
+79	MISSING	pyramid	tried 60 from seed 179000
+80	lintel	seed 180032	len 4	budget 6	margin 1.90	unsafe 0.64	tries 33	1586s

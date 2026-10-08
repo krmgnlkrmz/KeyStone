@@ -1,0 +1,492 @@
+{
+  "annotation" : {
+    "difficulty" : 3.53,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 2.01,
+    "solutionPath" : [
+      "block1",
+      "block3",
+      "shim1"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "block1",
+          "block2",
+          "block3",
+          "shim1",
+          "shim2"
+        ],
+        "severity" : {
+          "block1" : 0.03,
+          "block2" : 0.031,
+          "block3" : 0.03,
+          "block4" : 7.7,
+          "block5" : 5.95,
+          "shim1" : 0.489,
+          "shim2" : 0.453
+        },
+        "state" : "",
+        "unsafe" : {
+          "block4" : "shim2",
+          "block5" : "shim2"
+        }
+      },
+      {
+        "safe" : [
+          "block3",
+          "shim2"
+        ],
+        "severity" : {
+          "block2" : 2.057,
+          "block3" : 0.03,
+          "block4" : 7.813,
+          "block5" : 5.99,
+          "shim1" : 2.471,
+          "shim2" : 0.454
+        },
+        "state" : "block1",
+        "unsafe" : {
+          "block2" : "shim2",
+          "block4" : "shim2",
+          "block5" : "shim2",
+          "shim1" : "block2"
+        }
+      },
+      {
+        "safe" : [
+          "shim1",
+          "shim2"
+        ],
+        "severity" : {
+          "block1" : 1.893,
+          "block3" : 1.566,
+          "block4" : 7.559,
+          "block5" : 5.975,
+          "shim1" : 0.506,
+          "shim2" : 0.464
+        },
+        "state" : "block2",
+        "unsafe" : {
+          "block1" : "shim2",
+          "block3" : "shim2",
+          "block4" : "shim2",
+          "block5" : "shim2"
+        }
+      },
+      {
+        "safe" : [
+          "block1",
+          "shim2"
+        ],
+        "severity" : {
+          "block1" : 0.03,
+          "block2" : 1.553,
+          "block4" : 7.22,
+          "block5" : 5.959,
+          "shim1" : 2.563,
+          "shim2" : 0.453
+        },
+        "state" : "block3",
+        "unsafe" : {
+          "block2" : "shim2",
+          "block4" : "shim2",
+          "block5" : "shim2",
+          "shim1" : "block2"
+        }
+      },
+      {
+        "safe" : [
+          "block1",
+          "block2",
+          "block3",
+          "shim2"
+        ],
+        "severity" : {
+          "block1" : 0.461,
+          "block2" : 0.462,
+          "block3" : 0.462,
+          "block4" : 6.324,
+          "block5" : 6.119,
+          "shim2" : 0.882
+        },
+        "state" : "shim1",
+        "unsafe" : {
+          "block4" : "shim2",
+          "block5" : "shim2"
+        }
+      },
+      {
+        "safe" : [
+          "block1",
+          "block2",
+          "block3",
+          "shim1"
+        ],
+        "severity" : {
+          "block1" : 0.409,
+          "block2" : 0.41,
+          "block3" : 0.41,
+          "block4" : 4.497,
+          "block5" : 4.668,
+          "shim1" : 0.875
+        },
+        "state" : "shim2",
+        "unsafe" : {
+          "block4" : "block5",
+          "block5" : "block4"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 1.304,
+          "block4" : 6.84,
+          "block5" : 5.98,
+          "shim1" : 0.498,
+          "shim2" : 0.455
+        },
+        "state" : "block1,block3",
+        "unsafe" : {
+          "block2" : "block4",
+          "block4" : "shim2",
+          "block5" : "shim2"
+        },
+        "win" : [
+          "shim1",
+          "shim2"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 1.395,
+          "block3" : 0.422,
+          "block4" : 4.499,
+          "block5" : 4.493,
+          "shim1" : 2.529
+        },
+        "state" : "block1,shim2",
+        "unsafe" : {
+          "block2" : "block5",
+          "block4" : "block5",
+          "block5" : "block4",
+          "shim1" : "block2"
+        },
+        "win" : [
+          "block3"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block1" : 3.49,
+          "block3" : 2.78,
+          "block4" : 6.024,
+          "block5" : 2.646,
+          "shim2" : 2.818
+        },
+        "state" : "block2,shim1",
+        "unsafe" : {
+          "block1" : "shim2",
+          "block3" : "block1",
+          "block4" : "shim2",
+          "block5" : "block1",
+          "shim2" : "block1"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block1" : 1.408,
+          "block3" : 1.306,
+          "block4" : 4.494,
+          "block5" : 4.531,
+          "shim1" : 2.635
+        },
+        "state" : "block2,shim2",
+        "unsafe" : {
+          "block1" : "block4",
+          "block3" : "block4",
+          "block4" : "block5",
+          "block5" : "block4",
+          "shim1" : "block3"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block1" : 0.412,
+          "block2" : 1.18,
+          "block4" : 4.268,
+          "block5" : 4.654,
+          "shim1" : 2.647
+        },
+        "state" : "block3,shim2",
+        "unsafe" : {
+          "block2" : "block4",
+          "block4" : "block5",
+          "block5" : "block4",
+          "shim1" : "block4"
+        },
+        "win" : [
+          "block1"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 2.579,
+          "block3" : 2.77,
+          "block4" : 7.81,
+          "block5" : 3.66,
+          "shim2" : 2.761
+        },
+        "state" : "block1,shim1",
+        "unsafe" : {
+          "block2" : "block3",
+          "block3" : "block2",
+          "block4" : "shim2",
+          "block5" : "shim2",
+          "shim2" : "block5"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block1" : 2.474,
+          "block2" : 2.807,
+          "block4" : 5.779,
+          "block5" : 10.06,
+          "shim2" : 2.52
+        },
+        "state" : "block3,shim1",
+        "unsafe" : {
+          "block1" : "block2",
+          "block2" : "block1",
+          "block4" : "shim2",
+          "block5" : "shim2",
+          "shim2" : "block2"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block1" : 0.878,
+          "block2" : 2.623,
+          "block3" : 0.877,
+          "block4" : 8.074,
+          "block5" : 4.744
+        },
+        "state" : "shim1,shim2",
+        "unsafe" : {
+          "block2" : "block3",
+          "block4" : "block5",
+          "block5" : "block4"
+        },
+        "win" : [
+          "block1",
+          "block3"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 5,
+    "requiredCount" : 3,
+    "starThresholds" : [
+      3,
+      4,
+      5
+    ],
+    "targetPieceIds" : [
+      "block1",
+      "block2",
+      "block3",
+      "shim1",
+      "block4",
+      "block5",
+      "shim2"
+    ],
+    "type" : "removeTargetsKeepStanding"
+  },
+  "gravity" : -9.8,
+  "id" : "c-075",
+  "index" : 75,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Centering",
+    "tr" : "Kemer Kalıbı"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : false,
+      "id" : "block1",
+      "material" : "stone",
+      "position" : {
+        "x" : -92,
+        "y" : -173
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 34,
+        "type" : "rect",
+        "w" : 66
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block2",
+      "material" : "stone",
+      "position" : {
+        "x" : 0,
+        "y" : -173
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 34,
+        "type" : "rect",
+        "w" : 66
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block3",
+      "material" : "stone",
+      "position" : {
+        "x" : 92,
+        "y" : -173
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 34,
+        "type" : "rect",
+        "w" : 66
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "shim1",
+      "material" : "wood",
+      "position" : {
+        "x" : -1,
+        "y" : -150
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 12,
+        "type" : "rect",
+        "w" : 235
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block4",
+      "material" : "stone",
+      "position" : {
+        "x" : -48,
+        "y" : -123.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 41,
+        "type" : "rect",
+        "w" : 70
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block5",
+      "material" : "stone",
+      "position" : {
+        "x" : 48,
+        "y" : -123.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 41,
+        "type" : "rect",
+        "w" : 70
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "shim2",
+      "material" : "wood",
+      "position" : {
+        "x" : 6,
+        "y" : -97
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 12,
+        "type" : "rect",
+        "w" : 144.66
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "k",
+      "material" : "brass",
+      "position" : {
+        "x" : -6,
+        "y" : -69
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "points" : [
+          [
+            -19.8,
+            -22
+          ],
+          [
+            19.8,
+            -22
+          ],
+          [
+            33,
+            22
+          ],
+          [
+            -33,
+            22
+          ]
+        ],
+        "type" : "polygon"
+      }
+    }
+  ],
+  "region" : "keystone",
+  "schema" : 1,
+  "seed" : 175019,
+  "supportsAllowed" : 0
+}

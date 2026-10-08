@@ -1,0 +1,269 @@
+{
+  "annotation" : {
+    "difficulty" : 3.78,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 30.35,
+    "solutionPath" : [
+      "load1",
+      "beam2",
+      "post3"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "beam1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 0.626,
+          "beam2" : 3.098,
+          "load1" : 0.033,
+          "post1" : 6.815,
+          "post2" : 6.829,
+          "post3" : 9.103,
+          "post4" : 7.498
+        },
+        "state" : "",
+        "unsafe" : {
+          "beam2" : "beam1",
+          "post1" : "beam1",
+          "post2" : "beam1",
+          "post3" : "beam2",
+          "post4" : "beam2"
+        }
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam2" : 5.718,
+          "load1" : 0.587,
+          "post1" : 5.241,
+          "post2" : 4.116,
+          "post3" : 5.54,
+          "post4" : 4.4
+        },
+        "state" : "beam1",
+        "unsafe" : {
+          "beam2" : "post1",
+          "post1" : "beam2",
+          "post2" : "post1",
+          "post3" : "post4",
+          "post4" : "beam2"
+        }
+      },
+      {
+        "safe" : [
+          "beam1",
+          "beam2"
+        ],
+        "severity" : {
+          "beam1" : 0.604,
+          "beam2" : 0.033,
+          "post1" : 6.759,
+          "post2" : 6.788,
+          "post3" : 2.142,
+          "post4" : 1.847
+        },
+        "state" : "load1",
+        "unsafe" : {
+          "post1" : "beam1",
+          "post2" : "beam1",
+          "post3" : "beam1",
+          "post4" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam2" : 5.89,
+          "post1" : 2.681,
+          "post2" : 3.812,
+          "post3" : 3.898,
+          "post4" : 4.914
+        },
+        "state" : "beam1,load1",
+        "unsafe" : {
+          "beam2" : "post1",
+          "post1" : "post4",
+          "post2" : "post1",
+          "post3" : "post2",
+          "post4" : "post1"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 5.88,
+          "post1" : 6.733,
+          "post2" : 6.833,
+          "post3" : 0.033,
+          "post4" : 0.033
+        },
+        "state" : "beam2,load1",
+        "unsafe" : {
+          "beam1" : "post1",
+          "post1" : "beam1",
+          "post2" : "beam1"
+        },
+        "win" : [
+          "post3",
+          "post4"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 4,
+    "requiredCount" : 2,
+    "starThresholds" : [
+      3,
+      4,
+      4
+    ],
+    "targetPieceIds" : [
+      "post1",
+      "post2",
+      "post3",
+      "post4",
+      "load1"
+    ],
+    "type" : "removeTargetsKeepStanding"
+  },
+  "gravity" : -9.8,
+  "id" : "c-022",
+  "index" : 22,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Girder Table",
+    "tr" : "Putrel Masa"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : false,
+      "id" : "post1",
+      "material" : "steel",
+      "position" : {
+        "x" : -59,
+        "y" : -162.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 55,
+        "type" : "rect",
+        "w" : 19
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post2",
+      "material" : "steel",
+      "position" : {
+        "x" : 57,
+        "y" : -162.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 55,
+        "type" : "rect",
+        "w" : 19
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam1",
+      "material" : "steel",
+      "position" : {
+        "x" : -3,
+        "y" : -127
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 16,
+        "type" : "rect",
+        "w" : 150
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post3",
+      "material" : "steel",
+      "position" : {
+        "x" : -48,
+        "y" : -87
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 64,
+        "type" : "rect",
+        "w" : 22
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post4",
+      "material" : "steel",
+      "position" : {
+        "x" : 54,
+        "y" : -87
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 64,
+        "type" : "rect",
+        "w" : 22
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam2",
+      "material" : "steel",
+      "position" : {
+        "x" : 10,
+        "y" : -47
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 16,
+        "type" : "rect",
+        "w" : 146
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "load1",
+      "material" : "stone",
+      "position" : {
+        "x" : -14,
+        "y" : -17.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 43,
+        "type" : "rect",
+        "w" : 39
+      }
+    }
+  ],
+  "region" : "iron_truss",
+  "schema" : 1,
+  "seed" : 122000,
+  "supportsAllowed" : 0
+}
