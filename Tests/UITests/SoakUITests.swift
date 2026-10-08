@@ -75,6 +75,8 @@ final class SoakUITests: XCTestCase {
     /// with "Next Level". Every level must be won and the app must never leave the foreground.
     func testPlayFiftyLevelsInARow() throws {
         let count = Int(env["SOAK_LEVELS"] ?? "") ?? 50
+        // A level takes ~15 s on the CI simulator; the runner's default allowance (300 s) is far too short.
+        executionTimeAllowance = TimeInterval(count) * 30 + 120
         let all = try solutions()
         XCTAssertGreaterThanOrEqual(all.count, count, "only \(all.count) annotated curated levels")
 
@@ -125,6 +127,7 @@ final class SoakUITests: XCTestCase {
     /// app must not crash; if a tap sends it to the background (a system sheet, a link), it is brought back.
     func testRandomTapsForThirtyMinutes() throws {
         let minutes = Double(env["SOAK_MINUTES"] ?? "") ?? 30
+        executionTimeAllowance = minutes * 60 + 300
         app = XCUIApplication()
         app.launchArguments = ["-uitest", "-seedLevels", "20"]
         app.launch()
