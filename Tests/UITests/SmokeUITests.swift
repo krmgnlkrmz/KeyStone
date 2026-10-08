@@ -67,7 +67,7 @@ final class SmokeUITests: XCTestCase {
         tapPiece("tb")
         let next = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] 'Next Level'")).firstMatch
         XCTAssertTrue(next.waitForExistence(timeout: 15), "Level Clear did not appear")
-        sleep(2)
+        sleep(4)   // stars are revealed one by one; a loaded CI simulator is slow
         shot("05-level-clear")
 
         // Level 2: pause and leave.
