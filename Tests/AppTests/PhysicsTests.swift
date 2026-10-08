@@ -26,15 +26,29 @@ final class PhysicsTests: XCTestCase {
         XCTAssertLessThanOrEqual(r.collapseTime ?? 99, PhysicsConstants.settleWindow)
     }
 
-    /// Acceptance #10: the same collapse replays identically.
+    /// Acceptance #10: the collapse replay is a recording, so it plays back identically every time
+    /// (no physics in the replay scene); re-simulating the same move reaches the same decision.
     func testReplayIsIdenticalEveryTime() throws {
-        let sim = try HeadlessSimulator()
-        let job = HeadlessSimulator.Job(level: try level("c-001"), move: .remove(pieceId: "p2"), collapseTail: PhysicsConstants.collapseTail)
-        let a = try sim.run(job).recording, b = try sim.run(job).recording
-        XCTAssertEqual(a, b)
-        XCTAssertGreaterThan(a.frames.count, 30)
-        // Scrubbing back and forth lands on the same transforms.
-        XCTAssertEqual(a.poses(at: 0.7), b.poses(at: 0.7))
+        let lvl = try level("c-001")
+        let job = HeadlessSimulator.Job(level: lvl, move: .remove(pieceId: "p2"), collapseTail: PhysicsConstants.collapseTail)
+        let a = try HeadlessSimulator().run(job)
+        XCTAssertGreaterThan(a.recording.frames.count, 30)
+
+        let size = CGSize(width: 390, height: 600)
+        let first = ReplayScene(level: lvl, recording: a.recording, size: size, palette: .dark, reduceMotion: false)
+        let second = ReplayScene(level: lvl, recording: a.recording, size: size, palette: .dark, reduceMotion: false)
+        first.seek(to: 1.2); first.seek(to: 0.1); first.seek(to: 0.7)   // scrub around, then land
+        second.seek(to: 0.7)
+        for id in a.recording.ids {
+            let f = try XCTUnwrap(first.transform(of: id)), s = try XCTUnwrap(second.transform(of: id))
+            XCTAssertEqual(f.position, s.position, id)
+            XCTAssertEqual(f.rotation, s.rotation, id)
+            XCTAssertFalse(f.hasPhysics, "\(id) has a physics body in the replay")
+        }
+
+        let b = try HeadlessSimulator().run(job)
+        XCTAssertEqual(a.verdict.outcome, b.verdict.outcome)
+        XCTAssertEqual(a.heuristicCulprit, b.heuristicCulprit)
     }
 
     /// Acceptance #9: undo (rebuild from the log) equals playing forward, within tolerance.

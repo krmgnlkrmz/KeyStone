@@ -36,6 +36,16 @@ SpriteKit has no public "step the world by dt" call. Two consequences, two answe
 
 No speed-up tricks (`physicsWorld.speed`, larger steps) are used anywhere.
 
+**What is and is not bit-identical.** SpriteKit derives each step from absolute timestamps, so every
+forge job starts on a fresh `SKRenderer` at the same clock origin; the same job then sees bit-identical
+frame times no matter what ran before. What the forge cannot control is SpriteKit's internal ordering of
+bodies, which can differ between simulator instances: an exactly symmetric structure may settle a hair
+to the left in one process and a hair to the right in another (observed: 0.004 rad). Decisions do not
+depend on such hairs — that is what the margin and the five profiles are for — so the tests compare
+decisions exactly and settled poses with a tolerance (`sameJobSameDecision`). Re-validation of shipped
+levels (`testValidateShippedLevels`) accepts margin ≥ 1.25 against generation's 1.4 for the same reason.
+Replays are never re-simulated (below), so they are exact.
+
 ## The decision rule (tolerant on purpose)
 
 `SettleRules.verdict` (BalanceCore, unit-tested on Linux) decides, from per-body measurements:

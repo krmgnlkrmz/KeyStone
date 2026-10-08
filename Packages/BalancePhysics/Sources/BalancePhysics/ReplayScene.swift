@@ -119,6 +119,11 @@ public final class ReplayScene: SKScene {
         }
     }
 
+    /// Current transform of a replayed body (tests, accessibility). Replay nodes never carry physics bodies.
+    public func transform(of id: String) -> (position: CGPoint, rotation: CGFloat, hasPhysics: Bool)? {
+        nodes[id].map { ($0.position, $0.zRotation, $0.physicsBody != nil) }
+    }
+
     /// Fraction 0…1 for the scrub bar.
     public var progress: Double { duration > 0 ? time / duration : 0 }
 
