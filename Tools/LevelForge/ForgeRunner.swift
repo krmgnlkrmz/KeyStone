@@ -63,12 +63,13 @@ final class ForgeRunner: XCTestCase {
         let catalog = try shippedCatalog()
         XCTAssertFalse(catalog.curated.isEmpty, "no curated levels shipped")
         var annotated = 0
+        var failures: [String] = []
         for level in catalog.curated {
             XCTAssertTrue(level.validate().isEmpty, "\(level.id): \(level.validate())")
             guard let a = level.annotation else { log("\(level.id): no annotation yet"); continue }
             annotated += 1
             XCTAssertEqual(a.engineFingerprint, PhysicsConstants.fingerprint, "\(level.id) was verified with other physics constants")
-            _ = try replay(level, path: a.solutionPath, profile: .standard, sim: sim)
+            _ = try replay(level, path: a.solutionPath, profile: .standard, sim: sim, failures: &failures)
         }
         log("smoke: \(annotated)/\(catalog.curated.count) curated levels annotated and replayed, fingerprint \(PhysicsConstants.fingerprint)")
     }
@@ -86,6 +87,8 @@ final class ForgeRunner: XCTestCase {
         try sim.selfTest()
         let catalog = try shippedCatalog()
         var worst = (id: "", margin: Double.infinity)
+        // Every failing level and why, so a pool level that flipped can be pruned mechanically.
+        var failures: [String] = []
         for level in catalog.allLevels {
             XCTAssertTrue(level.validate().isEmpty, "\(level.id): \(level.validate())")
             guard let a = level.annotation else { XCTFail("\(level.id): missing annotation"); continue }
@@ -96,19 +99,23 @@ final class ForgeRunner: XCTestCase {
             for profile in StepProfile.validationSet {
                 let initial = try sim.run(.init(level: level, move: nil, profile: profile))
                 XCTAssertEqual(initial.verdict.outcome, .standing, "\(level.id) \(profile): falls before any move")
+                if initial.verdict.outcome != .standing { failures.append("\(level.id)\t\(profile): falls before any move") }
                 margins.append(initial.verdict.margin)
-                margins += try replay(level, path: a.solutionPath, profile: profile, sim: sim)
+                margins += try replay(level, path: a.solutionPath, profile: profile, sim: sim, failures: &failures)
             }
             let m = margins.min() ?? 0
             XCTAssertGreaterThanOrEqual(m, Self.revalidationMargin, "\(level.id): margin \(m)")
+            if m < Self.revalidationMargin { failures.append("\(level.id)\tmargin \(m)") }
             if m < worst.margin { worst = (level.id, m) }
         }
-        log("validated \(catalog.allLevels.count) levels; tightest margin \(String(format: "%.2f", worst.margin)) on \(worst.id)")
+        log("validated \(catalog.allLevels.count) levels; tightest margin \(String(format: "%.2f", worst.margin)) on \(worst.id); \(failures.count) failures")
+        try failures.joined(separator: "\n").write(to: outDir.appendingPathComponent("validate-failures.txt"), atomically: true, encoding: .utf8)
     }
 
     /// Replays a solution and returns each move's decision margin.
     @MainActor
-    private func replay(_ level: Level, path: [String], profile: StepProfile, sim: HeadlessSimulator) throws -> [Double] {
+    private func replay(_ level: Level, path: [String], profile: StepProfile, sim: HeadlessSimulator,
+                        failures: inout [String]) throws -> [Double] {
         var margins: [Double] = []
         var log = MoveLog()
         for (i, token) in path.enumerated() {
@@ -122,6 +129,7 @@ final class ForgeRunner: XCTestCase {
             let expected: MoveResult = i == path.count - 1 ? .won : .continuePlaying
             let got: MoveResult = r.moveResult == .outOfMoves ? .continuePlaying : r.moveResult
             XCTAssertEqual(got, expected, "\(level.id) \(profile) move \(i + 1) \(token)")
+            if got != expected { failures.append("\(level.id)\t\(profile) move \(i + 1) \(token): \(got) ≠ \(expected)") }
             margins.append(r.verdict.margin)
             log.append(kind)
         }

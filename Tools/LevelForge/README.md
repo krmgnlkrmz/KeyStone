@@ -36,6 +36,12 @@ part-way, since everything written is already verified. Every forge run has its 
 so later pushes never cancel it. Pool files are named by seed base and shard and never overwrite each
 other; use a fresh seed range for each run.
 
+The release gate runs in a fresh process, and that is the point: SpriteKit's internal body order can
+differ between processes, so a chaotic structure verified in one run can flip in another even though its
+recorded margin looked safe. The first full validation flagged 5 of 1,502 levels (all pool, no curated
+level); they were pruned. `validate-failures.txt` lists any failing level and why, so pruning a flipped
+pool level is mechanical. A curated level that fails is fixed or replaced, never pruned silently.
+
 Drafts whose id starts with `x-` are geometry trials: they are verified and every explored state is
 printed to the log, but they are never written to the output. Rejected drafts print their states too.
 
