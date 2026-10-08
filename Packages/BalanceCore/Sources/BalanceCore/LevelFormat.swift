@@ -372,6 +372,17 @@ public struct Level: Codable, Sendable, Identifiable, Hashable {
         pieces.filter(\.removable).map(\.id) + joints.filter(\.isRemovable).compactMap(\.id)
     }
 
+    /// Removable ids still available once `removed` are gone. A rope leaves with either piece it ties,
+    /// so it can no longer be cut after that piece was removed.
+    public func availableRemovals(after removed: Set<String>) -> [String] {
+        let ropeEnds = Dictionary(joints.compactMap { j in j.id.map { ($0, (j.a, j.b)) } }, uniquingKeysWith: { a, _ in a })
+        return removableIds.filter { id in
+            guard !removed.contains(id) else { return false }
+            if let (a, b) = ropeEnds[id] { return !removed.contains(a) && !removed.contains(b) }
+            return true
+        }
+    }
+
     public var resolvedFloorY: Double {
         if let floorY { return floorY }
         return pieces.map { $0.worldBounds.minY }.min() ?? 0

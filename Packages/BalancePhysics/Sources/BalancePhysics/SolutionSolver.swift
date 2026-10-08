@@ -190,7 +190,7 @@ public final class SolutionSolver {
     public func candidateMoves(level: Level, log: MoveLog) -> [Move.Kind] {
         if log.count >= level.goal.moveBudget { return [] }
         let removed = log.removedIds
-        var out: [Move.Kind] = level.removableIds.filter { !removed.contains($0) }.map { .remove(pieceId: $0) }
+        var out: [Move.Kind] = level.availableRemovals(after: removed).map { .remove(pieceId: $0) }
         if level.supportsAllowed > log.supportsPlaced {
             let placed = resolvedSupports(level: level, log: log)
             for c in SupportGeometry.candidates(level: level, removed: removed, supports: placed) {

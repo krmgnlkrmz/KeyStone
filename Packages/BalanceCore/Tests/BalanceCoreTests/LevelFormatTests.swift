@@ -69,6 +69,17 @@ struct LevelFormatTests {
         #expect(level.removableIds == ["l", "r", "beam", "load", "rope1"])
     }
 
+    /// A rope leaves with either piece it ties: once that piece is gone it can't be cut any more
+    /// (the solver must not offer it, the scene would refuse it).
+    @Test func ropesGoWithTheirPieces() {
+        var level = bridgeLevel()
+        level.joints = [Joint(id: "rope1", type: .rope, a: "beam", b: "load", length: 30, removable: true)]
+        #expect(level.availableRemovals(after: []) == ["l", "r", "beam", "load", "rope1"])
+        #expect(level.availableRemovals(after: ["l"]) == ["r", "beam", "load", "rope1"])
+        #expect(level.availableRemovals(after: ["beam"]) == ["l", "r", "load"])
+        #expect(level.availableRemovals(after: ["load", "rope1"]) == ["l", "r", "beam"])
+    }
+
     @Test func boundsAndFloor() throws {
         let level = try Fixtures.level("c-001")
         #expect(level.resolvedFloorY == -190)
