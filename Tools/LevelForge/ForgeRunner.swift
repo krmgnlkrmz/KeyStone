@@ -91,6 +91,7 @@ final class ForgeRunner: XCTestCase {
             guard let a = level.annotation else { XCTFail("\(level.id): missing annotation"); continue }
             XCTAssertEqual(a.engineFingerprint, PhysicsConstants.fingerprint, "\(level.id): stale annotation")
             XCTAssertLessThanOrEqual(a.solutionPath.count, level.goal.moveBudget, "\(level.id): solution exceeds budget")
+            XCTAssertGreaterThanOrEqual(a.marginRatio ?? 0, PhysicsConstants.requiredMarginRatio, "\(level.id): verified margin below 1.4")
             var margins: [Double] = []
             for profile in StepProfile.validationSet {
                 let initial = try sim.run(.init(level: level, move: nil, profile: profile))

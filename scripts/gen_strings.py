@@ -115,6 +115,8 @@ S = {
     "a11y.notPlayed": ("not played yet", "henüz oynanmadı"),
     "a11y.support.hint": ("Drag into the play area to place a support.", "Destek koymak için oyun alanına sürükle."),
     "a11y.support.placeBest": ("Place support", "Desteği yerleştir"),
+    "a11y.supportSpot %lld %lld %@": ("Support spot %1$lld of %2$lld, under the %3$@", "Destek yeri %1$lld/%2$lld, %3$@ altında"),
+    "a11y.supportSpot.hint": ("Double-tap to place the support here.", "Desteği buraya koymak için iki kez dokun."),
 
     # Tutorial
     "tut.1": ("Tap a piece, then tap it again to remove it.", "Bir parçaya dokun, sökmek için tekrar dokun."),

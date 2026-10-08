@@ -152,6 +152,22 @@ private struct PieceAccessibilityLayer: View {
                             .onTapGesture { session.scene.activate(id) }
                     }
                 }
+                // Support spots: VoiceOver (and the UI soak test) place a strut by choosing a spot, not by dragging.
+                let spots = session.supportSpots
+                ForEach(Array(spots.enumerated()), id: \.element.token) { i, spot in
+                    let center = session.scene.viewPoint(fromScene: CGPoint(x: spot.x, y: (spot.bottomY + spot.topY) / 2))
+                    Color.clear
+                        .frame(width: 44, height: 44)
+                        .contentShape(Rectangle())
+                        .position(center)
+                        .accessibilityElement()
+                        .accessibilityLabel(Text(Copy.supportSpot(spot, index: i, of: spots.count, level: session.level)))
+                        .accessibilityIdentifier("support.\(spot.token)")
+                        .accessibilityAddTraits(.isButton)
+                        .accessibilityHint(Text("a11y.supportSpot.hint"))
+                        .accessibilityAction { session.placeSupport(spot) }
+                        .onTapGesture { session.placeSupport(spot) }
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         }

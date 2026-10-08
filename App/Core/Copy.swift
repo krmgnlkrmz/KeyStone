@@ -169,6 +169,12 @@ enum Copy {
 
     // MARK: Accessibility
 
+    /// "Support spot 2 of 3, under the beam".
+    static func supportSpot(_ spot: SupportPlacement, index: Int, of count: Int, level: Level) -> String {
+        let under = spot.targetId.flatMap { level.piece($0) }.map { noun(PieceNaming.noun(for: $0)) } ?? noun(.piece)
+        return String(localized: "a11y.supportSpot \(index + 1) \(count) \(under)")
+    }
+
     static func material(_ m: Material) -> String {
         switch m {
         case .wood: return String(localized: "material.wood")

@@ -100,6 +100,12 @@ final class GameSession: GameSceneDelegate {
     var movesLeft: Int { level.goal.moveBudget - moveLog.count }
     var canUndo: Bool { !moveLog.isEmpty && (phase == .playing || phase == .outOfMoves || phase == .collapsed) && !demo }
     var supportsLeft: Int { max(0, level.supportsAllowed - moveLog.supportsPlaced) }
+
+    /// Valid strut spots right now, left to right (VoiceOver and UI tests choose a spot instead of dragging).
+    var supportSpots: [SupportPlacement] {
+        guard supportsLeft > 0, phase == .playing else { return [] }
+        return SupportGeometry.candidates(level: level, removed: moveLog.removedIds, supports: scene.placedSupports)
+    }
     var interactive: Bool { phase == .playing && overlay == nil && !demo }
     var isSettling: Bool { phase == .evaluating || phase == .loading || phase == .rewinding }
 

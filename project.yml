@@ -106,7 +106,12 @@ targets:
   DengeNoktasiUITests:
     type: bundle.ui-testing
     platform: iOS
-    sources: [Tests/UITests]
+    sources:
+      - Tests/UITests
+      # The soak test reads each curated level's verified solution path.
+      - path: App/Resources/Levels
+        type: folder
+        buildPhase: resources
     dependencies:
       - target: DengeNoktasi
     settings:

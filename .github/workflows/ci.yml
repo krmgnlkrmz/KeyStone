@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       forge:
-        description: "LevelForge run: none | smoke | validate | curated | curate | pool | probe"
+        description: "LevelForge run: none | smoke | validate | curated | curate | pool | probe | screens | soak"
         required: false
         default: "none"
       forge_count:
@@ -155,16 +155,18 @@ jobs:
             -derivedDataPath DerivedData -resultBundlePath AppTests.xcresult CODE_SIGNING_ALLOWED=NO | xcbeautify --renderer github-actions
 
       - name: UI smoke (real app)
-        timeout-minutes: 25
+        timeout-minutes: ${{ steps.forge.outputs.mode == 'soak' && 120 || 25 }}
         if: ${{ !cancelled() && steps.build.outcome == 'success' }}
         env:
           TEST_RUNNER_SCREENSHOT_DIR: ${{ github.workspace }}/docs/screenshots
+          # [forge:soak]: also play 50 curated levels in a row and tap randomly for 30 minutes.
+          TEST_RUNNER_SOAK: ${{ steps.forge.outputs.mode == 'soak' && '1' || '0' }}
         run: |
           rc=0
           xcodebuild test -project DengeNoktasi.xcodeproj -scheme UITests \
             -destination "id=${{ steps.sim.outputs.udid }}" -clonedSourcePackagesDirPath SourcePackages \
             -derivedDataPath DerivedData -resultBundlePath UITests.xcresult CODE_SIGNING_ALLOWED=NO > ui.log 2>&1 || rc=$?
-          grep -E "error:|failed|passed|Executed|XCTAssert" ui.log | tail -60 || true
+          grep -E "error:|failed|passed|Executed|XCTAssert|\[soak\]" ui.log | tail -120 || true
           ls -R docs/screenshots 2>/dev/null | head -30 || true
           exit $rc
 
@@ -204,7 +206,7 @@ jobs:
 
       - name: LevelForge (${{ steps.forge.outputs.mode }})
         id: forgerun
-        if: ${{ !cancelled() && steps.build.outcome == 'success' && steps.forge.outputs.mode != 'none' && steps.forge.outputs.mode != 'smoke' && steps.forge.outputs.mode != 'screens' }}
+        if: ${{ !cancelled() && steps.build.outcome == 'success' && steps.forge.outputs.mode != 'none' && steps.forge.outputs.mode != 'smoke' && steps.forge.outputs.mode != 'screens' && steps.forge.outputs.mode != 'soak' }}
         env:
           TEST_RUNNER_FORGE_OUT: ${{ github.workspace }}/forge-out
           TEST_RUNNER_FORGE_COUNT: ${{ steps.forge.outputs.count }}
