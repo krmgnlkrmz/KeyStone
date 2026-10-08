@@ -241,21 +241,32 @@ public struct LevelGenerator {
         return (Goal(type: .removeTargetsKeepStanding, targetPieceIds: targets, moveBudget: 0, starThresholds: []), supports)
     }
 
-    /// Long beam on two posts with a heavy load: place a strut, then take posts away.
-    /// One strut can't balance a long beam alone, so either one post goes, or both go while a
-    /// middle post stays.
+    /// Long beam on posts with loads: place a strut, then take posts away. One strut can't hold a long
+    /// beam alone, so either one end post goes, or both go while a middle post stays. Shapes vary so the
+    /// support levels don't all look alike: wood or steel posts, one end post standing on a fixed stone
+    /// footing (a shorter post, a different strut), or a second load stacked on the first.
     private func bridge(_ b: inout Builder) -> (Goal, Int) {
         let span = q(double(220...270))
         let postH = q(double(90...130))
-        let p1 = b.rect("post", .wood, x: -span / 2 + 12, bottom: b.floor, w: 24, h: postH)
-        let p2 = b.rect("post", .wood, x: span / 2 - 12, bottom: b.floor, w: 24, h: postH)
+        let postMaterial: Material = chance(0.35) ? .steel : .wood
+        let shape = int(0...2)
+        let p1 = b.rect("post", postMaterial, x: -span / 2 + 12, bottom: b.floor, w: 24, h: postH)
+        let p2: Piece
+        if shape == 1 {
+            let footH = q(double(30...50))
+            let foot = b.rect("base", .stone, x: span / 2 - 12, bottom: b.floor, w: 44, h: footH, fixed: true)
+            p2 = b.rect("post", postMaterial, x: span / 2 - 12, bottom: Self.top(foot), w: 24, h: postH - footH)
+        } else {
+            p2 = b.rect("post", postMaterial, x: span / 2 - 12, bottom: b.floor, w: 24, h: postH)
+        }
         let middle = chance(0.5)
         if middle {
             b.rect("post", .wood, x: q(double(-span / 6 ... span / 6)), bottom: b.floor, w: 20, h: postH)
         }
-        let beam = b.rect("beam", .wood, x: 0, bottom: Self.top(p1), w: span + 20, h: 18)
+        let beam = b.rect("beam", .wood, x: 0, bottom: Self.top(p1), w: span + 20, h: q(double(16...20)))
         let lx = q(double(-span / 3 ... span / 3))
-        b.rect("load", .stone, x: lx, bottom: Self.top(beam), w: q(double(44...60)), h: q(double(40...56)))
+        let load = b.rect("load", .stone, x: lx, bottom: Self.top(beam), w: q(double(44...60)), h: q(double(40...56)))
+        if shape == 2 { b.rect("load", .stone, x: q(lx + double(-8...8)), bottom: Self.top(load), w: 28, h: 28) }
         if chance(0.5) { b.rect("load", .stone, x: q(-lx * 0.7), bottom: Self.top(beam), w: 26, h: 26) }
         return (Goal(type: .placeSupportThenRemove, targetPieceIds: [p1.id, p2.id], requiredCount: middle ? 2 : 1,
                      moveBudget: 0, starThresholds: []), 1)

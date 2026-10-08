@@ -675,7 +675,8 @@
     "en": "Shore",
     "tr": "Dayanak"
    },
-   "goal": "placeSupportThenRemove"
+   "goal": "placeSupportThenRemove",
+   "recurate": true
   },
   {
    "index": 53,
@@ -707,7 +708,8 @@
     "en": "Jack Post",
     "tr": "Kriko Direği"
    },
-   "goal": "placeSupportThenRemove"
+   "goal": "placeSupportThenRemove",
+   "recurate": true
   },
   {
    "index": 55,
@@ -739,7 +741,8 @@
     "en": "Seesaw",
     "tr": "Tahterevalli"
    },
-   "goal": "placeSupportThenRemove"
+   "goal": "placeSupportThenRemove",
+   "recurate": true
   },
   {
    "index": 57,
@@ -771,7 +774,8 @@
     "en": "Pivot",
     "tr": "Mil"
    },
-   "goal": "placeSupportThenRemove"
+   "goal": "placeSupportThenRemove",
+   "recurate": true
   },
   {
    "index": 59,
@@ -803,7 +807,8 @@
     "en": "Needle Beam",
     "tr": "İğne Kiriş"
    },
-   "goal": "placeSupportThenRemove"
+   "goal": "placeSupportThenRemove",
+   "recurate": true
   },
   {
    "index": 61,

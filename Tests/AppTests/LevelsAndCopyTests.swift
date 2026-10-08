@@ -43,6 +43,17 @@ final class LevelsAndCopyTests: XCTestCase {
         }
     }
 
+    /// §11.15: the menu must be up within 2 s of a cold start, and the catalog loads before the splash
+    /// ends. The CI simulator is faster than an iPhone 12, so this keeps a wide safety factor.
+    func testCatalogLoadsQuickly() throws {
+        let url = try XCTUnwrap(Bundle.main.url(forResource: "Levels", withExtension: nil))
+        let start = ContinuousClock.now
+        let c = try LevelCatalog.load(from: url)
+        let elapsed = ContinuousClock.now - start
+        print("[perf] catalog: \(c.curated.count) curated + \(c.pool.count) pool levels in \(elapsed)")
+        XCTAssertLessThan(elapsed, .milliseconds(600), "catalog load took \(elapsed)")
+    }
+
     func testGoalTextsAreLocalized() throws {
         let c = try catalog()
         for level in c.allLevels {

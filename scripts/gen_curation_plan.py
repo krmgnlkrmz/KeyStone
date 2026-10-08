@@ -58,6 +58,9 @@ OVERRIDES = {
     44: {"archetype": "hanger"},
     66: {"minLength": 3}, 68: {"minLength": 3}, 70: {"minLength": 3},   # bridges solve in 3
     77: {"minLength": 3}, 79: {"minLength": 3},                         # pyramids solve in 3
+    # Support levels looked alike (one bridge shape); redo every other one with the varied generator.
+    52: {"recurate": True}, 54: {"recurate": True}, 56: {"recurate": True}, 58: {"recurate": True},
+    60: {"recurate": True},
 }
 
 slots = []

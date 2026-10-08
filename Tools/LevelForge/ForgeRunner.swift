@@ -177,6 +177,8 @@ final class ForgeRunner: XCTestCase {
         var minUnsafe: Double?
         var goal: String?
         var name: [String: String]
+        /// Regenerate even when a verified level already fills the slot (after a generator change).
+        var recurate: Bool?
     }
 
     struct Plan: Decodable { var slots: [Slot] }
@@ -199,7 +201,7 @@ final class ForgeRunner: XCTestCase {
         let shipped: [Int: Level] = env["FORGE_RECURATE"] == "1" ? [:] : Dictionary((try? shippedCatalog())?.curated.map { ($0.index, $0) } ?? [],
                                                                       uniquingKeysWith: { a, _ in a })
         for slot in plan.slots {
-            if let kept = shipped[slot.index], let a = kept.annotation, a.engineFingerprint == PhysicsConstants.fingerprint,
+            if slot.recurate != true, let kept = shipped[slot.index], let a = kept.annotation, a.engineFingerprint == PhysicsConstants.fingerprint,
                (slot.minLength...slot.maxLength).contains(a.solutionPath.count) {
                 lines.append("\(slot.index)\tkept\t\(kept.id)\tlen \(a.solutionPath.count)")
                 continue
