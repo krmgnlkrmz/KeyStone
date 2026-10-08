@@ -23,7 +23,8 @@ tag in the head commit's message:
 | Tag | Runs |
 |---|---|
 | `[forge:smoke]` | curated solutions replay at 60 Hz (also part of every normal CI run) |
-| `[forge:validate]` | release gate over every shipped level |
+| `[forge:validate]` | release gate over every shipped level (5 profiles × 3 allocation shifts) |
+| `[forge:validate commit prune]` | same, dropping any pool level that fails (curated failures still fail) |
 | `[forge:curated commit]` | annotate `drafts/` |
 | `[forge:curate commit]` | annotate `drafts/`, then fill curriculum slots 8–80 from `curation-plan.json` |
 | `[forge:pool commit count=2400 seed=20000 shard=0/1]` | generate and verify pool levels |
@@ -36,11 +37,13 @@ part-way, since everything written is already verified. Every forge run has its 
 so later pushes never cancel it. Pool files are named by seed base and shard and never overwrite each
 other; use a fresh seed range for each run.
 
-The release gate runs in a fresh process, and that is the point: SpriteKit's internal body order can
-differ between processes, so a chaotic structure verified in one run can flip in another even though its
-recorded margin looked safe. The first full validation flagged 5 of 1,502 levels (all pool, no curated
-level); they were pruned. `validate-failures.txt` lists any failing level and why, so pruning a flipped
-pool level is mechanical. A curated level that fails is fixed or replaced, never pruned silently.
+SpriteKit's internal body order follows memory addresses, so it differs between processes and devices,
+and a chaotic structure verified in one process can flip in another even though its recorded margin
+looked safe (the first two full validations flagged 7 of 1,502 levels, all pool, 3 of them pyramids;
+margin did not predict which). `HeadlessSimulator.Job.allocationJitter` shifts the allocator before a
+job to sample other orderings inside one process: the solver verifies every solution under 5 frame
+profiles × 3 shifts, and the release gate checks the same 15 combinations. `validate-failures.txt` lists
+any failing level and why. A curated level that fails is fixed or replaced, never pruned silently.
 
 Drafts whose id starts with `x-` are geometry trials: they are verified and every explored state is
 printed to the log, but they are never written to the output. Rejected drafts print their states too.

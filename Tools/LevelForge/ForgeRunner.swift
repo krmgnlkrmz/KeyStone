@@ -71,6 +71,7 @@ final class ForgeRunner: XCTestCase {
             XCTAssertEqual(a.engineFingerprint, PhysicsConstants.fingerprint, "\(level.id) was verified with other physics constants")
             _ = try replay(level, path: a.solutionPath, profile: .standard, sim: sim, failures: &failures)
         }
+        XCTAssertTrue(failures.isEmpty, failures.joined(separator: "\n"))
         log("smoke: \(annotated)/\(catalog.curated.count) curated levels annotated and replayed, fingerprint \(PhysicsConstants.fingerprint)")
     }
 
@@ -87,8 +88,11 @@ final class ForgeRunner: XCTestCase {
         try sim.selfTest()
         let catalog = try shippedCatalog()
         var worst = (id: "", margin: Double.infinity)
-        // Every failing level and why, so a pool level that flipped can be pruned mechanically.
+        // Every failing level and why. With FORGE_PRUNE=1 a failing pool level is dropped (pool files are
+        // rewritten into FORGE_OUT/pool); a failing curated level always fails the gate.
         var failures: [String] = []
+        var pruned: Set<String> = []
+        let prune = env["FORGE_PRUNE"] == "1"
         for level in catalog.allLevels {
             XCTAssertTrue(level.validate().isEmpty, "\(level.id): \(level.validate())")
             guard let a = level.annotation else { XCTFail("\(level.id): missing annotation"); continue }
@@ -96,25 +100,54 @@ final class ForgeRunner: XCTestCase {
             XCTAssertLessThanOrEqual(a.solutionPath.count, level.goal.moveBudget, "\(level.id): solution exceeds budget")
             XCTAssertGreaterThanOrEqual(a.marginRatio ?? 0, PhysicsConstants.requiredMarginRatio, "\(level.id): verified margin below 1.4")
             var margins: [Double] = []
+            let before = failures.count
             for profile in StepProfile.validationSet {
                 let initial = try sim.run(.init(level: level, move: nil, profile: profile))
-                XCTAssertEqual(initial.verdict.outcome, .standing, "\(level.id) \(profile): falls before any move")
                 if initial.verdict.outcome != .standing { failures.append("\(level.id)\t\(profile): falls before any move") }
                 margins.append(initial.verdict.margin)
-                margins += try replay(level, path: a.solutionPath, profile: profile, sim: sim, failures: &failures)
+                for jitter in Self.validationJitters {
+                    margins += try replay(level, path: a.solutionPath, profile: profile, jitter: jitter, sim: sim, failures: &failures)
+                }
             }
             let m = margins.min() ?? 0
-            XCTAssertGreaterThanOrEqual(m, Self.revalidationMargin, "\(level.id): margin \(m)")
             if m < Self.revalidationMargin { failures.append("\(level.id)\tmargin \(m)") }
+            if failures.count > before {
+                if level.pack == .pool && prune {
+                    pruned.insert(level.id)
+                    log("pruned \(level.id): \(failures[before...].joined(separator: "; "))")
+                } else {
+                    XCTFail(failures[before...].joined(separator: "; "))
+                }
+            }
             if m < worst.margin { worst = (level.id, m) }
         }
         log("validated \(catalog.allLevels.count) levels; tightest margin \(String(format: "%.2f", worst.margin)) on \(worst.id); \(failures.count) failures")
         try failures.joined(separator: "\n").write(to: outDir.appendingPathComponent("validate-failures.txt"), atomically: true, encoding: .utf8)
+        if !pruned.isEmpty { try writePrunedPool(without: pruned) }
+    }
+
+    /// Allocation shifts the release gate samples per profile (see `HeadlessSimulator.Job.allocationJitter`).
+    static let validationJitters = [0, 23, 71]
+
+    /// Rewrites every shipped pool file that held a pruned level into FORGE_OUT/pool (same names).
+    private func writePrunedPool(without ids: Set<String>) throws {
+        let root = try XCTUnwrap(Bundle.main.url(forResource: "Levels", withExtension: nil)).appendingPathComponent("pool")
+        let dir = outDir.appendingPathComponent("pool")
+        try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.sortedKeys]
+        for url in try FileManager.default.contentsOfDirectory(at: root, includingPropertiesForKeys: nil) where url.pathExtension == "json" {
+            let levels = try LevelCatalog.decodeLevels(Data(contentsOf: url))
+            let kept = levels.filter { !ids.contains($0.id) }
+            guard kept.count != levels.count else { continue }
+            try encoder.encode(kept).write(to: dir.appendingPathComponent(url.lastPathComponent))
+        }
+        log("pruned \(ids.count) pool levels: \(ids.sorted().joined(separator: ", "))")
     }
 
     /// Replays a solution and returns each move's decision margin.
     @MainActor
-    private func replay(_ level: Level, path: [String], profile: StepProfile, sim: HeadlessSimulator,
+    private func replay(_ level: Level, path: [String], profile: StepProfile, jitter: Int = 0, sim: HeadlessSimulator,
                         failures: inout [String]) throws -> [Double] {
         var margins: [Double] = []
         var log = MoveLog()
@@ -125,11 +158,10 @@ final class ForgeRunner: XCTestCase {
             } else {
                 kind = .remove(pieceId: token)
             }
-            let r = try sim.run(.init(level: level, base: log, move: kind, profile: profile))
+            let r = try sim.run(.init(level: level, base: log, move: kind, profile: profile, allocationJitter: jitter))
             let expected: MoveResult = i == path.count - 1 ? .won : .continuePlaying
             let got: MoveResult = r.moveResult == .outOfMoves ? .continuePlaying : r.moveResult
-            XCTAssertEqual(got, expected, "\(level.id) \(profile) move \(i + 1) \(token)")
-            if got != expected { failures.append("\(level.id)\t\(profile) move \(i + 1) \(token): \(got) ≠ \(expected)") }
+            if got != expected { failures.append("\(level.id)\t\(profile) j\(jitter) move \(i + 1) \(token): \(got) ≠ \(expected)") }
             margins.append(r.verdict.margin)
             log.append(kind)
         }

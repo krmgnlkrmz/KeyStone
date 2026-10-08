@@ -64,10 +64,15 @@ public final class HeadlessSimulator {
         public var profile: StepProfile
         /// Recording tail after collapse. The solver only needs enough frames to blame a piece.
         public var collapseTail: Double
+        /// Objects allocated (and kept alive) before the scene is built. SpriteKit's internal body order
+        /// follows memory addresses, which differ from process to process (and device to device); shifting
+        /// the allocator samples those orderings inside one process. 0 = no shift.
+        public var allocationJitter: Int
 
         public init(level: Level, base: MoveLog = MoveLog(), move: Move.Kind?, profile: StepProfile = .standard,
-                    collapseTail: Double = 0.6) {
+                    collapseTail: Double = 0.6, allocationJitter: Int = 0) {
             self.level = level; self.base = base; self.move = move; self.profile = profile; self.collapseTail = collapseTail
+            self.allocationJitter = allocationJitter
         }
     }
 
@@ -116,6 +121,8 @@ public final class HeadlessSimulator {
     }
 
     public func run(_ job: Job) throws -> EvaluationResult {
+        let ballast = Self.ballast(job.allocationJitter)
+        defer { withExtendedLifetime(ballast) {} }
         let scene = SimulationScene(level: job.level, size: CGSize(width: 600, height: 800))
         scene.collapseTail = job.collapseTail
         resetClock()
@@ -176,6 +183,11 @@ public final class HeadlessSimulator {
             if let r = scene.lastResult { results.append(r) }
         }
         return results
+    }
+
+    /// Small heap objects of assorted sizes, so the scene's objects land elsewhere than without them.
+    private static func ballast(_ count: Int) -> [AnyObject] {
+        (0..<count).map { i -> AnyObject in i % 2 == 0 ? NSObject() : NSMutableData(length: 16 + (i * 37) % 496)! }
     }
 
     private func step(_ scene: SimulationScene, dt: Double) {

@@ -38,6 +38,20 @@ final class SoakUITests: XCTestCase {
         return XCTWaiter().wait(for: [gone], timeout: timeout) == .completed
     }
 
+    /// Screenshot + accessibility tree, attached and (with SCREENSHOT_DIR) written next to the screenshots.
+    private func evidence(_ name: String) {
+        let image = XCUIScreen.main.screenshot()
+        let attachment = XCTAttachment(screenshot: image)
+        attachment.name = name
+        attachment.lifetime = .keepAlways
+        add(attachment)
+        print("[soak] \(name) accessibility tree:\n\(app.debugDescription.prefix(6000))")
+        if let dir = env["SCREENSHOT_DIR"] {
+            let url = URL(fileURLWithPath: dir).appendingPathComponent("\(name).png")
+            try? image.pngRepresentation.write(to: url)
+        }
+    }
+
     private func button(_ format: String, _ text: String) -> XCUIElement {
         app.buttons.containing(NSPredicate(format: format, text)).firstMatch
     }
@@ -74,7 +88,11 @@ final class SoakUITests: XCTestCase {
                     element.tap()   // remove
                 }
                 // The overlay hides while the move is evaluated; the next element appears once it settles.
-                XCTAssertTrue(waitGone(element, timeout: 10), "level \(level.index): move \(token) was not taken")
+                if !waitGone(element, timeout: 10) {
+                    evidence("soak-fail-L\(level.index)-\(token)")
+                    XCTFail("level \(level.index): move \(token) was not taken (frame \(element.frame), hittable \(element.isHittable))")
+                    return
+                }
                 XCTAssertEqual(app.state, .runningForeground)
             }
             let next = button("label CONTAINS[c] %@", "Next Level")

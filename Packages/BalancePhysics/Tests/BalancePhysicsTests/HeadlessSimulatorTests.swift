@@ -73,6 +73,19 @@ struct HeadlessSimulatorTests {
         }
     }
 
+    /// Allocation shifts sample SpriteKit's internal orderings; the decision must not depend on them.
+    /// Logs how many distinct settled poses four shifts produced (evidence for the forge's jitter checks).
+    @Test func allocationShiftsKeepTheDecision() throws {
+        let sim = try HeadlessSimulator()
+        var settled = Set<String>()
+        for jitter in [0, 23, 71, 150] {
+            let r = try sim.run(.init(level: table(), move: .remove(pieceId: "r"), allocationJitter: jitter))
+            #expect(r.moveResult == .collapsed)
+            settled.insert(String(format: "%.6f", r.recording.poses(at: 0)["l"]?.rotation ?? 0))
+        }
+        print("[jitter] distinct settled poses over 4 allocation shifts: \(settled.count)")
+    }
+
     @Test func undoReplayMatchesForwardPlay() throws {
         // Forward: remove load, (settle), then evaluate nothing. Replay: rebuild with load removed.
         let sim = try HeadlessSimulator()

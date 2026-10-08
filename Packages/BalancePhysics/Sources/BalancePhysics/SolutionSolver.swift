@@ -16,6 +16,9 @@ public final class SolutionSolver {
     public struct Options: Sendable {
         public var maxStates: Int = 400
         public var verifyProfiles: [StepProfile] = StepProfile.validationSet
+        /// Each profile's replay also runs with these allocation shifts (see `Job.allocationJitter`), so a
+        /// level whose decisions depend on SpriteKit's internal order is caught here, not on a device.
+        public var verifyJitters: [Int] = [0, 23, 71]
         public var requiredMargin: Double = PhysicsConstants.requiredMarginRatio
         public var rejectTooEasy: Bool = true
         /// Pool levels also need at least this many moves in the shortest solution.
@@ -152,24 +155,26 @@ public final class SolutionSolver {
                 return report(.tooShort, "solution has \(path.count) moves", explored: states.count, path: path, unsafeShare: unsafeShare)
             }
 
-            // 3. Replay the solution under every profile; decisions must agree, with margin.
+            // 3. Replay the solution under every profile and allocation shift; decisions must agree, with margin.
             var margin = initialMargin
             for profile in options.verifyProfiles {
+              for jitter in options.verifyJitters {
                 var log = MoveLog()
                 for (i, token) in path.enumerated() {
                     guard let kind = moveKind(token, level: level, log: log) else {
                         return report(.inconsistent, "cannot rebuild move \(token)", explored: states.count, path: path)
                     }
-                    let r = try run(level, log, kind, profile)
+                    let r = try run(level, log, kind, profile, jitter: jitter)
                     let expected: MoveResult = i == path.count - 1 ? .won : .continuePlaying
                     let got = r.moveResult == .outOfMoves ? .continuePlaying : r.moveResult
                     guard got == expected else {
-                        return report(.inconsistent, "\(profile) move \(i + 1) \(token): \(r.moveResult) ≠ \(expected)",
+                        return report(.inconsistent, "\(profile) j\(jitter) move \(i + 1) \(token): \(r.moveResult) ≠ \(expected)",
                                       explored: states.count, path: path, unsafeShare: unsafeShare)
                     }
                     margin = min(margin, r.verdict.margin)
                     log.append(kind)
                 }
+              }
             }
             if margin < options.requiredMargin {
                 return report(.narrowMargin, "margin \(fmt(margin)) < \(options.requiredMargin)", explored: states.count,
@@ -223,9 +228,11 @@ public final class SolutionSolver {
         return .remove(pieceId: token)
     }
 
-    private func run(_ level: Level, _ base: MoveLog, _ move: Move.Kind?, _ profile: StepProfile) throws -> EvaluationResult {
+    private func run(_ level: Level, _ base: MoveLog, _ move: Move.Kind?, _ profile: StepProfile,
+                     jitter: Int = 0) throws -> EvaluationResult {
         evaluations += 1
-        return try sim.run(.init(level: level, base: base, move: move, profile: profile, collapseTail: options.collapseTail))
+        return try sim.run(.init(level: level, base: base, move: move, profile: profile, collapseTail: options.collapseTail,
+                                 allocationJitter: jitter))
     }
 
     private func fmt(_ v: Double) -> String { String(format: "%.2f", v) }

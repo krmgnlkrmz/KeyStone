@@ -114,10 +114,13 @@ jobs:
           if [ -n "$TAG" ]; then
             FORGE=$(echo "$TAG" | sed -E 's/^forge:([a-z]+).*/\1/')
             echo "$TAG" | grep -q ' commit' && COMMIT=true
+            echo "$TAG" | grep -q ' prune' && PRUNE=1
             COUNT=$(echo "$TAG" | grep -oE 'count=[0-9]+' | cut -d= -f2)
             SEED=$(echo "$TAG" | grep -oE 'seed=[0-9]+' | cut -d= -f2)
             SHARD=$(echo "$TAG" | grep -oE 'shard=[0-9]+/[0-9]+' | cut -d= -f2)
             ARCH=$(echo "$TAG" | grep -oE 'archetypes=[a-z,]+' | cut -d= -f2)
+            SOAK_LEVELS=$(echo "$TAG" | grep -oE 'levels=[0-9]+' | cut -d= -f2)
+            SOAK_MINUTES=$(echo "$TAG" | grep -oE 'minutes=[0-9]+' | cut -d= -f2)
           fi
           echo "mode=${FORGE:-none}" >> "$GITHUB_OUTPUT"
           echo "commit=${COMMIT:-false}" >> "$GITHUB_OUTPUT"
@@ -125,6 +128,9 @@ jobs:
           echo "seed=${SEED:-9000}" >> "$GITHUB_OUTPUT"
           echo "shard=${SHARD:-0/1}" >> "$GITHUB_OUTPUT"
           echo "archetypes=${ARCH:-}" >> "$GITHUB_OUTPUT"
+          echo "prune=${PRUNE:-0}" >> "$GITHUB_OUTPUT"
+          echo "soak_levels=${SOAK_LEVELS:-50}" >> "$GITHUB_OUTPUT"
+          echo "soak_minutes=${SOAK_MINUTES:-30}" >> "$GITHUB_OUTPUT"
           echo "forge mode: ${FORGE:-none} commit=${COMMIT:-false} count=${COUNT:-1200} seed=${SEED:-9000} shard=${SHARD:-0/1}"
 
       - name: Pick and boot simulator
@@ -163,6 +169,8 @@ jobs:
           TEST_RUNNER_SCREENSHOT_DIR: ${{ github.workspace }}/docs/screenshots
           # [forge:soak]: also play 50 curated levels in a row and tap randomly for 30 minutes.
           TEST_RUNNER_SOAK: ${{ steps.forge.outputs.mode == 'soak' && '1' || '0' }}
+          TEST_RUNNER_SOAK_LEVELS: ${{ steps.forge.outputs.soak_levels }}
+          TEST_RUNNER_SOAK_MINUTES: ${{ steps.forge.outputs.soak_minutes }}
         run: |
           rc=0
           xcodebuild test -project DengeNoktasi.xcodeproj -scheme UITests \
@@ -170,6 +178,8 @@ jobs:
             -test-timeouts-enabled YES -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 4000 \
             -derivedDataPath DerivedData -resultBundlePath UITests.xcresult CODE_SIGNING_ALLOWED=NO > ui.log 2>&1 || rc=$?
           grep -E "error:|failed|passed|Executed|XCTAssert|\[soak\]" ui.log | tail -120 || true
+          # Soak failures dump the accessibility tree; show it.
+          grep -A80 "accessibility tree" ui.log | head -160 || true
           ls -R docs/screenshots 2>/dev/null | head -30 || true
           exit $rc
 
@@ -187,7 +197,7 @@ jobs:
             git add docs/screenshots
             git diff --cached --quiet && return 0
             git commit -m "Screenshots from the real UI ($1)"
-            for i in 1 2 3 4; do git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break; sleep $((i * 5)); done
+            for i in 1 2 3 4; do git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break; sleep $((i * 5)); done
           }
           commit_shots "iPhone 16"
           for NAME in "iPhone 17 Pro Max" "iPhone 16 Plus" "iPhone SE (3rd generation)"; do
@@ -228,6 +238,7 @@ jobs:
           TEST_RUNNER_FORGE_SEED_BASE: ${{ steps.forge.outputs.seed }}
           TEST_RUNNER_FORGE_SHARD: ${{ steps.forge.outputs.shard }}
           TEST_RUNNER_FORGE_ARCHETYPES: ${{ steps.forge.outputs.archetypes }}
+          TEST_RUNNER_FORGE_PRUNE: ${{ steps.forge.outputs.prune }}
           TEST_RUNNER_FORGE_PLAN: ${{ github.workspace }}/Tools/LevelForge/curation-plan.json
         timeout-minutes: 340
         run: |
@@ -261,7 +272,7 @@ jobs:
           git add App/Resources/Levels Tools/LevelForge/reports
           if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
           git commit -m "LevelForge: ${{ steps.forge.outputs.mode }} output (shard ${{ steps.forge.outputs.shard }}, seeds from ${{ steps.forge.outputs.seed }})"
-          for i in 1 2 3 4; do git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break; sleep $((i * 5)); done
+          for i in 1 2 3 4; do git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break; sleep $((i * 5)); done
 
       - name: Upload forge output
         if: ${{ always() && steps.forge.outputs.mode != 'none' }}
