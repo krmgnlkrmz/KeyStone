@@ -21,36 +21,36 @@
 28	kept	c-028	len 3
 29	kept	c-029	len 3
 30	kept	c-030	len 4
-31	MISSING	hanger	tried 60 from seed 131000
-32	MISSING	hanger	tried 60 from seed 132000
-33	MISSING	hanger	tried 60 from seed 133000
-34	MISSING	hanger	tried 60 from seed 134000
-35	MISSING	hanger	tried 60 from seed 135000
-36	MISSING	hanger	tried 60 from seed 136000
-37	MISSING	hanger	tried 60 from seed 137000
-38	MISSING	hanger	tried 60 from seed 138000
-39	MISSING	hanger	tried 60 from seed 139000
-40	MISSING	hanger	tried 60 from seed 140000
-41	MISSING	hanger	tried 60 from seed 141000
-42	MISSING	hanger	tried 60 from seed 142000
-43	MISSING	hanger	tried 60 from seed 143000
-44	MISSING	hanger	tried 60 from seed 144000
-45	MISSING	hanger	tried 60 from seed 145000
+31	hanger	seed 131000	len 2	budget 3	margin 30.22	unsafe 0.50	tries 1	2s
+32	hanger	seed 132000	len 2	budget 3	margin 29.96	unsafe 0.45	tries 1	2s
+33	hanger	seed 133000	len 2	budget 3	margin 30.05	unsafe 0.50	tries 1	2s
+34	hanger	seed 134000	len 2	budget 3	margin 30.43	unsafe 0.48	tries 1	2s
+35	hanger	seed 135000	len 2	budget 3	margin 30.49	unsafe 0.41	tries 1	3s
+36	hanger	seed 136000	len 2	budget 3	margin 30.13	unsafe 0.50	tries 1	3s
+37	hanger	seed 137000	len 2	budget 3	margin 30.51	unsafe 0.41	tries 1	3s
+38	hanger	seed 138000	len 2	budget 3	margin 30.19	unsafe 0.53	tries 1	3s
+39	hanger	seed 139000	len 2	budget 3	margin 30.56	unsafe 0.45	tries 1	4s
+40	hanger	seed 140000	len 2	budget 3	margin 30.25	unsafe 0.41	tries 1	4s
+41	hanger	seed 141000	len 3	budget 4	margin 30.44	unsafe 0.33	tries 1	5s
+42	hanger	seed 142001	len 3	budget 4	margin 30.35	unsafe 0.33	tries 2	6s
+43	hanger	seed 143001	len 3	budget 4	margin 30.30	unsafe 0.51	tries 2	8s
+44	hanger	seed 144001	len 3	budget 4	margin 30.50	unsafe 0.57	tries 2	8s
+45	hanger	seed 145000	len 3	budget 4	margin 30.34	unsafe 0.38	tries 1	9s
 46	kept	c-046	len 4
-47	MISSING	hanger	tried 60 from seed 147000
+47	hanger	seed 147002	len 3	budget 4	margin 30.32	unsafe 0.41	tries 3	10s
 48	kept	c-048	len 4
-49	MISSING	hanger	tried 60 from seed 149000
+49	hanger	seed 149002	len 3	budget 4	margin 30.51	unsafe 0.57	tries 3	12s
 50	kept	c-050	len 4
 51	kept	c-051	len 3
-52	bridge	seed 152000	len 3	budget 4	margin 7.18	unsafe 0.30	tries 1	209s
+52	bridge	seed 152000	len 3	budget 4	margin 7.16	unsafe 0.30	tries 1	15s
 53	kept	c-053	len 3
-54	bridge	seed 154000	len 3	budget 4	margin 25.82	unsafe 0.25	tries 1	210s
+54	bridge	seed 154000	len 3	budget 4	margin 25.87	unsafe 0.25	tries 1	16s
 55	kept	c-055	len 3
-56	bridge	seed 156005	len 3	budget 4	margin 7.20	unsafe 0.24	tries 6	215s
+56	bridge	seed 156005	len 3	budget 4	margin 7.20	unsafe 0.24	tries 6	23s
 57	kept	c-057	len 3
-58	bridge	seed 158002	len 3	budget 4	margin 9.86	unsafe 0.23	tries 3	217s
+58	bridge	seed 158002	len 3	budget 4	margin 9.82	unsafe 0.23	tries 3	25s
 59	kept	c-059	len 3
-60	bridge	seed 160001	len 3	budget 4	margin 30.32	unsafe 0.20	tries 2	219s
+60	bridge	seed 160002	len 3	budget 4	margin 10.28	unsafe 0.29	tries 3	30s
 61	kept	c-061	len 4
 62	kept	c-062	len 3
 63	kept	c-063	len 4

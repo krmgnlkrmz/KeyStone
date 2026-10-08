@@ -30,7 +30,7 @@
           "beam1" : 4.372,
           "load1" : 0.137,
           "load2" : 0.04,
-          "post1" : 2.777,
+          "post1" : 2.775,
           "post2" : 0.139,
           "post3" : 0.138
         },
@@ -53,14 +53,14 @@
         "severity" : {
           "+sup@-24" : 0.138,
           "+sup@-32" : 0.139,
-          "+sup@-8" : 0.139,
+          "+sup@-8" : 0.138,
           "+sup@-88" : 0.139,
           "+sup@0" : 0.139,
           "beam1" : 4.383,
           "load1" : 0.138,
           "load2" : 0.04,
-          "post1" : 2.561,
-          "post3" : 1.331
+          "post1" : 2.816,
+          "post3" : 1.332
         },
         "state" : "post2",
         "unsafe" : {
@@ -114,7 +114,7 @@
           "+sup@0" : 0.033,
           "beam1" : 0.654,
           "load2" : 0.033,
-          "post1" : 2.457,
+          "post1" : 2.478,
           "post2" : 0.033,
           "post3" : 0.033
         },
@@ -161,8 +161,8 @@
           "load2"
         ],
         "severity" : {
-          "beam1" : 4.382,
-          "load1" : 0.138,
+          "beam1" : 4.377,
+          "load1" : 0.137,
           "load2" : 0.04,
           "post1" : 0.137,
           "post2" : 0.139,
@@ -182,12 +182,12 @@
           "load2"
         ],
         "severity" : {
-          "beam1" : 6.827,
+          "beam1" : 6.83,
           "load1" : 0.138,
           "load2" : 0.04,
           "post1" : 0.137,
           "post2" : 0.139,
-          "post3" : 0.138
+          "post3" : 0.139
         },
         "state" : "+sup@-32",
         "unsafe" : {
@@ -208,7 +208,7 @@
           "load1" : 0.137,
           "load2" : 0.04,
           "post1" : 0.137,
-          "post2" : 0.138,
+          "post2" : 0.139,
           "post3" : 0.139
         },
         "state" : "+sup@-24",
@@ -228,8 +228,8 @@
           "beam1" : 7.279,
           "load1" : 0.138,
           "load2" : 0.04,
-          "post1" : 0.36,
-          "post2" : 0.138,
+          "post1" : 0.359,
+          "post2" : 0.139,
           "post3" : 0.139
         },
         "state" : "+sup@-8",
@@ -248,7 +248,7 @@
           "beam1" : 6.139,
           "load1" : 0.137,
           "load2" : 0.04,
-          "post1" : 2.856,
+          "post1" : 2.908,
           "post2" : 0.138,
           "post3" : 0.139
         },
@@ -268,10 +268,10 @@
         "severity" : {
           "+sup@-88" : 0.033,
           "+sup@0" : 0.033,
-          "beam1" : 0.654,
+          "beam1" : 0.657,
           "load2" : 0.033,
           "post1" : 2.462,
-          "post3" : 1.327
+          "post3" : 1.326
         },
         "state" : "load1,post2",
         "unsafe" : {
@@ -294,10 +294,10 @@
           "+sup@-8" : 0.033,
           "+sup@-88" : 0.033,
           "+sup@0" : 0.033,
-          "beam1" : 4.398,
+          "beam1" : 4.399,
           "load1" : 0.033,
-          "post1" : 2.61,
-          "post3" : 1.065
+          "post1" : 2.608,
+          "post3" : 1.064
         },
         "state" : "load2,post2",
         "unsafe" : {
@@ -312,7 +312,7 @@
           "load2"
         ],
         "severity" : {
-          "beam1" : 4.379,
+          "beam1" : 4.383,
           "load1" : 0.138,
           "load2" : 0.04,
           "post1" : 0.137,
@@ -337,7 +337,7 @@
           "load1" : 0.138,
           "load2" : 0.04,
           "post1" : 0.137,
-          "post3" : 1.401
+          "post3" : 1.407
         },
         "state" : "+sup@-32,post2",
         "unsafe" : {
@@ -400,7 +400,7 @@
           "beam1" : 6.137,
           "load1" : 0.138,
           "load2" : 0.04,
-          "post1" : 2.968,
+          "post1" : 2.872,
           "post3" : 0.148
         },
         "state" : "+sup@0,post2",
@@ -602,7 +602,7 @@
           "+sup@-88" : 0.033,
           "+sup@0" : 0.033,
           "beam1" : 0.033,
-          "post1" : 2.357,
+          "post1" : 2.319,
           "post2" : 0.033,
           "post3" : 0.032
         },
@@ -620,7 +620,7 @@
           "load2"
         ],
         "severity" : {
-          "beam1" : 0.654,
+          "beam1" : 0.657,
           "load2" : 0.033,
           "post1" : 0.033,
           "post2" : 0.033,
@@ -642,7 +642,7 @@
         "severity" : {
           "beam1" : 0.657,
           "load2" : 0.033,
-          "post1" : 0.184,
+          "post1" : 0.185,
           "post2" : 0.033,
           "post3" : 0.033
         },
@@ -678,8 +678,8 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 4.885,
-          "load1" : 0.033,
+          "beam1" : 4.881,
+          "load1" : 0.032,
           "post1" : 0.071,
           "post2" : 0.033,
           "post3" : 0.032
@@ -702,7 +702,7 @@
           "load1" : 0.033,
           "post1" : 0.082,
           "post2" : 0.033,
-          "post3" : 0.033
+          "post3" : 0.032
         },
         "state" : "+sup@-24,load2",
         "unsafe" : {
@@ -716,11 +716,11 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 7.742,
+          "beam1" : 7.758,
           "load1" : 0.033,
-          "post1" : 2.92,
-          "post2" : 0.032,
-          "post3" : 0.033
+          "post1" : 2.913,
+          "post2" : 0.033,
+          "post3" : 0.032
         },
         "state" : "+sup@-8,load2",
         "unsafe" : {
@@ -736,7 +736,7 @@
         ],
         "severity" : {
           "beam1" : 6.286,
-          "load1" : 0.032,
+          "load1" : 0.033,
           "post1" : 3.1,
           "post2" : 0.033,
           "post3" : 0.033
@@ -755,7 +755,7 @@
         ],
         "severity" : {
           "beam1" : 4.379,
-          "load1" : 0.131,
+          "load1" : 0.132,
           "load2" : 0.044,
           "post2" : 0.133,
           "post3" : 0.137
@@ -777,9 +777,9 @@
         "severity" : {
           "beam1" : 7.103,
           "load1" : 0.129,
-          "load2" : 0.05,
-          "post2" : 0.127,
-          "post3" : 0.139
+          "load2" : 0.059,
+          "post2" : 0.129,
+          "post3" : 0.14
         },
         "state" : "+sup@-32,post1",
         "unsafe" : {
@@ -800,7 +800,7 @@
         "severity" : {
           "beam1" : 0.654,
           "load2" : 0.033,
-          "post1" : 0.05,
+          "post1" : 0.048,
           "post2" : 0.033,
           "post3" : 0.032
         },
@@ -843,7 +843,7 @@
           "load2" : 0.666,
           "post1" : 0.666,
           "post2" : 0.666,
-          "post3" : 4.349
+          "post3" : 4.348
         },
         "state" : "+sup@-24,beam1",
         "unsafe" : {
@@ -859,10 +859,10 @@
           "load2"
         ],
         "severity" : {
-          "beam1" : 0.655,
+          "beam1" : 0.657,
           "load2" : 0.033,
           "post1" : 0.057,
-          "post2" : 0.032,
+          "post2" : 0.033,
           "post3" : 0.033
         },
         "state" : "+sup@-24,load1",
@@ -876,16 +876,16 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 6.696,
+          "beam1" : 6.684,
           "load1" : 0.182,
-          "load2" : 2.946,
-          "post2" : 0.148,
-          "post3" : 0.146
+          "load2" : 2.928,
+          "post2" : 0.183,
+          "post3" : 0.182
         },
         "state" : "+sup@-8,post1",
         "unsafe" : {
           "beam1" : "load1",
-          "load2" : "beam1"
+          "load2" : "post3"
         },
         "win" : [
           "post2"
@@ -902,7 +902,7 @@
         "severity" : {
           "beam1" : 0.657,
           "load2" : 0.033,
-          "post1" : 0.113,
+          "post1" : 0.106,
           "post2" : 0.033,
           "post3" : 0.033
         },
@@ -973,8 +973,8 @@
         "severity" : {
           "beam1" : 0.654,
           "load2" : 0.033,
-          "post1" : 0.192,
-          "post3" : 0.271
+          "post1" : 0.191,
+          "post3" : 0.274
         },
         "state" : "+sup@0,load1,post2",
         "unsafe" : {
@@ -991,7 +991,7 @@
         "severity" : {
           "beam1" : 4.398,
           "load1" : 0.033,
-          "post1" : 0.033,
+          "post1" : 0.032,
           "post3" : 1.004
         },
         "state" : "+sup@-88,load2,post2",
@@ -1011,7 +1011,7 @@
           "beam1" : 4.883,
           "load1" : 0.033,
           "post1" : 0.07,
-          "post3" : 1.435
+          "post3" : 1.433
         },
         "state" : "+sup@-32,load2,post2",
         "unsafe" : {
@@ -1030,7 +1030,7 @@
         "severity" : {
           "beam1" : 0.712,
           "load1" : 0.033,
-          "post1" : 0.087,
+          "post1" : 0.082,
           "post3" : 1.481
         },
         "state" : "+sup@-24,load2,post2",
@@ -1047,7 +1047,7 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 7.757,
+          "beam1" : 7.741,
           "load1" : 0.033,
           "post1" : 2.951,
           "post3" : 0.042
@@ -1084,7 +1084,7 @@
           "beam1" : 0.654,
           "load2" : 0.033,
           "post1" : 0.052,
-          "post3" : 1.367
+          "post3" : 1.371
         },
         "state" : "+sup@-32,load1,post2",
         "unsafe" : {
@@ -1119,10 +1119,10 @@
           "load2"
         ],
         "severity" : {
-          "beam1" : 0.654,
+          "beam1" : 0.657,
           "load2" : 0.033,
           "post1" : 0.061,
-          "post3" : 1.414
+          "post3" : 1.418
         },
         "state" : "+sup@-24,load1,post2",
         "unsafe" : {
@@ -1140,7 +1140,7 @@
           "beam1" : 6.654,
           "load1" : 1.634,
           "load2" : 0.075,
-          "post1" : 0.143
+          "post1" : 0.144
         },
         "state" : "+sup@-8,post2,post3",
         "unsafe" : {
@@ -1176,10 +1176,10 @@
           "load2"
         ],
         "severity" : {
-          "beam1" : 9.544,
+          "beam1" : 9.532,
           "load1" : 0.137,
           "load2" : 0.053,
-          "post1" : 2.851
+          "post1" : 2.792
         },
         "state" : "+sup@0,post2,post3",
         "unsafe" : {
@@ -1494,7 +1494,7 @@
         "state" : "+sup@16,load2,post3",
         "unsafe" : {
           "beam1" : "load1",
-          "post1" : "post2"
+          "post1" : "beam1"
         }
       },
       {
@@ -1554,10 +1554,10 @@
           "beam1"
         ],
         "severity" : {
-          "beam1" : 0.032,
+          "beam1" : 0.033,
           "post1" : 0.295,
           "post2" : 0.032,
-          "post3" : 0.032
+          "post3" : 0.033
         },
         "state" : "+sup@0,load1,load2",
         "unsafe" : {
@@ -1631,7 +1631,7 @@
           "load2" : 0.033,
           "post1" : 0.635,
           "post2" : 0.635,
-          "post3" : 10.454
+          "post3" : 10.471
         },
         "state" : "+sup@0,beam1,load1",
         "unsafe" : {
@@ -1645,7 +1645,7 @@
         ],
         "severity" : {
           "beam1" : 4.406,
-          "load1" : 0.032,
+          "load1" : 0.033,
           "post2" : 0.032,
           "post3" : 0.006
         },
@@ -1686,7 +1686,7 @@
         "severity" : {
           "beam1" : 0.033,
           "post1" : 0.06,
-          "post2" : 0.032,
+          "post2" : 0.033,
           "post3" : 0.032
         },
         "state" : "+sup@-32,load1,load2",
@@ -1703,7 +1703,7 @@
         "severity" : {
           "beam1" : 0.668,
           "load1" : 0.043,
-          "post2" : 0.042,
+          "post2" : 0.038,
           "post3" : 0.03
         },
         "state" : "+sup@-24,load2,post1",
@@ -1741,9 +1741,9 @@
         ],
         "severity" : {
           "beam1" : 0.033,
-          "post1" : 0.072,
-          "post2" : 0.032,
-          "post3" : 0.033
+          "post1" : 0.067,
+          "post2" : 0.033,
+          "post3" : 0.032
         },
         "state" : "+sup@-24,load1,load2",
         "unsafe" : {
@@ -1758,9 +1758,9 @@
           "beam1"
         ],
         "severity" : {
-          "beam1" : 0.033,
+          "beam1" : 0.032,
           "post1" : 0.143,
-          "post2" : 0.033,
+          "post2" : 0.032,
           "post3" : 0.032
         },
         "state" : "+sup@-8,load1,load2",
@@ -1814,7 +1814,7 @@
           "load1" : 0.651,
           "load2" : 0.666,
           "post2" : 0.666,
-          "post3" : 4.315
+          "post3" : 4.316
         },
         "state" : "+sup@-24,beam1,post1",
         "unsafe" : {
@@ -1854,7 +1854,7 @@
           "load2" : 0.033,
           "post1" : 0.635,
           "post2" : 0.635,
-          "post3" : 4.356
+          "post3" : 4.354
         },
         "state" : "+sup@-24,beam1,load1",
         "unsafe" : {

@@ -2,7 +2,7 @@
   "annotation" : {
     "difficulty" : 2.4,
     "engineFingerprint" : "spk-1-60hz-f029",
-    "marginRatio" : 7.18,
+    "marginRatio" : 7.16,
     "solutionPath" : [
       "post1",
       "+sup@56",
@@ -33,7 +33,7 @@
           "load2" : 0.033,
           "post1" : 0.032,
           "post2" : 7.642,
-          "post3" : 0.032
+          "post3" : 0.033
         },
         "state" : "",
         "unsafe" : {
@@ -59,11 +59,11 @@
           "+sup@72" : 0.033,
           "+sup@88" : 0.033,
           "+sup@96" : 0.033,
-          "beam1" : 4.057,
+          "beam1" : 4.097,
           "load1" : 2.01,
           "load2" : 0.033,
           "post2" : 7.627,
-          "post3" : 1.796
+          "post3" : 1.803
         },
         "state" : "post1",
         "unsafe" : {
@@ -96,7 +96,7 @@
           "load1" : 2.011,
           "load2" : 0.033,
           "post1" : 1.812,
-          "post2" : 7.904
+          "post2" : 7.934
         },
         "state" : "post3",
         "unsafe" : {
@@ -210,9 +210,9 @@
           "beam1" : 0.731,
           "load1" : 2.01,
           "load2" : 0.033,
-          "post1" : 0.032,
+          "post1" : 0.033,
           "post2" : 0.054,
-          "post3" : 0.032
+          "post3" : 0.033
         },
         "state" : "+sup@72",
         "unsafe" : {
@@ -251,8 +251,8 @@
           "beam1" : 5.696,
           "load1" : 2.01,
           "load2" : 0.033,
-          "post1" : 0.033,
-          "post2" : 0.043,
+          "post1" : 0.032,
+          "post2" : 0.034,
           "post3" : 0.033
         },
         "state" : "+sup@96",
@@ -276,14 +276,14 @@
           "+sup@72" : 0.033,
           "+sup@88" : 0.033,
           "+sup@96" : 0.033,
-          "beam1" : 4.099,
+          "beam1" : 4.051,
           "load1" : 0.033,
           "post2" : 4.199,
           "post3" : 1.53
         },
         "state" : "load2,post1",
         "unsafe" : {
-          "beam1" : "load1",
+          "beam1" : "post2",
           "post2" : "beam1",
           "post3" : "beam1"
         }
@@ -297,7 +297,7 @@
           "beam1" : 4.097,
           "load1" : 2.01,
           "load2" : 0.033,
-          "post2" : 7.627,
+          "post2" : 7.68,
           "post3" : 0.033
         },
         "state" : "+sup@-96,post1",
@@ -312,7 +312,7 @@
           "load2"
         ],
         "severity" : {
-          "beam1" : 7.698,
+          "beam1" : 7.819,
           "load1" : 2.01,
           "load2" : 0.033,
           "post2" : 0.139,
@@ -333,7 +333,7 @@
           "load2"
         ],
         "severity" : {
-          "beam1" : 10.311,
+          "beam1" : 10.323,
           "load1" : 2.01,
           "load2" : 0.033,
           "post2" : 0.091,
@@ -359,7 +359,7 @@
           "load1" : 2.01,
           "load2" : 0.033,
           "post2" : 0.053,
-          "post3" : 4.985
+          "post3" : 4.79
         },
         "state" : "+sup@72,post1",
         "unsafe" : {
@@ -451,7 +451,7 @@
           "load1" : 2.011,
           "load2" : 0.033,
           "post1" : 0.032,
-          "post2" : 7.818
+          "post2" : 7.776
         },
         "state" : "+sup@-96,post3",
         "unsafe" : {
@@ -470,7 +470,7 @@
           "load1" : 2.011,
           "load2" : 0.033,
           "post1" : 0.032,
-          "post2" : 10.458
+          "post2" : 10.472
         },
         "state" : "+sup@0,post3",
         "unsafe" : {
@@ -485,7 +485,7 @@
           "load2"
         ],
         "severity" : {
-          "beam1" : 7.662,
+          "beam1" : 7.757,
           "load1" : 2.011,
           "load2" : 0.033,
           "post1" : 2.873,
@@ -504,11 +504,11 @@
           "load2"
         ],
         "severity" : {
-          "beam1" : 10.265,
+          "beam1" : 10.274,
           "load1" : 2.011,
           "load2" : 0.033,
-          "post1" : 4.406,
-          "post2" : 0.032
+          "post1" : 4.405,
+          "post2" : 0.033
         },
         "state" : "+sup@64,post3",
         "unsafe" : {
@@ -545,7 +545,7 @@
           "beam1" : 7.01,
           "load1" : 2.011,
           "load2" : 0.033,
-          "post1" : 5.006,
+          "post1" : 5.004,
           "post2" : 0.033
         },
         "state" : "+sup@88,post3",
@@ -561,11 +561,11 @@
           "load2"
         ],
         "severity" : {
-          "beam1" : 9.863,
+          "beam1" : 9.842,
           "load1" : 2.011,
           "load2" : 0.033,
           "post1" : 3.976,
-          "post2" : 0.032
+          "post2" : 0.033
         },
         "state" : "+sup@96,post3",
         "unsafe" : {
@@ -587,7 +587,7 @@
           "+sup@-96" : 0.033,
           "+sup@96" : 0.033,
           "beam1" : 0.033,
-          "post1" : 0.033,
+          "post1" : 0.032,
           "post2" : 0.033,
           "post3" : 0.033
         },
@@ -623,9 +623,9 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 4.467,
+          "beam1" : 4.564,
           "load1" : 0.033,
-          "post1" : 0.033,
+          "post1" : 0.032,
           "post2" : 0.097,
           "post3" : 0.033
         },
@@ -681,10 +681,10 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 5.66,
+          "beam1" : 5.662,
           "load1" : 0.033,
           "post1" : 0.033,
-          "post2" : 0.035,
+          "post2" : 0.036,
           "post3" : 0.032
         },
         "state" : "+sup@96,load2",
@@ -701,8 +701,8 @@
           "beam1" : 7.301,
           "load1" : 2.021,
           "load2" : 0.04,
-          "post1" : 0.041,
-          "post3" : 0.065
+          "post1" : 0.067,
+          "post3" : 0.038
         },
         "state" : "+sup@56,post2",
         "unsafe" : {
@@ -719,16 +719,16 @@
           "load2"
         ],
         "severity" : {
-          "beam1" : 7.298,
-          "load1" : 2.019,
-          "load2" : 0.042,
-          "post1" : 0.038,
+          "beam1" : 7.262,
+          "load1" : 2.028,
+          "load2" : 0.033,
+          "post1" : 0.03,
           "post3" : 0.033
         },
         "state" : "+sup@64,post2",
         "unsafe" : {
           "beam1" : "load1",
-          "load1" : "beam1"
+          "load1" : "post3"
         },
         "win" : [
           "post1"
@@ -746,7 +746,7 @@
           "load1" : 0.033,
           "post1" : 0.032,
           "post2" : 0.071,
-          "post3" : 0.032
+          "post3" : 0.033
         },
         "state" : "+sup@64,load2",
         "unsafe" : {
@@ -763,7 +763,7 @@
           "beam1" : 0.671,
           "load1" : 2.018,
           "load2" : 0.032,
-          "post1" : 0.041,
+          "post1" : 0.029,
           "post3" : 0.033
         },
         "state" : "+sup@72,post2",
@@ -800,9 +800,9 @@
         ],
         "severity" : {
           "beam1" : 6.144,
-          "load1" : 2.017,
+          "load1" : 2.027,
           "load2" : 0.032,
-          "post1" : 0.032,
+          "post1" : 0.033,
           "post3" : 0.031
         },
         "state" : "+sup@88,post2",
@@ -820,10 +820,10 @@
           "load2"
         ],
         "severity" : {
-          "beam1" : 5.751,
+          "beam1" : 5.837,
           "load1" : 2.027,
-          "load2" : 0.033,
-          "post1" : 0.032,
+          "load2" : 0.032,
+          "post1" : 0.029,
           "post3" : 0.031
         },
         "state" : "+sup@96,post2",
@@ -863,7 +863,7 @@
           "beam1" : 4.099,
           "load1" : 0.033,
           "post2" : 4.199,
-          "post3" : 0.032
+          "post3" : 0.033
         },
         "state" : "+sup@-96,load2,post1",
         "unsafe" : {
@@ -876,10 +876,10 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 4.218,
+          "beam1" : 4.576,
           "load1" : 0.033,
-          "post2" : 0.098,
-          "post3" : 1.793
+          "post2" : 0.094,
+          "post3" : 1.796
         },
         "state" : "+sup@56,load2,post1",
         "unsafe" : {
@@ -899,7 +899,7 @@
           "beam1" : 0.712,
           "load1" : 0.033,
           "post2" : 0.056,
-          "post3" : 1.839
+          "post3" : 1.837
         },
         "state" : "+sup@72,load2,post1",
         "unsafe" : {
@@ -933,7 +933,7 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 5.663,
+          "beam1" : 5.662,
           "load1" : 0.033,
           "post2" : 0.032,
           "post3" : 1.505
@@ -972,7 +972,7 @@
           "beam1" : 3.567,
           "load1" : 0.033,
           "post2" : 0.068,
-          "post3" : 1.839
+          "post3" : 1.844
         },
         "state" : "+sup@64,load2,post1",
         "unsafe" : {
@@ -1029,14 +1029,14 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 4.051,
+          "beam1" : 4.053,
           "load1" : 0.033,
           "post1" : 0.032,
-          "post2" : 2.717
+          "post2" : 2.716
         },
         "state" : "+sup@-96,load2,post3",
         "unsafe" : {
-          "beam1" : "post1",
+          "beam1" : "post2",
           "post2" : "beam1"
         }
       },
@@ -1049,7 +1049,7 @@
           "beam1" : 4.053,
           "load1" : 0.033,
           "post1" : 0.032,
-          "post2" : 6.472
+          "post2" : 6.23
         },
         "state" : "+sup@0,load2,post3",
         "unsafe" : {
@@ -1100,7 +1100,7 @@
           "beam1" : 6.318,
           "load1" : 0.033,
           "post1" : 1.618,
-          "post2" : 0.033
+          "post2" : 0.032
         },
         "state" : "+sup@88,load2,post3",
         "unsafe" : {
@@ -1131,8 +1131,8 @@
         ],
         "severity" : {
           "beam1" : 4.062,
-          "load1" : 2.013,
-          "load2" : 0.032,
+          "load1" : 2.015,
+          "load2" : 0.033,
           "post2" : 7.193
         },
         "state" : "+sup@0,post1,post3",
@@ -1168,7 +1168,7 @@
         "severity" : {
           "beam1" : 7.264,
           "load1" : 2.018,
-          "load2" : 0.033,
+          "load2" : 0.03,
           "post1" : 4.472
         },
         "state" : "+sup@64,post2,post3",
@@ -1204,7 +1204,7 @@
           "beam1" : 0.671,
           "load1" : 2.018,
           "load2" : 0.033,
-          "post1" : 4.95
+          "post1" : 4.953
         },
         "state" : "+sup@72,post2,post3",
         "unsafe" : {
@@ -1236,7 +1236,7 @@
         "severity" : {
           "beam1" : 6.983,
           "load1" : 2.018,
-          "load2" : 0.033,
+          "load2" : 0.03,
           "post1" : 4.651
         },
         "state" : "+sup@88,post2,post3",
@@ -1253,7 +1253,7 @@
         "severity" : {
           "beam1" : 8.89,
           "load1" : 2.019,
-          "load2" : 0.03,
+          "load2" : 0.033,
           "post1" : 3.599
         },
         "state" : "+sup@96,post2,post3",
@@ -1289,7 +1289,7 @@
           "post3"
         ],
         "severity" : {
-          "post1" : 0.032,
+          "post1" : 0.033,
           "post2" : 0.033,
           "post3" : 0.032
         },
@@ -1309,7 +1309,7 @@
           "beam1" : 0.033,
           "post1" : 0.032,
           "post2" : 0.033,
-          "post3" : 0.032
+          "post3" : 0.033
         },
         "state" : "+sup@-96,load1,load2",
         "unsafe" : {
@@ -1340,10 +1340,10 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 6.065,
-          "load1" : 0.043,
-          "post1" : 0.046,
-          "post3" : 0.044
+          "beam1" : 6.031,
+          "load1" : 0.033,
+          "post1" : 0.03,
+          "post3" : 0.033
         },
         "state" : "+sup@56,load2,post2",
         "unsafe" : {
@@ -1362,8 +1362,8 @@
         ],
         "severity" : {
           "beam1" : 0.033,
-          "post1" : 0.033,
-          "post2" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.032,
           "post3" : 0.033
         },
         "state" : "+sup@56,load1,load2",
@@ -1378,9 +1378,9 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 0.682,
+          "beam1" : 0.672,
           "load1" : 0.033,
-          "post1" : 0.028,
+          "post1" : 0.031,
           "post3" : 0.033
         },
         "state" : "+sup@72,load2,post2",
@@ -1420,7 +1420,7 @@
           "beam1" : 0.033,
           "post1" : 0.032,
           "post2" : 0.033,
-          "post3" : 0.032
+          "post3" : 0.033
         },
         "state" : "+sup@72,load1,load2",
         "unsafe" : {
@@ -1434,8 +1434,8 @@
         ],
         "severity" : {
           "beam1" : 6.033,
-          "load1" : 0.032,
-          "post1" : 0.031,
+          "load1" : 0.033,
+          "post1" : 0.032,
           "post3" : 0.031
         },
         "state" : "+sup@88,load2,post2",
@@ -1470,10 +1470,10 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 5.663,
+          "beam1" : 5.789,
           "load1" : 0.032,
-          "post1" : 0.032,
-          "post3" : 0.031
+          "post1" : 0.028,
+          "post3" : 0.032
         },
         "state" : "+sup@96,load2,post2",
         "unsafe" : {
@@ -1489,9 +1489,9 @@
           "load1"
         ],
         "severity" : {
-          "beam1" : 6.528,
+          "beam1" : 6.477,
           "load1" : 0.033,
-          "post1" : 0.034,
+          "post1" : 0.029,
           "post3" : 0.033
         },
         "state" : "+sup@64,load2,post2",

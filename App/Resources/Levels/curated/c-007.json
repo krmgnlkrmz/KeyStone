@@ -2,7 +2,7 @@
   "annotation" : {
     "difficulty" : 3,
     "engineFingerprint" : "spk-1-60hz-f029",
-    "marginRatio" : 3.34,
+    "marginRatio" : 3.35,
     "solutionPath" : [
       "cl",
       "cr",
@@ -15,8 +15,8 @@
           "cr"
         ],
         "severity" : {
-          "cl" : 0.208,
-          "cr" : 0.208,
+          "cl" : 0.188,
+          "cr" : 0.188,
           "pl" : 3.097,
           "pr" : 3.097,
           "sp" : 4.478
@@ -53,7 +53,7 @@
         "severity" : {
           "cl" : 0.188,
           "pl" : 3.097,
-          "pr" : 0.188,
+          "pr" : 0.208,
           "sp" : 10.251
         },
         "state" : "cr",
@@ -84,7 +84,7 @@
         ],
         "severity" : {
           "pl" : 0.208,
-          "pr" : 0.208,
+          "pr" : 0.188,
           "sp" : 0
         },
         "state" : "cl,cr",
@@ -100,7 +100,7 @@
           "cl"
         ],
         "severity" : {
-          "cl" : 0.188,
+          "cl" : 0.208,
           "pl" : 3.097,
           "sp" : 8.552
         },

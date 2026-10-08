@@ -1,0 +1,341 @@
+{
+  "annotation" : {
+    "difficulty" : 1.96,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 30.43,
+    "solutionPath" : [
+      "load1",
+      "rope1"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "load1",
+          "block1"
+        ],
+        "severity" : {
+          "beam1" : 5.553,
+          "block1" : 0.033,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.033,
+          "rope1" : 5.874
+        },
+        "state" : "",
+        "unsafe" : {
+          "beam1" : "block1",
+          "rope1" : "load1"
+        }
+      },
+      {
+        "safe" : [
+          "block1"
+        ],
+        "severity" : {
+          "beam1" : 5.556,
+          "block1" : 0.033,
+          "load1" : 3.182,
+          "post2" : 10.314,
+          "rope1" : 5.918
+        },
+        "state" : "post1",
+        "unsafe" : {
+          "beam1" : "block1",
+          "load1" : "post2",
+          "post2" : "beam1",
+          "rope1" : "load1"
+        }
+      },
+      {
+        "safe" : [
+          "load1",
+          "block1"
+        ],
+        "severity" : {
+          "beam1" : 5.331,
+          "block1" : 0.033,
+          "load1" : 0.033,
+          "post1" : 8.39,
+          "rope1" : 7.545
+        },
+        "state" : "post2",
+        "unsafe" : {
+          "beam1" : "block1",
+          "post1" : "beam1",
+          "rope1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "block1"
+        ],
+        "severity" : {
+          "beam1" : 5.322,
+          "block1" : 0.033,
+          "post1" : 3.293,
+          "post2" : 0.032,
+          "rope1" : 0.033
+        },
+        "state" : "load1",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post1" : "post2"
+        },
+        "win" : [
+          "rope1"
+        ]
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 5.337,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.033,
+          "rope1" : 5.752
+        },
+        "state" : "block1",
+        "unsafe" : {
+          "beam1" : "load1",
+          "rope1" : "load1"
+        }
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 5.337,
+          "load1" : 0.033,
+          "post2" : 7.846,
+          "rope1" : 6.011
+        },
+        "state" : "block1,post1",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post2" : "beam1",
+          "rope1" : "load1"
+        }
+      },
+      {
+        "safe" : [
+          "block1"
+        ],
+        "severity" : {
+          "beam1" : 5.326,
+          "block1" : 0.033,
+          "post1" : 7.529,
+          "rope1" : 7.508
+        },
+        "state" : "load1,post2",
+        "unsafe" : {
+          "beam1" : "block1",
+          "post1" : "beam1",
+          "rope1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 5.33,
+          "load1" : 0.033,
+          "post1" : 8.058,
+          "rope1" : 7.052
+        },
+        "state" : "block1,post2",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post1" : "beam1",
+          "rope1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.033,
+          "rope1" : 0.033
+        },
+        "state" : "block1,load1",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "rope1"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 3,
+    "starThresholds" : [
+      2,
+      3,
+      3
+    ],
+    "targetPieceIds" : [
+      "rope1"
+    ],
+    "type" : "removeTargetsKeepStanding"
+  },
+  "gravity" : -9.8,
+  "id" : "c-034",
+  "index" : 34,
+  "joints" : [
+    {
+      "a" : "arm1",
+      "anchorA" : {
+        "x" : 12,
+        "y" : -8
+      },
+      "anchorB" : {
+        "x" : -105,
+        "y" : 8
+      },
+      "b" : "beam1",
+      "id" : "rope1",
+      "length" : 110,
+      "removable" : true,
+      "type" : "rope"
+    }
+  ],
+  "name" : {
+    "en" : "Two Lines",
+    "tr" : "İki Hat"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : false,
+      "id" : "post1",
+      "material" : "wood",
+      "position" : {
+        "x" : 96,
+        "y" : -127.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 125,
+        "type" : "rect",
+        "w" : 20
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post2",
+      "material" : "wood",
+      "position" : {
+        "x" : -15,
+        "y" : -127.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 125,
+        "type" : "rect",
+        "w" : 20
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam1",
+      "material" : "wood",
+      "position" : {
+        "x" : -7,
+        "y" : -57
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 16,
+        "type" : "rect",
+        "w" : 234
+      }
+    },
+    {
+      "fixed" : true,
+      "id" : "mast1",
+      "material" : "steel",
+      "position" : {
+        "x" : -158,
+        "y" : -56.5
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 267,
+        "type" : "rect",
+        "w" : 18
+      }
+    },
+    {
+      "fixed" : true,
+      "id" : "arm1",
+      "material" : "steel",
+      "position" : {
+        "x" : -124,
+        "y" : 69
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 16,
+        "type" : "rect",
+        "w" : 86
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "load1",
+      "material" : "stone",
+      "position" : {
+        "x" : -75,
+        "y" : -30.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 37,
+        "type" : "rect",
+        "w" : 37
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block1",
+      "material" : "wood",
+      "position" : {
+        "x" : 13,
+        "y" : -34
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 30,
+        "type" : "rect",
+        "w" : 24
+      }
+    }
+  ],
+  "region" : "rope_bridge",
+  "schema" : 1,
+  "seed" : 134000,
+  "supportsAllowed" : 0
+}

@@ -1,0 +1,527 @@
+{
+  "annotation" : {
+    "difficulty" : 2.5,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 30.35,
+    "solutionPath" : [
+      "load1",
+      "rope1",
+      "rope2"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "load1",
+          "rope2"
+        ],
+        "severity" : {
+          "beam1" : 4.408,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.033,
+          "rope1" : 4.535,
+          "rope2" : 0.033
+        },
+        "state" : "",
+        "unsafe" : {
+          "beam1" : "load1",
+          "rope1" : "load1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "load1",
+          "rope2"
+        ],
+        "severity" : {
+          "beam1" : 4.408,
+          "load1" : 0.033,
+          "post2" : 0.015,
+          "rope1" : 4.647,
+          "rope2" : 0.033
+        },
+        "state" : "post1",
+        "unsafe" : {
+          "beam1" : "load1",
+          "rope1" : "load1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "load1",
+          "rope2"
+        ],
+        "severity" : {
+          "beam1" : 4.401,
+          "load1" : 0.033,
+          "post1" : 0.012,
+          "rope1" : 5.383,
+          "rope2" : 0.033
+        },
+        "state" : "post2",
+        "unsafe" : {
+          "beam1" : "load1",
+          "rope1" : "load1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "beam1",
+          "rope1",
+          "rope2"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.033,
+          "rope1" : 0.033,
+          "rope2" : 0.033
+        },
+        "state" : "load1",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 4.409,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.033,
+          "rope1" : 4.204
+        },
+        "state" : "rope2",
+        "unsafe" : {
+          "beam1" : "load1",
+          "rope1" : "load1"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 4.401,
+          "load1" : 3.216,
+          "rope1" : 5.412,
+          "rope2" : 1.822
+        },
+        "state" : "post1,post2",
+        "unsafe" : {
+          "beam1" : "load1",
+          "load1" : "beam1",
+          "rope1" : "load1",
+          "rope2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "beam1",
+          "rope1",
+          "rope2"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post2" : 3.206,
+          "rope1" : 0.053,
+          "rope2" : 0.053
+        },
+        "state" : "load1,post1",
+        "unsafe" : {
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 4.408,
+          "load1" : 0.033,
+          "post2" : 1.792,
+          "rope1" : 4.205
+        },
+        "state" : "post1,rope2",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post2" : "beam1",
+          "rope1" : "load1"
+        }
+      },
+      {
+        "safe" : [
+          "beam1",
+          "rope1",
+          "rope2"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 3.203,
+          "rope1" : 0.033,
+          "rope2" : 0.033
+        },
+        "state" : "load1,post2",
+        "unsafe" : {
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 4.401,
+          "load1" : 0.033,
+          "post1" : 1.801,
+          "rope1" : 7.345
+        },
+        "state" : "post2,rope2",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post1" : "beam1",
+          "rope1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2"
+        ],
+        "severity" : {
+          "post1" : 0.032,
+          "post2" : 0.033
+        },
+        "state" : "beam1,load1",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.037,
+          "rope2" : 0.033
+        },
+        "state" : "load1,rope1",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "rope2"
+        ]
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.033,
+          "rope1" : 0.033
+        },
+        "state" : "load1,rope2",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "rope1"
+        ]
+      },
+      {
+        "safe" : [
+          "post2"
+        ],
+        "severity" : {
+          "post2" : 0
+        },
+        "state" : "beam1,load1,post1",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post2" : 3.206,
+          "rope2" : 0.053
+        },
+        "state" : "load1,post1,rope1",
+        "unsafe" : {
+          "post2" : "beam1"
+        },
+        "win" : [
+          "rope2"
+        ]
+      },
+      {
+        "safe" : [
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post2" : 1.794,
+          "rope1" : 0.033
+        },
+        "state" : "load1,post1,rope2",
+        "unsafe" : {
+          "post2" : "beam1"
+        },
+        "win" : [
+          "rope1"
+        ]
+      },
+      {
+        "safe" : [
+          "post1"
+        ],
+        "severity" : {
+          "post1" : 0
+        },
+        "state" : "beam1,load1,post2",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 3.215,
+          "rope2" : 1.711
+        },
+        "state" : "load1,post2,rope1",
+        "unsafe" : {
+          "post1" : "beam1",
+          "rope2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 1.794,
+          "rope1" : 1.705
+        },
+        "state" : "load1,post2,rope2",
+        "unsafe" : {
+          "post1" : "beam1",
+          "rope1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2"
+        ],
+        "severity" : {
+          "post1" : 0.032,
+          "post2" : 0.033
+        },
+        "state" : "beam1,load1,rope1",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2"
+        ],
+        "severity" : {
+          "post1" : 0.032,
+          "post2" : 0.033
+        },
+        "state" : "beam1,load1,rope2",
+        "unsafe" : {
+
+        }
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 4,
+    "starThresholds" : [
+      3,
+      4,
+      4
+    ],
+    "targetPieceIds" : [
+      "rope1",
+      "rope2"
+    ],
+    "type" : "removeTargetsKeepStanding"
+  },
+  "gravity" : -9.8,
+  "id" : "c-042",
+  "index" : 42,
+  "joints" : [
+    {
+      "a" : "arm1",
+      "anchorA" : {
+        "x" : -35,
+        "y" : -8
+      },
+      "anchorB" : {
+        "x" : -105,
+        "y" : 8
+      },
+      "b" : "beam1",
+      "id" : "rope1",
+      "length" : 106,
+      "removable" : true,
+      "type" : "rope"
+    },
+    {
+      "a" : "arm1",
+      "anchorA" : {
+        "x" : 60,
+        "y" : -8
+      },
+      "anchorB" : {
+        "x" : -10,
+        "y" : 8
+      },
+      "b" : "beam1",
+      "id" : "rope2",
+      "length" : 106,
+      "removable" : true,
+      "type" : "rope"
+    }
+  ],
+  "name" : {
+    "en" : "Hook Load",
+    "tr" : "Kanca Yükü"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : false,
+      "id" : "post1",
+      "material" : "wood",
+      "position" : {
+        "x" : 97,
+        "y" : -140.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 99,
+        "type" : "rect",
+        "w" : 20
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post2",
+      "material" : "steel",
+      "position" : {
+        "x" : -16,
+        "y" : -140.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 99,
+        "type" : "rect",
+        "w" : 20
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam1",
+      "material" : "steel",
+      "position" : {
+        "x" : -6,
+        "y" : -83
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 16,
+        "type" : "rect",
+        "w" : 233
+      }
+    },
+    {
+      "fixed" : true,
+      "id" : "mast1",
+      "material" : "steel",
+      "position" : {
+        "x" : -157,
+        "y" : -71.5
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 237,
+        "type" : "rect",
+        "w" : 18
+      }
+    },
+    {
+      "fixed" : true,
+      "id" : "arm1",
+      "material" : "steel",
+      "position" : {
+        "x" : -76,
+        "y" : 39
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 16,
+        "type" : "rect",
+        "w" : 181
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "load1",
+      "material" : "stone",
+      "position" : {
+        "x" : -74,
+        "y" : -56
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 38,
+        "type" : "rect",
+        "w" : 38
+      }
+    }
+  ],
+  "region" : "steel_crane",
+  "schema" : 1,
+  "seed" : 142001,
+  "supportsAllowed" : 0
+}
