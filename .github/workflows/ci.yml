@@ -29,9 +29,9 @@ on:
 permissions:
   contents: write
 
-# Forge runs (dispatch or "[forge:…]" commits) get their own group so later pushes never cancel them.
+# Forge runs (each dispatch, or a "[forge:…]" commit) get their own group so later pushes never cancel them.
 concurrency:
-  group: ci-${{ github.ref }}-${{ (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[forge:')) && github.sha || 'build' }}
+  group: ci-${{ github.ref }}-${{ github.event_name == 'workflow_dispatch' && format('dispatch-{0}', github.run_id) || (contains(github.event.head_commit.message, '[forge:') && github.sha || 'build') }}
   cancel-in-progress: true
 
 jobs:
