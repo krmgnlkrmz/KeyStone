@@ -37,7 +37,7 @@ public struct ScenePalette {
     }
 
     /// The handoff's dark tokens. Used by previews, tests and as a fallback.
-    public static let dark = ScenePalette(
+    @MainActor public static let dark = ScenePalette(
         wood: rgb(0xB98A5E), woodDark: rgb(0x86603D), woodLight: rgb(0xD1A87D),
         stone: rgb(0xA8A296), stoneDark: rgb(0x7C776D), stoneLight: rgb(0xC2BDB2),
         steel: rgb(0x7E8FA2), steelDark: rgb(0x56647A), steelLight: rgb(0xA6B4C4),
@@ -47,7 +47,7 @@ public struct ScenePalette {
         accent: rgb(0xD9A85B), accentSoft: rgb(0xD9A85B, 0.15), danger: rgb(0xE0574B), jade: rgb(0x8DBBA0), jadeSoft: rgb(0x8DBBA0, 0.16),
         text: rgb(0xECE7DE), text3: rgb(0x77726A), surface: rgb(0x1C222A), line2: rgb(0xDCD6C8, 0.20), isDark: true)
 
-    public static let light = ScenePalette(
+    @MainActor public static let light = ScenePalette(
         wood: rgb(0xA27146), woodDark: rgb(0x6F4A29), woodLight: rgb(0xBE8E60),
         stone: rgb(0x9A9384), stoneDark: rgb(0x6F695E), stoneLight: rgb(0xB3AC9F),
         steel: rgb(0x62748A), steelDark: rgb(0x435264), steelLight: rgb(0x8597AC),
