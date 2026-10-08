@@ -71,16 +71,34 @@ public final class HeadlessSimulator {
         }
     }
 
-    private let renderer: SKRenderer
-    private var clock: TimeInterval = 1000
+    private let device: any MTLDevice
+    private var renderer: SKRenderer
+    private var clock: TimeInterval = Self.clockOrigin
     public private(set) var framesSimulated = 0
     public private(set) var jobsRun = 0
 
+    /// SpriteKit derives each frame's dt from absolute timestamps, so the same dt sequence started at a
+    /// different absolute time rounds differently and the physics drifts. Every job therefore starts on a
+    /// fresh renderer at the same clock origin: identical jobs see bit-identical frame times.
+    private static let clockOrigin: TimeInterval = 1000
+
     public init() throws {
         guard let device = MTLCreateSystemDefaultDevice() else { throw HeadlessError.noMetalDevice }
-        renderer = SKRenderer(device: device)
-        renderer.ignoresSiblingOrder = true
-        renderer.shouldCullNonVisibleNodes = false
+        self.device = device
+        renderer = Self.makeRenderer(device)
+    }
+
+    private static func makeRenderer(_ device: any MTLDevice) -> SKRenderer {
+        let r = SKRenderer(device: device)
+        r.ignoresSiblingOrder = true
+        r.shouldCullNonVisibleNodes = false
+        return r
+    }
+
+    /// Fresh renderer, clock back at its origin.
+    private func resetClock() {
+        renderer = Self.makeRenderer(device)
+        clock = Self.clockOrigin
     }
 
     /// Drops a box for half a second and checks it fell.
@@ -89,6 +107,7 @@ public final class HeadlessSimulator {
                           goal: Goal(type: .removeTargetsKeepStanding, targetPieceIds: [], moveBudget: 1, starThresholds: [1, 1, 1]),
                           pieces: [Piece(id: "box", material: .stone, shape: .rect(w: 20, h: 20), position: .zero)])
         let scene = SimulationScene(level: probe, size: CGSize(width: 400, height: 400))
+        resetClock()
         renderer.scene = scene
         scene.load(log: MoveLog())
         for _ in 0..<30 { step(scene, dt: 1.0 / 60) }
@@ -99,6 +118,7 @@ public final class HeadlessSimulator {
     public func run(_ job: Job) throws -> EvaluationResult {
         let scene = SimulationScene(level: job.level, size: CGSize(width: 600, height: 800))
         scene.collapseTail = job.collapseTail
+        resetClock()
         renderer.scene = scene
         defer { renderer.scene = nil; jobsRun += 1 }
 
@@ -132,6 +152,7 @@ public final class HeadlessSimulator {
     /// without undo. Returns one result per move (stops early when the level ends).
     public func runSequence(level: Level, moves: [Move.Kind], profile: StepProfile = .standard) throws -> [EvaluationResult] {
         let scene = SimulationScene(level: level, size: CGSize(width: 600, height: 800))
+        resetClock()
         renderer.scene = scene
         defer { renderer.scene = nil; jobsRun += 1 }
         var frame = 0

@@ -49,12 +49,18 @@ struct HeadlessSimulatorTests {
         #expect(r.moveResult == .won)
     }
 
+    /// Results must not depend on what ran before: same job twice, a different job in between, and a
+    /// fresh simulator all give bit-identical recordings.
     @Test func sameJobSameRecording() throws {
         let sim = try HeadlessSimulator()
         let job = HeadlessSimulator.Job(level: table(), move: .remove(pieceId: "r"))
-        let a = try sim.run(job), b = try sim.run(job)
+        let a = try sim.run(job)
+        _ = try sim.run(.init(level: table(floor: -140), move: .remove(pieceId: "load"), profile: .jitter))
+        let b = try sim.run(job)
+        let c = try HeadlessSimulator().run(job)
         #expect(a.recording == b.recording)
         #expect(a.verdict == b.verdict)
+        #expect(a.recording == c.recording)
     }
 
     @Test func undoReplayMatchesForwardPlay() throws {

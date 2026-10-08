@@ -156,7 +156,7 @@ jobs:
 
       - name: UI smoke (real app)
         timeout-minutes: 25
-        if: ${{ steps.forge.outputs.mode == 'none' || steps.forge.outputs.mode == 'screens' }}
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
         env:
           TEST_RUNNER_SCREENSHOT_DIR: ${{ github.workspace }}/docs/screenshots
         run: |
