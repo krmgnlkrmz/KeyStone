@@ -6,8 +6,10 @@ import UIKit
 /// so an unfilled (or offline) banner shows a hatched placeholder and nothing moves. After Remove
 /// Ads the slot is removed and content extends to the 40 pt bottom margin with a 0.25 s spring.
 struct BannerSlot: View {
-    @Environment(AdsCoordinator.self) private var ads
+    @Environment(AppModel.self) private var app
     @State private var loaded = false
+
+    private var ads: AdsCoordinator { app.ads }
 
     var body: some View {
         if !ads.adsRemoved {
