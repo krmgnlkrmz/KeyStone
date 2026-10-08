@@ -2,10 +2,12 @@ import SwiftUI
 
 @main
 struct DengeNoktasiApp: App {
+    @State private var app = AppModel(inMemoryStore: AppConfig.isRunningTests)
+
     var body: some Scene {
         WindowGroup {
-            Text("Keystone")
-                .font(.largeTitle.bold())
+            RootView()
+                .environment(app)
         }
     }
 }

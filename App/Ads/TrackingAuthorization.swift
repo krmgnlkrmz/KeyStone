@@ -14,10 +14,7 @@ enum TrackingAuthorization {
     @discardableResult
     static func request() async -> ATTrackingManager.AuthorizationStatus {
         guard needsPrompt else { return ATTrackingManager.trackingAuthorizationStatus }
-        return await withCheckedContinuation { (continuation: CheckedContinuation<ATTrackingManager.AuthorizationStatus, Never>) in
-            ATTrackingManager.requestTrackingAuthorization { status in
-                continuation.resume(returning: status)
-            }
-        }
+        // The completion-handler variant calls back on a background queue; the async one is safe here.
+        return await ATTrackingManager.requestTrackingAuthorization()
     }
 }

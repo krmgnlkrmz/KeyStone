@@ -29,6 +29,8 @@ public protocol GameSceneDelegate: AnyObject {
     func gameScene(_ scene: GameScene, requestsRemovalOf pieceId: String)
     func gameScene(_ scene: GameScene, tappedLocked pieceId: String, reason: LockedReason)
     func gameScene(_ scene: GameScene, didFinish result: EvaluationResult)
+    /// A watched body just left its tolerance (sound, haptic, dim). The window keeps recording.
+    func gameSceneCollapseBegan(_ scene: GameScene)
     /// Camera or layout changed; overlays that track pieces should refresh.
     func gameSceneLayoutDidChange(_ scene: GameScene)
 }
@@ -48,6 +50,8 @@ public final class GameScene: SimulationScene, SimulationSceneDelegate {
     public private(set) var selectedId: String?
     /// Tutorial target (dashed breathing halo).
     public var tapTargetId: String? { didSet { refreshStates() } }
+    /// Goal targets that get a small marker (set when the goal text alone can't single them out).
+    public var markedTargets: Set<String> = [] { didSet { refreshStates() } }
 
     public let cameraNode = SKCameraNode()
     private let ghostLayer = SKNode()
@@ -202,8 +206,12 @@ public final class GameScene: SimulationScene, SimulationSceneDelegate {
     }
 
     public func simulationScene(_ scene: SimulationScene, didFinish result: EvaluationResult) {
-        if result.verdict.outcome == .collapsed { shake() }
         gameDelegate?.gameScene(self, didFinish: result)
+    }
+
+    public override func collapseDidBegin() {
+        shake()
+        gameDelegate?.gameSceneCollapseBegan(self)
     }
 
     // MARK: Ground
@@ -521,6 +529,7 @@ public final class GameScene: SimulationScene, SimulationSceneDelegate {
             else if id == tapTargetId && log.isEmpty { state = .tapTarget }
             else { state = .normal }
             PieceSkin.setState(state, on: node, piece: piece, palette: palette, reduceMotion: reduceMotion)
+            PieceSkin.setTargetMarker(markedTargets.contains(id), on: node, piece: piece, palette: palette)
         }
         for (jid, shape) in ropeShapes {
             shape.strokeColor = jid == selectedId || jid == hintToken ? palette.accent : palette.rope

@@ -326,6 +326,25 @@ public enum PieceSkin {
         overlay.addChild(holder)
     }
 
+    /// Small brass diamond above a goal target, used when targets can't be told apart by name alone.
+    public static func setTargetMarker(_ on: Bool, on node: SKNode, piece: Piece, palette: ScenePalette) {
+        guard let overlay = overlay(of: node) else { return }
+        overlay.childNode(withName: "target")?.removeFromParent()
+        guard on else { return }
+        let b = PieceTextureFactory.localBounds(piece)
+        let path = CGMutablePath()
+        path.move(to: CGPoint(x: 0, y: 5)); path.addLine(to: CGPoint(x: 4, y: 0))
+        path.addLine(to: CGPoint(x: 0, y: -5)); path.addLine(to: CGPoint(x: -4, y: 0)); path.closeSubpath()
+        let marker = SKShapeNode(path: path)
+        marker.name = "target"
+        marker.fillColor = palette.accent
+        marker.strokeColor = palette.surface
+        marker.lineWidth = 1
+        marker.position = CGPoint(x: b.midX, y: b.midY)
+        marker.zPosition = 4
+        overlay.addChild(marker)
+    }
+
     /// Cracks + pulse + badge for a tension tier. Each tier adds one crack, so tiers read in grayscale.
     public static func setTension(_ tier: TensionTier, on node: SKNode, piece: Piece, palette: ScenePalette, reduceMotion: Bool) {
         guard let overlay = overlay(of: node) else { return }

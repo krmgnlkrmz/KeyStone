@@ -71,6 +71,7 @@ open class SimulationScene: SKScene {
     private var evaluatingMove: Move.Kind?
     private var stateKeyBefore = ""
     private var removedOrigins: [String: Pose] = [:]
+    private var collapseNotified = false
 
     /// Supports placed so far, resolved against the state at the time of each placement.
     public private(set) var placedSupports: [SupportPlacement] = []
@@ -128,6 +129,8 @@ open class SimulationScene: SKScene {
     open func supportWasPlaced(_ placement: SupportPlacement, node: SKNode) {}
     /// Hook called when the phase changes.
     open func phaseDidChange(_ phase: SimulationPhase) {}
+    /// Hook called once per window, the moment a watched body crosses its tolerance.
+    open func collapseDidBegin() {}
 
     // MARK: Moves
 
@@ -194,6 +197,7 @@ open class SimulationScene: SKScene {
         let supports = structure.presentIds.filter(SupportToken.isSupport).compactMap { structure.piece($0) }
         recorder.begin(ids: structure.presentIds, removedOrigins: origins, extraPieces: supports)
         recorder.record(time: 0, structure: structure)
+        collapseNotified = false
         setPhase(.evaluating)
         phaseTime = 0
     }
@@ -234,6 +238,10 @@ open class SimulationScene: SKScene {
             phaseTime += dt
             evaluator.sample(time: phaseTime)
             recorder.record(time: phaseTime, structure: structure)
+            if evaluator.hasCollapsed && !collapseNotified {
+                collapseNotified = true
+                collapseDidBegin()
+            }
             let eps = 1e-9
             if let c = evaluator.firstCollapseTime {
                 if phaseTime - c >= collapseTail - eps || phaseTime >= PhysicsConstants.maxSimSeconds - eps { finishWindow() }
