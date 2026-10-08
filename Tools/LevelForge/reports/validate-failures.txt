@@ -1,0 +1,5 @@
+p-lintel-40222	margin 1.1942951907760624
+p-pyramid-21062	drop7 j71 move 3 shim1: collapsed ≠ won
+p-pyramid-21062	45hz j0 move 3 shim1: collapsed ≠ won
+p-table-20258	margin 1.1279242785267911
+p-table-20829	margin 1.2261803076507254
