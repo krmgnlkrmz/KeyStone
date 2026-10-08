@@ -48,29 +48,29 @@ final class SmokeUITests: XCTestCase {
         sleep(1)
         shot("02-map")
 
-        // Level 1: select the stone block, tap again to remove it → Level Clear
+        // Level 1: take a post out from under the beam → collapse replay.
         app.buttons.containing(NSPredicate(format: "label BEGINSWITH 'Level 1 '")).firstMatch.tap()
         sleep(2)
         shot("03-game")
+        tapPiece("p1")
+        tapPiece("p1")
+        let retry = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] 'Retry'")).firstMatch
+        XCTAssertTrue(retry.waitForExistence(timeout: 15), "Collapse replay did not appear")
+        sleep(3)
+        shot("04-collapse-replay")
+
+        // Retry, then lift the stone block off → Level Clear.
+        retry.tap()
+        sleep(2)
         tapPiece("tb")
         tapPiece("tb")
         let next = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] 'Next Level'")).firstMatch
-        XCTAssertTrue(next.waitForExistence(timeout: 12), "Level Clear did not appear")
+        XCTAssertTrue(next.waitForExistence(timeout: 15), "Level Clear did not appear")
         sleep(2)
-        shot("04-level-clear")
+        shot("05-level-clear")
 
-        // Level 2: take the beam out from under the block → collapse replay
+        // Level 2: pause and leave.
         next.tap()
-        sleep(2)
-        tapPiece("bm")
-        tapPiece("bm")
-        let retry = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] 'Retry'")).firstMatch
-        XCTAssertTrue(retry.waitForExistence(timeout: 12), "Collapse replay did not appear")
-        sleep(3)
-        shot("05-collapse-replay")
-
-        // Retry, then pause and leave
-        retry.tap()
         sleep(2)
         let pause = app.buttons["Pause"].firstMatch
         if pause.waitForExistence(timeout: 5) { pause.tap() }
