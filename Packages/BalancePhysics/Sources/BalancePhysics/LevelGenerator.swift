@@ -261,36 +261,49 @@ public struct LevelGenerator {
                      moveBudget: 0, starThresholds: []), 1)
     }
 
-    /// A beam hanging from a fixed gantry on two ropes, loads on the beam, a post underneath.
+    /// A beam on two posts with one end overhanging, the overhang held up by a rope from a fixed gantry
+    /// and loaded with stone. Goal: cut every rope and keep it standing. Cut the overhang's rope while
+    /// its load is still there and the beam tips off the inner post, so the load comes off first (or the
+    /// far side is weighted). Cranes are steel, may carry a decoy rope over the inner post and a second
+    /// load stacked on the first.
     private func hanger(_ b: inout Builder, crane: Bool) -> Goal {
-        let mastX = q(double(-130 ... -100))
-        let mastH = q(double(250...300))
-        let mast = b.rect("mast", .steel, x: mastX, bottom: b.floor, w: 18, h: mastH, fixed: true)
-        let armW = q(double(200...240))
-        let arm = b.rect("arm", .steel, x: mastX + armW / 2 - 9, bottom: Self.top(mast) - 16, w: armW, h: 16, fixed: true)
-        let beamW = q(double(150...200)), beamBottom = b.floor + q(double(100...140))
-        let beamX = q(arm.position.x + double(-10...10))
-        let beam = b.rect("beam", crane ? .steel : .wood, x: beamX, bottom: beamBottom, w: beamW, h: 16)
-        let ropeIds = ["rope1", "rope2"]
-        for (i, side) in [-1.0, 1.0].enumerated() {
-            let ax = side * (beamW / 2 - 10)
-            let anchorArm = Vec2(beamX + ax - arm.position.x, -8)
-            let anchorBeam = Vec2(ax, 8)
-            let length = (Vec2(beamX + ax, arm.position.y - 8) - Vec2(beamX + ax, beam.position.y + 8)).length
-            b.joints.append(Joint(id: ropeIds[i], type: .rope, a: arm.id, b: beam.id, anchorA: anchorArm, anchorB: anchorBeam,
-                                  length: length, removable: true))
+        let side: Double = chance(0.5) ? 1 : -1                     // which end overhangs
+        let beamW = q(double(210...260))
+        let postH = q(double(90...130))
+        let beamX = q(double(-15...15))
+        let farX = q(beamX - side * (beamW / 2 - 14))               // post under the far end
+        let innerX = q(beamX + side * double(25...45))              // inner post just past the middle
+        b.rect("post", .wood, x: farX, bottom: b.floor, w: 20, h: postH)
+        b.rect("post", crane ? .steel : .wood, x: innerX, bottom: b.floor, w: 20, h: postH)
+        let beam = b.rect("beam", crane ? .steel : .wood, x: beamX, bottom: b.floor + postH, w: beamW, h: 16)
+
+        // Gantry beyond the overhang end: a fixed mast, and a fixed arm reaching back over the beam.
+        let endX = q(beamX + side * (beamW / 2 - 12))               // rope anchor on the overhang end
+        let ropeLen = q(double(70...120))
+        let armBottom = Self.top(beam) + ropeLen
+        let mastX = q(beamX + side * (beamW / 2 + 34))
+        b.rect("mast", .steel, x: mastX, bottom: b.floor, w: 18, h: armBottom + 16 - b.floor, fixed: true)
+        let decoy = crane && chance(0.6)
+        let reachX = decoy ? innerX : endX
+        let armW = q(abs(mastX - reachX) + 40)
+        let arm = b.rect("arm", .steel, x: q(mastX - side * (armW / 2 - 9)), bottom: armBottom, w: armW, h: 16, fixed: true)
+        var ropes: [String] = []
+        for x in decoy ? [endX, innerX] : [endX] {
+            let id = "rope\(ropes.count + 1)"
+            b.joints.append(Joint(id: id, type: .rope, a: arm.id, b: beam.id,
+                                  anchorA: Vec2(x - arm.position.x, -8), anchorB: Vec2(x - beam.position.x, 8),
+                                  length: ropeLen, removable: true))
+            ropes.append(id)
         }
-        let postX = q(beamX + double(-beamW / 4 ... beamW / 4))
-        let post = b.rect("post", .wood, x: postX, bottom: b.floor, w: 20, h: beamBottom - b.floor)
-        var loads: [String] = []
-        for x in [beamX - beamW / 3, beamX + beamW / 3] where chance(0.8) {
-            loads.append(b.rect("load", .stone, x: q(x), bottom: Self.top(beam), w: 30, h: 30).id)
-        }
-        if loads.isEmpty { loads.append(b.rect("load", .stone, x: beamX, bottom: Self.top(beam), w: 34, h: 34).id) }
-        if chance(0.5) {
-            return Goal(type: .removeTargetsKeepStanding, targetPieceIds: ropeIds + [post.id], requiredCount: 2, moveBudget: 0, starThresholds: [])
-        }
-        return Goal(type: .dropOnlyTarget, targetPieceIds: [loads[0]], moveBudget: 0, starThresholds: [])
+
+        // The overhang's load; optionally a second one on it, a weight over the far post, a decoy block.
+        let overhangMid = ((innerX + side * 10) + (beamX + side * beamW / 2)) / 2
+        let size = q(double(30...40))
+        let load = b.rect("load", .stone, x: q(overhangMid), bottom: Self.top(beam), w: size, h: size)
+        if crane && chance(0.5) { b.rect("load", .stone, x: load.position.x, bottom: Self.top(load), w: 24, h: 24) }
+        if chance(0.4) { b.rect("load", .stone, x: q(farX + side * 20), bottom: Self.top(beam), w: 26, h: 26) }
+        if chance(0.4) { b.rect("block", .wood, x: q(beamX - side * 20), bottom: Self.top(beam), w: 24, h: 30) }
+        return Goal(type: .removeTargetsKeepStanding, targetPieceIds: ropes, moveBudget: 0, starThresholds: [])
     }
 
     /// Stepped stone pyramid with shims and a keystone on top.

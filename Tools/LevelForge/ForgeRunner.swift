@@ -194,7 +194,16 @@ final class ForgeRunner: XCTestCase {
         let solver = SolutionSolver(simulator: sim, options: options)
         var lines: [String] = []
         let started = Date()
+        // Slots that already ship a verified level within their band are kept, so a rerun only fills gaps
+        // (FORGE_RECURATE=1 redoes every slot).
+        let shipped: [Int: Level] = env["FORGE_RECURATE"] == "1" ? [:] : Dictionary((try? shippedCatalog())?.curated.map { ($0.index, $0) } ?? [],
+                                                                      uniquingKeysWith: { a, _ in a })
         for slot in plan.slots {
+            if let kept = shipped[slot.index], let a = kept.annotation, a.engineFingerprint == PhysicsConstants.fingerprint,
+               (slot.minLength...slot.maxLength).contains(a.solutionPath.count) {
+                lines.append("\(slot.index)\tkept\t\(kept.id)\tlen \(a.solutionPath.count)")
+                continue
+            }
             guard let archetype = LevelGenerator.Archetype(rawValue: slot.archetype), let region = Region(rawValue: slot.region) else {
                 lines.append("\(slot.index)\tBAD-SLOT"); continue
             }
@@ -241,8 +250,11 @@ final class ForgeRunner: XCTestCase {
         options.maxStates = 250
         let solver = SolutionSolver(simulator: sim, options: options)
 
+        // FORGE_ARCHETYPES=hanger,lintel limits a run to some archetypes (to even out the pool's mix).
+        let only = Set((env["FORGE_ARCHETYPES"] ?? "").split(separator: ",").compactMap { LevelGenerator.Archetype(rawValue: String($0)) })
         var accepted: [Level] = []
         var rejections: [String: Int] = [:]
+        var samples: [String: [String]] = [:]
         var byArchetype: [String: (tried: Int, ok: Int)] = [:]
         let started = Date()
         // Files of 100 levels, written as they fill so a crash late in a long run keeps earlier work.
@@ -258,7 +270,8 @@ final class ForgeRunner: XCTestCase {
         for k in 0..<count {
             let seed = base + UInt64(k)
             guard Int(seed % UInt64(shard.of)) == shard.index else { continue }
-            let candidate = LevelGenerator(seed: seed).make()
+            let generator = LevelGenerator(seed: seed)
+            let candidate = only.isEmpty ? generator.make() : generator.make(archetype: only.sorted { $0.rawValue < $1.rawValue }[Int(seed % UInt64(only.count))])
             let archetype = String(candidate.id.split(separator: "-")[1])
             byArchetype[archetype, default: (0, 0)].tried += 1
             let r = solver.solve(candidate, verifiedAt: Self.today)
@@ -269,7 +282,9 @@ final class ForgeRunner: XCTestCase {
                 byArchetype[archetype]!.ok += 1
                 if accepted.count % 20 == 0 { try writeChunk((accepted.count - 1) / 100) }
             } else {
-                rejections[r.rejection?.rawValue ?? "trivial", default: 0] += 1
+                let reason = r.rejection?.rawValue ?? "trivial"
+                rejections[reason, default: 0] += 1
+                if samples[reason, default: []].count < 3 { samples[reason, default: []].append("\(candidate.id): \(r.detail)") }
             }
             if k % 50 == 0 {
                 let perArchetype = byArchetype.sorted { $0.key < $1.key }.map { "\($0.key) \($0.value.ok)/\($0.value.tried)" }.joined(separator: " ")
@@ -280,6 +295,7 @@ final class ForgeRunner: XCTestCase {
         let summary = """
         candidates: \(count) (shard \(shard.index)/\(shard.of)), accepted: \(accepted.count)
         rejections: \(rejections.sorted { $0.key < $1.key }.map { "\($0.key)=\($0.value)" }.joined(separator: ", "))
+        samples: \(samples.sorted { $0.key < $1.key }.flatMap(\.value).joined(separator: " | "))
         archetypes: \(byArchetype.sorted { $0.key < $1.key }.map { "\($0.key) \($0.value.ok)/\($0.value.tried)" }.joined(separator: ", "))
         mean margin: \(String(format: "%.2f", accepted.compactMap { $0.annotation?.marginRatio }.reduce(0, +) / Double(max(1, accepted.count))))
         solution lengths: \(Dictionary(grouping: accepted, by: { $0.annotation?.solutionPath.count ?? 0 }).mapValues(\.count).sorted { $0.key < $1.key })

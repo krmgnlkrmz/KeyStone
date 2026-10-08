@@ -49,6 +49,17 @@ CURRICULUM = [
     (71, 80, "keystone", ["pyramid", "lintel"], lambda i: (3, 4) if i < 76 else (4, 5), 2, {}),
 ]
 
+# Per-slot corrections from forge runs: an archetype that cannot produce the slot's band is swapped,
+# or the band is widened where the archetype's shortest solutions are shorter than planned.
+OVERRIDES = {
+    11: {"archetype": "tower"},             # lintels need >= 3 moves; 11-14 teach two-move order
+    14: {"archetype": "pyramid", "attempts": 90},
+    42: {"archetype": "hanger"},            # counterweights need >= 4 moves; 41-45 are short
+    44: {"archetype": "hanger"},
+    66: {"minLength": 3}, 68: {"minLength": 3}, 70: {"minLength": 3},   # bridges solve in 3
+    77: {"minLength": 3}, 79: {"minLength": 3},                         # pyramids solve in 3
+}
+
 slots = []
 for first, last, region, cycle, band, slack, extra in CURRICULUM:
     for n, index in enumerate(range(first, last + 1)):
@@ -60,6 +71,7 @@ for first, last, region, cycle, band, slack, extra in CURRICULUM:
             "name": {"en": NAMES[index][0], "tr": NAMES[index][1]},
         }
         slot.update(extra)
+        slot.update(OVERRIDES.get(index, {}))
         if slot["archetype"] != "bridge" and slot.get("goal") == "placeSupportThenRemove":
             del slot["goal"]
         slots.append(slot)

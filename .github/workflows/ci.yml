@@ -117,12 +117,14 @@ jobs:
             COUNT=$(echo "$TAG" | grep -oE 'count=[0-9]+' | cut -d= -f2)
             SEED=$(echo "$TAG" | grep -oE 'seed=[0-9]+' | cut -d= -f2)
             SHARD=$(echo "$TAG" | grep -oE 'shard=[0-9]+/[0-9]+' | cut -d= -f2)
+            ARCH=$(echo "$TAG" | grep -oE 'archetypes=[a-z,]+' | cut -d= -f2)
           fi
           echo "mode=${FORGE:-none}" >> "$GITHUB_OUTPUT"
           echo "commit=${COMMIT:-false}" >> "$GITHUB_OUTPUT"
           echo "count=${COUNT:-1200}" >> "$GITHUB_OUTPUT"
           echo "seed=${SEED:-9000}" >> "$GITHUB_OUTPUT"
           echo "shard=${SHARD:-0/1}" >> "$GITHUB_OUTPUT"
+          echo "archetypes=${ARCH:-}" >> "$GITHUB_OUTPUT"
           echo "forge mode: ${FORGE:-none} commit=${COMMIT:-false} count=${COUNT:-1200} seed=${SEED:-9000} shard=${SHARD:-0/1}"
 
       - name: Pick and boot simulator
@@ -212,6 +214,7 @@ jobs:
           TEST_RUNNER_FORGE_COUNT: ${{ steps.forge.outputs.count }}
           TEST_RUNNER_FORGE_SEED_BASE: ${{ steps.forge.outputs.seed }}
           TEST_RUNNER_FORGE_SHARD: ${{ steps.forge.outputs.shard }}
+          TEST_RUNNER_FORGE_ARCHETYPES: ${{ steps.forge.outputs.archetypes }}
           TEST_RUNNER_FORGE_PLAN: ${{ github.workspace }}/Tools/LevelForge/curation-plan.json
         timeout-minutes: 340
         run: |
