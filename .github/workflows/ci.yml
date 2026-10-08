@@ -1,0 +1,133 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      forge:
+        description: "LevelForge run: none | smoke | validate | curated | pool"
+        required: false
+        default: "none"
+      forge_count:
+        description: "Pool candidates to generate (forge=pool)"
+        required: false
+        default: "1200"
+      forge_seed_base:
+        description: "First generator seed (forge=pool)"
+        required: false
+        default: "9000"
+
+concurrency:
+  group: ci-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: true
+
+jobs:
+  core-linux:
+    name: BalanceCore (Linux)
+    runs-on: ubuntu-latest
+    container: swift:6.2-noble
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift test --package-path Packages/BalanceCore
+
+  ios:
+    name: iOS build + tests
+    runs-on: macos-15
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select newest Xcode
+        run: |
+          ls -d /Applications/Xcode*.app
+          XC=$(ls -d /Applications/Xcode_*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$XC"
+          xcodebuild -version
+          xcrun swift --version
+
+      - name: Tools
+        run: brew install xcodegen xcbeautify || brew install xcodegen
+
+      - name: BalanceCore tests (macOS)
+        run: swift test --package-path Packages/BalanceCore
+
+      - name: BalancePhysics tests (macOS SpriteKit)
+        run: swift test --package-path Packages/BalancePhysics
+
+      - name: Generate project
+        run: |
+          cp Config/Release.example.xcconfig Config/Release.xcconfig
+          xcodegen generate
+
+      - name: Resolve packages
+        run: |
+          xcodebuild -resolvePackageDependencies -project DengeNoktasi.xcodeproj -scheme DengeNoktasi -clonedSourcePackagesDirPath SourcePackages
+          cat DengeNoktasi.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved || true
+
+      - name: Ads SDK surface (for docs/ads-policy.md)
+        run: ./scripts/ci-sdk-report.sh SourcePackages || true
+
+      - name: Pick simulator
+        id: sim
+        run: echo "udid=$(./scripts/ci-pick-simulator.sh)" >> "$GITHUB_OUTPUT"
+
+      - name: Build for testing
+        run: |
+          set -o pipefail
+          xcodebuild build-for-testing -project DengeNoktasi.xcodeproj -scheme DengeNoktasi \
+            -destination "id=${{ steps.sim.outputs.udid }}" -clonedSourcePackagesDirPath SourcePackages \
+            -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO | tee build.log | xcbeautify --renderer github-actions || \
+            (grep -E "error:|warning:" build.log | sort -u | head -200; exit 1)
+          echo "Warnings in our sources:"; grep -E "^/.*(App|Widget|Packages|Tests|Tools)/.*warning:" build.log | sort -u | head -100 || true
+
+      - name: Unit tests (simulator)
+        run: |
+          set -o pipefail
+          xcodebuild test-without-building -project DengeNoktasi.xcodeproj -scheme DengeNoktasi \
+            -destination "id=${{ steps.sim.outputs.udid }}" -clonedSourcePackagesDirPath SourcePackages \
+            -derivedDataPath DerivedData -resultBundlePath AppTests.xcresult CODE_SIGNING_ALLOWED=NO | xcbeautify --renderer github-actions
+
+      - name: LevelForge smoke
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.forge == 'none' || inputs.forge == 'smoke' }}
+        run: |
+          set -o pipefail
+          xcodebuild test -project DengeNoktasi.xcodeproj -scheme LevelForge \
+            -destination "id=${{ steps.sim.outputs.udid }}" -clonedSourcePackagesDirPath SourcePackages \
+            -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO \
+            -only-testing:LevelForgeTests/ForgeRunner/testCuratedSmoke | xcbeautify --renderer github-actions
+
+      - name: LevelForge (${{ inputs.forge }})
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.forge != 'none' && inputs.forge != 'smoke' }}
+        env:
+          TEST_RUNNER_FORGE_OUT: ${{ github.workspace }}/forge-out
+          TEST_RUNNER_FORGE_COUNT: ${{ inputs.forge_count }}
+          TEST_RUNNER_FORGE_SEED_BASE: ${{ inputs.forge_seed_base }}
+        run: |
+          set -o pipefail
+          mkdir -p forge-out
+          case "${{ inputs.forge }}" in
+            validate) T=testValidateShippedLevels ;;
+            curated) T=testAnnotateCurated ;;
+            pool) T=testGeneratePool ;;
+          esac
+          xcodebuild test -project DengeNoktasi.xcodeproj -scheme LevelForge \
+            -destination "id=${{ steps.sim.outputs.udid }}" -clonedSourcePackagesDirPath SourcePackages \
+            -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO \
+            -only-testing:LevelForgeTests/ForgeRunner/$T | xcbeautify --renderer github-actions
+
+      - name: Upload forge output
+        if: ${{ always() && github.event_name == 'workflow_dispatch' && inputs.forge != 'none' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: forge-out
+          path: forge-out
+          if-no-files-found: ignore
+
+      - name: Upload test results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xcresult
+          path: "*.xcresult"
+          if-no-files-found: ignore

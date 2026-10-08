@@ -1,0 +1,16 @@
+// Values shared by every configuration. Nothing in Swift source hard-codes these;
+// they reach the app through Info.plist keys (see App/Info.plist).
+//
+// NOTE: "//" starts a comment in xcconfig files, so URLs are written as
+// https:/$()/host/path — the empty $() keeps the double slash intact.
+
+DEVELOPMENT_TEAM = 8VQL32C8BD
+APP_BUNDLE_ID = com.Kerem.KeyStone
+APP_GROUP_ID = group.com.Kerem.dengenoktasi
+APP_DISPLAY_NAME = Keystone
+URL_SCHEME = dengenoktasi
+REMOVE_ADS_PRODUCT_ID = $(APP_BUNDLE_ID).removeads
+
+// PLACEHOLDER — ask the owner for the real addresses before release (docs/submission-checklist.md).
+PRIVACY_URL = https:/$()/PLACEHOLDER_PRIVACY_HOST/privacy
+SUPPORT_EMAIL = PLACEHOLDER_SUPPORT_EMAIL

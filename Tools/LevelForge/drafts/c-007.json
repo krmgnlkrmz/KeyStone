@@ -1,0 +1,173 @@
+{
+  "floorY": -190.0,
+  "goal": {
+    "moveBudget": 3,
+    "starThresholds": [
+      2,
+      3,
+      3
+    ],
+    "targetPieceIds": [
+      "k"
+    ],
+    "type": "dropOnlyTarget"
+  },
+  "gravity": -9.8,
+  "id": "c-007",
+  "index": 7,
+  "joints": [],
+  "name": {
+    "en": "Twin Piers",
+    "tr": "İkiz Ayak"
+  },
+  "pack": "curated",
+  "pieces": [
+    {
+      "fixed": true,
+      "id": "bl",
+      "material": "stone",
+      "position": {
+        "x": -90.0,
+        "y": -165.0
+      },
+      "removable": false,
+      "rotation": 0,
+      "shape": {
+        "h": 50.0,
+        "type": "rect",
+        "w": 60.0
+      }
+    },
+    {
+      "fixed": true,
+      "id": "br",
+      "material": "stone",
+      "position": {
+        "x": 90.0,
+        "y": -165.0
+      },
+      "removable": false,
+      "rotation": 0,
+      "shape": {
+        "h": 50.0,
+        "type": "rect",
+        "w": 60.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "pl",
+      "material": "wood",
+      "position": {
+        "x": -90.0,
+        "y": -100.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 80.0,
+        "type": "rect",
+        "w": 28.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "pr",
+      "material": "wood",
+      "position": {
+        "x": 90.0,
+        "y": -100.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 80.0,
+        "type": "rect",
+        "w": 28.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "cl",
+      "material": "stone",
+      "position": {
+        "x": -77.0,
+        "y": -45.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 30.0,
+        "type": "rect",
+        "w": 74.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "cr",
+      "material": "stone",
+      "position": {
+        "x": 77.0,
+        "y": -45.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 30.0,
+        "type": "rect",
+        "w": 74.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "sp",
+      "material": "steel",
+      "position": {
+        "x": 0.0,
+        "y": -110.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 160.0,
+        "type": "rect",
+        "w": 14.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "k",
+      "material": "brass",
+      "position": {
+        "x": 0.0,
+        "y": -10.0
+      },
+      "removable": false,
+      "rotation": 0,
+      "shape": {
+        "points": [
+          [
+            -42.0,
+            -20.0
+          ],
+          [
+            42.0,
+            -20.0
+          ],
+          [
+            70.0,
+            20.0
+          ],
+          [
+            -70.0,
+            20.0
+          ]
+        ],
+        "type": "polygon"
+      }
+    }
+  ],
+  "region": "wood_scaffold",
+  "schema": 1,
+  "supportsAllowed": 0
+}

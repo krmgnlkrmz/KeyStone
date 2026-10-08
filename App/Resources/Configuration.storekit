@@ -1,0 +1,39 @@
+{
+  "identifier" : "6B0F2B6E",
+  "nonRenewingSubscriptions" : [ ],
+  "products" : [
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "6739000001",
+      "localizations" : [
+        {
+          "description" : "Removes banners and interstitials for good. Hints stay available.",
+          "displayName" : "Remove Ads",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Banner ve geçiş reklamlarını kalıcı olarak kaldırır. İpuçları açık kalır.",
+          "displayName" : "Reklamları Kaldır",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "com.Kerem.KeyStone.removeads",
+      "referenceName" : "Remove Ads",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6739000000",
+    "_developerTeamID" : "8VQL32C8BD",
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [ ]
+  },
+  "subscriptionGroups" : [ ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

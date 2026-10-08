@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>$(APP_DISPLAY_NAME)</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>tr</string>
+	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>$(URL_SCHEME)</string>
+			</array>
+		</dict>
+	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array/>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+	</dict>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>LaunchBackground</string>
+	</dict>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>arm64</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
+
+	<!-- Ads: values come from Config/*.xcconfig; nothing is hard-coded in Swift. -->
+	<key>GADApplicationIdentifier</key>
+	<string>$(GAD_APP_ID)</string>
+	<key>DNAdUnitBanner</key>
+	<string>$(AD_BANNER)</string>
+	<key>DNAdUnitInterstitial</key>
+	<string>$(AD_INTER)</string>
+	<key>DNAdUnitRewarded</key>
+	<string>$(AD_REWARDED)</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Used to make ads more relevant to you. If you don't allow it, the whole game stays open.</string>
+	<!--
+	  SKAdNetworkItems: Google's published list must be pasted here verbatim before release.
+	  Run scripts/update-skadnetworks.sh on a machine with internet access; it rewrites this block.
+	  Only Google's own identifier is listed until then.
+	-->
+	<key>SKAdNetworkItems</key>
+	<array>
+		<dict>
+			<key>SKAdNetworkIdentifier</key>
+			<string>cstr6suwn9.skadnetwork</string>
+		</dict>
+	</array>
+
+	<!-- App configuration read by AppConfig.swift -->
+	<key>DNAppGroupIdentifier</key>
+	<string>$(APP_GROUP_ID)</string>
+	<key>DNRemoveAdsProductID</key>
+	<string>$(REMOVE_ADS_PRODUCT_ID)</string>
+	<key>DNPrivacyPolicyURL</key>
+	<string>$(PRIVACY_URL)</string>
+	<key>DNSupportEmail</key>
+	<string>$(SUPPORT_EMAIL)</string>
+	<key>DNURLScheme</key>
+	<string>$(URL_SCHEME)</string>
+</dict>
+</plist>

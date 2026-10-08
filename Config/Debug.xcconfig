@@ -1,0 +1,8 @@
+#include "Shared.xcconfig"
+
+// Google's official sample/test IDs (https://developers.google.com/admob/ios/test-ads).
+// Safe to commit; never serve real ads in Debug.
+GAD_APP_ID = ca-app-pub-3940256099942544~1458002511
+AD_BANNER = ca-app-pub-3940256099942544/2934735716
+AD_INTER = ca-app-pub-3940256099942544/4411468910
+AD_REWARDED = ca-app-pub-3940256099942544/1712485313

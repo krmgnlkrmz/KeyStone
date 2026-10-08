@@ -1,0 +1,113 @@
+{
+  "floorY": -190.0,
+  "goal": {
+    "moveBudget": 3,
+    "requiredCount": 2,
+    "starThresholds": [
+      2,
+      3,
+      3
+    ],
+    "targetPieceIds": [
+      "pl",
+      "pm",
+      "pr"
+    ],
+    "type": "removeTargetsKeepStanding"
+  },
+  "gravity": -9.8,
+  "id": "c-002",
+  "index": 2,
+  "joints": [],
+  "name": {
+    "en": "Three Posts",
+    "tr": "Üç Direk"
+  },
+  "pack": "curated",
+  "pieces": [
+    {
+      "fixed": false,
+      "id": "pl",
+      "material": "wood",
+      "position": {
+        "x": -80.0,
+        "y": -145.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 90.0,
+        "type": "rect",
+        "w": 20.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "pm",
+      "material": "wood",
+      "position": {
+        "x": 0.0,
+        "y": -145.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 90.0,
+        "type": "rect",
+        "w": 20.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "pr",
+      "material": "wood",
+      "position": {
+        "x": 80.0,
+        "y": -145.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 90.0,
+        "type": "rect",
+        "w": 20.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "bm",
+      "material": "wood",
+      "position": {
+        "x": 0.0,
+        "y": -91.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 18.0,
+        "type": "rect",
+        "w": 220.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "st",
+      "material": "stone",
+      "position": {
+        "x": 0.0,
+        "y": -57.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 50.0,
+        "type": "rect",
+        "w": 60.0
+      }
+    }
+  ],
+  "region": "wood_scaffold",
+  "schema": 1,
+  "supportsAllowed": 0,
+  "tutorial": 2
+}
