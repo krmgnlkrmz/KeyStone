@@ -21,10 +21,11 @@ app and the widget. In-app purchase product: `com.Kerem.KeyStone.removeads` (non
 
 - [x] Content: 80 curated + 1,411 pool levels, each with a verified annotation (solver, five frame
       profiles, margin ≥ 1.4 at generation, fingerprint `spk-1-60hz-f029`).
-- [x] `[forge:validate]` (the release gate) re-verifies every shipped level in a fresh process under five
-      frame profiles × three allocation shifts. Three runs flagged 11 pool levels in all (chaotic
-      structures whose outcome depends on SpriteKit's internal body order); they were pruned, all 80
-      curated levels pass (see `Tools/LevelForge/README.md`).
+- [ ] `[forge:validate]` (the release gate) re-verifies every shipped level in a fresh process under five
+      frame profiles × eight allocation shifts. Three runs flagged 11 pool levels in all (chaotic
+      structures whose outcome depends on SpriteKit's internal body order) and they were pruned; the
+      fourth flagged curated c-075 and 3 pool levels, so the sample went from 3 to 8 shifts and the
+      gate is being re-run (see `Tools/LevelForge/README.md`).
       🔁 Re-run after any physics or content change and before every release.
 - [x] Simulator unit tests green, including "every curated level solvable without rewarded ads" and the
       cold-start catalog bound (CI run on `da08c73`).

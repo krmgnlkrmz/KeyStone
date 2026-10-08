@@ -127,7 +127,7 @@ final class ForgeRunner: XCTestCase {
     }
 
     /// Allocation shifts the release gate samples per profile (see `HeadlessSimulator.Job.allocationJitter`).
-    static let validationJitters = [0, 23, 71]
+    static let validationJitters = HeadlessSimulator.orderingShifts
 
     /// Rewrites every shipped pool file that held a pruned level into FORGE_OUT/pool (same names).
     private func writePrunedPool(without ids: Set<String>) throws {

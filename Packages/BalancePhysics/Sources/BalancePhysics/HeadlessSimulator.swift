@@ -87,6 +87,11 @@ public final class HeadlessSimulator {
     /// fresh renderer at the same clock origin: identical jobs see bit-identical frame times.
     private nonisolated static let clockOrigin: TimeInterval = 1000
 
+    /// Allocation shifts the solver verifies every solution under and the release gate re-checks, per
+    /// frame profile. Three shifts let levels through that flipped in a later process (a curated one
+    /// among them), so the sample is wider; each shift is one more replay of a short path.
+    public nonisolated static let orderingShifts: [Int] = [0, 23, 71, 149, 307, 613, 1201, 2411]
+
     public init() throws {
         guard let device = MTLCreateSystemDefaultDevice() else { throw HeadlessError.noMetalDevice }
         self.device = device

@@ -57,7 +57,7 @@ Before a release: fill in `Config/Shared.xcconfig` placeholders and `Config/Rele
 - Every one carries an annotation from the offline solver: verified shortest solution, the full
   safe/unsafe/win neighbourhood of every explored state, margin ≥ 1.4 under five frame profiles, and
   the engine fingerprint it was verified with. The release gate (`[forge:validate]`) replays every
-  shipped level in a fresh process under the five profiles × three allocation shifts.
+  shipped level in a fresh process under the five profiles × eight allocation shifts.
 
 ## CI
 

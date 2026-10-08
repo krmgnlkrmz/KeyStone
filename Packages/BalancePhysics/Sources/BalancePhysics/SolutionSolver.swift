@@ -18,7 +18,7 @@ public final class SolutionSolver {
         public var verifyProfiles: [StepProfile] = StepProfile.validationSet
         /// Each profile's replay also runs with these allocation shifts (see `Job.allocationJitter`), so a
         /// level whose decisions depend on SpriteKit's internal order is caught here, not on a device.
-        public var verifyJitters: [Int] = [0, 23, 71]
+        public var verifyJitters: [Int] = HeadlessSimulator.orderingShifts
         public var requiredMargin: Double = PhysicsConstants.requiredMarginRatio
         public var rejectTooEasy: Bool = true
         /// Pool levels also need at least this many moves in the shortest solution.

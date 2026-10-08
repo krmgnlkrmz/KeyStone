@@ -42,7 +42,8 @@ and a chaotic structure verified in one process can flip in another even though 
 looked safe (the first two full validations flagged 7 of 1,502 levels, all pool, 3 of them pyramids;
 margin did not predict which). `HeadlessSimulator.Job.allocationJitter` shifts the allocator before a
 job to sample other orderings inside one process: the solver verifies every solution under 5 frame
-profiles × 3 shifts, and the release gate checks the same 15 combinations. `validate-failures.txt` lists
+profiles × 8 shifts (`HeadlessSimulator.orderingShifts`), and the release gate checks the same 40
+combinations (3 shifts let a curated level through that flipped in a later process). `validate-failures.txt` lists
 any failing level and why. A curated level that fails is fixed or replaced, never pruned silently.
 
 Drafts whose id starts with `x-` are geometry trials: they are verified and every explored state is

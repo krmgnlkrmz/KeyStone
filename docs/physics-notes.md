@@ -49,8 +49,10 @@ Replays are never re-simulated (below), so they are exact.
 **Sampling other orderings.** SpriteKit's body order follows memory addresses, so a fresh process (or a
 player's device) can resolve a chaotic structure differently. `Job.allocationJitter` allocates some
 ballast before the scene is built, which moves SpriteKit's objects to other addresses; the solver
-verifies each solution under 5 frame profiles × 3 such shifts, and the release gate checks the same 15
-combinations. Levels whose decisions depend on the ordering are rejected (curated) or pruned (pool).
+verifies each solution under 5 frame profiles × 8 such shifts (`HeadlessSimulator.orderingShifts`), and
+the release gate checks the same 40 combinations. Levels whose decisions depend on the ordering are
+rejected (curated) or pruned (pool). Three shifts were not enough: a fourth fresh-process validation
+still found a curated level (c-075) whose last move collapsed in 2 of its 15 combinations.
 
 ## The decision rule (tolerant on purpose)
 
