@@ -65,7 +65,12 @@ What the forge actually did, so the next person knows why the plan looks the way
   and long bridges/pyramids (they solve in 3). The plan now swaps or widens those slots
   (`OVERRIDES` in `scripts/gen_curation_plan.py`); the second pass filled 7 more.
 - **Support slots 51–60** came out as ten variations of one picture (a beam on three posts). The bridge
-  archetype now varies post material, a raised footing and stacked loads; even slots are re-curated.
+  archetype now varies post material, a raised footing and stacked loads; even slots were re-curated.
+- **Rope slots 31–50** stayed empty through three passes, for two reasons found in the state dumps:
+  the overhang's load did not out-lever the beam (so cutting the rope first was safe and the level a
+  one-mover), and the solver still offered "cut the rope" after the beam it tied had been removed —
+  the scene refused the move and the whole candidate was thrown away. Both are fixed (inner post near
+  the middle; `Level.availableRemovals(after:)`).
 - **Pool.** First pass: 2,400 candidates from seed 20000 → 1,026 levels in 38 min (bridge 309,
   tower 334, table 167, counterweight 148, pyramid 35, lintel 33, hanger 0). A second pass limited to
   the thin archetypes evens the mix for Endless and Daily.
