@@ -48,3 +48,29 @@ The daily level is chosen from curated levels past the tutorial (11–80) plus t
 day (`DailyLevelPicker`): every device shows the same level on the same day, and no level repeats within
 one pass over the list. Endless walks the pool in a per-player order seeded at install
 (`LevelCatalog.endlessOrder`).
+
+## Production log
+
+What the forge actually did, so the next person knows why the plan looks the way it does.
+
+- **Hand-made 1–7.** Ported from the design prototype; five verified as drawn. Two needed geometry
+  changes the prototype's toy physics hid: *Clean Drop* (4) — the keystone fell only one block height
+  (50 pt, 1.25× the 40 pt drop threshold) and ended leaning; the blocks are now 84 pt (margin 1.65).
+  *Pinned Lintel* (5) — the 12 pt steel column made the last move a knife-edge; at 16 pt it verifies
+  with margin 30, and the order still matters (w1 before w2, because w5 loads the right side).
+  Tutorial 2 is gentle on purpose (every first move is safe; the second one teaches), so hand-made
+  drafts skip the "too easy" gate; generated levels never do.
+- **Generated 8–80, first pass.** 49 of 73 slots filled. Empty: every rope slot (the original hanger
+  archetype had no solvable goals under the collapse rules), two-move lintels (lintels need ≥ 3 moves),
+  and long bridges/pyramids (they solve in 3). The plan now swaps or widens those slots
+  (`OVERRIDES` in `scripts/gen_curation_plan.py`); the second pass filled 7 more.
+- **Support slots 51–60** came out as ten variations of one picture (a beam on three posts). The bridge
+  archetype now varies post material, a raised footing and stacked loads; even slots are re-curated.
+- **Pool.** First pass: 2,400 candidates from seed 20000 → 1,026 levels in 38 min (bridge 309,
+  tower 334, table 167, counterweight 148, pyramid 35, lintel 33, hanger 0). A second pass limited to
+  the thin archetypes evens the mix for Endless and Daily.
+- `testCuratePlan` keeps every slot that already ships a verified level in its band, so reruns only
+  fill gaps (`FORGE_RECURATE=1` or `"recurate": true` per slot redoes them).
+
+A human playthrough of all 80 is still the last word on the curve; the forge guarantees solvability,
+margin and tension, not taste.
