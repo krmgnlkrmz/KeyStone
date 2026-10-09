@@ -16,7 +16,7 @@ struct LevelCellView: View {
         Button(action: tap) {
             VStack {
                 HStack {
-                    Text(verbatim: "\(level.index)").font(.system(size: 15, weight: .heavy, design: .rounded))
+                    Text(verbatim: "\(level.index)").scaledFont(15, weight: .heavy, design: .rounded, relativeTo: .subheadline)
                     Spacer()
                     tag
                 }
@@ -26,7 +26,7 @@ struct LevelCellView: View {
                 stars
             }
             .padding(10)
-            .frame(height: 150)
+            .frame(minHeight: 150)
             .background(background, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
             .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).strokeBorder(border, lineWidth: state == .next ? 1.5 : 1))
             .opacity(state == .locked ? 0.5 : 1)
@@ -40,8 +40,8 @@ struct LevelCellView: View {
 
     @ViewBuilder private var tag: some View {
         switch state {
-        case .done: Image(systemName: "checkmark").font(.system(size: 11, weight: .bold)).foregroundStyle(Palette.jade)
-        case .next: Text("map.play").font(.system(size: 11, weight: .bold)).tracking(0.8).foregroundStyle(Palette.accent)
+        case .done: Image(systemName: "checkmark").scaledFont(11, weight: .bold, relativeTo: .caption2).foregroundStyle(Palette.jade)
+        case .next: Text("map.play").scaledFont(11, weight: .bold, relativeTo: .caption2).tracking(0.8).foregroundStyle(Palette.accent)
         default: EmptyView()
         }
     }
@@ -49,19 +49,19 @@ struct LevelCellView: View {
     @ViewBuilder private var stars: some View {
         switch state {
         case .locked:
-            Image(systemName: "lock.fill").font(.system(size: 14)).foregroundStyle(Palette.text3).frame(minHeight: 18)
+            Image(systemName: "lock.fill").scaledFont(14, relativeTo: .footnote).foregroundStyle(Palette.text3).frame(minHeight: 18)
         case let .done(n):
             HStack(spacing: 2) {
                 ForEach(0..<3, id: \.self) { i in
                     Image(systemName: i < n ? "star.fill" : "star").foregroundStyle(i < n ? Palette.accent : Palette.text3)
                 }
             }
-            .font(.system(size: 13)).frame(minHeight: 18)
+            .scaledFont(13, relativeTo: .footnote).frame(minHeight: 18)
         case .open, .next:
             HStack(spacing: 2) {
                 ForEach(0..<3, id: \.self) { _ in Image(systemName: "star").foregroundStyle(Palette.text3) }
             }
-            .font(.system(size: 13)).frame(minHeight: 18)
+            .scaledFont(13, relativeTo: .footnote).frame(minHeight: 18)
         }
     }
 

@@ -92,7 +92,7 @@ struct RegionHeaderView: View {
         let stars = levels.reduce(0) { $0 + app.progress.stars($1.id) }
         HStack {
             Text(Copy.zoneTitle(region))
-                .font(Typo.mono(12)).tracking(1.5)
+                .scaledFont(12, design: .monospaced, relativeTo: .caption).tracking(1.5)
                 .foregroundStyle(unlocked ? Palette.text : Palette.text3)
                 .lineLimit(1).minimumScaleFactor(0.8)
             Spacer()

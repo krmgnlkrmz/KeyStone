@@ -114,7 +114,7 @@ struct HintSheet: View {
                             Image(systemName: "play.fill").font(.system(size: 15))
                             Text(app.ads.adsRemoved ? "hint.show" : "hint.watch")
                             if !app.ads.adsRemoved {
-                                Text("hint.adLength").font(Typo.mono(10)).tracking(1)
+                                Text("hint.adLength").scaledFont(10, design: .monospaced, relativeTo: .caption2).tracking(1)
                                     .padding(.horizontal, 5).padding(.vertical, 2)
                                     .overlay(RoundedRectangle(cornerRadius: 5).strokeBorder(.foreground, lineWidth: 1))
                                     .opacity(0.7)

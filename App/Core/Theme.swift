@@ -58,12 +58,39 @@ enum Typo {
     static let body = Font.body
     static let subhead = Font.subheadline.weight(.semibold)
     static let caption = Font.footnote
-    static func mono(_ size: CGFloat = 11, relativeTo style: Font.TextStyle = .caption2) -> Font {
+    /// Monospaced, fixed size: game HUD only (exempt from Dynamic Type, see docs). Elsewhere use
+    /// `.scaledFont(_, design: .monospaced, relativeTo:)`, which follows the player's text size.
+    static func mono(_ size: CGFloat = 11) -> Font {
         .system(size: size, weight: .regular, design: .monospaced)
     }
     /// HUD counter: fixed size (HUD is exempt from Dynamic Type, see docs).
     static func counter(_ size: CGFloat = 28) -> Font {
         .system(size: size, weight: .heavy, design: .rounded).monospacedDigit()
+    }
+}
+
+/// A system font at a design size that still follows Dynamic Type, scaled like `relativeTo`
+/// (the size is exact at the default text size).
+struct ScaledSystemFont: ViewModifier {
+    @ScaledMetric private var size: CGFloat
+    private let weight: Font.Weight
+    private let design: Font.Design
+
+    init(size: CGFloat, weight: Font.Weight, design: Font.Design, relativeTo style: Font.TextStyle) {
+        _size = ScaledMetric(wrappedValue: size, relativeTo: style)
+        self.weight = weight
+        self.design = design
+    }
+
+    func body(content: Content) -> some View {
+        content.font(.system(size: size, weight: weight, design: design))
+    }
+}
+
+extension View {
+    func scaledFont(_ size: CGFloat, weight: Font.Weight = .regular, design: Font.Design = .default,
+                    relativeTo style: Font.TextStyle = .body) -> some View {
+        modifier(ScaledSystemFont(size: size, weight: weight, design: design, relativeTo: style))
     }
 }
 
@@ -143,7 +170,7 @@ struct AdTag: View {
     let text: LocalizedStringKey
     var body: some View {
         Text(text)
-            .font(Typo.mono(10))
+            .scaledFont(10, design: .monospaced, relativeTo: .caption2)
             .tracking(1)
             .foregroundStyle(Palette.text2)
             .padding(.horizontal, 5)
@@ -236,7 +263,7 @@ struct Kicker: View {
     let text: Text
     var color: Color = Palette.text3
     var body: some View {
-        text.font(Typo.mono(11)).tracking(1.5).foregroundStyle(color).lineLimit(1).minimumScaleFactor(0.8)
+        text.scaledFont(11, design: .monospaced, relativeTo: .caption2).tracking(1.5).foregroundStyle(color).lineLimit(1).minimumScaleFactor(0.8)
     }
 }
 

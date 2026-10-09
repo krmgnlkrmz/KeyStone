@@ -28,7 +28,7 @@ struct MainMenuView: View {
                 VStack(alignment: .leading, spacing: 6) {
                     HStack(spacing: 10) {
                         KeystoneGlyph().fill(Palette.accent).frame(width: 30, height: 30)
-                        Text("app.name").font(.system(size: 34, weight: .bold)).tracking(-0.6)
+                        Text("app.name").scaledFont(34, weight: .bold, relativeTo: .largeTitle).tracking(-0.6)
                     }
                     Text("menu.tagline").font(.subheadline).foregroundStyle(Palette.text2)
                 }
@@ -134,13 +134,13 @@ struct MenuRow: View {
     var body: some View {
         Button(action: action) {
             HStack(spacing: 14) {
-                Image(systemName: icon).font(.system(size: 20)).foregroundStyle(Palette.accent).frame(width: 24)
+                Image(systemName: icon).scaledFont(20, relativeTo: .body).foregroundStyle(Palette.accent).frame(minWidth: 24)
                 Text(title).font(.body).foregroundStyle(Palette.text)
                 Spacer(minLength: 8)
                 if let value {
                     value.font(.subheadline).foregroundStyle(Palette.text2).monospacedDigit().lineLimit(1).minimumScaleFactor(0.8)
                 }
-                Image(systemName: "chevron.right").font(.system(size: 14, weight: .semibold)).foregroundStyle(Palette.text3)
+                Image(systemName: "chevron.right").scaledFont(14, weight: .semibold, relativeTo: .body).foregroundStyle(Palette.text3)
             }
             .padding(.horizontal, 16)
             .frame(minHeight: 56)

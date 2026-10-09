@@ -19,8 +19,8 @@ struct SplashView: View {
                     KeystoneGlyph().fill(Palette.accent).frame(width: 80, height: 80).shadow(color: Palette.accent.opacity(0.6), radius: 14)
                 }
                 VStack(spacing: 10) {
-                    Text("app.name").font(.system(size: 40, weight: .bold)).tracking(-0.6)
-                    Text("splash.tagline").font(Typo.mono(11)).tracking(3).foregroundStyle(Palette.text3)
+                    Text("app.name").scaledFont(40, weight: .bold, relativeTo: .largeTitle).tracking(-0.6)
+                    Text("splash.tagline").scaledFont(11, design: .monospaced, relativeTo: .caption2).tracking(3).foregroundStyle(Palette.text3)
                 }
             }
             .padding(.bottom, 30)

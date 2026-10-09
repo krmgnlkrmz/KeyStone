@@ -167,7 +167,7 @@ struct ReplayScrubBar: View {
                     Spacer()
                     Text("replay.move \(moveNumber)")
                 }
-                .font(Typo.mono(10)).foregroundStyle(Palette.text3).monospacedDigit()
+                .scaledFont(10, design: .monospaced, relativeTo: .caption2).foregroundStyle(Palette.text3)
             }
             HStack(spacing: 0) {
                 speedButton(0.25, label: "0.25×")
