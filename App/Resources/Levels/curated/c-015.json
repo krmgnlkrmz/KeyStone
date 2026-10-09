@@ -1,8 +1,8 @@
 {
   "annotation" : {
-    "difficulty" : 3.16,
+    "difficulty" : 2.94,
     "engineFingerprint" : "spk-1-60hz-f029",
-    "marginRatio" : 1.96,
+    "marginRatio" : 2.05,
     "solutionPath" : [
       "block1",
       "block3",
@@ -14,151 +14,96 @@
           "block1",
           "block3",
           "shim1",
-          "shim2",
-          "shim3"
+          "shim2"
         ],
         "severity" : {
-          "block1" : 0.053,
+          "block1" : 0.03,
           "block3" : 0.031,
-          "block4" : 5.971,
-          "block5" : 3.946,
-          "block6" : 7.1,
-          "block7" : 6.795,
-          "shim1" : 0.501,
-          "shim2" : 0.503,
-          "shim3" : 0.468
+          "block4" : 3.594,
+          "block5" : 1.856,
+          "shim1" : 0.478,
+          "shim2" : 0.459
         },
         "state" : "",
         "unsafe" : {
-          "block4" : "shim3",
-          "block5" : "block6",
-          "block6" : "shim3",
-          "block7" : "shim3"
+          "block4" : "shim2",
+          "block5" : "shim2"
         }
       },
       {
         "safe" : [
           "block3",
           "shim1",
-          "shim2",
-          "shim3"
+          "shim2"
         ],
         "severity" : {
-          "block3" : 0.025,
-          "block4" : 5.511,
-          "block5" : 4.138,
-          "block6" : 7.308,
-          "block7" : 6.972,
-          "shim1" : 0.506,
-          "shim2" : 0.51,
-          "shim3" : 0.465
+          "block3" : 0.02,
+          "block4" : 3.746,
+          "block5" : 1.9,
+          "shim1" : 0.483,
+          "shim2" : 0.452
         },
         "state" : "block1",
         "unsafe" : {
-          "block4" : "shim3",
-          "block5" : "shim3",
-          "block6" : "shim3",
-          "block7" : "shim3"
+          "block4" : "shim2",
+          "block5" : "shim2"
         }
       },
       {
         "safe" : [
           "block1",
           "shim1",
-          "shim2",
-          "shim3"
+          "shim2"
         ],
         "severity" : {
-          "block1" : 0.026,
-          "block4" : 5.777,
-          "block5" : 4.001,
-          "block6" : 7.193,
-          "block7" : 6.867,
-          "shim1" : 0.521,
-          "shim2" : 0.512,
-          "shim3" : 0.466
+          "block1" : 0.021,
+          "block4" : 3.728,
+          "block5" : 1.812,
+          "shim1" : 0.485,
+          "shim2" : 0.456
         },
         "state" : "block3",
         "unsafe" : {
-          "block4" : "shim3",
-          "block5" : "block6",
-          "block6" : "shim3",
-          "block7" : "shim3"
+          "block4" : "shim2",
+          "block5" : "shim2"
         }
       },
       {
         "safe" : [
           "block1",
           "block3",
-          "shim2",
-          "shim3"
+          "shim2"
         ],
         "severity" : {
-          "block1" : 0.467,
-          "block3" : 0.469,
-          "block4" : 5.037,
-          "block5" : 4.064,
-          "block6" : 7.369,
-          "block7" : 6.949,
-          "shim2" : 0.949,
-          "shim3" : 0.897
+          "block1" : 0.468,
+          "block3" : 0.463,
+          "block4" : 4.665,
+          "block5" : 1.95,
+          "shim2" : 0.885
         },
         "state" : "shim1",
         "unsafe" : {
-          "block4" : "shim3",
-          "block5" : "shim3",
-          "block6" : "shim3",
-          "block7" : "shim3"
+          "block4" : "shim2",
+          "block5" : "shim2"
         }
       },
       {
         "safe" : [
           "block1",
           "block3",
-          "shim1",
-          "shim3"
+          "shim1"
         ],
         "severity" : {
-          "block1" : 0.494,
-          "block3" : 0.478,
-          "block4" : 4,
-          "block5" : 8.807,
-          "block6" : 7.438,
-          "block7" : 6.461,
-          "shim1" : 0.946,
-          "shim3" : 0.898
+          "block1" : 0.411,
+          "block3" : 0.413,
+          "block4" : 4.27,
+          "block5" : 4.251,
+          "shim1" : 0.869
         },
         "state" : "shim2",
         "unsafe" : {
-          "block4" : "shim3",
-          "block5" : "shim3",
-          "block6" : "shim3",
-          "block7" : "shim3"
-        }
-      },
-      {
-        "safe" : [
-          "block1",
-          "block3",
-          "shim1",
-          "shim2"
-        ],
-        "severity" : {
-          "block1" : 0.435,
-          "block3" : 0.434,
-          "block4" : 6.107,
-          "block5" : 8.032,
-          "block6" : 4.438,
-          "block7" : 4.33,
-          "shim1" : 0.913,
-          "shim2" : 0.935
-        },
-        "state" : "shim3",
-        "unsafe" : {
-          "block4" : "block7",
-          "block5" : "block7",
-          "block6" : "block7",
-          "block7" : "block6"
+          "block4" : "block5",
+          "block5" : "block4"
         }
       },
       {
@@ -166,25 +111,19 @@
 
         ],
         "severity" : {
-          "block4" : 6.117,
-          "block5" : 4.14,
-          "block6" : 7.267,
-          "block7" : 6.831,
-          "shim1" : 0.5,
-          "shim2" : 0.512,
-          "shim3" : 0.464
+          "block4" : 4.087,
+          "block5" : 1.819,
+          "shim1" : 0.484,
+          "shim2" : 0.454
         },
         "state" : "block1,block3",
         "unsafe" : {
-          "block4" : "shim3",
-          "block5" : "shim3",
-          "block6" : "shim3",
-          "block7" : "shim3"
+          "block4" : "shim2",
+          "block5" : "shim2"
         },
         "win" : [
           "shim1",
-          "shim2",
-          "shim3"
+          "shim2"
         ]
       },
       {
@@ -192,180 +131,18 @@
 
         ],
         "severity" : {
-          "block3" : 0.481,
-          "block4" : 6.89,
-          "block5" : 4.255,
-          "block6" : 7.227,
-          "block7" : 4.343,
-          "shim2" : 0.939,
-          "shim3" : 0.891
+          "block3" : 0.475,
+          "block4" : 7.647,
+          "block5" : 1.825,
+          "shim2" : 4.31
         },
         "state" : "block1,shim1",
         "unsafe" : {
-          "block4" : "shim3",
-          "block5" : "block6",
-          "block6" : "shim3",
-          "block7" : "shim3"
+          "block4" : "shim2",
+          "block5" : "shim2",
+          "shim2" : "block4"
         },
         "win" : [
-          "block3",
-          "shim2",
-          "shim3"
-        ]
-      },
-      {
-        "safe" : [
-
-        ],
-        "severity" : {
-          "block3" : 0.485,
-          "block4" : 3.862,
-          "block5" : 8.101,
-          "block6" : 7.265,
-          "block7" : 6.408,
-          "shim1" : 0.95,
-          "shim3" : 0.899
-        },
-        "state" : "block1,shim2",
-        "unsafe" : {
-          "block4" : "shim3",
-          "block5" : "shim3",
-          "block6" : "shim3",
-          "block7" : "shim3"
-        },
-        "win" : [
-          "block3",
-          "shim1",
-          "shim3"
-        ]
-      },
-      {
-        "safe" : [
-
-        ],
-        "severity" : {
-          "block3" : 0.43,
-          "block4" : 6.242,
-          "block5" : 7.604,
-          "block6" : 4.467,
-          "block7" : 4.4,
-          "shim1" : 0.917,
-          "shim2" : 0.911
-        },
-        "state" : "block1,shim3",
-        "unsafe" : {
-          "block4" : "block7",
-          "block5" : "block7",
-          "block6" : "block7",
-          "block7" : "block6"
-        },
-        "win" : [
-          "block3",
-          "shim1",
-          "shim2"
-        ]
-      },
-      {
-        "safe" : [
-
-        ],
-        "severity" : {
-          "block1" : 0.47,
-          "block4" : 6.043,
-          "block5" : 7.011,
-          "block6" : 7.236,
-          "block7" : 6.759,
-          "shim2" : 0.946,
-          "shim3" : 0.886
-        },
-        "state" : "block3,shim1",
-        "unsafe" : {
-          "block4" : "shim3",
-          "block5" : "block6",
-          "block6" : "shim3",
-          "block7" : "shim3"
-        },
-        "win" : [
-          "block1",
-          "shim2",
-          "shim3"
-        ]
-      },
-      {
-        "safe" : [
-
-        ],
-        "severity" : {
-          "block1" : 0.479,
-          "block4" : 3.946,
-          "block5" : 9.177,
-          "block6" : 7.317,
-          "block7" : 6.361,
-          "shim1" : 0.963,
-          "shim3" : 0.907
-        },
-        "state" : "block3,shim2",
-        "unsafe" : {
-          "block4" : "shim3",
-          "block5" : "shim3",
-          "block6" : "shim3",
-          "block7" : "shim3"
-        },
-        "win" : [
-          "block1",
-          "shim1",
-          "shim3"
-        ]
-      },
-      {
-        "safe" : [
-
-        ],
-        "severity" : {
-          "block1" : 0.428,
-          "block4" : 6.106,
-          "block5" : 9.195,
-          "block6" : 4.526,
-          "block7" : 4.427,
-          "shim1" : 0.919,
-          "shim2" : 0.912
-        },
-        "state" : "block3,shim3",
-        "unsafe" : {
-          "block4" : "block7",
-          "block5" : "block7",
-          "block6" : "block7",
-          "block7" : "block6"
-        },
-        "win" : [
-          "block1",
-          "shim1",
-          "shim2"
-        ]
-      },
-      {
-        "safe" : [
-
-        ],
-        "severity" : {
-          "block1" : 0.955,
-          "block3" : 0.955,
-          "block4" : 2.672,
-          "block5" : 3.632,
-          "block6" : 5.577,
-          "block7" : 6.056,
-          "shim3" : 1.389
-        },
-        "state" : "shim1,shim2",
-        "unsafe" : {
-          "block4" : "shim3",
-          "block5" : "shim3",
-          "block6" : "shim3",
-          "block7" : "shim3",
-          "shim3" : "block7"
-        },
-        "win" : [
-          "block1",
           "block3"
         ]
       },
@@ -374,25 +151,19 @@
 
         ],
         "severity" : {
-          "block1" : 0.883,
-          "block3" : 0.886,
-          "block4" : 4.644,
-          "block5" : 5.282,
-          "block6" : 0.885,
-          "block7" : 4.416,
-          "shim2" : 1.351
+          "block3" : 0.408,
+          "block4" : 4.452,
+          "block5" : 4.282,
+          "shim1" : 0.869
         },
-        "state" : "shim1,shim3",
+        "state" : "block1,shim2",
         "unsafe" : {
-          "block4" : "block7",
-          "block5" : "block7",
-          "block7" : "block6",
-          "shim2" : "block6"
+          "block4" : "block5",
+          "block5" : "block4"
         },
         "win" : [
-          "block1",
           "block3",
-          "block6"
+          "shim1"
         ]
       },
       {
@@ -400,21 +171,55 @@
 
         ],
         "severity" : {
-          "block1" : 0.887,
-          "block3" : 0.887,
-          "block4" : 1.806,
-          "block5" : 4.66,
-          "block6" : 4.483,
-          "block7" : 4.379,
-          "shim1" : 1.357
+          "block1" : 0.471,
+          "block4" : 5.38,
+          "block5" : 7.773,
+          "shim2" : 3.633
         },
-        "state" : "shim2,shim3",
+        "state" : "block3,shim1",
         "unsafe" : {
-          "block4" : "block7",
-          "block5" : "block6",
-          "block6" : "block7",
-          "block7" : "block6",
-          "shim1" : "block1"
+          "block4" : "shim2",
+          "block5" : "shim2",
+          "shim2" : "block5"
+        },
+        "win" : [
+          "block1"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block1" : 0.416,
+          "block4" : 4.346,
+          "block5" : 4.295,
+          "shim1" : 0.869
+        },
+        "state" : "block3,shim2",
+        "unsafe" : {
+          "block4" : "block5",
+          "block5" : "block4"
+        },
+        "win" : [
+          "block1",
+          "shim1"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block1" : 0.884,
+          "block3" : 0.884,
+          "block4" : 4.222,
+          "block5" : 4.313
+        },
+        "state" : "shim1,shim2",
+        "unsafe" : {
+          "block4" : "block5",
+          "block5" : "block4"
         },
         "win" : [
           "block1",
@@ -422,7 +227,7 @@
         ]
       }
     ],
-    "verifiedAt" : "2026-10-08"
+    "verifiedAt" : "2026-10-09"
   },
   "floorY" : -190,
   "goal" : {
@@ -439,10 +244,7 @@
       "shim1",
       "block4",
       "block5",
-      "shim2",
-      "block6",
-      "block7",
-      "shim3"
+      "shim2"
     ],
     "type" : "removeTargetsKeepStanding"
   },
@@ -463,15 +265,15 @@
       "id" : "block1",
       "material" : "stone",
       "position" : {
-        "x" : -93,
-        "y" : -169
+        "x" : -80,
+        "y" : -172
       },
       "removable" : true,
       "rotation" : 0,
       "shape" : {
-        "h" : 42,
+        "h" : 36,
         "type" : "rect",
-        "w" : 66
+        "w" : 69
       }
     },
     {
@@ -480,14 +282,14 @@
       "material" : "stone",
       "position" : {
         "x" : 0,
-        "y" : -169
+        "y" : -172
       },
       "removable" : false,
       "rotation" : 0,
       "shape" : {
-        "h" : 42,
+        "h" : 36,
         "type" : "rect",
-        "w" : 66
+        "w" : 69
       }
     },
     {
@@ -495,15 +297,15 @@
       "id" : "block3",
       "material" : "stone",
       "position" : {
-        "x" : 93,
-        "y" : -169
+        "x" : 80,
+        "y" : -172
       },
       "removable" : true,
       "rotation" : 0,
       "shape" : {
-        "h" : 42,
+        "h" : 36,
         "type" : "rect",
-        "w" : 66
+        "w" : 69
       }
     },
     {
@@ -511,15 +313,15 @@
       "id" : "shim1",
       "material" : "wood",
       "position" : {
-        "x" : -8,
-        "y" : -142
+        "x" : -1,
+        "y" : -148
       },
       "removable" : true,
       "rotation" : 0,
       "shape" : {
         "h" : 12,
         "type" : "rect",
-        "w" : 232
+        "w" : 220
       }
     },
     {
@@ -528,14 +330,14 @@
       "material" : "stone",
       "position" : {
         "x" : -45,
-        "y" : -119
+        "y" : -123.5
       },
       "removable" : true,
       "rotation" : 0,
       "shape" : {
-        "h" : 34,
+        "h" : 37,
         "type" : "rect",
-        "w" : 75
+        "w" : 62
       }
     },
     {
@@ -544,14 +346,14 @@
       "material" : "stone",
       "position" : {
         "x" : 45,
-        "y" : -119
+        "y" : -123.5
       },
       "removable" : true,
       "rotation" : 0,
       "shape" : {
-        "h" : 34,
+        "h" : 37,
         "type" : "rect",
-        "w" : 75
+        "w" : 62
       }
     },
     {
@@ -559,63 +361,15 @@
       "id" : "shim2",
       "material" : "wood",
       "position" : {
-        "x" : -2,
-        "y" : -96
+        "x" : 10,
+        "y" : -99
       },
       "removable" : true,
       "rotation" : 0,
       "shape" : {
         "h" : 12,
         "type" : "rect",
-        "w" : 147.66
-      }
-    },
-    {
-      "fixed" : false,
-      "id" : "block6",
-      "material" : "stone",
-      "position" : {
-        "x" : -32,
-        "y" : -73.5
-      },
-      "removable" : true,
-      "rotation" : 0,
-      "shape" : {
-        "h" : 33,
-        "type" : "rect",
-        "w" : 45
-      }
-    },
-    {
-      "fixed" : false,
-      "id" : "block7",
-      "material" : "stone",
-      "position" : {
-        "x" : 32,
-        "y" : -73.5
-      },
-      "removable" : true,
-      "rotation" : 0,
-      "shape" : {
-        "h" : 33,
-        "type" : "rect",
-        "w" : 45
-      }
-    },
-    {
-      "fixed" : false,
-      "id" : "shim3",
-      "material" : "wood",
-      "position" : {
-        "x" : 2,
-        "y" : -51
-      },
-      "removable" : true,
-      "rotation" : 0,
-      "shape" : {
-        "h" : 12,
-        "type" : "rect",
-        "w" : 99.3356
+        "w" : 138.8
       }
     },
     {
@@ -623,28 +377,28 @@
       "id" : "k",
       "material" : "brass",
       "position" : {
-        "x" : 8,
-        "y" : -23
+        "x" : 2,
+        "y" : -73
       },
       "removable" : false,
       "rotation" : 0,
       "shape" : {
         "points" : [
           [
-            -21.599999999999998,
-            -22
+            -23.4,
+            -20
           ],
           [
-            21.599999999999998,
-            -22
+            23.4,
+            -20
           ],
           [
-            36,
-            22
+            39,
+            20
           ],
           [
-            -36,
-            22
+            -39,
+            20
           ]
         ],
         "type" : "polygon"
@@ -653,6 +407,6 @@
   ],
   "region" : "stone_arch",
   "schema" : 1,
-  "seed" : 115001,
+  "seed" : 115503,
   "supportsAllowed" : 0
 }
