@@ -53,7 +53,7 @@ Before a release: fill in `Config/Shared.xcconfig` placeholders and `Config/Rele
 
 - 80 curated levels (`App/Resources/Levels/curated`): 7 hand-made from the design prototype, 73 chosen
   from generator candidates per curriculum slot (`Tools/LevelForge/CurationNotes.md`).
-- About 1,350 pool levels (`App/Resources/Levels/pool`) for Daily and Endless, across seven archetypes.
+- 1,390 pool levels (`App/Resources/Levels/pool`) for Daily and Endless, across seven archetypes.
 - Every one carries an annotation from the offline solver: verified shortest solution, the full
   safe/unsafe/win neighbourhood of every explored state, margin ≥ 1.4 under five frame profiles, and
   the engine fingerprint it was verified with. The release gate (`[forge:validate]`) replays every
