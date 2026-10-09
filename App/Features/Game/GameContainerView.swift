@@ -2,6 +2,7 @@ import BalanceCore
 import BalancePhysics
 import SpriteKit
 import SwiftUI
+import UIKit
 
 /// Full-screen game cover: play area + HUD, and the end states (collapse replay, clear, out of moves)
 /// as states of the same cover, so an interstitial never stacks on top of the game.
@@ -27,12 +28,20 @@ struct GameContainerView: View {
         }
         .statusBarHidden(false)
         .interactiveDismissDisabled()
-        .onAppear { if session == nil { load(launch) } }
+        .onAppear {
+            app.sound.ducked = true
+            if session == nil { load(launch) } else { session?.setCovered(false) }
+        }
         .onChange(of: colorScheme) { _, scheme in session?.scene.palette = Palette.scene(dark: scheme == .dark) }
-        .onAppear { app.sound.ducked = true }
         .onDisappear {
-            app.sound.ducked = false
-            session?.teardown()
+            // A full-screen ad over the game (interstitial, rewarded) takes this view out of the window too.
+            // The session stays, holding still until the game is back; only a closed game is torn down.
+            if app.router.game == nil {
+                app.sound.ducked = false
+                session?.teardown()
+            } else {
+                session?.setCovered(true)
+            }
         }
     }
 
@@ -42,6 +51,26 @@ struct GameContainerView: View {
         session?.teardown()
         session = s
         s.start()
+        if AppConfig.coversFirstLevel { Self.coverOnce() }
+    }
+
+    @MainActor private static var covered = false
+
+    /// UI test probe (-coverProbe): once, a second after the first level opens, a plain full-screen
+    /// controller covers the game for 1.5 s, the way an interstitial or rewarded ad does.
+    @MainActor private static func coverOnce() {
+        guard !covered else { return }
+        covered = true
+        Task { @MainActor in
+            try? await Task.sleep(for: .seconds(1))
+            guard let top = UIApplication.topViewController else { return }
+            let cover = UIViewController()
+            cover.view.backgroundColor = .black
+            cover.modalPresentationStyle = .fullScreen
+            top.present(cover, animated: true)
+            try? await Task.sleep(for: .milliseconds(1500))
+            cover.dismiss(animated: true)
+        }
     }
 
     /// Next level (in place, behind the curtain) or back to the map/menu (dismiss).
