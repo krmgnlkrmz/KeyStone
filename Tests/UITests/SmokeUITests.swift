@@ -132,7 +132,7 @@ final class SmokeUITests: XCTestCase {
     /// AppModel was created (before that: dyld, frameworks, runtime), when the catalog was decoded and
     /// when the menu appeared. The first launch after install does one-time work and is left out of the
     /// medians. The release bound (2 s to the menu) is for a device; on the CI simulator the system part
-    /// varies wildly, so this bounds the app's own part (AppModel → menu, 1.2 s of it the splash).
+    /// varies wildly, so this bounds the app's own part (AppModel → menu).
     func testColdStartReachesTheMenu() throws {
         var menu: [Double] = [], own: [Double] = [], system: [Double] = [], catalog: [Double] = []
         for _ in 0..<4 {
@@ -152,7 +152,7 @@ final class SmokeUITests: XCTestCase {
         let fmt = { (xs: [Double]) in xs.map { String(format: "%.2f", $0) }.joined(separator: ", ") }
         print("[launch] menu after process start: \(fmt(menu)) s; before AppModel (system): \(fmt(system)) s; " +
               "AppModel → catalog: \(fmt(catalog)) s; AppModel → menu (app): \(fmt(own)) s; app median \(String(format: "%.2f", median(own))) s")
-        XCTAssertLessThan(median(own), 2.5, "the app's own launch path (AppModel → menu) took \(median(own)) s")
+        XCTAssertLessThan(median(own), 2.0, "the app's own launch path (AppModel → menu) took \(median(own)) s")
     }
 
     func testDailySheetOpens() throws {

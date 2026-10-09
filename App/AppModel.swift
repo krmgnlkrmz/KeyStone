@@ -94,6 +94,10 @@ final class AppModel {
         if !poolRequested {
             poolRequested = true
             Task(priority: .utility) { await loadPool() }
+            Task {
+                try? await Task.sleep(for: .milliseconds(300)) // after the menu's first frames
+                sound.warmUp()
+            }
         }
         guard launchToMenu == nil, let start = AppConfig.processStart else { return }
         let seconds = Date().timeIntervalSince(start)
@@ -112,9 +116,16 @@ final class AppModel {
         Task { await store.load() }
         achievements.authenticate()
 
-        // Keep the splash up for at least 1.2 s so it reads as intentional.
-        let elapsed = ContinuousClock.now - splashStart
-        if elapsed < .milliseconds(1200) { try? await Task.sleep(for: .milliseconds(1200) - elapsed) }
+        // The splash stays until 1 s after the process started, so it reads as intentional rather than a
+        // flash, but the launch already spent counts towards it: the menu is never held back past that
+        // (§11: menu within 2 s of a cold start).
+        if let processStart = AppConfig.processStart {
+            let remaining = 1.0 - Date().timeIntervalSince(processStart)
+            if remaining > 0 { try? await Task.sleep(for: .seconds(remaining)) }
+        } else {
+            let elapsed = ContinuousClock.now - splashStart
+            if elapsed < .milliseconds(600) { try? await Task.sleep(for: .milliseconds(600) - elapsed) }
+        }
 
         if AppConfig.isRunningTests {
             seedForUITests()

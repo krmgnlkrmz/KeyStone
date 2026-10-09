@@ -14,7 +14,7 @@ struct GameHUDView: View {
                 VStack(spacing: 3) {
                     Text(session.kicker)
                         .font(Typo.mono(11, weight: .semibold)).tracking(1.5)
-                        .foregroundStyle(Palette.text2) // small mono over the blueprint grid: needs the stronger grey
+                        .foregroundStyle(Palette.text) // small mono over the blueprint grid: needs full contrast
                         .lineLimit(1)
                     Text(session.goalText)
                         .font(.system(size: 15, weight: .semibold))

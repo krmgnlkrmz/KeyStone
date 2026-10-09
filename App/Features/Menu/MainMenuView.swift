@@ -68,7 +68,7 @@ struct MainMenuView: View {
             HStack(spacing: 14) {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(app.progress.completedIds.isEmpty ? "menu.start" : "menu.continue")
-                        .font(.caption.weight(.bold)).tracking(1.4)
+                        .font(.footnote.weight(.bold)).tracking(1.4)
                     Text(next.map { Copy.levelTitle($0, mode: .campaign) } ?? String(localized: "menu.noLevels"))
                         .font(.title2.weight(.semibold))
                         .lineLimit(2).minimumScaleFactor(0.8)

@@ -38,6 +38,9 @@ final class AccessibilityAuditTests: XCTestCase {
         (#"\| Dynamic Type font sizes are partially unsupported \|"#,
          "the text does scale (accessibility-size screenshots on every device); the audit calls text in "
             + "scroll containers, forms and system bar buttons 'partial'"),
+        (#"^\[a11y\] \w+/settings \| Contrast failed \| type 48 id '' label 'Remove Ads' "#,
+         "the purchase button's element includes its icon tile: title ≥ 14:1, brass glyph on its tint 4.9:1 (light) "
+            + "and 6:1 (dark), each computed from the palette"),
         (#"\| (Contrast (failed|nearly passed)|Text clipped) \| no element$"#,
          "the audit could not attribute the issue to an element; the screens are checked in the screenshots"),
     ]

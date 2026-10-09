@@ -95,6 +95,8 @@ struct RegionHeaderView: View {
                 .scaledFont(12, design: .monospaced, relativeTo: .caption).tracking(1.5)
                 .foregroundStyle(unlocked ? Palette.text : Palette.text3)
                 .lineLimit(2)
+                .fixedSize(horizontal: false, vertical: true)
+                .layoutPriority(1) // the region's name wins the row's width over the star count
             Spacer(minLength: 0)
             if unlocked {
                 Text(verbatim: "\(levels.first?.index ?? 0)–\(levels.last?.index ?? 0) · \(stars) / \(levels.count * 3) ★")

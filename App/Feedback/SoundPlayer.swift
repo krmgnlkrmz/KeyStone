@@ -18,21 +18,37 @@ final class SoundPlayer {
     private var music: AVAudioPlayer?
     private let log = Logger(subsystem: "Keystone", category: "audio")
 
-    init() {
+    private var sessionReady = false
+
+    /// Nothing here runs on the cold-start path: the session and the players are made by `warmUp()`
+    /// once the menu is up (22 prepared AVAudioPlayers on the main thread), or on the first sound.
+    init() {}
+
+    func warmUp() {
+        for e in Effect.allCases where players[e] == nil { players[e] = makePlayers(e) }
+    }
+
+    private func ensureSession() {
+        guard !sessionReady else { return }
+        sessionReady = true
         try? AVAudioSession.sharedInstance().setCategory(.ambient, options: [.mixWithOthers])
-        for e in Effect.allCases {
-            guard let url = Bundle.main.url(forResource: e.rawValue, withExtension: "caf", subdirectory: nil)
-                    ?? Bundle.main.url(forResource: e.rawValue, withExtension: "wav") else { continue }
-            players[e] = (0..<2).compactMap { _ in
-                let p = try? AVAudioPlayer(contentsOf: url)
-                p?.prepareToPlay()
-                return p
-            }
+    }
+
+    private func makePlayers(_ e: Effect) -> [AVAudioPlayer] {
+        ensureSession()
+        guard let url = Bundle.main.url(forResource: e.rawValue, withExtension: "caf", subdirectory: nil)
+                ?? Bundle.main.url(forResource: e.rawValue, withExtension: "wav") else { return [] }
+        return (0..<2).compactMap { _ in
+            let p = try? AVAudioPlayer(contentsOf: url)
+            p?.prepareToPlay()
+            return p
         }
     }
 
     func play(_ e: Effect, volume: Float = 1) {
-        guard effectsEnabled, let pool = players[e] else { return }
+        guard effectsEnabled else { return }
+        if players[e] == nil { players[e] = makePlayers(e) }
+        guard let pool = players[e] else { return }
         let p = pool.first { !$0.isPlaying } ?? pool.first
         p?.currentTime = 0
         p?.volume = volume
@@ -51,6 +67,7 @@ final class SoundPlayer {
 
     private func updateMusic() {
         if musicEnabled {
+            ensureSession()
             if music == nil, let url = Bundle.main.url(forResource: "ambient", withExtension: "m4a")
                 ?? Bundle.main.url(forResource: "ambient", withExtension: "wav") {
                 music = try? AVAudioPlayer(contentsOf: url)
