@@ -31,10 +31,13 @@ app and the widget. In-app purchase product: `com.Kerem.KeyStone.removeads` (non
 - [x] Simulator unit tests green, including "every curated level solvable without rewarded ads" and the
       cold-start catalog bound (CI run on `da08c73`).
 - [x] UI smoke in the real app green: walkthrough (win, collapse replay, pause, settings), daily sheet,
-      random taps, dark mode at Dynamic Type accessibility1, Turkish.
-- [ ] `[forge:soak]`: 50 curated levels in a row from their verified solutions + 30 min of random taps.
-      Earlier runs: levels 1–30 won in a row and 3,318 random taps in 30 min without a crash; level 31
-      exposed that ropes had no VoiceOver element (fixed: ropes are listed like pieces).
+      random taps, dark mode at Dynamic Type accessibility1, Turkish — on iPhone 16, and for screenshots
+      on iPhone 17 Pro Max (6.9"), iPhone 16 Plus and iPhone SE (3rd gen).
+- [x] `[forge:soak]` in the real app (CI run 54, `b7caf05`): curated levels 1–50 won in a row from their
+      verified solutions (731 s, struts placed at exactly the verified spot, ropes cut through their
+      accessibility elements), then 3,022 random taps in 30 min without a crash. Earlier runs found
+      two real bugs: neighbouring strut spots overlapped (a tap could place the wrong strut), and ropes
+      had no VoiceOver element (rope levels were unplayable without sight). Both fixed.
 - [x] Swift 6 strict concurrency: no warnings in our sources (CI prints them after the build; empty).
 - [ ] Release build with real `Config/Release.xcconfig` (needs the owner's AdMob IDs).
 
