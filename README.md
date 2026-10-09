@@ -29,6 +29,9 @@ scripts/                    bootstrap, asset/strings/sound generators, CI helper
 
 ## Getting started
 
+The Xcode project is generated from `project.yml` and is not in the repository: after cloning (and
+after a pull that changes `project.yml`), run `make bootstrap`, then open `DengeNoktasi.xcodeproj`.
+
 ```sh
 brew install xcodegen
 make bootstrap          # creates Config/Release.xcconfig from the example, generates, resolves packages
