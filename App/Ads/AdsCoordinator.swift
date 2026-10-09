@@ -51,6 +51,9 @@ final class AdsCoordinator {
 
     // MARK: Launch sequence (§7.3)
 
+    /// What the consent stored by an earlier session allows, before this session's refresh.
+    var storedConsentAllowsAds: Bool { consent.canRequestAds }
+
     /// 1–2: UMP info update and form. Never blocks the game on errors.
     func gatherConsent() async {
         _ = await consent.requestConsentInfoUpdate()

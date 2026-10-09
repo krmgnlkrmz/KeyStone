@@ -93,11 +93,10 @@ final class AppModel {
 
     func bootstrap() async {
         let splashStart = ContinuousClock.now
-        async let catalogLoad: LevelCatalog = Self.loadCatalog()
-        async let storeLoad: Void = store.load()
-        catalog = await catalogLoad
-        _ = await storeLoad
-        ads.adsRemoved = store.adsRemoved
+        catalog = await Self.loadCatalog()
+        // Prices and a fresh entitlement check need the App Store, which can take seconds (or fail) on a
+        // slow network. The menu shows with the cached entitlement; `store.onChange` updates it after.
+        Task { await store.load() }
         Task { await loadPool() }
         achievements.authenticate()
 
@@ -108,6 +107,17 @@ final class AppModel {
         if AppConfig.isRunningTests {
             seedForUITests()
             launchPhase = .ready
+            return
+        }
+        // A returning player who has nothing left to answer goes straight to the menu; the consent refresh
+        // (network) and then MobileAds.start run behind it, in that order. A form UMP still requires is
+        // presented over the menu.
+        if progress.onboardingCompleted && !(TrackingAuthorization.needsPrompt && ads.storedConsentAllowsAds) {
+            withAnimation(.easeOut(duration: 0.3)) { launchPhase = .ready }
+            Task {
+                await ads.gatherConsent()
+                await ads.startIfAllowed()
+            }
             return
         }
         launchPhase = .consent
@@ -124,10 +134,12 @@ final class AppModel {
         await finishLaunch()
     }
 
+    /// Consent (and the tracking question) are settled: the menu shows at once, and MobileAds.start
+    /// (which can take seconds while adapters initialise) completes behind it.
     private func finishLaunch() async {
-        await ads.startIfAllowed()
         progress.completeOnboarding()
         withAnimation(.easeOut(duration: 0.3)) { launchPhase = .ready }
+        await ads.startIfAllowed()
     }
 
     private func seedForUITests() {

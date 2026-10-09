@@ -69,7 +69,7 @@ struct RemoveAdsChip: View {
     var body: some View {
         Button { Task { await app.store.purchase() } } label: {
             HStack(spacing: 6) {
-                Image(systemName: "rectangle.slash").font(.system(size: 13))
+                Image(systemName: "rectangle.slash").scaledFont(13, relativeTo: .footnote)
                 Text("map.removeAds").font(.footnote.weight(.semibold))
             }
             .foregroundStyle(Palette.text2)
@@ -90,12 +90,12 @@ struct RegionHeaderView: View {
 
     var body: some View {
         let stars = levels.reduce(0) { $0 + app.progress.stars($1.id) }
-        HStack {
+        AdaptiveStack {
             Text(Copy.zoneTitle(region))
                 .scaledFont(12, design: .monospaced, relativeTo: .caption).tracking(1.5)
                 .foregroundStyle(unlocked ? Palette.text : Palette.text3)
                 .lineLimit(1).minimumScaleFactor(0.8)
-            Spacer()
+            Spacer(minLength: 0)
             if unlocked {
                 Text(verbatim: "\(levels.first?.index ?? 0)–\(levels.last?.index ?? 0) · \(stars) / \(levels.count * 3) ★")
                     .font(.footnote).foregroundStyle(Palette.text2).monospacedDigit()
@@ -109,7 +109,8 @@ struct RegionHeaderView: View {
             }
         }
         .padding(.horizontal, 20)
-        .frame(height: 40)
+        .padding(.vertical, 6)
+        .frame(minHeight: 40)
         .background(.ultraThinMaterial)
         .background(Palette.hud)
         .overlay(alignment: .bottom) { Rectangle().fill(Palette.line).frame(height: 1) }

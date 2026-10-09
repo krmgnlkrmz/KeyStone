@@ -21,7 +21,7 @@ TOKENS = {
     "FillSurfaceSecondary": ("#262D36", "#E8E3D9", "Secondary buttons, tracks"),
     "LabelPrimary": ("#ECE7DE", "#1B1E22", "Primary text"),
     "LabelSecondary": ("#A9A398", "#5B574F", "Secondary text"),
-    "LabelTertiary": ("#77726A", "#8C877D", "Captions, disabled, empty stars"),
+    "LabelTertiary": ("#8E8A83", "#69655E", "Captions, disabled, empty stars (≥ 4.5:1 on every background)"),
     "Separator": ("rgba(220,214,200,0.10)", "rgba(30,34,40,0.10)", "Hairlines"),
     "SeparatorStrong": ("rgba(220,214,200,0.20)", "rgba(30,34,40,0.20)", "Dashed placeholders, ghost edges"),
     "AccentBrass": ("#D9A85B", "#A26518", "Primary button, selection, keystone, stars"),

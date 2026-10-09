@@ -11,37 +11,39 @@ struct MainMenuView: View {
             StructureSilhouetteView()
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                 .padding(.top, 150)
-            VStack(alignment: .leading, spacing: 0) {
-                HStack {
-                    Spacer()
-                    HUDCircleButton(systemImage: app.progress.settings.sound ? "speaker.wave.2" : "speaker.slash",
-                                    label: "menu.sound", dimmed: !app.progress.settings.sound) {
-                        app.progress.update { $0.sound.toggle() }
-                        app.applySettings()
+            ScrollIfNeeded {
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack {
+                        Spacer()
+                        HUDCircleButton(systemImage: app.progress.settings.sound ? "speaker.wave.2" : "speaker.slash",
+                                        label: "menu.sound", dimmed: !app.progress.settings.sound) {
+                            app.progress.update { $0.sound.toggle() }
+                            app.applySettings()
+                        }
+                        HUDCircleButton(systemImage: "trophy", label: "menu.gameCenter") {
+                            if app.achievements.isAuthenticated { app.achievements.showDashboard() }
+                            else { app.showToast(String(localized: "menu.gameCenter.off")) }
+                        }
                     }
-                    HUDCircleButton(systemImage: "trophy", label: "menu.gameCenter") {
-                        if app.achievements.isAuthenticated { app.achievements.showDashboard() }
-                        else { app.showToast(String(localized: "menu.gameCenter.off")) }
+                    .padding(.top, 6)
+                    VStack(alignment: .leading, spacing: 6) {
+                        HStack(spacing: 10) {
+                            KeystoneGlyph().fill(Palette.accent).frame(width: 30, height: 30)
+                            Text("app.name").scaledFont(34, weight: .bold, relativeTo: .largeTitle).tracking(-0.6)
+                        }
+                        Text("menu.tagline").font(.subheadline).foregroundStyle(Palette.text2)
                     }
+                    .padding(.top, 12)
+                    .accessibilityElement(children: .combine)
+                    .accessibilityAddTraits(.isHeader)
+                    Spacer(minLength: 20)
+                    continueCard
+                        .padding(.bottom, 12)
+                    menuList
+                        .padding(.bottom, 16)
                 }
-                .padding(.top, 6)
-                VStack(alignment: .leading, spacing: 6) {
-                    HStack(spacing: 10) {
-                        KeystoneGlyph().fill(Palette.accent).frame(width: 30, height: 30)
-                        Text("app.name").scaledFont(34, weight: .bold, relativeTo: .largeTitle).tracking(-0.6)
-                    }
-                    Text("menu.tagline").font(.subheadline).foregroundStyle(Palette.text2)
-                }
-                .padding(.top, 12)
-                .accessibilityElement(children: .combine)
-                .accessibilityAddTraits(.isHeader)
-                Spacer(minLength: 20)
-                continueCard
-                    .padding(.bottom, 12)
-                menuList
-                    .padding(.bottom, 16)
+                .padding(.horizontal, 16)
             }
-            .padding(.horizontal, 16)
         }
         .safeAreaInset(edge: .bottom, spacing: 0) { BannerSlot() }
         .toolbar(.hidden, for: .navigationBar)
@@ -66,7 +68,7 @@ struct MainMenuView: View {
             HStack(spacing: 14) {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(app.progress.completedIds.isEmpty ? "menu.start" : "menu.continue")
-                        .font(.caption.weight(.bold)).tracking(1.4).opacity(0.72)
+                        .font(.caption.weight(.bold)).tracking(1.4)
                     Text(next.map { Copy.levelTitle($0, mode: .campaign) } ?? String(localized: "menu.noLevels"))
                         .font(.title2.weight(.semibold))
                         .lineLimit(2).minimumScaleFactor(0.8)
@@ -124,6 +126,7 @@ struct MainMenuView: View {
 }
 
 struct MenuRow: View {
+    @Environment(\.dynamicTypeSize) private var typeSize
     let icon: String
     let title: LocalizedStringKey
     let value: Text?
@@ -135,10 +138,19 @@ struct MenuRow: View {
         Button(action: action) {
             HStack(spacing: 14) {
                 Image(systemName: icon).scaledFont(20, relativeTo: .body).foregroundStyle(Palette.accent).frame(minWidth: 24)
-                Text(title).font(.body).foregroundStyle(Palette.text)
-                Spacer(minLength: 8)
-                if let value {
-                    value.font(.subheadline).foregroundStyle(Palette.text2).monospacedDigit().lineLimit(1).minimumScaleFactor(0.8)
+                if typeSize.isAccessibilitySize {
+                    // Large text: the value goes under the title instead of truncating beside it.
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(title).font(.body).foregroundStyle(Palette.text)
+                        if let value { value.font(.subheadline).foregroundStyle(Palette.text2).monospacedDigit() }
+                    }
+                    Spacer(minLength: 8)
+                } else {
+                    Text(title).font(.body).foregroundStyle(Palette.text)
+                    Spacer(minLength: 8)
+                    if let value {
+                        value.font(.subheadline).foregroundStyle(Palette.text2).monospacedDigit().lineLimit(1).minimumScaleFactor(0.8)
+                    }
                 }
                 Image(systemName: "chevron.right").scaledFont(14, weight: .semibold, relativeTo: .body).foregroundStyle(Palette.text3)
             }

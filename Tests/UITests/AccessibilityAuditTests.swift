@@ -28,7 +28,10 @@ final class AccessibilityAuditTests: XCTestCase {
     private let log = AuditLog()
 
     /// Deliberate exceptions, matched (regex) against the printed line, each with its reason.
-    private let accepted: [(pattern: String, reason: String)] = []
+    private let accepted: [(pattern: String, reason: String)] = [
+        (#"^\[a11y\] \w+/game \| Dynamic Type font sizes are unsupported"#,
+         "the game HUD and bottom bar keep fixed sizes by design, so the play area keeps its room"),
+    ]
 
     override func setUpWithError() throws {
         continueAfterFailure = true

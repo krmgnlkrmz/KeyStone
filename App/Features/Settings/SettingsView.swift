@@ -166,6 +166,8 @@ struct SettingsView: View {
 
 /// 29 pt rounded icon tile + title, as in the design.
 struct SettingsLabel: View {
+    /// The icon tile grows with the text so a large-text row stays in proportion.
+    @ScaledMetric(relativeTo: .body) private var tile: CGFloat = 29
     let icon: String
     let title: LocalizedStringKey
     var tint: Color = Palette.accent
@@ -175,10 +177,11 @@ struct SettingsLabel: View {
     var body: some View {
         HStack(spacing: 12) {
             Image(systemName: icon)
-                .font(.system(size: 15, weight: .medium))
+                .scaledFont(15, weight: .medium, relativeTo: .body)
                 .foregroundStyle(tint)
-                .frame(width: 29, height: 29)
+                .frame(width: tile, height: tile)
                 .background(soft, in: RoundedRectangle(cornerRadius: 7, style: .continuous))
+                .accessibilityHidden(true)
             Text(title).foregroundStyle(titleColor)
         }
     }

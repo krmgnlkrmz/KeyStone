@@ -60,8 +60,10 @@ private struct BannerPlaceholder: View {
             )
             .overlay(
                 Text(offline ? "ad.slot.offline" : "ad.slot")
-                    .font(Typo.mono(10)).tracking(1.2)
-                    .foregroundStyle(Palette.text3)
+                    .scaledFont(10, design: .monospaced, relativeTo: .caption2).tracking(1.2)
+                    .foregroundStyle(Palette.text2)
+                    .lineLimit(1).minimumScaleFactor(0.5)
+                    .padding(.horizontal, 8)
             )
             .accessibilityHidden(true)
     }

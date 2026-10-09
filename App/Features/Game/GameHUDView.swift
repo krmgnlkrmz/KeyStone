@@ -210,6 +210,7 @@ struct GameBottomBar: View {
                     .overlay(Circle().strokeBorder(Palette.accent, lineWidth: 1.5))
                 Text("hud.hint").font(.system(size: 15, weight: .semibold)).foregroundStyle(Palette.text)
                 AdTag(text: app.ads.rewardedEnabled ? "ad.tag" : "ad.offline.tag")
+                    .dynamicTypeSize(.large) // game chrome keeps its fixed size, like the label beside it
             }
             .padding(.leading, 8).padding(.trailing, 12)
             .frame(height: 52)

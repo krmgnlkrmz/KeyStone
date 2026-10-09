@@ -94,6 +94,35 @@ extension View {
     }
 }
 
+/// Lays content out to fill the height when it fits, and scrolls it only when it does not
+/// (accessibility text sizes on small phones), so nothing is clipped off-screen.
+struct ScrollIfNeeded<Content: View>: View {
+    @ViewBuilder var content: Content
+
+    var body: some View {
+        ViewThatFits(in: .vertical) {
+            content
+            ScrollView { content }.scrollBounceBehavior(.basedOnSize)
+        }
+    }
+}
+
+/// A row that puts its parts side by side, or under each other at accessibility text sizes
+/// (like iOS Settings), so neither side has to truncate.
+struct AdaptiveStack<Content: View>: View {
+    @Environment(\.dynamicTypeSize) private var typeSize
+    var spacing: CGFloat? = nil
+    @ViewBuilder var content: Content
+
+    var body: some View {
+        if typeSize.isAccessibilitySize {
+            VStack(alignment: .leading, spacing: 4) { content }
+        } else {
+            HStack(alignment: .firstTextBaseline, spacing: spacing) { content }
+        }
+    }
+}
+
 // MARK: - Buttons
 
 /// Scale 0.97 on press, spring 0.15 / 0.9.

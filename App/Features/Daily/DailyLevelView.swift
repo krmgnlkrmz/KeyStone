@@ -7,53 +7,55 @@ struct DailyLevelView: View {
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                Kicker(text: Text(verbatim: Copy.longDate(app.todayKey)))
-                Spacer()
-                Button { dismiss() } label: { Text("daily.done").font(.body.weight(.semibold)) }
-                    .tint(Palette.accent)
-                    .frame(minHeight: 44)
-            }
-            Text("daily.title").font(Typo.title1).padding(.top, -8)
-            ZStack(alignment: .bottom) {
-                BlueprintGrid().clipShape(RoundedRectangle(cornerRadius: 22))
-                if let level = app.dailyLevel {
-                    SilhouetteView(silhouette: app.silhouette(for: level), color: Palette.text2, keyColor: Palette.accent)
-                        .padding(.horizontal, 24).padding(.top, 20).padding(.bottom, 22)
-                }
-            }
-            .frame(maxWidth: .infinity)
-            .frame(height: 280)
-            .background(Palette.background, in: RoundedRectangle(cornerRadius: 22))
-            .overlay(RoundedRectangle(cornerRadius: 22).strokeBorder(Palette.line, lineWidth: 1))
-
-            VStack(spacing: 12) {
-                HStack(alignment: .firstTextBaseline) {
-                    Text("daily.streak \(app.displayStreak)").font(.body.weight(.semibold))
+        ScrollIfNeeded {
+            VStack(alignment: .leading, spacing: 16) {
+                HStack {
+                    Kicker(text: Text(verbatim: Copy.longDate(app.todayKey)))
                     Spacer()
-                    Text(app.dailySolvedToday ? "daily.solved" : "daily.notSolved")
-                        .font(.footnote).foregroundStyle(app.dailySolvedToday ? Palette.jade : Palette.text2)
+                    Button { dismiss() } label: { Text("daily.done").font(.body.weight(.semibold)) }
+                        .tint(Palette.accent)
+                        .frame(minHeight: 44)
                 }
-                WeekStrip(todayKey: app.todayKey, solved: Set(app.progress.dailyKeys))
-            }
-            .padding(EdgeInsets(top: 14, leading: 16, bottom: 14, trailing: 16))
-            .background(Palette.surface, in: RoundedRectangle(cornerRadius: 16))
-            .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Palette.line, lineWidth: 1))
+                Text("daily.title").font(Typo.title1).padding(.top, -8)
+                ZStack(alignment: .bottom) {
+                    BlueprintGrid().clipShape(RoundedRectangle(cornerRadius: 22))
+                    if let level = app.dailyLevel {
+                        SilhouetteView(silhouette: app.silhouette(for: level), color: Palette.text2, keyColor: Palette.accent)
+                            .padding(.horizontal, 24).padding(.top, 20).padding(.bottom, 22)
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: 280)
+                .background(Palette.background, in: RoundedRectangle(cornerRadius: 22))
+                .overlay(RoundedRectangle(cornerRadius: 22).strokeBorder(Palette.line, lineWidth: 1))
 
-            Spacer(minLength: 0)
-            Button { app.playDaily() } label: {
-                Label {
-                    if app.dailySolvedToday { Text("daily.playAgain") }
-                    else { Text("daily.play \(app.dailyLevel?.goal.normalizedThresholds.first ?? 0)") }
-                } icon: { Image(systemName: "play.fill") }
+                VStack(spacing: 12) {
+                    AdaptiveStack {
+                        Text("daily.streak \(app.displayStreak)").font(.body.weight(.semibold))
+                        Spacer(minLength: 0)
+                        Text(app.dailySolvedToday ? "daily.solved" : "daily.notSolved")
+                            .font(.footnote).foregroundStyle(app.dailySolvedToday ? Palette.jade : Palette.text2)
+                    }
+                    WeekStrip(todayKey: app.todayKey, solved: Set(app.progress.dailyKeys))
+                }
+                .padding(EdgeInsets(top: 14, leading: 16, bottom: 14, trailing: 16))
+                .background(Palette.surface, in: RoundedRectangle(cornerRadius: 16))
+                .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Palette.line, lineWidth: 1))
+
+                Spacer(minLength: 0)
+                Button { app.playDaily() } label: {
+                    Label {
+                        if app.dailySolvedToday { Text("daily.playAgain") }
+                        else { Text("daily.play \(app.dailyLevel?.goal.normalizedThresholds.first ?? 0)") }
+                    } icon: { Image(systemName: "play.fill") }
+                }
+                .buttonStyle(PrimaryButtonStyle())
+                .accessibilityIdentifier("daily.play")
+                .disabled(app.dailyLevel == nil)
+                Text("daily.footer").font(.footnote).foregroundStyle(Palette.text2).multilineTextAlignment(.center).frame(maxWidth: .infinity)
             }
-            .buttonStyle(PrimaryButtonStyle())
-            .accessibilityIdentifier("daily.play")
-            .disabled(app.dailyLevel == nil)
-            Text("daily.footer").font(.footnote).foregroundStyle(Palette.text3).frame(maxWidth: .infinity)
+            .padding(EdgeInsets(top: 22, leading: 20, bottom: 12, trailing: 20))
         }
-        .padding(EdgeInsets(top: 22, leading: 20, bottom: 12, trailing: 20))
         .keystoneSheet()
     }
 }
@@ -83,7 +85,7 @@ private struct WeekStrip: View {
                     }
                     .aspectRatio(1, contentMode: .fit)
                     .frame(maxWidth: 36)
-                    Text(weekdayLetter(key)).font(.caption2).foregroundStyle(Palette.text3)
+                    Text(weekdayLetter(key)).font(.caption2).foregroundStyle(Palette.text2)
                 }
                 .frame(maxWidth: .infinity)
                 .accessibilityElement(children: .ignore)
