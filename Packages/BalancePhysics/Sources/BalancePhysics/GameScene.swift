@@ -359,8 +359,20 @@ public final class GameScene: SimulationScene, SimulationSceneDelegate {
                        y: (size.height / 2 - v.y) * s + cameraNode.position.y)
     }
 
-    /// Frame of a piece in view coordinates (for accessibility elements and callouts).
+    /// Ropes still in the scene, in level order. They are cut like pieces are removed (tap, tap).
+    public var presentRopeIds: [String] {
+        guard let structure else { return [] }
+        return level.joints.compactMap { $0.type == .rope && structure.ropeEndpoints($0.id) != nil ? $0.id : nil }
+    }
+
+    /// Frame of a piece in view coordinates (for accessibility elements and callouts). For a rope, the
+    /// minimum hit square around its midpoint, so a long diagonal rope does not cover the pieces it crosses.
     public func viewFrame(of id: String) -> CGRect? {
+        if let (a, b) = structure?.ropeEndpoints(id) {
+            let mid = viewPoint(fromScene: CGPoint(x: (a.x + b.x) / 2, y: (a.y + b.y) / 2))
+            let side = PieceSkin.minimumHitSize
+            return CGRect(x: mid.x - side / 2, y: mid.y - side / 2, width: side, height: side)
+        }
         guard let structure, let node = structure.node(id), let piece = structure.piece(id) else { return nil }
         let b = PieceTextureFactory.localBounds(piece)
         let corners = [CGPoint(x: b.minX, y: b.minY), CGPoint(x: b.maxX, y: b.minY), CGPoint(x: b.minX, y: b.maxY), CGPoint(x: b.maxX, y: b.maxY)]

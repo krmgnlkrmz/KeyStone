@@ -486,6 +486,10 @@ final class GameSession: GameSceneDelegate {
     // MARK: Accessibility
 
     func accessibilityLabel(for id: String) -> String? {
+        if scene.structure?.ropeEndpoints(id) != nil {
+            return Copy.ropeAccessibility(tier: tiers[id] ?? .none, removable: scene.isRemovable(id),
+                                          selected: selectedId == id, target: level.goal.targetPieceIds.contains(id))
+        }
         guard let piece = scene.structure?.piece(id) else { return nil }
         return Copy.pieceAccessibility(piece, tier: tiers[id] ?? .none, removable: scene.isRemovable(id),
                                        selected: selectedId == id, target: level.goal.targetPieceIds.contains(id))

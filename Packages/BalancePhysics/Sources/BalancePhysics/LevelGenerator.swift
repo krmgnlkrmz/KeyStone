@@ -318,11 +318,17 @@ public struct LevelGenerator {
     }
 
     /// Stepped stone pyramid with shims and a keystone on top.
+    ///
+    /// The goal names blocks only. Shims stay removable (pulling one is a tempting, sometimes fatal move),
+    /// but a solution that had to pull one dropped the tiers above onto whatever was left, and whether
+    /// that landing stays balanced depends on SpriteKit's internal order: those levels flipped between
+    /// processes (curated c-075 and c-077 among them) despite comfortable margins.
     private func pyramid(_ b: inout Builder) -> Goal {
         let tiers = int(2...3)
         var bottom = b.floor
         var width = q(double(200...260))
         var removable: [String] = []
+        var blocks: [String] = []
         for t in 0..<tiers {
             let h = q(double(30...44))
             let n = t == 0 ? int(2...3) : 2
@@ -331,7 +337,7 @@ public struct LevelGenerator {
                 let x = -width / 2 + w / 2 + (width - w) * Double(i) / Double(max(1, n - 1))
                 let fixed = t == 0 && chance(0.4)
                 let p = b.rect("block", .stone, x: q(x), bottom: bottom, w: q(w), h: h, fixed: fixed)
-                if p.removable { removable.append(p.id) }
+                if p.removable { removable.append(p.id); blocks.append(p.id) }
             }
             bottom += h
             let shim = b.rect("shim", .wood, x: q(double(-10...10)), bottom: bottom, w: width - q(double(10...30)), h: 12)
@@ -343,7 +349,7 @@ public struct LevelGenerator {
         if chance(0.5) {
             return Goal(type: .dropOnlyTarget, targetPieceIds: ["k"], moveBudget: 0, starThresholds: [])
         }
-        return Goal(type: .removeTargetsKeepStanding, targetPieceIds: removable, requiredCount: min(3, max(1, removable.count - 2)),
+        return Goal(type: .removeTargetsKeepStanding, targetPieceIds: blocks, requiredCount: min(3, max(1, blocks.count - 1)),
                     moveBudget: 0, starThresholds: [])
     }
 }

@@ -136,7 +136,7 @@ private struct GameScreen: View {
     }
 }
 
-/// Invisible VoiceOver elements laid over each piece (SpriteKit nodes are not accessibility elements).
+/// Invisible VoiceOver elements laid over each piece and rope (SpriteKit nodes are not accessibility elements).
 private struct PieceAccessibilityLayer: View {
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
     let session: GameSession
@@ -145,7 +145,7 @@ private struct PieceAccessibilityLayer: View {
         if voiceOver || AppConfig.isUITest, session.phase == .playing {
             let _ = session.layoutVersion
             ZStack(alignment: .topLeading) {
-                ForEach(session.scene.structure?.presentIds ?? [], id: \.self) { id in
+                ForEach((session.scene.structure?.presentIds ?? []) + session.scene.presentRopeIds, id: \.self) { id in
                     if let frame = session.scene.viewFrame(of: id), let label = session.accessibilityLabel(for: id) {
                         Color.clear
                             .frame(width: max(frame.width, 44), height: max(frame.height, 44))

@@ -203,4 +203,13 @@ enum Copy {
         if selected { parts.append(String(localized: "a11y.selected")) }
         return parts.joined(separator: ", ")
     }
+
+    static func ropeAccessibility(tier: TensionTier, removable: Bool, selected: Bool, target: Bool) -> String {
+        var parts = [noun(.rope)]
+        if let t = self.tier(tier) { parts.append(t) }
+        if target { parts.append(String(localized: "a11y.target")) }
+        parts.append(removable ? String(localized: "a11y.removable") : String(localized: "a11y.notRemovable"))
+        if selected { parts.append(String(localized: "a11y.selected")) }
+        return parts.joined(separator: ", ")
+    }
 }
