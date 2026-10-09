@@ -1,9 +1,4 @@
-c-075	60hz j0 move 3 shim1: collapsed ≠ won
-c-075	jitter j71 move 3 shim1: collapsed ≠ won
-c-075	45hz j23 move 3 shim1: collapsed ≠ won
-c-075	45hz j613 move 3 shim1: collapsed ≠ won
-c-077	drop7 j23 move 3 shim1: collapsed ≠ won
-c-077	jitter j0 move 3 shim1: collapsed ≠ won
-p-pyramid-21595	60hz j0 move 3 shim1: collapsed ≠ won
-p-pyramid-21595	drop7 j149 move 3 shim1: collapsed ≠ won
-p-table-20215	margin 1.2213014198860708
+c-075	120hz j23 move 3 shim1: collapsed ≠ won
+c-075	drop7 j0 move 3 shim1: collapsed ≠ won
+c-075	45hz j1201 move 3 shim1: collapsed ≠ won
+p-pyramid-40355	drop7 j2411 move 3 shim1: collapsed ≠ won
