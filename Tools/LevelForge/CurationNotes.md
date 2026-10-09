@@ -83,11 +83,12 @@ What the forge actually did, so the next person knows why the plan looks the way
   block1 → block3 → shim1: the upper tiers drop 12 pt onto the one remaining middle block, a landing
   that is balanced in most orderings and not in some, while the recorded margin (~2.0, peak movement)
   looks comfortable. Re-curating those slots under 16 shifts (80 combinations) produced five new
-  levels with the very same finale, so the generator changed instead: a pyramid's goal now names its
-  blocks only, and shims are tempting extra moves that no solution needs. Slots 15, 71, 73, 75, 77 and
-  79 were re-curated with it, and the 61 pool pyramids whose solution pulled a shim were dropped
-  (pool 1,408 → 1,347) and replaced by a fresh pyramid pass. Curated candidates are verified under 16
-  shifts, pool candidates under 8; pool levels that fail a later gate run are pruned.
+  levels with the very same finale, so the generator changed instead: a pyramid's goal names its
+  blocks only, and shims are part of the structure, not moves (with block-only goals the solver still
+  pulled a shim mid-path when it helped). Slots 15, 71, 73, 75, 77 and 79 were re-curated with it; the
+  73 pool pyramids whose solution pulled a shim were dropped and fresh pyramid passes replace them.
+  Curated candidates are verified under 16 shifts, pool candidates under 8; pool levels that fail a
+  later gate run are pruned.
 
 A human playthrough of all 80 is still the last word on the curve; the forge guarantees solvability,
 margin and tension, not taste.
