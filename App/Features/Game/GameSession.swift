@@ -475,6 +475,13 @@ final class GameSession: GameSceneDelegate {
         }
     }
 
+    /// While a full-screen ad covers the game the scene holds still (no settle window runs unseen), and it
+    /// picks up where it was once the game is back.
+    func setCovered(_ covered: Bool) {
+        scene.isPaused = covered || overlay == .pause
+        if !covered { scene.resetFrameClock() }
+    }
+
     func teardown() {
         hintTask?.cancel()
         demoTask?.cancel()

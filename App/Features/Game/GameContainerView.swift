@@ -28,12 +28,20 @@ struct GameContainerView: View {
         }
         .statusBarHidden(false)
         .interactiveDismissDisabled()
-        .onAppear { if session == nil { load(launch) } }
+        .onAppear {
+            app.sound.ducked = true
+            if session == nil { load(launch) } else { session?.setCovered(false) }
+        }
         .onChange(of: colorScheme) { _, scheme in session?.scene.palette = Palette.scene(dark: scheme == .dark) }
-        .onAppear { app.sound.ducked = true }
         .onDisappear {
-            app.sound.ducked = false
-            session?.teardown()
+            // A full-screen ad over the game (interstitial, rewarded) takes this view out of the window too.
+            // The session stays, holding still until the game is back; only a closed game is torn down.
+            if app.router.game == nil {
+                app.sound.ducked = false
+                session?.teardown()
+            } else {
+                session?.setCovered(true)
+            }
         }
     }
 
