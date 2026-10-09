@@ -1,12 +1,13 @@
 {
   "annotation" : {
-    "difficulty" : 2.83,
+    "difficulty" : 4.29,
     "engineFingerprint" : "spk-1-60hz-f029",
-    "marginRatio" : 2.06,
+    "marginRatio" : 2.21,
     "solutionPath" : [
       "block1",
       "block3",
-      "shim1"
+      "shim2",
+      "block5"
     ],
     "stateMoves" : [
       {
@@ -19,10 +20,10 @@
         "severity" : {
           "block1" : 0.03,
           "block3" : 0.031,
-          "block4" : 8.175,
-          "block5" : 6.081,
+          "block4" : 8.137,
+          "block5" : 6.039,
           "shim1" : 0.478,
-          "shim2" : 0.454
+          "shim2" : 0.453
         },
         "state" : "",
         "unsafe" : {
@@ -38,10 +39,10 @@
         ],
         "severity" : {
           "block3" : 0.018,
-          "block4" : 7.978,
-          "block5" : 6.039,
+          "block4" : 8.173,
+          "block5" : 6.227,
           "shim1" : 0.482,
-          "shim2" : 0.45
+          "shim2" : 0.452
         },
         "state" : "block1",
         "unsafe" : {
@@ -57,10 +58,10 @@
         ],
         "severity" : {
           "block1" : 0.018,
-          "block4" : 8.06,
+          "block4" : 8.188,
           "block5" : 6.226,
-          "shim1" : 0.482,
-          "shim2" : 0.45
+          "shim1" : 0.481,
+          "shim2" : 0.451
         },
         "state" : "block3",
         "unsafe" : {
@@ -76,9 +77,9 @@
         ],
         "severity" : {
           "block1" : 0.461,
-          "block3" : 0.467,
-          "block4" : 6.735,
-          "block5" : 6.168,
+          "block3" : 0.461,
+          "block4" : 6.912,
+          "block5" : 6.236,
           "shim2" : 0.886
         },
         "state" : "shim1",
@@ -96,9 +97,9 @@
         ],
         "severity" : {
           "block1" : 0.405,
-          "block3" : 0.406,
-          "block4" : 4.589,
-          "block5" : 0.405,
+          "block3" : 0.413,
+          "block4" : 4.669,
+          "block5" : 0.406,
           "shim1" : 0.87
         },
         "state" : "shim2",
@@ -108,11 +109,12 @@
       },
       {
         "safe" : [
-
+          "shim1",
+          "shim2"
         ],
         "severity" : {
-          "block4" : 8.021,
-          "block5" : 6.223,
+          "block4" : 8.233,
+          "block5" : 6.145,
           "shim1" : 0.482,
           "shim2" : 0.451
         },
@@ -120,35 +122,30 @@
         "unsafe" : {
           "block4" : "shim2",
           "block5" : "shim2"
-        },
-        "win" : [
-          "shim1",
-          "shim2"
-        ]
+        }
       },
       {
         "safe" : [
-
+          "block3"
         ],
         "severity" : {
           "block3" : 0.473,
           "block4" : 10.455,
-          "block5" : 6.095,
-          "shim2" : 2.371
+          "block5" : 6.134,
+          "shim2" : 2.403
         },
         "state" : "block1,shim1",
         "unsafe" : {
           "block4" : "shim2",
           "block5" : "shim2",
           "shim2" : "block4"
-        },
-        "win" : [
-          "block3"
-        ]
+        }
       },
       {
         "safe" : [
-
+          "block3",
+          "shim1",
+          "block5"
         ],
         "severity" : {
           "block3" : 0.406,
@@ -159,56 +156,47 @@
         "state" : "block1,shim2",
         "unsafe" : {
           "block4" : "block5"
-        },
-        "win" : [
-          "block3",
-          "shim1",
-          "block5"
-        ]
+        }
       },
       {
         "safe" : [
-
+          "block1"
         ],
         "severity" : {
-          "block1" : 0.471,
-          "block4" : 6.757,
-          "block5" : 8.227,
-          "shim2" : 2.515
+          "block1" : 0.47,
+          "block4" : 6.472,
+          "block5" : 8.208,
+          "shim2" : 2.547
         },
         "state" : "block3,shim1",
         "unsafe" : {
           "block4" : "shim2",
           "block5" : "shim2",
           "shim2" : "block4"
-        },
-        "win" : [
-          "block1"
-        ]
+        }
       },
       {
         "safe" : [
-
+          "block1",
+          "shim1",
+          "block5"
         ],
         "severity" : {
-          "block1" : 0.405,
-          "block4" : 4.345,
-          "block5" : 0.404,
-          "shim1" : 0.869
+          "block1" : 0.41,
+          "block4" : 4.573,
+          "block5" : 0.407,
+          "shim1" : 0.872
         },
         "state" : "block3,shim2",
         "unsafe" : {
           "block4" : "block5"
-        },
-        "win" : [
-          "block1",
-          "shim1",
-          "block5"
-        ]
+        }
       },
       {
         "safe" : [
-
+          "block1",
+          "block3",
+          "block5"
         ],
         "severity" : {
           "block1" : 0.886,
@@ -219,21 +207,16 @@
         "state" : "shim1,shim2",
         "unsafe" : {
           "block4" : "block5"
-        },
-        "win" : [
-          "block1",
-          "block3",
-          "block5"
-        ]
+        }
       },
       {
         "safe" : [
 
         ],
         "severity" : {
-          "block1" : 4.867,
-          "block3" : 4.964,
-          "block4" : 1.844,
+          "block1" : 4.942,
+          "block3" : 4.866,
+          "block4" : 1.845,
           "shim1" : 4.984
         },
         "state" : "block5,shim2",
@@ -243,26 +226,150 @@
           "block4" : "shim1",
           "shim1" : "block4"
         }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block4" : 9.93,
+          "block5" : 8.114,
+          "shim2" : 2.526
+        },
+        "state" : "block1,block3,shim1",
+        "unsafe" : {
+          "block4" : "shim2",
+          "block5" : "shim2",
+          "shim2" : "block4"
+        }
+      },
+      {
+        "safe" : [
+          "shim1"
+        ],
+        "severity" : {
+          "block4" : 4.631,
+          "block5" : 0.404,
+          "shim1" : 0.868
+        },
+        "state" : "block1,block3,shim2",
+        "unsafe" : {
+          "block4" : "block5"
+        },
+        "win" : [
+          "block5"
+        ]
+      },
+      {
+        "safe" : [
+          "block3"
+        ],
+        "severity" : {
+          "block3" : 0.841,
+          "block4" : 10.47,
+          "block5" : 4.656
+        },
+        "state" : "block1,shim1,shim2",
+        "unsafe" : {
+          "block4" : "block5",
+          "block5" : "block4"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block3" : 4.783,
+          "block4" : 4.261,
+          "shim1" : 5.206
+        },
+        "state" : "block1,block5,shim2",
+        "unsafe" : {
+          "block3" : "block4",
+          "block4" : "shim1",
+          "shim1" : "block4"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block1" : 2.429,
+          "block4" : 3.416,
+          "block5" : 5.049
+        },
+        "state" : "block3,shim1,shim2",
+        "unsafe" : {
+          "block1" : "block4",
+          "block4" : "block5",
+          "block5" : "block4"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block1" : 4.86,
+          "block4" : 1.848,
+          "shim1" : 4.981
+        },
+        "state" : "block3,block5,shim2",
+        "unsafe" : {
+          "block1" : "block4",
+          "block4" : "shim1",
+          "shim1" : "block4"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block1" : 4.885,
+          "block3" : 5.059,
+          "block4" : 5.908
+        },
+        "state" : "block5,shim1,shim2",
+        "unsafe" : {
+          "block1" : "block4",
+          "block3" : "block4",
+          "block4" : "k"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block4" : 2.462,
+          "block5" : 4.756
+        },
+        "state" : "block1,block3,shim1,shim2",
+        "unsafe" : {
+          "block4" : "block5",
+          "block5" : "block4"
+        }
       }
     ],
     "verifiedAt" : "2026-10-09"
   },
   "floorY" : -190,
   "goal" : {
-    "moveBudget" : 5,
+    "moveBudget" : 6,
     "requiredCount" : 3,
     "starThresholds" : [
-      3,
       4,
-      5
+      5,
+      6
     ],
     "targetPieceIds" : [
       "block1",
       "block3",
-      "shim1",
       "block4",
-      "block5",
-      "shim2"
+      "block5"
     ],
     "type" : "removeTargetsKeepStanding"
   },
