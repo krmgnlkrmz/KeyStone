@@ -54,6 +54,14 @@ the release gate checks the same 40 combinations. Levels whose decisions depend 
 rejected (curated) or pruned (pool). Three shifts were not enough: a fourth fresh-process validation
 still found a curated level (c-075) whose last move collapsed in 2 of its 15 combinations.
 
+**Drops are where ordering matters most.** Every outcome flip of a curated level came from one shape:
+a pyramid whose last move pulled the lower shim after both outer blocks, dropping the upper tiers
+12 pt onto the single block left. Margins of such levels read ~2.0 (peak movement is small), yet the
+landing goes either way with SpriteKit's internal order. Sampling more orderings only made those levels
+rarer; the generator now avoids them (a pyramid's goal names blocks only), and curated levels are
+verified under 16 shifts. When designing by hand, avoid winning moves that drop a load onto a narrow
+support.
+
 ## The decision rule (tolerant on purpose)
 
 `SettleRules.verdict` (BalanceCore, unit-tested on Linux) decides, from per-body measurements:
