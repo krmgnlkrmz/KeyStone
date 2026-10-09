@@ -91,6 +91,8 @@ public final class HeadlessSimulator {
     /// frame profile. Three shifts let levels through that flipped in a later process (a curated one
     /// among them), so the sample is wider; each shift is one more replay of a short path.
     public nonisolated static let orderingShifts: [Int] = [0, 23, 71, 149, 307, 613, 1201, 2411]
+    /// Curated levels are played by everyone, so their solutions are verified under twice as many shifts.
+    public nonisolated static let curatedOrderingShifts: [Int] = orderingShifts + [37, 97, 199, 401, 809, 1607, 3203, 4801]
 
     public init() throws {
         guard let device = MTLCreateSystemDefaultDevice() else { throw HeadlessError.noMetalDevice }

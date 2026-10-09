@@ -57,10 +57,14 @@ OVERRIDES = {
     42: {"archetype": "hanger"},            # counterweights need >= 4 moves; 41-45 are short
     44: {"archetype": "hanger"},
     66: {"minLength": 3}, 68: {"minLength": 3}, 70: {"minLength": 3},   # bridges solve in 3
-    77: {"minLength": 3}, 79: {"minLength": 3},                         # pyramids solve in 3
-    # Support levels looked alike (one bridge shape); redo every other one with the varied generator.
-    52: {"recurate": True}, 54: {"recurate": True}, 56: {"recurate": True}, 58: {"recurate": True},
-    60: {"recurate": True},
+    # Pyramids that end by dropping the upper tiers onto a single block landed differently in other
+    # processes (c-075, c-077 flipped). Redo them from fresh seeds under the curated 16-shift verification.
+    15: {"recurate": True, "seed": 115500, "attempts": 90},
+    71: {"recurate": True, "seed": 171500, "attempts": 90},
+    73: {"recurate": True, "seed": 173500, "attempts": 90},
+    75: {"recurate": True, "seed": 175500, "attempts": 90},
+    77: {"recurate": True, "seed": 177500, "attempts": 90, "minLength": 3},   # pyramids solve in 3
+    79: {"recurate": True, "seed": 179500, "attempts": 90, "minLength": 3},
 }
 
 slots = []

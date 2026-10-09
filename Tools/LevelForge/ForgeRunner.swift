@@ -179,6 +179,7 @@ final class ForgeRunner: XCTestCase {
         try sim.selfTest()
         var options = SolutionSolver.Options()
         options.rejectTooEasy = false
+        options.verifyJitters = HeadlessSimulator.curatedOrderingShifts
         let solver = SolutionSolver(simulator: sim, options: options)
         var lines: [String] = []
         for draft in try drafts() {
@@ -238,6 +239,7 @@ final class ForgeRunner: XCTestCase {
         try sim.selfTest()
         var options = SolutionSolver.Options()
         options.maxStates = 300
+        options.verifyJitters = HeadlessSimulator.curatedOrderingShifts
         let solver = SolutionSolver(simulator: sim, options: options)
         var lines: [String] = []
         let started = Date()
