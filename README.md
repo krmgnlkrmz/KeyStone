@@ -11,8 +11,8 @@ portrait · English (base) and Turkish.
 ## Layout
 
 ```
-project.yml                 XcodeGen project (the .xcodeproj is generated, not committed)
-Config/                     xcconfigs: team, bundle/app-group IDs, ad unit IDs (Release one is git-ignored)
+project.yml                 XcodeGen spec; DengeNoktasi.xcodeproj is generated from it and committed
+Config/                     xcconfigs: team, bundle/app-group IDs, ad unit IDs (real ones: git-ignored Release.xcconfig)
 Packages/BalanceCore        pure Swift game logic (level format, constants + fingerprint, move log, stars,
                             ad pacing, daily picker, streaks, unlocks, support geometry, verdict rules,
                             blame heuristic, tension index + hints) — tested on Linux and macOS
@@ -24,25 +24,29 @@ Widget/                     Daily widget (small/medium)
 Tools/LevelForge/           offline level generation + verification (XCTest in the Simulator)
 Tests/AppTests/             app tests (persistence, content gates, physics determinism, localization)
 docs/                       physics notes, ads policy, submission checklist
-scripts/                    bootstrap, asset/strings/sound generators, CI helpers
+scripts/                    project, asset/strings/sound generators, CI helpers
 ```
 
 ## Getting started
 
-The Xcode project is generated from `project.yml` and is not in the repository: after cloning (and
-after a pull that changes `project.yml`), run `make bootstrap`, then open `DengeNoktasi.xcodeproj`.
+Open `DengeNoktasi.xcodeproj` and run the `DengeNoktasi` scheme. Nothing to install first: the
+project is committed, Xcode fetches Google Mobile Ads on its own, and until `Config/Release.xcconfig`
+exists every build uses Google's sample ad IDs.
 
-```sh
-brew install xcodegen
-make bootstrap          # creates Config/Release.xcconfig from the example, generates, resolves packages
-open DengeNoktasi.xcodeproj
-make test               # unit tests in the iOS Simulator
-make core-test          # BalanceCore only, no Xcode needed (works on Linux)
-make forge-smoke        # curated levels replay their verified solutions
-```
+From the command line:
 
-Before a release: fill in `Config/Shared.xcconfig` placeholders and `Config/Release.xcconfig`
-(see `docs/submission-checklist.md`), then `make forge-validate`.
+- `make test`: unit tests in the iOS Simulator
+- `make core-test`: BalanceCore only, no Xcode needed (works on Linux)
+- `make forge-smoke`: curated levels replay their verified solutions
+
+The project is generated from `project.yml` with XcodeGen (the version in `.xcodegen-version`).
+After editing `project.yml`, run `make project` and commit the regenerated project; CI fails when the
+two disagree.
+
+Before a release: fill in the `Config/Shared.xcconfig` placeholders, copy
+`Config/Release.example.xcconfig` to `Config/Release.xcconfig` (git-ignored) with the real AdMob IDs
+(see `docs/submission-checklist.md`), then `make forge-validate`. An archive that still has the sample
+IDs or the placeholder privacy URL stops with an error.
 
 ## Generated files
 

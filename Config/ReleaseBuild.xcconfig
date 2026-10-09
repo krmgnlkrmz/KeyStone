@@ -1,0 +1,5 @@
+// The Release configuration's settings (project.yml). The example's sample IDs keep a fresh clone
+// building; Config/Release.xcconfig (git-ignored) overrides them with the real IDs when it exists.
+// An archive that still has the sample IDs stops at the "Release placeholders" build phase.
+#include "Release.example.xcconfig"
+#include? "Release.xcconfig"

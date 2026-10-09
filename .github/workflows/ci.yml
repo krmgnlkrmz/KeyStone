@@ -56,12 +56,9 @@ jobs:
     if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[sdk-report]') }}
     steps:
       - uses: actions/checkout@v4
-      - run: brew install xcodegen
       - run: |
           XC=$(ls -d /Applications/Xcode_*.app | grep -v -i beta | sort -V | tail -1)
           sudo xcode-select -s "$XC"
-          cp Config/Release.example.xcconfig Config/Release.xcconfig
-          xcodegen generate
           xcodebuild -resolvePackageDependencies -project DengeNoktasi.xcodeproj -scheme DengeNoktasi -clonedSourcePackagesDirPath SourcePackages > /dev/null
           cat DengeNoktasi.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
           ./scripts/ci-sdk-report.sh SourcePackages
@@ -82,7 +79,15 @@ jobs:
           xcrun swift --version
 
       - name: Tools
-        run: brew install xcodegen xcbeautify || brew install xcodegen
+        run: |
+          brew install xcbeautify || true
+          # The XcodeGen release the committed project was generated with (make project).
+          V=$(cat .xcodegen-version)
+          if curl -fsSL -o "$RUNNER_TEMP/xcodegen.zip" "https://github.com/yonaskolb/XcodeGen/releases/download/$V/xcodegen.zip"; then
+            unzip -q "$RUNNER_TEMP/xcodegen.zip" -d "$RUNNER_TEMP" && echo "$RUNNER_TEMP/xcodegen/bin" >> "$GITHUB_PATH"
+          else
+            echo "::warning::XcodeGen $V download failed; using Homebrew's"; brew install xcodegen
+          fi
 
       - name: BalanceCore tests (macOS)
         run: swift test --package-path Packages/BalanceCore
@@ -93,10 +98,22 @@ jobs:
           grep -E "error:|✘|✔|Test run with|skipped" physics.log | head -150 || true
           exit $rc
 
-      - name: Generate project
+      # The committed project must be what project.yml generates; Release must build without the
+      # git-ignored Config/Release.xcconfig (a fresh clone), falling back to the example's sample IDs.
+      - name: Project is up to date
         run: |
-          cp Config/Release.example.xcconfig Config/Release.xcconfig
+          xcodegen --version
           xcodegen generate
+          if [ -n "$(git status --porcelain -- DengeNoktasi.xcodeproj)" ]; then
+            git status --porcelain -- DengeNoktasi.xcodeproj
+            git --no-pager diff -- DengeNoktasi.xcodeproj | head -120
+            echo "::error::DengeNoktasi.xcodeproj does not match project.yml: run 'make project' and commit the result"
+            exit 1
+          fi
+          GAD=$(xcodebuild -showBuildSettings -project DengeNoktasi.xcodeproj -scheme DengeNoktasi -configuration Release 2>&1 \
+            | awk -F' = ' '/^ *GAD_APP_ID = /{print $2; exit}')
+          echo "Release GAD_APP_ID without Config/Release.xcconfig: ${GAD:-<missing>}"
+          [ -n "$GAD" ]
 
       - name: Resolve packages
         run: |

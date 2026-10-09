@@ -12,9 +12,10 @@ configs:
   Release: release
 
 # Project-level xcconfigs: every target (app, widget, tests) sees the same IDs.
+# ReleaseBuild includes the git-ignored Config/Release.xcconfig (real IDs) when it exists.
 configFiles:
   Debug: Config/Debug.xcconfig
-  Release: Config/Release.xcconfig
+  Release: Config/ReleaseBuild.xcconfig
 
 settings:
   base:
@@ -61,7 +62,7 @@ targets:
       - sdk: JavaScriptCore.framework
     preBuildScripts:
       # Archives only: an App Store build must not ship Google's sample ad IDs or the placeholder privacy URL.
-      # A fresh clone builds and tests with them on purpose (scripts/bootstrap.sh copies the example config).
+      # A fresh clone builds and tests with them on purpose (Config/ReleaseBuild.xcconfig falls back to the example).
       - name: Release placeholders
         runOnlyWhenInstalling: true
         basedOnDependencyAnalysis: false

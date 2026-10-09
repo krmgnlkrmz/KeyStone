@@ -1,6 +1,6 @@
-// Copy to Config/Release.xcconfig (git-ignored) and fill in the real AdMob IDs.
-// scripts/bootstrap.sh copies this file automatically when Release.xcconfig is missing,
-// so a fresh clone still builds — with test ads.
+// Copy to Config/Release.xcconfig (git-ignored) and fill in the real AdMob IDs. Until that file
+// exists, Release builds use these sample IDs (Config/ReleaseBuild.xcconfig), so a fresh clone
+// builds with test ads; an archive with them stops at the "Release placeholders" build phase.
 #include "Shared.xcconfig"
 
 // PLACEHOLDER — replace with the production AdMob app ID and ad unit IDs.

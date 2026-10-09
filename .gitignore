@@ -1,6 +1,6 @@
-# Xcode / XcodeGen — the project is generated from project.yml
-DengeNoktasi.xcodeproj/
+# Xcode — DengeNoktasi.xcodeproj is generated from project.yml and committed (make project)
 *.xcworkspace/xcuserdata/
+DengeNoktasi.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/
 xcuserdata/
 DerivedData/
 build/
@@ -19,3 +19,4 @@ Config/Release.xcconfig
 /forge-out/
 
 .DS_Store
+__pycache__/
