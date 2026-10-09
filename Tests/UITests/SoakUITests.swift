@@ -81,7 +81,7 @@ final class SoakUITests: XCTestCase {
         XCTAssertGreaterThanOrEqual(all.count, count, "only \(all.count) annotated curated levels")
 
         app = XCUIApplication()
-        app.launchArguments = ["-uitest"]
+        app.launchArguments = ["-uitest", "-testProbes"]
         app.launch()
         let levels = button("label CONTAINS[c] %@", "Levels")
         XCTAssertTrue(levels.waitForExistence(timeout: 15), "main menu did not appear")

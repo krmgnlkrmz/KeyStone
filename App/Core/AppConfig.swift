@@ -48,6 +48,22 @@ enum AppConfig {
     /// piece accessibility elements always on so the test can tap pieces.
     static var isUITest: Bool { ProcessInfo.processInfo.arguments.contains("-uitest") }
 
+    /// When the kernel started this process, for the cold-start measurement (process start to the menu,
+    /// so dyld and runtime setup count too). Nil if the kernel does not say.
+    static let processStart: Date? = {
+        var info = kinfo_proc()
+        var size = MemoryLayout<kinfo_proc>.stride
+        var mib: [Int32] = [CTL_KERN, KERN_PROC, KERN_PROC_PID, getpid()]
+        guard sysctl(&mib, u_int(mib.count), &info, &size, nil, 0) == 0 else { return nil }
+        let start = info.kp_proc.p_un.__p_starttime
+        guard start.tv_sec > 0 else { return nil }
+        return Date(timeIntervalSince1970: Double(start.tv_sec) + Double(start.tv_usec) / 1_000_000)
+    }()
+
+    /// Hidden elements that report internals to UI tests (strut requests, launch time). Off for the
+    /// accessibility audit, which would rightly flag them.
+    static var exposesTestProbes: Bool { isUITest && ProcessInfo.processInfo.arguments.contains("-testProbes") }
+
     /// UI tests can pre-complete the first N curated levels to show a populated map.
     static var uiTestSeedLevels: Int {
         let args = ProcessInfo.processInfo.arguments

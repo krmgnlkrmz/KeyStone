@@ -246,8 +246,8 @@ jobs:
         timeout-minutes: 20
         if: ${{ !cancelled() && steps.build.outcome == 'success' && steps.forge.outputs.mode == 'none' }}
         env:
-          # Report-only until the screens are clean; then true, and any issue fails the build.
-          STRICT: 'false'
+          # Report-only until the screens are clean; then '1', and any issue not accepted fails the build.
+          TEST_RUNNER_AUDIT_STRICT: '0'
         run: |
           rc=0
           xcodebuild test -project DengeNoktasi.xcodeproj -scheme UITests \
@@ -255,11 +255,10 @@ jobs:
             -test-timeouts-enabled YES -default-test-execution-time-allowance 600 \
             -only-testing:DengeNoktasiUITests/AccessibilityAuditTests \
             -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO > audit.log 2>&1 || rc=$?
-          # Each issue is a recorded failure; the [a11y] lines say which screen it belongs to.
-          grep -E "^\[a11y\]|AccessibilityAuditTests.*error:" audit.log | sed -E 's/^.*AccessibilityAuditTests testAuditMainScreens\] : (failed - )?/  /' | head -250 || true
-          grep -E "Executed|Testing failed" audit.log | tail -3 || true
+          grep -E "^\[a11y\]" audit.log | head -300 || true
+          grep -E "error:|Executed" audit.log | tail -5 || true
           grep -E "^\[launch\]" ui.log 2>/dev/null || true   # cold-start timing from the UI smoke step
-          if [ "$STRICT" = "true" ]; then exit $rc; fi
+          exit $rc
 
       - name: LevelForge (${{ steps.forge.outputs.mode }})
         id: forgerun

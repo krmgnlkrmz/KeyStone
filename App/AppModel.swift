@@ -42,6 +42,8 @@ final class AppModel {
     private(set) var catalog: LevelCatalog = .empty
     /// The pool (Daily, Endless) loads right after the menu is up; until then those two wait.
     private(set) var poolReady = false
+    /// Seconds from process start to the main menu's first appearance (§11: ≤ 2 s on a device).
+    private(set) var launchToMenu: TimeInterval?
     private(set) var launchPhase: LaunchPhase = .splash
     private(set) var toast: String?
     /// 0.3 s ink curtain before an interstitial; kept here so it survives the swap to the next level.
@@ -77,6 +79,14 @@ final class AppModel {
         sound.effectsEnabled = s.sound
         sound.musicEnabled = s.music
         haptics.enabled = s.haptics
+    }
+
+    /// Called when the main menu first appears; later visits keep the cold-start figure.
+    func noteMenuShown() {
+        guard launchToMenu == nil, let start = AppConfig.processStart else { return }
+        let seconds = Date().timeIntervalSince(start)
+        launchToMenu = seconds
+        log.info("menu \(seconds, format: .fixed(precision: 3), privacy: .public) s after process start")
     }
 
     // MARK: Launch (§7.3)

@@ -1,11 +1,34 @@
 import XCTest
 
+/// Collects audit issues. The issue handler is sent to XCTest, so under Swift 6 it may only capture
+/// Sendable state: this box, not the test case.
+private final class AuditLog: @unchecked Sendable {
+    private let lock = NSLock()
+    private var lines: [String] = []
+
+    func add(_ line: String) {
+        lock.lock()
+        lines.append(line)
+        lock.unlock()
+    }
+
+    var all: [String] {
+        lock.lock()
+        defer { lock.unlock() }
+        return lines
+    }
+}
+
 /// Xcode's accessibility audit (contrast, hit regions, descriptions, Dynamic Type, clipped text, traits)
-/// on the main screens of the real app, in light and dark appearance. Each issue is recorded as a test
-/// failure with its description; `[a11y]` lines mark which screen is being audited. CI runs this test on
-/// its own (report-only until the screens are clean, then strict).
+/// on the main screens of the real app, in light and dark appearance. Every issue is printed as an
+/// `[a11y]` line with the element it concerns. With AUDIT_STRICT=1 (TEST_RUNNER_AUDIT_STRICT through
+/// xcodebuild) any issue not listed in `accepted` fails the test.
 final class AccessibilityAuditTests: XCTestCase {
     private var app: XCUIApplication!
+    private let log = AuditLog()
+
+    /// Deliberate exceptions, matched (regex) against the printed line, each with its reason.
+    private let accepted: [(pattern: String, reason: String)] = []
 
     override func setUpWithError() throws {
         continueAfterFailure = true
@@ -18,8 +41,14 @@ final class AccessibilityAuditTests: XCTestCase {
     }
 
     private func audit(_ screen: String) throws {
-        print("[a11y] auditing \(screen)")
-        try app.performAccessibilityAudit()
+        let log = self.log
+        try app.performAccessibilityAudit { issue in
+            let what = issue.element.map {
+                "type \($0.elementType.rawValue) id '\($0.identifier)' label '\($0.label.prefix(50))' frame \($0.frame.integral)"
+            } ?? "no element"
+            log.add("[a11y] \(screen) | \(issue.compactDescription) | \(what)")
+            return true
+        }
     }
 
     private func walk(_ appearance: String, extra: [String]) throws {
@@ -59,5 +88,15 @@ final class AccessibilityAuditTests: XCTestCase {
     func testAuditMainScreens() throws {
         try walk("light", extra: [])
         try walk("dark", extra: ["-appearance", "dark"])
+        var open = 0
+        for line in log.all {
+            let ok = accepted.contains { line.range(of: $0.pattern, options: .regularExpression) != nil }
+            if !ok { open += 1 }
+            print(ok ? line.replacingOccurrences(of: "[a11y]", with: "[a11y] (accepted)") : line)
+        }
+        print("[a11y] \(log.all.count) issues, \(open) not accepted")
+        if ProcessInfo.processInfo.environment["AUDIT_STRICT"] == "1" {
+            XCTAssertEqual(open, 0, "accessibility audit: \(open) issues; see the [a11y] lines")
+        }
     }
 }

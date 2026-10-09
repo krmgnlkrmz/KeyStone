@@ -45,6 +45,17 @@ struct MainMenuView: View {
         }
         .safeAreaInset(edge: .bottom, spacing: 0) { BannerSlot() }
         .toolbar(.hidden, for: .navigationBar)
+        .onAppear { app.noteMenuShown() }
+        .overlay {
+            if AppConfig.exposesTestProbes, let seconds = app.launchToMenu {
+                Color.clear
+                    .frame(width: 1, height: 1)
+                    .accessibilityElement()
+                    .accessibilityLabel(Text(verbatim: String(format: "%.3f", seconds)))
+                    .accessibilityIdentifier("debug.launch")
+                    .allowsHitTesting(false)
+            }
+        }
     }
 
     private var continueCard: some View {

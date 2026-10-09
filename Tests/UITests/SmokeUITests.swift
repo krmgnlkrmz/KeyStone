@@ -128,24 +128,28 @@ final class SmokeUITests: XCTestCase {
         shot(prefix + "08-daily")
     }
 
-    /// Cold start → main menu in the real app, four launches (the first, right after install, does
-    /// one-time work and is left out of the median). The release bound is 2 s on a device; the CI
-    /// simulator and XCTest's launch handshake add time, so this catches regressions and prints numbers.
+    /// Cold start → main menu, four launches. The app reports seconds from process start (as the kernel
+    /// records it) to the menu's first appearance; XCTest's own wall time also waits for the app to go
+    /// idle, so it is printed for reference only. The first launch after install does one-time work and
+    /// is left out of the median. The release bound is 2 s on a device.
     func testColdStartReachesTheMenu() throws {
-        var times: [Double] = []
+        var inApp: [Double] = [], wall: [Double] = []
         for _ in 0..<4 {
             app = XCUIApplication()
-            app.launchArguments = ["-uitest"]
+            app.launchArguments = ["-uitest", "-testProbes"]
             let start = Date()
             app.launch()
-            XCTAssertTrue(app.buttons["menu.levels"].waitForExistence(timeout: 15), "main menu did not appear")
-            times.append(Date().timeIntervalSince(start))
+            let probe = app.descendants(matching: .any).matching(identifier: "debug.launch").firstMatch
+            XCTAssertTrue(probe.waitForExistence(timeout: 15), "main menu did not report its launch time")
+            wall.append(Date().timeIntervalSince(start))
+            inApp.append(Double(probe.label) ?? .infinity)
             app.terminate()
         }
-        let later = times.dropFirst().sorted()
+        let later = inApp.dropFirst().sorted()
         let median = later[later.count / 2]
-        print("[launch] menu after \(times.map { String(format: "%.2f", $0) }.joined(separator: ", ")) s; median \(String(format: "%.2f", median)) s")
-        XCTAssertLessThan(median, 4, "cold start to the menu took \(median) s on the simulator")
+        let fmt = { (xs: [Double]) in xs.map { String(format: "%.2f", $0) }.joined(separator: ", ") }
+        print("[launch] process start → menu: \(fmt(inApp)) s (median \(String(format: "%.2f", median)) s); XCTest wall time: \(fmt(wall)) s")
+        XCTAssertLessThan(median, 3, "process start to the menu took \(median) s on the simulator")
     }
 
     func testDailySheetOpens() throws {

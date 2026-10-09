@@ -108,7 +108,7 @@ private struct GameScreen: View {
                         )
                         .accessibilityHidden(true)
                     PieceAccessibilityLayer(session: session)
-                    if AppConfig.isUITest {
+                    if AppConfig.exposesTestProbes {
                         Color.clear
                             .frame(width: 1, height: 1)
                             .accessibilityElement()
