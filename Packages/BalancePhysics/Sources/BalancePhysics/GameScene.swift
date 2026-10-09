@@ -362,7 +362,10 @@ public final class GameScene: SimulationScene, SimulationSceneDelegate {
     /// Ropes still in the scene, in level order. They are cut like pieces are removed (tap, tap).
     public var presentRopeIds: [String] {
         guard let structure else { return [] }
-        return level.joints.compactMap { $0.type == .rope && structure.ropeEndpoints($0.id) != nil ? $0.id : nil }
+        return level.joints.compactMap { joint in
+            guard joint.type == .rope, let id = joint.id, structure.ropeEndpoints(id) != nil else { return nil }
+            return id
+        }
     }
 
     /// Frame of a piece in view coordinates (for accessibility elements and callouts). For a rope, the
