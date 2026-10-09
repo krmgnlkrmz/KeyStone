@@ -175,16 +175,15 @@ jobs:
           TEST_RUNNER_SOAK: ${{ steps.forge.outputs.mode == 'soak' && '1' || '0' }}
           TEST_RUNNER_SOAK_LEVELS: ${{ steps.forge.outputs.soak_levels }}
           TEST_RUNNER_SOAK_MINUTES: ${{ steps.forge.outputs.soak_minutes }}
-          # Accessibility audit: report-only until the screens are clean, then 1 (any new issue fails).
-          TEST_RUNNER_AUDIT_STRICT: '0'
         run: |
           rc=0
           xcodebuild test -project DengeNoktasi.xcodeproj -scheme UITests \
             -destination "id=${{ steps.sim.outputs.udid }}" -clonedSourcePackagesDirPath SourcePackages \
             -test-timeouts-enabled YES -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 4000 \
+            -skip-testing:DengeNoktasiUITests/AccessibilityAuditTests \
             -derivedDataPath DerivedData -resultBundlePath UITests.xcresult CODE_SIGNING_ALLOWED=NO > ui.log 2>&1 || rc=$?
           grep -E "error:|failed|passed|Executed|XCTAssert|\[soak\]" ui.log | tail -120 || true
-          grep -E "^\[(a11y|launch)\]" ui.log | head -200 || true
+          grep -E "^\[launch\]" ui.log || true
           ls -R docs/screenshots 2>/dev/null | head -30 || true
           exit $rc
 
@@ -242,6 +241,25 @@ jobs:
             -only-testing:LevelForgeTests/ForgeRunner/testCuratedSmoke > forge.log 2>&1 || rc=$?
           grep -E "\[forge\]|error:|failed|passed|Executed" forge.log | head -300 || true
           exit $rc
+
+      - name: Accessibility audit (real app)
+        timeout-minutes: 20
+        if: ${{ !cancelled() && steps.build.outcome == 'success' && steps.forge.outputs.mode == 'none' }}
+        env:
+          # Report-only until the screens are clean; then true, and any issue fails the build.
+          STRICT: 'false'
+        run: |
+          rc=0
+          xcodebuild test -project DengeNoktasi.xcodeproj -scheme UITests \
+            -destination "id=${{ steps.sim.outputs.udid }}" -clonedSourcePackagesDirPath SourcePackages \
+            -test-timeouts-enabled YES -default-test-execution-time-allowance 600 \
+            -only-testing:DengeNoktasiUITests/AccessibilityAuditTests \
+            -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO > audit.log 2>&1 || rc=$?
+          # Each issue is a recorded failure; the [a11y] lines say which screen it belongs to.
+          grep -E "^\[a11y\]|AccessibilityAuditTests.*error:" audit.log | sed -E 's/^.*AccessibilityAuditTests testAuditMainScreens\] : (failed - )?/  /' | head -250 || true
+          grep -E "Executed|Testing failed" audit.log | tail -3 || true
+          grep -E "^\[launch\]" ui.log 2>/dev/null || true   # cold-start timing from the UI smoke step
+          if [ "$STRICT" = "true" ]; then exit $rc; fi
 
       - name: LevelForge (${{ steps.forge.outputs.mode }})
         id: forgerun

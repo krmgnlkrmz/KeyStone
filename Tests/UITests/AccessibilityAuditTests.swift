@@ -1,17 +1,11 @@
 import XCTest
 
 /// Xcode's accessibility audit (contrast, hit regions, descriptions, Dynamic Type, clipped text, traits)
-/// on the main screens of the real app, in light and dark appearance. Every issue is printed as an
-/// `[a11y]` line for the CI log; with AUDIT_STRICT=1 (TEST_RUNNER_AUDIT_STRICT through xcodebuild) any
-/// issue that is not listed in `accepted` fails the test.
+/// on the main screens of the real app, in light and dark appearance. Each issue is recorded as a test
+/// failure with its description; `[a11y]` lines mark which screen is being audited. CI runs this test on
+/// its own (report-only until the screens are clean, then strict).
 final class AccessibilityAuditTests: XCTestCase {
     private var app: XCUIApplication!
-    private var found: [String] = []
-    private var failing = 0
-    private var strict: Bool { ProcessInfo.processInfo.environment["AUDIT_STRICT"] == "1" }
-
-    /// Issues that are deliberate, with the reason. Matched against "<screen> <audit> <identifier>".
-    private let accepted: [(pattern: String, reason: String)] = []
 
     override func setUpWithError() throws {
         continueAfterFailure = true
@@ -23,30 +17,9 @@ final class AccessibilityAuditTests: XCTestCase {
         app.launch()
     }
 
-    private static func name(_ type: XCUIAccessibilityAuditType) -> String {
-        switch type {
-        case .contrast: return "contrast"
-        case .elementDetection: return "elementDetection"
-        case .hitRegion: return "hitRegion"
-        case .sufficientElementDescription: return "description"
-        case .dynamicType: return "dynamicType"
-        case .textClipped: return "textClipped"
-        case .trait: return "trait"
-        default: return "audit(\(type.rawValue))"
-        }
-    }
-
     private func audit(_ screen: String) throws {
-        try app.performAccessibilityAudit { issue in
-            let type = Self.name(issue.auditType)
-            let id = issue.element?.identifier ?? ""
-            let label = issue.element?.label ?? ""
-            let key = "\(screen) \(type) \(id)"
-            let isAccepted = self.accepted.contains { key.range(of: $0.pattern, options: .regularExpression) != nil }
-            self.found.append("[a11y] \(isAccepted ? "accepted" : "ISSUE") \(key) '\(label.prefix(60))': \(issue.compactDescription)")
-            if !isAccepted { self.failing += 1 }
-            return true
-        }
+        print("[a11y] auditing \(screen)")
+        try app.performAccessibilityAudit()
     }
 
     private func walk(_ appearance: String, extra: [String]) throws {
@@ -86,8 +59,5 @@ final class AccessibilityAuditTests: XCTestCase {
     func testAuditMainScreens() throws {
         try walk("light", extra: [])
         try walk("dark", extra: ["-appearance", "dark"])
-        for line in found { print(line) }
-        print("[a11y] \(found.count) issues, \(failing) not accepted")
-        if strict { XCTAssertEqual(failing, 0, "accessibility audit found \(failing) issues; see the [a11y] lines") }
     }
 }
