@@ -44,6 +44,10 @@ final class AppModel {
     private(set) var poolReady = false
     /// Seconds from process start to the main menu's first appearance (§11: ≤ 2 s on a device).
     private(set) var launchToMenu: TimeInterval?
+    /// The same clock at `AppModel.init` (everything before it is dyld, frameworks and the runtime) and
+    /// when the curated catalog was decoded, so a slow launch shows where its time went.
+    @ObservationIgnored private(set) var launchToInit: TimeInterval?
+    @ObservationIgnored private(set) var launchToCatalog: TimeInterval?
     private(set) var launchPhase: LaunchPhase = .splash
     private(set) var toast: String?
     /// 0.3 s ink curtain before an interstitial; kept here so it survives the swap to the next level.
@@ -61,6 +65,7 @@ final class AppModel {
     }
 
     init(inMemoryStore: Bool = false) {
+        launchToInit = AppConfig.processStart.map { Date().timeIntervalSince($0) }
         progress = ProgressStore(inMemory: inMemoryStore)
         ads = AdsCoordinator()
         store = StoreManager()
@@ -86,7 +91,7 @@ final class AppModel {
         guard launchToMenu == nil, let start = AppConfig.processStart else { return }
         let seconds = Date().timeIntervalSince(start)
         launchToMenu = seconds
-        log.info("menu \(seconds, format: .fixed(precision: 3), privacy: .public) s after process start")
+        log.info("menu \(seconds, format: .fixed(precision: 3), privacy: .public) s after process start (init \(self.launchToInit ?? -1, format: .fixed(precision: 3), privacy: .public) s, catalog \(self.launchToCatalog ?? -1, format: .fixed(precision: 3), privacy: .public) s)")
     }
 
     // MARK: Launch (§7.3)
@@ -94,6 +99,7 @@ final class AppModel {
     func bootstrap() async {
         let splashStart = ContinuousClock.now
         catalog = await Self.loadCatalog()
+        launchToCatalog = AppConfig.processStart.map { Date().timeIntervalSince($0) }
         // Prices and a fresh entitlement check need the App Store, which can take seconds (or fail) on a
         // slow network. The menu shows with the cached entitlement; `store.onChange` updates it after.
         Task { await store.load() }

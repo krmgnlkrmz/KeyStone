@@ -94,7 +94,7 @@ struct RegionHeaderView: View {
             Text(Copy.zoneTitle(region))
                 .scaledFont(12, design: .monospaced, relativeTo: .caption).tracking(1.5)
                 .foregroundStyle(unlocked ? Palette.text : Palette.text3)
-                .lineLimit(1).minimumScaleFactor(0.8)
+                .lineLimit(2)
             Spacer(minLength: 0)
             if unlocked {
                 Text(verbatim: "\(levels.first?.index ?? 0)–\(levels.last?.index ?? 0) · \(stars) / \(levels.count * 3) ★")

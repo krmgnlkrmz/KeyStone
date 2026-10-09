@@ -53,7 +53,7 @@ struct MainMenuView: View {
                 Color.clear
                     .frame(width: 1, height: 1)
                     .accessibilityElement()
-                    .accessibilityLabel(Text(verbatim: String(format: "%.3f", seconds)))
+                    .accessibilityLabel(Text(verbatim: String(format: "%.3f %.3f %.3f", seconds, app.launchToInit ?? -1, app.launchToCatalog ?? -1)))
                     .accessibilityIdentifier("debug.launch")
                     .allowsHitTesting(false)
             }

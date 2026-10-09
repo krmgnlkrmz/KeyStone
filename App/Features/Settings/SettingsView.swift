@@ -31,9 +31,9 @@ struct SettingsView: View {
                         SettingsLabel(icon: "figure.walk.motion", title: "settings.reduceMotion")
                     }
                 } header: {
-                    Text("settings.game")
+                    Text("settings.game").foregroundStyle(Palette.text2)
                 } footer: {
-                    Text("settings.leftHand.footer")
+                    Text("settings.leftHand.footer").foregroundStyle(Palette.text2)
                 }
 
                 Section {
@@ -78,13 +78,13 @@ struct SettingsView: View {
                     }
                     .disabled(app.store.restoring)
                 } header: {
-                    Text("settings.purchases")
+                    Text("settings.purchases").foregroundStyle(Palette.text2)
                 } footer: {
-                    if app.store.state == .pending { Text("settings.pending.footer") }
-                    else if app.store.state == .failed { Text("settings.failed") }
+                    if app.store.state == .pending { Text("settings.pending.footer").foregroundStyle(Palette.text2) }
+                    else if app.store.state == .failed { Text("settings.failed").foregroundStyle(Palette.text2) }
                 }
 
-                Section("settings.privacy") {
+                Section {
                     if app.ads.privacyOptionsRequired {
                         Button { Task { await app.ads.presentPrivacyOptions() } } label: {
                             HStack {
@@ -104,15 +104,19 @@ struct SettingsView: View {
                             Image(systemName: "arrow.up.right.square").foregroundStyle(Palette.text3)
                         }
                     }
+                } header: {
+                    Text("settings.privacy").foregroundStyle(Palette.text2)
                 }
 
-                Section("settings.playerData") {
+                Section {
                     Button(role: .destructive) { confirmReset = true } label: {
                         SettingsLabel(icon: "trash", title: "settings.reset", tint: Palette.text2, soft: Palette.surface2, titleColor: Palette.text)
                     }
+                } header: {
+                    Text("settings.playerData").foregroundStyle(Palette.text2)
                 }
 
-                Section("settings.about") {
+                Section {
                     LabeledContent {
                         Text(verbatim: AppConfig.versionString).foregroundStyle(Palette.text2)
                     } label: {
@@ -128,6 +132,8 @@ struct SettingsView: View {
                             SettingsLabel(icon: "trophy", title: "menu.gameCenter", titleColor: Palette.text)
                         }
                     }
+                } header: {
+                    Text("settings.about").foregroundStyle(Palette.text2)
                 }
             }
             .scrollContentBackground(.hidden)

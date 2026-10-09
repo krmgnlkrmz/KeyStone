@@ -14,7 +14,7 @@ struct GameHUDView: View {
                 VStack(spacing: 3) {
                     Text(session.kicker)
                         .font(Typo.mono(11)).tracking(1.5)
-                        .foregroundStyle(Palette.text3)
+                        .foregroundStyle(Palette.text2) // small mono over the blueprint grid: needs the stronger grey
                         .lineLimit(1)
                     Text(session.goalText)
                         .font(.system(size: 15, weight: .semibold))
@@ -34,7 +34,7 @@ struct GameHUDView: View {
                     .fixedSize()
                     Text(session.progressText)
                         .font(Typo.mono(10)).tracking(1.5)
-                        .foregroundStyle(Palette.text3)
+                        .foregroundStyle(Palette.text2)
                         .lineLimit(1)
                 }
                 .accessibilityElement(children: .ignore)

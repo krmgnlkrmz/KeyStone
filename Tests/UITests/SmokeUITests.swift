@@ -128,28 +128,31 @@ final class SmokeUITests: XCTestCase {
         shot(prefix + "08-daily")
     }
 
-    /// Cold start → main menu, four launches. The app reports seconds from process start (as the kernel
-    /// records it) to the menu's first appearance; XCTest's own wall time also waits for the app to go
-    /// idle, so it is printed for reference only. The first launch after install does one-time work and
-    /// is left out of the median. The release bound is 2 s on a device.
+    /// Cold start → main menu, four launches. The app reports, on the kernel's process clock, when
+    /// AppModel was created (before that: dyld, frameworks, runtime), when the catalog was decoded and
+    /// when the menu appeared. The first launch after install does one-time work and is left out of the
+    /// medians. The release bound (2 s to the menu) is for a device; on the CI simulator the system part
+    /// varies wildly, so this bounds the app's own part (AppModel → menu, 1.2 s of it the splash).
     func testColdStartReachesTheMenu() throws {
-        var inApp: [Double] = [], wall: [Double] = []
+        var menu: [Double] = [], own: [Double] = [], system: [Double] = [], catalog: [Double] = []
         for _ in 0..<4 {
             app = XCUIApplication()
             app.launchArguments = ["-uitest", "-testProbes"]
-            let start = Date()
             app.launch()
             let probe = app.descendants(matching: .any).matching(identifier: "debug.launch").firstMatch
-            XCTAssertTrue(probe.waitForExistence(timeout: 15), "main menu did not report its launch time")
-            wall.append(Date().timeIntervalSince(start))
-            inApp.append(Double(probe.label) ?? .infinity)
+            XCTAssertTrue(probe.waitForExistence(timeout: 30), "main menu did not report its launch time")
+            let t = probe.label.split(separator: " ").compactMap { Double($0) }
+            if t.count == 3 {
+                menu.append(t[0]); system.append(t[1]); catalog.append(t[2] - t[1]); own.append(t[0] - t[1])
+            }
             app.terminate()
         }
-        let later = inApp.dropFirst().sorted()
-        let median = later[later.count / 2]
+        XCTAssertEqual(menu.count, 4, "launch probe unreadable")
+        func median(_ xs: [Double]) -> Double { let s = xs.dropFirst().sorted(); return s.isEmpty ? .infinity : s[s.count / 2] }
         let fmt = { (xs: [Double]) in xs.map { String(format: "%.2f", $0) }.joined(separator: ", ") }
-        print("[launch] process start → menu: \(fmt(inApp)) s (median \(String(format: "%.2f", median)) s); XCTest wall time: \(fmt(wall)) s")
-        XCTAssertLessThan(median, 3, "process start to the menu took \(median) s on the simulator")
+        print("[launch] menu after process start: \(fmt(menu)) s; before AppModel (system): \(fmt(system)) s; " +
+              "AppModel → catalog: \(fmt(catalog)) s; AppModel → menu (app): \(fmt(own)) s; app median \(String(format: "%.2f", median(own))) s")
+        XCTAssertLessThan(median(own), 2.5, "the app's own launch path (AppModel → menu) took \(median(own)) s")
     }
 
     func testDailySheetOpens() throws {

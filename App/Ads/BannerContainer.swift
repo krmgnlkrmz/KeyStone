@@ -63,7 +63,8 @@ private struct BannerPlaceholder: View {
                     .scaledFont(10, design: .monospaced, relativeTo: .caption2).tracking(1.2)
                     .foregroundStyle(Palette.text2)
                     .lineLimit(1).minimumScaleFactor(0.5)
-                    .padding(.horizontal, 8)
+                    .padding(.horizontal, 8).padding(.vertical, 2)
+                    .background(Palette.background, in: Capsule()) // solid behind the text, not the hatch
             )
             .accessibilityHidden(true)
     }

@@ -24,9 +24,9 @@ TOKENS = {
     "LabelTertiary": ("#8E8A83", "#69655E", "Captions, disabled, empty stars (≥ 4.5:1 on every background)"),
     "Separator": ("rgba(220,214,200,0.10)", "rgba(30,34,40,0.10)", "Hairlines"),
     "SeparatorStrong": ("rgba(220,214,200,0.20)", "rgba(30,34,40,0.20)", "Dashed placeholders, ghost edges"),
-    "AccentBrass": ("#D9A85B", "#A26518", "Primary button, selection, keystone, stars"),
+    "AccentBrass": ("#D9A85B", "#925B16", "Primary button, selection, keystone, stars (≥ 4.5:1 as text in light)"),
     "LabelOnAccent": ("#1A1408", "#FFFFFF", "Text on brass"),
-    "AccentSoft": ("rgba(217,168,91,0.15)", "rgba(162,101,24,0.11)", "Selection halo, icon tiles"),
+    "AccentSoft": ("rgba(217,168,91,0.15)", "rgba(146,91,22,0.11)", "Selection halo, icon tiles"),
     "StateCollapse": ("#E0574B", "#B8392E", "Collapse + critical stress only"),
     "StateCollapseSoft": ("rgba(224,87,75,0.16)", "rgba(184,57,46,0.11)", "Collapse tint"),
     "StateSuccess": ("#8DBBA0", "#3B7656", "Success, valid placement, switches on"),
@@ -181,7 +181,7 @@ def main():
     json.dump({"info": {"author": "xcode", "version": 1}}, open(os.path.join(APP, "Contents.json"), "w"), indent=2)
     for name, (dark, light, _) in TOKENS.items():
         colorset(APP, name, dark, light)
-    colorset(APP, "AccentColor", "#D9A85B", "#A26518")
+    colorset(APP, "AccentColor", "#D9A85B", "#925B16")
 
     ic = os.path.join(APP, "AppIcon.appiconset")
     os.makedirs(ic)
