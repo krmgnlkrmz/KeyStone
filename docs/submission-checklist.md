@@ -22,14 +22,16 @@ app and the widget. In-app purchase product: `com.Kerem.KeyStone.removeads` (non
 - [x] Content: 80 curated + 1,388 pool levels, each with a verified annotation (solver, five frame
       profiles × 16 allocation shifts for curated and × 8 for new pool levels, margin ≥ 1.4 at
       generation, fingerprint `spk-1-60hz-f029`).
-- [ ] `[forge:validate]` (the release gate) re-verifies every shipped level in a fresh process under five
-      frame profiles × eight allocation shifts. Three runs flagged 11 pool levels in all (chaotic
-      structures whose outcome depends on SpriteKit's internal body order) and they were pruned; the
-      fourth flagged curated c-075 and 3 pool levels, so the sample went from 3 to 8 shifts and the
-      gate is being re-run (see `Tools/LevelForge/README.md`).
+- [x] `[forge:validate]` (the release gate) passed in a fresh process with no pruning (CI run 55,
+      `f14b733`): all 1,468 shipped levels under five frame profiles × eight allocation shifts, decisions
+      as verified and margin ≥ 1.25. Earlier runs found levels whose outcome depended on SpriteKit's
+      internal body order: pyramids won by dropping the upper tiers (the generator no longer makes such
+      levels; 6 curated slots re-curated, 73 pool pyramids replaced) and a few pool levels pruned.
+      Expect a later fresh-process run to flag a pool level now and then; prune it
+      (`[forge:validate commit prune]`), and treat any curated failure as a blocker.
       🔁 Re-run after any physics or content change and before every release.
 - [x] Simulator unit tests green, including "every curated level solvable without rewarded ads" and the
-      cold-start catalog bound (CI run on `da08c73`).
+      cold-start catalog bound (latest: CI run 56 on `ce01dcd`).
 - [x] UI smoke in the real app green: walkthrough (win, collapse replay, pause, settings), daily sheet,
       random taps, dark mode at Dynamic Type accessibility1, Turkish — on iPhone 16, and for screenshots
       on iPhone 17 Pro Max (6.9"), iPhone 16 Plus and iPhone SE (3rd gen).

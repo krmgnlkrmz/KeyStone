@@ -77,9 +77,9 @@ What the forge actually did, so the next person knows why the plan looks the way
 - `testCuratePlan` keeps every slot that already ships a verified level in its band, so reruns only
   fill gaps (`FORGE_RECURATE=1` or `"recurate": true` per slot redoes them).
 - **Fresh-process validation.** Each release-gate run happens in a new process, and SpriteKit's body
-  order follows memory addresses, so every run sampled orderings the generator never saw. Runs one to
-  four flagged 7, 4 and 4 levels (pool, then curated c-075); a fifth, now under 8 allocation shifts,
-  flagged c-075, c-077 and two pool levels. The curated failures were all pyramids ending
+  order follows memory addresses, so every run sampled orderings the generator never saw. The first two
+  runs flagged 7 pool levels, the third 4, the fourth 3 pool levels and curated c-075; a fifth, now
+  under 8 allocation shifts, flagged c-075, c-077 and two pool levels. The curated failures were all pyramids ending
   block1 → block3 → shim1: the upper tiers drop 12 pt onto the one remaining middle block, a landing
   that is balanced in most orderings and not in some, while the recorded margin (~2.0, peak movement)
   looks comfortable. Re-curating those slots under 16 shifts (80 combinations) produced five new
@@ -88,7 +88,10 @@ What the forge actually did, so the next person knows why the plan looks the way
   pulled a shim mid-path when it helped). Slots 15, 71, 73, 75, 77 and 79 were re-curated with it; the
   73 pool pyramids whose solution pulled a shim were dropped and fresh pyramid passes replace them.
   Curated candidates are verified under 16 shifts, pool candidates under 8; pool levels that fail a
-  later gate run are pruned.
+  later gate run are pruned. The next gate run flagged two pool levels (a block-only pyramid whose
+  last move collapsed in 2 of 40 combinations despite a recorded margin of 25.7, and a table whose
+  margin drifts to 1.21 in every process); after pruning them the gate passed in a fresh process with
+  nothing to prune: 80 curated + 1,388 pool levels.
 
 A human playthrough of all 80 is still the last word on the curve; the forge guarantees solvability,
 margin and tension, not taste.
