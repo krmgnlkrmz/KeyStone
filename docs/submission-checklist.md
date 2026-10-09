@@ -19,7 +19,7 @@ app and the widget. In-app purchase product: `com.Kerem.KeyStone.removeads` (non
 
 ## Build & content gates
 
-- [x] Content: 80 curated + 1,390 pool levels, each with a verified annotation (solver, five frame
+- [x] Content: 80 curated + 1,388 pool levels, each with a verified annotation (solver, five frame
       profiles × 16 allocation shifts for curated and × 8 for new pool levels, margin ≥ 1.4 at
       generation, fingerprint `spk-1-60hz-f029`).
 - [ ] `[forge:validate]` (the release gate) re-verifies every shipped level in a fresh process under five
