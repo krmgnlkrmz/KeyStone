@@ -2,6 +2,7 @@ import BalanceCore
 import BalancePhysics
 import SpriteKit
 import SwiftUI
+import UIKit
 
 /// Full-screen game cover: play area + HUD, and the end states (collapse replay, clear, out of moves)
 /// as states of the same cover, so an interstitial never stacks on top of the game.
@@ -42,6 +43,26 @@ struct GameContainerView: View {
         session?.teardown()
         session = s
         s.start()
+        if AppConfig.coversFirstLevel { Self.coverOnce() }
+    }
+
+    @MainActor private static var covered = false
+
+    /// UI test probe (-coverProbe): once, a second after the first level opens, a plain full-screen
+    /// controller covers the game for 1.5 s, the way an interstitial or rewarded ad does.
+    @MainActor private static func coverOnce() {
+        guard !covered else { return }
+        covered = true
+        Task { @MainActor in
+            try? await Task.sleep(for: .seconds(1))
+            guard let top = UIApplication.topViewController else { return }
+            let cover = UIViewController()
+            cover.view.backgroundColor = .black
+            cover.modalPresentationStyle = .fullScreen
+            top.present(cover, animated: true)
+            try? await Task.sleep(for: .milliseconds(1500))
+            cover.dismiss(animated: true)
+        }
     }
 
     /// Next level (in place, behind the curtain) or back to the map/menu (dismiss).

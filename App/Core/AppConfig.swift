@@ -64,6 +64,9 @@ enum AppConfig {
     /// accessibility audit, which would rightly flag them.
     static var exposesTestProbes: Bool { isUITest && ProcessInfo.processInfo.arguments.contains("-testProbes") }
 
+    /// UI test stand-in for a full-screen ad over the game (interstitial, rewarded): see GameContainerView.
+    static var coversFirstLevel: Bool { isUITest && ProcessInfo.processInfo.arguments.contains("-coverProbe") }
+
     /// UI tests can pre-complete the first N curated levels to show a populated map.
     static var uiTestSeedLevels: Int {
         let args = ProcessInfo.processInfo.arguments

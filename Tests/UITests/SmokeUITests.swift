@@ -87,6 +87,24 @@ final class SmokeUITests: XCTestCase {
         shot("07-settings")
     }
 
+    /// A full-screen ad (the interstitial before the next level, a rewarded hint or undo) covers the game and
+    /// takes it out of the window; the level must play on afterwards. `-coverProbe` stands in for the ad:
+    /// a plain full-screen controller over level 1 for 1.5 s, a second after it opens.
+    func testLevelPlaysOnAfterAFullScreenCover() throws {
+        launch(["-coverProbe"])
+        let levels = app.buttons["menu.levels"]
+        XCTAssertTrue(levels.waitForExistence(timeout: 15), "main menu did not appear")
+        levels.tap()
+        let first = app.buttons["level.1"]
+        XCTAssertTrue(first.waitForExistence(timeout: 8), "map did not appear")
+        first.tap()
+        sleep(5)   // the cover comes and goes
+        tapPiece("tb")
+        tapPiece("tb")
+        let next = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] 'Next Level'")).firstMatch
+        XCTAssertTrue(next.waitForExistence(timeout: 15), "level 1 did not play on after a full-screen cover")
+    }
+
     /// Dark mode with accessibility-size text (Dynamic Type "accessibility1"): menu, map, settings and
     /// the daily sheet must lay out; screenshots let a person check nothing is clipped.
     func testDarkLargeTextScreens() throws {
