@@ -1,0 +1,274 @@
+{
+  "annotation" : {
+    "difficulty" : 1.81,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 30.25,
+    "solutionPath" : [
+      "load1",
+      "rope1"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 4.956,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.033,
+          "rope1" : 5.551
+        },
+        "state" : "",
+        "unsafe" : {
+          "beam1" : "load1",
+          "rope1" : "load1"
+        }
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 4.956,
+          "load1" : 0.033,
+          "post2" : 4.167,
+          "rope1" : 5.805
+        },
+        "state" : "post1",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post2" : "beam1",
+          "rope1" : "load1"
+        }
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 4.949,
+          "load1" : 0.033,
+          "post1" : 5.24,
+          "rope1" : 7.548
+        },
+        "state" : "post2",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post1" : "beam1",
+          "rope1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.033,
+          "rope1" : 0.033
+        },
+        "state" : "load1",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "rope1"
+        ]
+      },
+      {
+        "safe" : [
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post2" : 2.072,
+          "rope1" : 0.033
+        },
+        "state" : "load1,post1",
+        "unsafe" : {
+          "post2" : "beam1"
+        },
+        "win" : [
+          "rope1"
+        ]
+      },
+      {
+        "safe" : [
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 2.073,
+          "rope1" : 2.044
+        },
+        "state" : "load1,post2",
+        "unsafe" : {
+          "post1" : "beam1",
+          "rope1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2"
+        ],
+        "severity" : {
+          "post1" : 0.033,
+          "post2" : 0.032
+        },
+        "state" : "beam1,load1",
+        "unsafe" : {
+
+        }
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 3,
+    "starThresholds" : [
+      2,
+      3,
+      3
+    ],
+    "targetPieceIds" : [
+      "rope1"
+    ],
+    "type" : "removeTargetsKeepStanding"
+  },
+  "gravity" : -9.8,
+  "id" : "c-040",
+  "index" : 40,
+  "joints" : [
+    {
+      "a" : "arm1",
+      "anchorA" : {
+        "x" : -12,
+        "y" : -8
+      },
+      "anchorB" : {
+        "x" : 106,
+        "y" : 8
+      },
+      "b" : "beam1",
+      "id" : "rope1",
+      "length" : 109,
+      "removable" : true,
+      "type" : "rope"
+    }
+  ],
+  "name" : {
+    "en" : "Rope Walk",
+    "tr" : "Halat Yolu"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : false,
+      "id" : "post1",
+      "material" : "wood",
+      "position" : {
+        "x" : -105,
+        "y" : -132.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 115,
+        "type" : "rect",
+        "w" : 20
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post2",
+      "material" : "wood",
+      "position" : {
+        "x" : 8,
+        "y" : -132.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 115,
+        "type" : "rect",
+        "w" : 20
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam1",
+      "material" : "wood",
+      "position" : {
+        "x" : -1,
+        "y" : -67
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 16,
+        "type" : "rect",
+        "w" : 235
+      }
+    },
+    {
+      "fixed" : true,
+      "id" : "mast1",
+      "material" : "steel",
+      "position" : {
+        "x" : 151,
+        "y" : -62
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 256,
+        "type" : "rect",
+        "w" : 18
+      }
+    },
+    {
+      "fixed" : true,
+      "id" : "arm1",
+      "material" : "steel",
+      "position" : {
+        "x" : 117,
+        "y" : 58
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 16,
+        "type" : "rect",
+        "w" : 86
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "load1",
+      "material" : "stone",
+      "position" : {
+        "x" : 67,
+        "y" : -41
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 36,
+        "type" : "rect",
+        "w" : 36
+      }
+    }
+  ],
+  "region" : "rope_bridge",
+  "schema" : 1,
+  "seed" : 140000,
+  "supportsAllowed" : 0
+}

@@ -1,0 +1,984 @@
+{
+  "annotation" : {
+    "difficulty" : 2.2,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 9.82,
+    "solutionPath" : [
+      "post1",
+      "+sup@16",
+      "post2"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "post1",
+          "post3",
+          "load1",
+          "+sup@-96",
+          "+sup@16",
+          "+sup@96"
+        ],
+        "severity" : {
+          "+sup@-96" : 0.033,
+          "+sup@16" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 10.379,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 5.159,
+          "post3" : 0.033
+        },
+        "state" : "",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load1",
+          "+sup@-96",
+          "+sup@16",
+          "+sup@96"
+        ],
+        "severity" : {
+          "+sup@-96" : 0.033,
+          "+sup@16" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 10.426,
+          "load1" : 0.033,
+          "post2" : 5.149,
+          "post3" : 2.329
+        },
+        "state" : "post1",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post2" : "beam1",
+          "post3" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load1",
+          "+sup@-96",
+          "+sup@-8",
+          "+sup@0",
+          "+sup@16",
+          "+sup@96"
+        ],
+        "severity" : {
+          "+sup@-8" : 0.033,
+          "+sup@-96" : 0.033,
+          "+sup@0" : 0.033,
+          "+sup@16" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 5.68,
+          "load1" : 0.033,
+          "post1" : 2.329,
+          "post2" : 5.439
+        },
+        "state" : "post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post1" : "beam1",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post3",
+          "beam1",
+          "+sup@-96",
+          "+sup@96"
+        ],
+        "severity" : {
+          "+sup@-96" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 3.122,
+          "post3" : 0.032
+        },
+        "state" : "load1",
+        "unsafe" : {
+          "post2" : "post3"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post3",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 10.366,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 5.159,
+          "post3" : 0.033
+        },
+        "state" : "+sup@-96",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "beam1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 0.668,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.095,
+          "post3" : 0.033
+        },
+        "state" : "+sup@16",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 10.379,
+          "load1" : 0.033,
+          "post1" : 0.033,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "+sup@96",
+        "unsafe" : {
+          "beam1" : "post3"
+        }
+      },
+      {
+        "safe" : [
+          "beam1",
+          "+sup@-96",
+          "+sup@96"
+        ],
+        "severity" : {
+          "+sup@-96" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 0.033,
+          "post2" : 3.135,
+          "post3" : 2.175
+        },
+        "state" : "load1,post1",
+        "unsafe" : {
+          "post2" : "post3",
+          "post3" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post3",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 10.426,
+          "load1" : 0.033,
+          "post2" : 5.149,
+          "post3" : 0.032
+        },
+        "state" : "+sup@-96,post1",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "beam1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 0.667,
+          "load1" : 0.033,
+          "post2" : 0.102,
+          "post3" : 5.814
+        },
+        "state" : "+sup@16,post1",
+        "unsafe" : {
+          "post3" : "beam1"
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 10.426,
+          "load1" : 0.033,
+          "post2" : 0.032,
+          "post3" : 2.277
+        },
+        "state" : "+sup@96,post1",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post3" : "beam1"
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "beam1",
+          "+sup@-96",
+          "+sup@0",
+          "+sup@96"
+        ],
+        "severity" : {
+          "+sup@-96" : 0.033,
+          "+sup@0" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 0.033,
+          "post1" : 2.173,
+          "post2" : 2.17
+        },
+        "state" : "load1,post3",
+        "unsafe" : {
+          "post1" : "beam1",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 5.68,
+          "load1" : 0.033,
+          "post1" : 0.033,
+          "post2" : 2.477
+        },
+        "state" : "+sup@-96,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 10.41,
+          "load1" : 0.033,
+          "post1" : 0.033,
+          "post2" : 4.363
+        },
+        "state" : "+sup@-8,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "beam1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 0.723,
+          "load1" : 0.033,
+          "post1" : 0.051,
+          "post2" : 0.078
+        },
+        "state" : "+sup@0,post3",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 10.421,
+          "load1" : 0.033,
+          "post1" : 5.822,
+          "post2" : 0.032
+        },
+        "state" : "+sup@16,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 5.68,
+          "load1" : 0.033,
+          "post1" : 2.275,
+          "post2" : 0.032
+        },
+        "state" : "+sup@96,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3"
+        ],
+        "severity" : {
+          "post1" : 0.033,
+          "post2" : 0.033,
+          "post3" : 0.032
+        },
+        "state" : "beam1,load1",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post3",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.033,
+          "post2" : 3.124,
+          "post3" : 0.033
+        },
+        "state" : "+sup@-96,load1",
+        "unsafe" : {
+          "post2" : "post1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.033,
+          "post2" : 0.033,
+          "post3" : 0.032
+        },
+        "state" : "+sup@96,load1",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post3",
+          "beam1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 0.674,
+          "load1" : 0.088,
+          "post1" : 0.087,
+          "post3" : 0.082
+        },
+        "state" : "+sup@16,post2",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "post1"
+        ]
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "load1"
+        ],
+        "severity" : {
+          "load1" : 0.105,
+          "post1" : 0.66,
+          "post2" : 0.66,
+          "post3" : 8.959
+        },
+        "state" : "+sup@16,beam1",
+        "unsafe" : {
+          "post3" : "load1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.033,
+          "post2" : 0.094,
+          "post3" : 0.033
+        },
+        "state" : "+sup@16,load1",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post3",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 10.437,
+          "load1" : 0.033,
+          "post1" : 0.031,
+          "post3" : 0.033
+        },
+        "state" : "+sup@96,post2",
+        "unsafe" : {
+          "beam1" : "post3"
+        },
+        "win" : [
+          "post1"
+        ]
+      },
+      {
+        "safe" : [
+          "post2",
+          "post3"
+        ],
+        "severity" : {
+          "post2" : 0.032,
+          "post3" : 0.033
+        },
+        "state" : "beam1,load1,post1",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post3",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post2" : 3.136,
+          "post3" : 0.033
+        },
+        "state" : "+sup@-96,load1,post1",
+        "unsafe" : {
+          "post2" : "post3"
+        }
+      },
+      {
+        "safe" : [
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post2" : 0.032,
+          "post3" : 2.033
+        },
+        "state" : "+sup@96,load1,post1",
+        "unsafe" : {
+          "post3" : "beam1"
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 5.688,
+          "load1" : 0.032,
+          "post2" : 2.414
+        },
+        "state" : "+sup@-96,post1,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "load1" : 0.105,
+          "post2" : 0.66,
+          "post3" : 8.959
+        },
+        "state" : "+sup@16,beam1,post1",
+        "unsafe" : {
+          "post3" : "load1"
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post2" : 0.095,
+          "post3" : 3.143
+        },
+        "state" : "+sup@16,load1,post1",
+        "unsafe" : {
+          "post3" : "post2"
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2"
+        ],
+        "severity" : {
+          "post1" : 0.032,
+          "post2" : 0.033
+        },
+        "state" : "beam1,load1,post3",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.033,
+          "post2" : 2.033
+        },
+        "state" : "+sup@-96,load1,post3",
+        "unsafe" : {
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.081,
+          "post2" : 0.082
+        },
+        "state" : "+sup@0,load1,post3",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 2.034,
+          "post2" : 0.033
+        },
+        "state" : "+sup@96,load1,post3",
+        "unsafe" : {
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 10.346,
+          "load1" : 0.032,
+          "post2" : 4.458
+        },
+        "state" : "+sup@-8,post1,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.038,
+          "post2" : 2.271
+        },
+        "state" : "+sup@-8,load1,post3",
+        "unsafe" : {
+          "post2" : "post1"
+        }
+      },
+      {
+        "safe" : [
+          "beam1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 0.732,
+          "load1" : 0.032,
+          "post2" : 0.019
+        },
+        "state" : "+sup@0,post1,post3",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "beam1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 0.733,
+          "load1" : 0.033,
+          "post1" : 0.02
+        },
+        "state" : "+sup@0,post2,post3",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "post1"
+        ]
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "load1"
+        ],
+        "severity" : {
+          "load1" : 0.033,
+          "post1" : 0.726,
+          "post2" : 0.726
+        },
+        "state" : "+sup@0,beam1,post3",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 10.43,
+          "load1" : 0.031,
+          "post1" : 6.036
+        },
+        "state" : "+sup@16,post2,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 3.139,
+          "post2" : 0.033
+        },
+        "state" : "+sup@16,load1,post3",
+        "unsafe" : {
+          "post1" : "post2"
+        }
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 5.688,
+          "load1" : 0.032,
+          "post1" : 7.25
+        },
+        "state" : "+sup@96,post2,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post3"
+        ],
+        "severity" : {
+          "post1" : 0.032,
+          "post3" : 0.033
+        },
+        "state" : "beam1,load1,post2",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3"
+        ],
+        "severity" : {
+          "post1" : 0.033,
+          "post2" : 0.033,
+          "post3" : 0.032
+        },
+        "state" : "+sup@-96,beam1,load1",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post3",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.033,
+          "post3" : 0.032
+        },
+        "state" : "+sup@96,load1,post2",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "post1"
+        ]
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3"
+        ],
+        "severity" : {
+          "post1" : 0.033,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "+sup@96,beam1,load1",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "load1" : 0.105,
+          "post1" : 0.66,
+          "post3" : 9.975
+        },
+        "state" : "+sup@16,beam1,post2",
+        "unsafe" : {
+          "post3" : "load1"
+        },
+        "win" : [
+          "post1"
+        ]
+      },
+      {
+        "safe" : [
+          "post3",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.078,
+          "post3" : 0.074
+        },
+        "state" : "+sup@16,load1,post2",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "post1"
+        ]
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3"
+        ],
+        "severity" : {
+          "post1" : 0.033,
+          "post2" : 0.032,
+          "post3" : 0.033
+        },
+        "state" : "+sup@16,beam1,load1",
+        "unsafe" : {
+
+        }
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 4,
+    "requiredCount" : 2,
+    "starThresholds" : [
+      3,
+      4,
+      4
+    ],
+    "targetPieceIds" : [
+      "post1",
+      "post2"
+    ],
+    "type" : "placeSupportThenRemove"
+  },
+  "gravity" : -9.8,
+  "id" : "c-058",
+  "index" : 58,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Pivot",
+    "tr" : "Mil"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : false,
+      "id" : "post1",
+      "material" : "wood",
+      "position" : {
+        "x" : -121,
+        "y" : -125.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 129,
+        "type" : "rect",
+        "w" : 24
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post2",
+      "material" : "wood",
+      "position" : {
+        "x" : 121,
+        "y" : -125.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 129,
+        "type" : "rect",
+        "w" : 24
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post3",
+      "material" : "wood",
+      "position" : {
+        "x" : -15,
+        "y" : -125.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 129,
+        "type" : "rect",
+        "w" : 20
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam1",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : -52
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 18,
+        "type" : "rect",
+        "w" : 286
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "load1",
+      "material" : "stone",
+      "position" : {
+        "x" : 3,
+        "y" : -21
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 44,
+        "type" : "rect",
+        "w" : 45
+      }
+    }
+  ],
+  "region" : "counterweight",
+  "schema" : 1,
+  "seed" : 158002,
+  "supportsAllowed" : 1
+}

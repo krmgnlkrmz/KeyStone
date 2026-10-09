@@ -1,0 +1,143 @@
+{
+  "annotation" : {
+    "difficulty" : 1.25,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 99,
+    "solutionPath" : [
+      "tb"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "bm" : 3.844,
+          "p1" : 7.446,
+          "p2" : 7.353,
+          "tb" : 0.001
+        },
+        "state" : "",
+        "unsafe" : {
+          "bm" : "p2",
+          "p1" : "bm",
+          "p2" : "bm"
+        },
+        "win" : [
+          "tb"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-09"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 2,
+    "starThresholds" : [
+      1,
+      2,
+      2
+    ],
+    "targetPieceIds" : [
+      "tb"
+    ],
+    "type" : "removeTargetsKeepStanding"
+  },
+  "gravity" : -9.8,
+  "id" : "c-001",
+  "index" : 1,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "First Block",
+    "tr" : "İlk Blok"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : true,
+      "id" : "g1",
+      "material" : "stone",
+      "position" : {
+        "x" : 0,
+        "y" : -165
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 50,
+        "type" : "rect",
+        "w" : 140
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "p1",
+      "material" : "wood",
+      "position" : {
+        "x" : -38,
+        "y" : -100
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 80,
+        "type" : "rect",
+        "w" : 24
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "p2",
+      "material" : "wood",
+      "position" : {
+        "x" : 38,
+        "y" : -100
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 80,
+        "type" : "rect",
+        "w" : 24
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "bm",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : -51
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 18,
+        "type" : "rect",
+        "w" : 128
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "tb",
+      "material" : "stone",
+      "position" : {
+        "x" : 0,
+        "y" : -17
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 50,
+        "type" : "rect",
+        "w" : 50
+      }
+    }
+  ],
+  "region" : "wood_scaffold",
+  "schema" : 1,
+  "supportsAllowed" : 0,
+  "tutorial" : 1
+}

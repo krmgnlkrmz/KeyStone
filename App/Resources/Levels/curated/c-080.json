@@ -1,0 +1,353 @@
+{
+  "annotation" : {
+    "difficulty" : 4.56,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 1.9,
+    "solutionPath" : [
+      "block1",
+      "block2",
+      "block3",
+      "beam1"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "block1",
+          "block2",
+          "block3"
+        ],
+        "severity" : {
+          "beam1" : 5.948,
+          "block1" : 0.033,
+          "block2" : 0.032,
+          "block3" : 0.03,
+          "pillar1" : 10.331,
+          "pillar2" : 10.412
+        },
+        "state" : "",
+        "unsafe" : {
+          "beam1" : "block1",
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "block2",
+          "block3"
+        ],
+        "severity" : {
+          "beam1" : 7.559,
+          "block2" : 0.039,
+          "block3" : 0.023,
+          "pillar1" : 7.162,
+          "pillar2" : 7.155
+        },
+        "state" : "block1",
+        "unsafe" : {
+          "beam1" : "pillar1",
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "block1",
+          "block3"
+        ],
+        "severity" : {
+          "beam1" : 4.074,
+          "block1" : 0.038,
+          "block3" : 0.037,
+          "pillar1" : 7.676,
+          "pillar2" : 7.301
+        },
+        "state" : "block2",
+        "unsafe" : {
+          "beam1" : "block3",
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "block1",
+          "block2"
+        ],
+        "severity" : {
+          "beam1" : 5.956,
+          "block1" : 0.023,
+          "block2" : 0.054,
+          "pillar1" : 7.14,
+          "pillar2" : 7.271
+        },
+        "state" : "block3",
+        "unsafe" : {
+          "beam1" : "block1",
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "block3"
+        ],
+        "severity" : {
+          "beam1" : 6.329,
+          "block3" : 0.02,
+          "pillar1" : 7.153,
+          "pillar2" : 7.865
+        },
+        "state" : "block1,block2",
+        "unsafe" : {
+          "beam1" : "block3",
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "block2"
+        ],
+        "severity" : {
+          "beam1" : 5.958,
+          "block2" : 0.026,
+          "pillar1" : 5.341,
+          "pillar2" : 5.059
+        },
+        "state" : "block1,block3",
+        "unsafe" : {
+          "beam1" : "block2",
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "block1"
+        ],
+        "severity" : {
+          "beam1" : 6.365,
+          "block1" : 0.013,
+          "pillar1" : 7.767,
+          "pillar2" : 7.065
+        },
+        "state" : "block2,block3",
+        "unsafe" : {
+          "beam1" : "block1",
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 0.008,
+          "pillar1" : 1.821,
+          "pillar2" : 1.855
+        },
+        "state" : "block1,block2,block3",
+        "unsafe" : {
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        },
+        "win" : [
+          "beam1"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 6,
+    "starThresholds" : [
+      4,
+      5,
+      6
+    ],
+    "targetPieceIds" : [
+      "k"
+    ],
+    "type" : "dropOnlyTarget"
+  },
+  "gravity" : -9.8,
+  "id" : "c-080",
+  "index" : 80,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Point of Balance",
+    "tr" : "Denge Noktası"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : true,
+      "id" : "base1",
+      "material" : "stone",
+      "position" : {
+        "x" : -73,
+        "y" : -162.5
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 55,
+        "type" : "rect",
+        "w" : 59
+      }
+    },
+    {
+      "fixed" : true,
+      "id" : "base2",
+      "material" : "stone",
+      "position" : {
+        "x" : 73,
+        "y" : -162.5
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 55,
+        "type" : "rect",
+        "w" : 59
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "pillar1",
+      "material" : "wood",
+      "position" : {
+        "x" : -73,
+        "y" : -92.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 85,
+        "type" : "rect",
+        "w" : 23
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "pillar2",
+      "material" : "stone",
+      "position" : {
+        "x" : 73,
+        "y" : -92.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 85,
+        "type" : "rect",
+        "w" : 23
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam1",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : -41.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 17,
+        "type" : "rect",
+        "w" : 214
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block1",
+      "material" : "stone",
+      "position" : {
+        "x" : -38,
+        "y" : -13
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 40,
+        "type" : "rect",
+        "w" : 25
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block2",
+      "material" : "stone",
+      "position" : {
+        "x" : 0,
+        "y" : -13
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 40,
+        "type" : "rect",
+        "w" : 25
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block3",
+      "material" : "stone",
+      "position" : {
+        "x" : 38,
+        "y" : -13
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 40,
+        "type" : "rect",
+        "w" : 25
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "k",
+      "material" : "brass",
+      "position" : {
+        "x" : 0,
+        "y" : 28.5
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "points" : [
+          [
+            -33.9,
+            -21.5
+          ],
+          [
+            33.9,
+            -21.5
+          ],
+          [
+            56.5,
+            21.5
+          ],
+          [
+            -56.5,
+            21.5
+          ]
+        ],
+        "type" : "polygon"
+      }
+    }
+  ],
+  "region" : "keystone",
+  "schema" : 1,
+  "seed" : 180032,
+  "supportsAllowed" : 0
+}

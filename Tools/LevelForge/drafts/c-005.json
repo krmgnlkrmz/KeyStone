@@ -1,0 +1,226 @@
+{
+  "floorY": -190.0,
+  "goal": {
+    "moveBudget": 5,
+    "requiredCount": 3,
+    "starThresholds": [
+      3,
+      4,
+      5
+    ],
+    "targetPieceIds": [
+      "w1",
+      "w2",
+      "w3",
+      "w4",
+      "w5"
+    ],
+    "type": "removeTargetsKeepStanding"
+  },
+  "gravity": -9.8,
+  "id": "c-005",
+  "index": 5,
+  "joints": [],
+  "name": {
+    "en": "Pinned Lintel",
+    "tr": "Sabitli Lento"
+  },
+  "pack": "curated",
+  "pieces": [
+    {
+      "fixed": true,
+      "id": "b1",
+      "material": "stone",
+      "position": {
+        "x": -85.0,
+        "y": -160.0
+      },
+      "removable": false,
+      "rotation": 0,
+      "shape": {
+        "h": 60.0,
+        "type": "rect",
+        "w": 70.0
+      }
+    },
+    {
+      "fixed": true,
+      "id": "b2",
+      "material": "stone",
+      "position": {
+        "x": 85.0,
+        "y": -160.0
+      },
+      "removable": false,
+      "rotation": 0,
+      "shape": {
+        "h": 60.0,
+        "type": "rect",
+        "w": 70.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "s1",
+      "material": "steel",
+      "position": {
+        "x": 0.0,
+        "y": -105.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 170.0,
+        "type": "rect",
+        "w": 16.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "w1",
+      "material": "wood",
+      "position": {
+        "x": -88.0,
+        "y": -75.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 110.0,
+        "type": "rect",
+        "w": 28.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "w2",
+      "material": "wood",
+      "position": {
+        "x": 88.0,
+        "y": -75.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 110.0,
+        "type": "rect",
+        "w": 28.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "w3",
+      "material": "wood",
+      "position": {
+        "x": 0.0,
+        "y": -10.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 20.0,
+        "type": "rect",
+        "w": 260.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "t1",
+      "material": "stone",
+      "position": {
+        "x": -61.0,
+        "y": 27.5
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 55.0,
+        "type": "rect",
+        "w": 54.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "t2",
+      "material": "stone",
+      "position": {
+        "x": 61.0,
+        "y": 27.5
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 55.0,
+        "type": "rect",
+        "w": 54.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "w4",
+      "material": "wood",
+      "position": {
+        "x": 0.0,
+        "y": 64.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 18.0,
+        "type": "rect",
+        "w": 204.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "k",
+      "material": "brass",
+      "position": {
+        "x": 0.0,
+        "y": 95.5
+      },
+      "removable": false,
+      "rotation": 0,
+      "shape": {
+        "points": [
+          [
+            -16.8,
+            -22.5
+          ],
+          [
+            16.8,
+            -22.5
+          ],
+          [
+            28.0,
+            22.5
+          ],
+          [
+            -28.0,
+            22.5
+          ]
+        ],
+        "type": "polygon"
+      }
+    },
+    {
+      "fixed": false,
+      "id": "w5",
+      "material": "wood",
+      "position": {
+        "x": 67.0,
+        "y": 103.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 60.0,
+        "type": "rect",
+        "w": 70.0
+      }
+    }
+  ],
+  "region": "wood_scaffold",
+  "schema": 1,
+  "supportsAllowed": 0
+}

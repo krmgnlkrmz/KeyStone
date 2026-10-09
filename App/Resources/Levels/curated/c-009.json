@@ -1,0 +1,400 @@
+{
+  "annotation" : {
+    "difficulty" : 2.18,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 18.46,
+    "solutionPath" : [
+      "post1",
+      "post3"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "beam1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 0.635,
+          "beam2" : 3.726,
+          "load1" : 0.033,
+          "post1" : 0.033,
+          "post2" : 0.033,
+          "post3" : 0.058,
+          "post4" : 7.222,
+          "post5" : 10.005
+        },
+        "state" : "",
+        "unsafe" : {
+          "beam2" : "beam1",
+          "post4" : "beam2",
+          "post5" : "beam2"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 3.446,
+          "beam2" : 3.728,
+          "load1" : 0.034,
+          "post2" : 4.867,
+          "post3" : 0.05,
+          "post4" : 7.156,
+          "post5" : 3.312
+        },
+        "state" : "post1",
+        "unsafe" : {
+          "beam1" : "beam2",
+          "beam2" : "post2",
+          "post2" : "beam1",
+          "post4" : "beam2",
+          "post5" : "beam2"
+        },
+        "win" : [
+          "post3",
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.637,
+          "beam2" : 3.727,
+          "load1" : 0.033,
+          "post1" : 4.781,
+          "post3" : 4.912,
+          "post4" : 7.267,
+          "post5" : 10.003
+        },
+        "state" : "post2",
+        "unsafe" : {
+          "beam2" : "beam1",
+          "post1" : "beam1",
+          "post3" : "post1",
+          "post4" : "beam2",
+          "post5" : "beam2"
+        },
+        "win" : [
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 8.28,
+          "beam2" : 4.031,
+          "load1" : 0.056,
+          "post1" : 0.071,
+          "post2" : 5.2,
+          "post4" : 3.42,
+          "post5" : 10.254
+        },
+        "state" : "post3",
+        "unsafe" : {
+          "beam1" : "beam2",
+          "beam2" : "beam1",
+          "post2" : "post1",
+          "post4" : "post1",
+          "post5" : "beam2"
+        },
+        "win" : [
+          "post1",
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+          "post2",
+          "load1"
+        ],
+        "severity" : {
+          "beam2" : 7.744,
+          "load1" : 0.586,
+          "post1" : 3.411,
+          "post2" : 0.587,
+          "post3" : 9.164,
+          "post4" : 7.147,
+          "post5" : 7.726
+        },
+        "state" : "beam1",
+        "unsafe" : {
+          "beam2" : "post2",
+          "post1" : "beam2",
+          "post3" : "beam2",
+          "post4" : "beam2",
+          "post5" : "beam2"
+        }
+      },
+      {
+        "safe" : [
+          "beam1",
+          "beam2"
+        ],
+        "severity" : {
+          "beam1" : 0.604,
+          "beam2" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.033,
+          "post3" : 0.034,
+          "post4" : 1.795,
+          "post5" : 2.034
+        },
+        "state" : "load1",
+        "unsafe" : {
+          "post4" : "beam1",
+          "post5" : "beam1"
+        },
+        "win" : [
+          "post1",
+          "post2",
+          "post3"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam2" : 7.118,
+          "load1" : 0.586,
+          "post1" : 4.738,
+          "post3" : 8.386,
+          "post4" : 7.169,
+          "post5" : 7.145
+        },
+        "state" : "beam1,post2",
+        "unsafe" : {
+          "beam2" : "post3",
+          "post1" : "beam2",
+          "post3" : "beam2",
+          "post4" : "beam2",
+          "post5" : "beam2"
+        },
+        "win" : [
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam2" : 4.257,
+          "post1" : 3.438,
+          "post2" : 0.589,
+          "post3" : 3.425,
+          "post4" : 4.216,
+          "post5" : 4.211
+        },
+        "state" : "beam1,load1",
+        "unsafe" : {
+          "beam2" : "post3",
+          "post1" : "post3",
+          "post3" : "post4",
+          "post4" : "post3",
+          "post5" : "post1"
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 4.145,
+          "post1" : 0.033,
+          "post2" : 0.033,
+          "post3" : 0.033,
+          "post4" : 0.033,
+          "post5" : 0.033
+        },
+        "state" : "beam2,load1",
+        "unsafe" : {
+          "beam1" : "post3"
+        },
+        "win" : [
+          "post1",
+          "post2",
+          "post3",
+          "post4",
+          "post5"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 3,
+    "requiredCount" : 2,
+    "starThresholds" : [
+      2,
+      3,
+      3
+    ],
+    "targetPieceIds" : [
+      "post1",
+      "post2",
+      "post3",
+      "post4",
+      "post5",
+      "load1"
+    ],
+    "type" : "removeTargetsKeepStanding"
+  },
+  "gravity" : -9.8,
+  "id" : "c-009",
+  "index" : 9,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Two Floors",
+    "tr" : "İki Kat"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : false,
+      "id" : "post1",
+      "material" : "wood",
+      "position" : {
+        "x" : -70,
+        "y" : -153
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 74,
+        "type" : "rect",
+        "w" : 16
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post2",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : -153
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 74,
+        "type" : "rect",
+        "w" : 16
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post3",
+      "material" : "wood",
+      "position" : {
+        "x" : 77,
+        "y" : -153
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 74,
+        "type" : "rect",
+        "w" : 16
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam1",
+      "material" : "wood",
+      "position" : {
+        "x" : 8,
+        "y" : -108
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 16,
+        "type" : "rect",
+        "w" : 175
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post4",
+      "material" : "wood",
+      "position" : {
+        "x" : -68,
+        "y" : -60.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 79,
+        "type" : "rect",
+        "w" : 22
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post5",
+      "material" : "wood",
+      "position" : {
+        "x" : 67,
+        "y" : -60.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 79,
+        "type" : "rect",
+        "w" : 22
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam2",
+      "material" : "wood",
+      "position" : {
+        "x" : -9,
+        "y" : -13
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 16,
+        "type" : "rect",
+        "w" : 179
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "load1",
+      "material" : "stone",
+      "position" : {
+        "x" : 17,
+        "y" : 16
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 42,
+        "type" : "rect",
+        "w" : 36
+      }
+    }
+  ],
+  "region" : "wood_scaffold",
+  "schema" : 1,
+  "seed" : 109003,
+  "supportsAllowed" : 0
+}

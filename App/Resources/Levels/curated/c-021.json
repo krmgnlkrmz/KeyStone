@@ -1,0 +1,360 @@
+{
+  "annotation" : {
+    "difficulty" : 1.85,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 30.2,
+    "solutionPath" : [
+      "load1",
+      "load2"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "post2",
+          "post3",
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 6.446,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 4.599,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "",
+        "unsafe" : {
+          "beam1" : "post1",
+          "post1" : "load2"
+        }
+      },
+      {
+        "safe" : [
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 6.366,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 3.259,
+          "post3" : 1.633
+        },
+        "state" : "post2",
+        "unsafe" : {
+          "beam1" : "post1",
+          "post1" : "beam1",
+          "post3" : "post1"
+        }
+      },
+      {
+        "safe" : [
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 6.456,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 4.585,
+          "post2" : 1.636
+        },
+        "state" : "post3",
+        "unsafe" : {
+          "beam1" : "post1",
+          "post1" : "load2",
+          "post2" : "post1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "post3"
+        ],
+        "severity" : {
+          "beam1" : 6.867,
+          "load2" : 0.033,
+          "post1" : 4.583,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "load1",
+        "unsafe" : {
+          "beam1" : "post1",
+          "post1" : "load2"
+        },
+        "win" : [
+          "load2"
+        ]
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.723,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "load2",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 6.824,
+          "load2" : 0.033,
+          "post1" : 3.059,
+          "post3" : 1.636
+        },
+        "state" : "load1,post2",
+        "unsafe" : {
+          "beam1" : "post1",
+          "post1" : "beam1",
+          "post3" : "post1"
+        },
+        "win" : [
+          "load2"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 4.049,
+          "load1" : 0.033,
+          "post1" : 1.546,
+          "post3" : 1.551
+        },
+        "state" : "load2,post2",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post1" : "beam1",
+          "post3" : "beam1"
+        },
+        "win" : [
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 6.828,
+          "load2" : 0.033,
+          "post1" : 4.737,
+          "post2" : 1.632
+        },
+        "state" : "load1,post3",
+        "unsafe" : {
+          "beam1" : "post1",
+          "post1" : "load2",
+          "post2" : "post1"
+        },
+        "win" : [
+          "load2"
+        ]
+      },
+      {
+        "safe" : [
+          "post1",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.724,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 1.56
+        },
+        "state" : "load2,post3",
+        "unsafe" : {
+          "post2" : "beam1"
+        },
+        "win" : [
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+          "post3",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.723,
+          "load1" : 0.033,
+          "post2" : 1.557,
+          "post3" : 0.032
+        },
+        "state" : "load2,post1",
+        "unsafe" : {
+          "post2" : "beam1"
+        },
+        "win" : [
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+          "post1",
+          "post3"
+        ],
+        "severity" : {
+          "load1" : 0.033,
+          "post1" : 0.714,
+          "post2" : 3.958,
+          "post3" : 0.714
+        },
+        "state" : "beam1,load2",
+        "unsafe" : {
+          "post2" : "post3"
+        },
+        "win" : [
+          "load1"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 3,
+    "starThresholds" : [
+      2,
+      3,
+      3
+    ],
+    "targetPieceIds" : [
+      "load1",
+      "load2"
+    ],
+    "type" : "removeTargetsKeepStanding"
+  },
+  "gravity" : -9.8,
+  "id" : "c-021",
+  "index" : 21,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Rivet Line",
+    "tr" : "Perçin Hattı"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : false,
+      "id" : "post1",
+      "material" : "steel",
+      "position" : {
+        "x" : -88,
+        "y" : -147
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 86,
+        "type" : "rect",
+        "w" : 24
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post2",
+      "material" : "steel",
+      "position" : {
+        "x" : 9,
+        "y" : -147
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 86,
+        "type" : "rect",
+        "w" : 24
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post3",
+      "material" : "steel",
+      "position" : {
+        "x" : 88,
+        "y" : -147
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 86,
+        "type" : "rect",
+        "w" : 24
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam1",
+      "material" : "steel",
+      "position" : {
+        "x" : 0,
+        "y" : -94.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 19,
+        "type" : "rect",
+        "w" : 222
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "load1",
+      "material" : "stone",
+      "position" : {
+        "x" : -2,
+        "y" : -70
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 30,
+        "type" : "rect",
+        "w" : 53
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "load2",
+      "material" : "stone",
+      "position" : {
+        "x" : -64,
+        "y" : -68.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 33,
+        "type" : "rect",
+        "w" : 46
+      }
+    }
+  ],
+  "region" : "iron_truss",
+  "schema" : 1,
+  "seed" : 121002,
+  "supportsAllowed" : 0
+}

@@ -1,0 +1,8 @@
+candidates: 600 (shard 0/1), accepted: 572
+rejections: inconsistent=4, tooShort=24
+samples: p-hanger-60191: 120hz move 2 rope2: collapsed ≠ won | p-hanger-60216: 60hz move 3 rope2: collapsed ≠ won | p-hanger-60278: drop7 move 2 rope1: collapsed ≠ won | p-hanger-60026: solution has 1 moves | p-hanger-60039: solution has 1 moves | p-hanger-60055: solution has 1 moves
+archetypes: hanger 572/600
+mean margin: 30.26
+solution lengths: [(key: 2, value: 384), (key: 3, value: 127), (key: 4, value: 61)]
+seconds: 230, frames: 6883750, evaluations: 52315
+fingerprint: spk-1-60hz-f029

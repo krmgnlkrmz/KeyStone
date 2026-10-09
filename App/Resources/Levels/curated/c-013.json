@@ -1,0 +1,648 @@
+{
+  "annotation" : {
+    "difficulty" : 2.35,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 29.61,
+    "solutionPath" : [
+      "post1",
+      "post3"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "beam1",
+          "beam2",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 0.638,
+          "beam2" : 0.639,
+          "beam3" : 3.413,
+          "load1" : 0.033,
+          "post1" : 0.033,
+          "post2" : 0.033,
+          "post3" : 0.057,
+          "post4" : 5.529,
+          "post5" : 5.97,
+          "post6" : 1.608,
+          "post7" : 1.359
+        },
+        "state" : "",
+        "unsafe" : {
+          "beam3" : "beam2",
+          "post4" : "beam2",
+          "post5" : "beam2",
+          "post6" : "beam3",
+          "post7" : "beam3"
+        }
+      },
+      {
+        "safe" : [
+          "beam2"
+        ],
+        "severity" : {
+          "beam1" : 5.338,
+          "beam2" : 0.659,
+          "beam3" : 3.419,
+          "load1" : 0.033,
+          "post2" : 6.816,
+          "post3" : 0.034,
+          "post4" : 5.439,
+          "post5" : 1.876,
+          "post6" : 1.566,
+          "post7" : 1.294
+        },
+        "state" : "post1",
+        "unsafe" : {
+          "beam1" : "beam2",
+          "beam3" : "beam2",
+          "post2" : "beam1",
+          "post4" : "post5",
+          "post5" : "post2",
+          "post6" : "beam3",
+          "post7" : "beam3"
+        },
+        "win" : [
+          "post3",
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+          "beam1",
+          "beam2"
+        ],
+        "severity" : {
+          "beam1" : 0.673,
+          "beam2" : 0.648,
+          "beam3" : 3.42,
+          "load1" : 0.033,
+          "post1" : 6.819,
+          "post3" : 6.745,
+          "post4" : 5.553,
+          "post5" : 6.002,
+          "post6" : 1.58,
+          "post7" : 1.359
+        },
+        "state" : "post2",
+        "unsafe" : {
+          "beam3" : "beam1",
+          "post1" : "beam1",
+          "post3" : "beam1",
+          "post4" : "beam2",
+          "post5" : "beam2",
+          "post6" : "beam3",
+          "post7" : "beam3"
+        },
+        "win" : [
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+          "beam2"
+        ],
+        "severity" : {
+          "beam1" : 7.622,
+          "beam2" : 0.648,
+          "beam3" : 3.42,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 6.746,
+          "post4" : 2.381,
+          "post5" : 5.913,
+          "post6" : 2.412,
+          "post7" : 1.368
+        },
+        "state" : "post3",
+        "unsafe" : {
+          "beam1" : "beam2",
+          "beam3" : "beam1",
+          "post2" : "beam1",
+          "post4" : "post2",
+          "post5" : "beam2",
+          "post6" : "beam1",
+          "post7" : "beam3"
+        },
+        "win" : [
+          "post1",
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+          "post2",
+          "load1"
+        ],
+        "severity" : {
+          "beam2" : 1.252,
+          "beam3" : 3.975,
+          "load1" : 0.594,
+          "post1" : 4.149,
+          "post2" : 0.594,
+          "post3" : 6.484,
+          "post4" : 4.328,
+          "post5" : 7.488,
+          "post6" : 2.068,
+          "post7" : 1.854
+        },
+        "state" : "beam1",
+        "unsafe" : {
+          "beam2" : "beam3",
+          "beam3" : "beam2",
+          "post1" : "beam2",
+          "post3" : "beam2",
+          "post4" : "beam2",
+          "post5" : "beam2",
+          "post6" : "beam3",
+          "post7" : "beam3"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 1.283,
+          "beam3" : 6.558,
+          "load1" : 0.638,
+          "post1" : 0.642,
+          "post2" : 0.641,
+          "post3" : 0.652,
+          "post4" : 3.216,
+          "post5" : 3.203,
+          "post6" : 2.117,
+          "post7" : 1.932
+        },
+        "state" : "beam2",
+        "unsafe" : {
+          "beam1" : "post7",
+          "beam3" : "post5",
+          "post4" : "beam3",
+          "post5" : "beam3",
+          "post6" : "beam3",
+          "post7" : "beam3"
+        }
+      },
+      {
+        "safe" : [
+          "beam1",
+          "beam2",
+          "beam3"
+        ],
+        "severity" : {
+          "beam1" : 0.633,
+          "beam2" : 0.695,
+          "beam3" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.033,
+          "post3" : 0.032,
+          "post4" : 6.997,
+          "post5" : 8.163,
+          "post6" : 1.343,
+          "post7" : 1.372
+        },
+        "state" : "load1",
+        "unsafe" : {
+          "post4" : "beam2",
+          "post5" : "beam2",
+          "post6" : "beam2",
+          "post7" : "beam2"
+        },
+        "win" : [
+          "post1",
+          "post2",
+          "post3"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 4.015,
+          "beam3" : 6.563,
+          "load1" : 0.642,
+          "post2" : 6.073,
+          "post3" : 0.642,
+          "post4" : 3.253,
+          "post5" : 5.958,
+          "post6" : 2.076,
+          "post7" : 1.983
+        },
+        "state" : "beam2,post1",
+        "unsafe" : {
+          "beam1" : "beam3",
+          "beam3" : "post5",
+          "post2" : "beam1",
+          "post4" : "beam3",
+          "post5" : "beam1",
+          "post6" : "beam3",
+          "post7" : "beam3"
+        },
+        "win" : [
+          "post3",
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam2" : 1.265,
+          "beam3" : 3.987,
+          "load1" : 0.597,
+          "post1" : 4.449,
+          "post3" : 5.852,
+          "post4" : 4.71,
+          "post5" : 6.41,
+          "post6" : 2.115,
+          "post7" : 1.894
+        },
+        "state" : "beam1,post2",
+        "unsafe" : {
+          "beam2" : "post3",
+          "beam3" : "beam2",
+          "post1" : "beam2",
+          "post3" : "beam2",
+          "post4" : "beam2",
+          "post5" : "beam2",
+          "post6" : "beam3",
+          "post7" : "beam3"
+        },
+        "win" : [
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 1.28,
+          "beam3" : 6.554,
+          "load1" : 0.634,
+          "post1" : 6.247,
+          "post3" : 6.923,
+          "post4" : 3.216,
+          "post5" : 3.208,
+          "post6" : 2.137,
+          "post7" : 1.926
+        },
+        "state" : "beam2,post2",
+        "unsafe" : {
+          "beam1" : "post7",
+          "beam3" : "post5",
+          "post1" : "beam1",
+          "post3" : "beam1",
+          "post4" : "post7",
+          "post5" : "beam3",
+          "post6" : "beam3",
+          "post7" : "beam3"
+        },
+        "win" : [
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 5.138,
+          "beam3" : 6.557,
+          "load1" : 0.686,
+          "post1" : 0.687,
+          "post2" : 7.058,
+          "post4" : 8.157,
+          "post5" : 3.458,
+          "post6" : 3.226,
+          "post7" : 1.943
+        },
+        "state" : "beam2,post3",
+        "unsafe" : {
+          "beam1" : "post5",
+          "beam3" : "beam1",
+          "post2" : "beam1",
+          "post4" : "beam1",
+          "post5" : "beam3",
+          "post6" : "beam1",
+          "post7" : "beam3"
+        },
+        "win" : [
+          "post1",
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+          "beam3"
+        ],
+        "severity" : {
+          "beam2" : 1.248,
+          "beam3" : 0.592,
+          "post1" : 5.182,
+          "post2" : 0.592,
+          "post3" : 6.991,
+          "post4" : 5.755,
+          "post5" : 7.639,
+          "post6" : 1.764,
+          "post7" : 1.896
+        },
+        "state" : "beam1,load1",
+        "unsafe" : {
+          "beam2" : "post5",
+          "post1" : "beam2",
+          "post3" : "beam2",
+          "post4" : "beam2",
+          "post5" : "beam2",
+          "post6" : "beam2",
+          "post7" : "beam2"
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "beam3"
+        ],
+        "severity" : {
+          "beam1" : 1.25,
+          "beam3" : 0.637,
+          "post1" : 0.648,
+          "post2" : 0.648,
+          "post3" : 0.658,
+          "post4" : 3.202,
+          "post5" : 3.208,
+          "post6" : 1.776,
+          "post7" : 1.961
+        },
+        "state" : "beam2,load1",
+        "unsafe" : {
+          "beam1" : "post1",
+          "post4" : "post7",
+          "post5" : "post6",
+          "post6" : "post4",
+          "post7" : "post4"
+        },
+        "win" : [
+          "post1",
+          "post2",
+          "post3"
+        ]
+      },
+      {
+        "safe" : [
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.628,
+          "beam2" : 8.039,
+          "post1" : 0.032,
+          "post2" : 0.033,
+          "post3" : 0.033,
+          "post4" : 9.742,
+          "post5" : 9.131,
+          "post6" : 0.033,
+          "post7" : 0.033
+        },
+        "state" : "beam3,load1",
+        "unsafe" : {
+          "beam2" : "post5",
+          "post4" : "beam2",
+          "post5" : "beam2"
+        },
+        "win" : [
+          "post1",
+          "post2",
+          "post3",
+          "post6",
+          "post7"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 3,
+    "requiredCount" : 2,
+    "starThresholds" : [
+      2,
+      3,
+      3
+    ],
+    "targetPieceIds" : [
+      "post1",
+      "post2",
+      "post3",
+      "post4",
+      "post5",
+      "post6",
+      "post7",
+      "load1"
+    ],
+    "type" : "removeTargetsKeepStanding"
+  },
+  "gravity" : -9.8,
+  "id" : "c-013",
+  "index" : 13,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Column Stack",
+    "tr" : "Sütun Yığını"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : false,
+      "id" : "post1",
+      "material" : "stone",
+      "position" : {
+        "x" : -78,
+        "y" : -154
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 72,
+        "type" : "rect",
+        "w" : 23
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post2",
+      "material" : "stone",
+      "position" : {
+        "x" : -6,
+        "y" : -154
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 72,
+        "type" : "rect",
+        "w" : 23
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post3",
+      "material" : "stone",
+      "position" : {
+        "x" : 84,
+        "y" : -154
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 72,
+        "type" : "rect",
+        "w" : 23
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam1",
+      "material" : "wood",
+      "position" : {
+        "x" : 8,
+        "y" : -110
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 16,
+        "type" : "rect",
+        "w" : 198
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post4",
+      "material" : "stone",
+      "position" : {
+        "x" : -87,
+        "y" : -69
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 66,
+        "type" : "rect",
+        "w" : 23
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post5",
+      "material" : "stone",
+      "position" : {
+        "x" : 79,
+        "y" : -69
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 66,
+        "type" : "rect",
+        "w" : 23
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam2",
+      "material" : "wood",
+      "position" : {
+        "x" : -9,
+        "y" : -28
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 16,
+        "type" : "rect",
+        "w" : 210
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post6",
+      "material" : "stone",
+      "position" : {
+        "x" : -83,
+        "y" : 15.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 71,
+        "type" : "rect",
+        "w" : 19
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post7",
+      "material" : "stone",
+      "position" : {
+        "x" : 90,
+        "y" : 15.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 71,
+        "type" : "rect",
+        "w" : 19
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam3",
+      "material" : "wood",
+      "position" : {
+        "x" : 8,
+        "y" : 59
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 16,
+        "type" : "rect",
+        "w" : 217
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "load1",
+      "material" : "stone",
+      "position" : {
+        "x" : -5,
+        "y" : 85
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 36,
+        "type" : "rect",
+        "w" : 39
+      }
+    }
+  ],
+  "region" : "stone_arch",
+  "schema" : 1,
+  "seed" : 113000,
+  "supportsAllowed" : 0
+}

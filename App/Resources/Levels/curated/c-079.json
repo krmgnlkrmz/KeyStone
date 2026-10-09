@@ -1,0 +1,1159 @@
+{
+  "annotation" : {
+    "difficulty" : 3.74,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 7.83,
+    "solutionPath" : [
+      "block2",
+      "block6",
+      "block4"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "block2",
+          "block3",
+          "shim1",
+          "shim2",
+          "block6",
+          "shim3"
+        ],
+        "severity" : {
+          "block2" : 0.037,
+          "block3" : 0.043,
+          "block4" : 10.083,
+          "block5" : 6.702,
+          "block6" : 0.032,
+          "block7" : 10.031,
+          "shim1" : 0.478,
+          "shim2" : 0.521,
+          "shim3" : 0.476
+        },
+        "state" : "",
+        "unsafe" : {
+          "block4" : "shim3",
+          "block5" : "block7",
+          "block7" : "shim3"
+        }
+      },
+      {
+        "safe" : [
+          "shim1",
+          "shim2",
+          "block6",
+          "shim3"
+        ],
+        "severity" : {
+          "block3" : 8.712,
+          "block4" : 9.328,
+          "block5" : 6.814,
+          "block6" : 0.032,
+          "block7" : 8.174,
+          "shim1" : 0.499,
+          "shim2" : 0.523,
+          "shim3" : 0.477
+        },
+        "state" : "block2",
+        "unsafe" : {
+          "block3" : "shim3",
+          "block4" : "shim3",
+          "block5" : "block7",
+          "block7" : "shim3"
+        }
+      },
+      {
+        "safe" : [
+          "shim1",
+          "shim2",
+          "block6",
+          "shim3"
+        ],
+        "severity" : {
+          "block2" : 8.607,
+          "block4" : 9.316,
+          "block5" : 6.515,
+          "block6" : 0.032,
+          "block7" : 9.506,
+          "shim1" : 0.5,
+          "shim2" : 0.528,
+          "shim3" : 0.485
+        },
+        "state" : "block3",
+        "unsafe" : {
+          "block2" : "shim3",
+          "block4" : "shim3",
+          "block5" : "shim2",
+          "block7" : "shim3"
+        }
+      },
+      {
+        "safe" : [
+          "block2",
+          "block3",
+          "shim2",
+          "block6",
+          "shim3"
+        ],
+        "severity" : {
+          "block2" : 0.475,
+          "block3" : 0.47,
+          "block4" : 8.705,
+          "block5" : 7.9,
+          "block6" : 0.474,
+          "block7" : 10.408,
+          "shim2" : 0.953,
+          "shim3" : 0.894
+        },
+        "state" : "shim1",
+        "unsafe" : {
+          "block4" : "shim3",
+          "block5" : "shim3",
+          "block7" : "shim3"
+        }
+      },
+      {
+        "safe" : [
+          "block2",
+          "block3",
+          "shim1",
+          "block6",
+          "shim3"
+        ],
+        "severity" : {
+          "block2" : 0.488,
+          "block3" : 0.481,
+          "block4" : 1.81,
+          "block5" : 10.336,
+          "block6" : 0.477,
+          "block7" : 7.006,
+          "shim1" : 0.937,
+          "shim3" : 0.91
+        },
+        "state" : "shim2",
+        "unsafe" : {
+          "block4" : "shim1",
+          "block5" : "shim3",
+          "block7" : "shim3"
+        }
+      },
+      {
+        "safe" : [
+          "block2",
+          "shim3"
+        ],
+        "severity" : {
+          "block2" : 0.034,
+          "block3" : 7.323,
+          "block4" : 7.703,
+          "block5" : 3.255,
+          "block7" : 1.727,
+          "shim1" : 7.517,
+          "shim2" : 7.344,
+          "shim3" : 0.484
+        },
+        "state" : "block6",
+        "unsafe" : {
+          "block3" : "shim3",
+          "block4" : "shim3",
+          "block5" : "shim3",
+          "block7" : "shim3",
+          "shim1" : "shim3",
+          "shim2" : "shim3"
+        }
+      },
+      {
+        "safe" : [
+          "block2",
+          "block3",
+          "shim1",
+          "shim2",
+          "block6"
+        ],
+        "severity" : {
+          "block2" : 0.461,
+          "block3" : 0.453,
+          "block4" : 7.478,
+          "block5" : 10.155,
+          "block6" : 0.453,
+          "block7" : 1.972,
+          "shim1" : 0.895,
+          "shim2" : 0.946
+        },
+        "state" : "shim3",
+        "unsafe" : {
+          "block4" : "block7",
+          "block5" : "block7",
+          "block7" : "block6"
+        }
+      },
+      {
+        "safe" : [
+          "block6",
+          "shim3"
+        ],
+        "severity" : {
+          "block3" : 5.59,
+          "block4" : 6.765,
+          "block5" : 7.387,
+          "block6" : 0.469,
+          "block7" : 9.922,
+          "shim2" : 3.473,
+          "shim3" : 0.915
+        },
+        "state" : "block2,shim1",
+        "unsafe" : {
+          "block3" : "shim3",
+          "block4" : "shim3",
+          "block5" : "shim3",
+          "block7" : "shim3",
+          "shim2" : "block4"
+        }
+      },
+      {
+        "safe" : [
+          "block6",
+          "shim3"
+        ],
+        "severity" : {
+          "block3" : 6.484,
+          "block4" : 1.821,
+          "block5" : 10.454,
+          "block6" : 0.482,
+          "block7" : 7.877,
+          "shim1" : 3.867,
+          "shim3" : 0.902
+        },
+        "state" : "block2,shim2",
+        "unsafe" : {
+          "block3" : "shim3",
+          "block4" : "shim1",
+          "block5" : "shim3",
+          "block7" : "shim3",
+          "shim1" : "block3"
+        }
+      },
+      {
+        "safe" : [
+          "shim3"
+        ],
+        "severity" : {
+          "block3" : 7.651,
+          "block4" : 0.035,
+          "block5" : 3.545,
+          "block7" : 1.721,
+          "shim1" : 7.517,
+          "shim2" : 7.627,
+          "shim3" : 0.478
+        },
+        "state" : "block2,block6",
+        "unsafe" : {
+          "block3" : "shim3",
+          "block5" : "shim3",
+          "block7" : "shim3",
+          "shim1" : "shim3",
+          "shim2" : "shim3"
+        },
+        "win" : [
+          "block4"
+        ]
+      },
+      {
+        "safe" : [
+          "shim1",
+          "shim2",
+          "block6"
+        ],
+        "severity" : {
+          "block3" : 2.665,
+          "block4" : 7.598,
+          "block5" : 10.215,
+          "block6" : 0.449,
+          "block7" : 1.968,
+          "shim1" : 0.929,
+          "shim2" : 0.942
+        },
+        "state" : "block2,shim3",
+        "unsafe" : {
+          "block3" : "block6",
+          "block4" : "block7",
+          "block5" : "block7",
+          "block7" : "block6"
+        }
+      },
+      {
+        "safe" : [
+          "block6",
+          "shim3"
+        ],
+        "severity" : {
+          "block2" : 8.549,
+          "block4" : 10.332,
+          "block5" : 7.856,
+          "block6" : 0.488,
+          "block7" : 9.974,
+          "shim2" : 4.282,
+          "shim3" : 0.867
+        },
+        "state" : "block3,shim1",
+        "unsafe" : {
+          "block2" : "shim3",
+          "block4" : "shim3",
+          "block5" : "shim3",
+          "block7" : "shim3",
+          "shim2" : "block5"
+        }
+      },
+      {
+        "safe" : [
+          "block6",
+          "shim3"
+        ],
+        "severity" : {
+          "block2" : 7.472,
+          "block4" : 1.822,
+          "block5" : 10.464,
+          "block6" : 0.482,
+          "block7" : 7.851,
+          "shim1" : 4.529,
+          "shim3" : 0.903
+        },
+        "state" : "block3,shim2",
+        "unsafe" : {
+          "block2" : "shim3",
+          "block4" : "shim3",
+          "block5" : "shim3",
+          "block7" : "shim3",
+          "shim1" : "block5"
+        }
+      },
+      {
+        "safe" : [
+          "shim3"
+        ],
+        "severity" : {
+          "block2" : 7.762,
+          "block4" : 8.153,
+          "block5" : 5.149,
+          "block7" : 1.691,
+          "shim1" : 6.042,
+          "shim2" : 7.437,
+          "shim3" : 0.488
+        },
+        "state" : "block3,block6",
+        "unsafe" : {
+          "block2" : "shim3",
+          "block4" : "shim3",
+          "block5" : "shim3",
+          "block7" : "shim3",
+          "shim1" : "shim3",
+          "shim2" : "shim3"
+        }
+      },
+      {
+        "safe" : [
+          "shim1",
+          "shim2",
+          "block6"
+        ],
+        "severity" : {
+          "block2" : 2.58,
+          "block4" : 7.644,
+          "block5" : 9.5,
+          "block6" : 0.454,
+          "block7" : 1.966,
+          "shim1" : 0.924,
+          "shim2" : 0.951
+        },
+        "state" : "block3,shim3",
+        "unsafe" : {
+          "block2" : "block6",
+          "block4" : "block7",
+          "block5" : "block7",
+          "block7" : "block6"
+        }
+      },
+      {
+        "safe" : [
+          "block3",
+          "block6"
+        ],
+        "severity" : {
+          "block2" : 2.952,
+          "block3" : 0.95,
+          "block4" : 2.398,
+          "block5" : 8.384,
+          "block6" : 0.961,
+          "block7" : 6.557,
+          "shim3" : 1.391
+        },
+        "state" : "shim1,shim2",
+        "unsafe" : {
+          "block2" : "block4",
+          "block4" : "block2",
+          "block5" : "shim3",
+          "block7" : "shim3",
+          "shim3" : "block7"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 7.524,
+          "block3" : 7.679,
+          "block4" : 8.17,
+          "block5" : 6.48,
+          "block7" : 2.151,
+          "shim2" : 7.244,
+          "shim3" : 5.045
+        },
+        "state" : "block6,shim1",
+        "unsafe" : {
+          "block2" : "shim3",
+          "block3" : "shim3",
+          "block4" : "shim3",
+          "block5" : "shim2",
+          "block7" : "shim2",
+          "shim2" : "shim3",
+          "shim3" : "block7"
+        }
+      },
+      {
+        "safe" : [
+          "block2",
+          "block3"
+        ],
+        "severity" : {
+          "block2" : 0.915,
+          "block3" : 0.951,
+          "block4" : 6.554,
+          "block5" : 8.254,
+          "block6" : 5.359,
+          "block7" : 2.42,
+          "shim2" : 1.402
+        },
+        "state" : "shim1,shim3",
+        "unsafe" : {
+          "block4" : "block7",
+          "block5" : "block7",
+          "block6" : "block7",
+          "block7" : "block6",
+          "shim2" : "block6"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 7.314,
+          "block3" : 7.405,
+          "block4" : 6.108,
+          "block5" : 1.826,
+          "block7" : 2.154,
+          "shim1" : 7.533,
+          "shim3" : 4.991
+        },
+        "state" : "block6,shim2",
+        "unsafe" : {
+          "block2" : "shim3",
+          "block3" : "shim3",
+          "block4" : "shim3",
+          "block5" : "shim3",
+          "block7" : "shim3",
+          "shim1" : "shim3",
+          "shim3" : "block7"
+        }
+      },
+      {
+        "safe" : [
+          "block2",
+          "block3"
+        ],
+        "severity" : {
+          "block2" : 0.921,
+          "block3" : 0.928,
+          "block4" : 5.022,
+          "block5" : 2.19,
+          "block6" : 5.378,
+          "block7" : 2.477,
+          "shim1" : 1.393
+        },
+        "state" : "shim2,shim3",
+        "unsafe" : {
+          "block4" : "block7",
+          "block5" : "block7",
+          "block6" : "block7",
+          "block7" : "block6",
+          "shim1" : "block6"
+        }
+      },
+      {
+        "safe" : [
+          "block2",
+          "block3",
+          "shim1",
+          "block4",
+          "shim2"
+        ],
+        "severity" : {
+          "block2" : 0.458,
+          "block3" : 0.431,
+          "block4" : 0.455,
+          "block5" : 4.526,
+          "block7" : 2.132,
+          "shim1" : 0.888,
+          "shim2" : 0.945
+        },
+        "state" : "block6,shim3",
+        "unsafe" : {
+          "block5" : "block7",
+          "block7" : "shim2"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block3" : 5.258,
+          "block4" : 9.649,
+          "block5" : 6.172,
+          "block7" : 4.052,
+          "shim2" : 8.818,
+          "shim3" : 4.829
+        },
+        "state" : "block2,block6,shim1",
+        "unsafe" : {
+          "block3" : "shim3",
+          "block4" : "shim3",
+          "block5" : "shim3",
+          "block7" : "block3",
+          "shim2" : "shim3",
+          "shim3" : "block7"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block3" : 4.073,
+          "block4" : 3.789,
+          "block5" : 2.634,
+          "block6" : 5.237,
+          "block7" : 2.402,
+          "shim2" : 1.649
+        },
+        "state" : "block2,shim1,shim3",
+        "unsafe" : {
+          "block3" : "shim2",
+          "block4" : "block7",
+          "block5" : "block6",
+          "block6" : "block7",
+          "block7" : "block6",
+          "shim2" : "block5"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block3" : 7.456,
+          "block4" : 6.184,
+          "block5" : 1.904,
+          "block7" : 2.153,
+          "shim1" : 5.681,
+          "shim3" : 5.013
+        },
+        "state" : "block2,block6,shim2",
+        "unsafe" : {
+          "block3" : "shim3",
+          "block4" : "shim3",
+          "block5" : "shim3",
+          "block7" : "shim3",
+          "shim1" : "block3",
+          "shim3" : "block7"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block3" : 3.061,
+          "block4" : 4.979,
+          "block5" : 2.208,
+          "block6" : 5.332,
+          "block7" : 2.492,
+          "shim1" : 3.258
+        },
+        "state" : "block2,shim2,shim3",
+        "unsafe" : {
+          "block3" : "block4",
+          "block4" : "block7",
+          "block5" : "block6",
+          "block6" : "block7",
+          "block7" : "block6",
+          "shim1" : "block3"
+        }
+      },
+      {
+        "safe" : [
+          "shim2"
+        ],
+        "severity" : {
+          "block3" : 5.001,
+          "block4" : 0.456,
+          "block5" : 4.627,
+          "block7" : 2.133,
+          "shim1" : 5.429,
+          "shim2" : 0.932
+        },
+        "state" : "block2,block6,shim3",
+        "unsafe" : {
+          "block3" : "block7",
+          "block5" : "block7",
+          "block7" : "shim2",
+          "shim1" : "block7"
+        },
+        "win" : [
+          "block4"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 6.975,
+          "block4" : 7.142,
+          "block5" : 5.342,
+          "block7" : 4.974,
+          "shim2" : 7.688,
+          "shim3" : 4.523
+        },
+        "state" : "block3,block6,shim1",
+        "unsafe" : {
+          "block2" : "shim3",
+          "block4" : "shim3",
+          "block5" : "shim2",
+          "block7" : "shim3",
+          "shim2" : "block5",
+          "shim3" : "block2"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 3.226,
+          "block4" : 6.706,
+          "block5" : 7.777,
+          "block6" : 4.829,
+          "block7" : 2.416,
+          "shim2" : 4.297
+        },
+        "state" : "block3,shim1,shim3",
+        "unsafe" : {
+          "block2" : "block6",
+          "block4" : "block7",
+          "block5" : "block7",
+          "block6" : "block7",
+          "block7" : "block6",
+          "shim2" : "block5"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 7.038,
+          "block4" : 5.787,
+          "block5" : 1.908,
+          "block7" : 2.115,
+          "shim1" : 6.183,
+          "shim3" : 5.166
+        },
+        "state" : "block3,block6,shim2",
+        "unsafe" : {
+          "block2" : "shim3",
+          "block4" : "shim3",
+          "block5" : "shim3",
+          "block7" : "shim3",
+          "shim1" : "shim3",
+          "shim3" : "block7"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 2.58,
+          "block4" : 4.835,
+          "block5" : 2.161,
+          "block6" : 5.264,
+          "block7" : 2.45,
+          "shim1" : 4.11
+        },
+        "state" : "block3,shim2,shim3",
+        "unsafe" : {
+          "block2" : "block4",
+          "block4" : "block7",
+          "block5" : "block6",
+          "block6" : "block7",
+          "block7" : "block6",
+          "shim1" : "block2"
+        }
+      },
+      {
+        "safe" : [
+          "shim2"
+        ],
+        "severity" : {
+          "block2" : 5.176,
+          "block4" : 0.457,
+          "block5" : 4.449,
+          "block7" : 2.134,
+          "shim1" : 4.11,
+          "shim2" : 0.952
+        },
+        "state" : "block3,block6,shim3",
+        "unsafe" : {
+          "block2" : "block7",
+          "block5" : "block7",
+          "block7" : "shim2",
+          "shim1" : "block2"
+        },
+        "win" : [
+          "block4"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 4.572,
+          "block4" : 2.391,
+          "block5" : 8.349,
+          "block6" : 2.966,
+          "block7" : 6.17,
+          "shim3" : 1.344
+        },
+        "state" : "block3,shim1,shim2",
+        "unsafe" : {
+          "block2" : "block6",
+          "block4" : "block2",
+          "block5" : "shim3",
+          "block6" : "shim3",
+          "block7" : "block6",
+          "shim3" : "block7"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 10.421,
+          "block3" : 7.276,
+          "block4" : 6.118,
+          "block5" : 8.463,
+          "block7" : 8.234,
+          "shim3" : 4.498
+        },
+        "state" : "block6,shim1,shim2",
+        "unsafe" : {
+          "block2" : "shim3",
+          "block3" : "shim3",
+          "block4" : "shim3",
+          "block5" : "shim3",
+          "block7" : "shim3",
+          "shim3" : "block7"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 5.329,
+          "block3" : 4.998,
+          "block4" : 6.021,
+          "block5" : 5.981,
+          "block7" : 3.194,
+          "shim2" : 5.205
+        },
+        "state" : "block6,shim1,shim3",
+        "unsafe" : {
+          "block2" : "block7",
+          "block3" : "block7",
+          "block4" : "block7",
+          "block5" : "shim2",
+          "block7" : "shim2",
+          "shim2" : "block7"
+        }
+      },
+      {
+        "safe" : [
+          "shim1",
+          "shim2"
+        ],
+        "severity" : {
+          "block2" : 0.458,
+          "block3" : 0.463,
+          "block5" : 1.884,
+          "block7" : 3.956,
+          "shim1" : 0.908,
+          "shim2" : 0.948
+        },
+        "state" : "block4,block6,shim3",
+        "unsafe" : {
+          "block5" : "shim2",
+          "block7" : "shim2"
+        },
+        "win" : [
+          "block2",
+          "block3"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 5.319,
+          "block3" : 5.248,
+          "block4" : 6.505,
+          "block5" : 3.281,
+          "block7" : 2.638,
+          "shim1" : 4.858
+        },
+        "state" : "block6,shim2,shim3",
+        "unsafe" : {
+          "block2" : "block7",
+          "block3" : "block7",
+          "block4" : "block7",
+          "block5" : "block7",
+          "block7" : "block4",
+          "shim1" : "block7"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block3" : 5.143,
+          "block4" : 6.533,
+          "block5" : 3.084,
+          "block7" : 2.662,
+          "shim1" : 3.747
+        },
+        "state" : "block2,block6,shim2,shim3",
+        "unsafe" : {
+          "block3" : "block7",
+          "block4" : "block7",
+          "block5" : "block7",
+          "block7" : "block5",
+          "shim1" : "block3"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 5.64,
+          "block4" : 6.407,
+          "block5" : 4.53,
+          "block7" : 2.728,
+          "shim1" : 4.487
+        },
+        "state" : "block3,block6,shim2,shim3",
+        "unsafe" : {
+          "block2" : "block7",
+          "block4" : "block7",
+          "block5" : "block7",
+          "block7" : "block5",
+          "shim1" : "block7"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 5.442,
+          "block3" : 6.279,
+          "block5" : 5.612,
+          "block7" : 5.956,
+          "shim2" : 6.518
+        },
+        "state" : "block4,block6,shim1,shim3",
+        "unsafe" : {
+          "block2" : "block7",
+          "block3" : "block7",
+          "block5" : "block7",
+          "block7" : "shim2",
+          "shim2" : "block7"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block2" : 6.535,
+          "block3" : 6.369,
+          "block5" : 3.39,
+          "block7" : 4.613,
+          "shim1" : 1.383
+        },
+        "state" : "block4,block6,shim2,shim3",
+        "unsafe" : {
+          "block2" : "block7",
+          "block3" : "block7",
+          "block5" : "block7",
+          "block7" : "block5",
+          "shim1" : "block7"
+        }
+      }
+    ],
+    "verifiedAt" : "2026-10-09"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 5,
+    "requiredCount" : 3,
+    "starThresholds" : [
+      3,
+      4,
+      5
+    ],
+    "targetPieceIds" : [
+      "block2",
+      "block3",
+      "block4",
+      "block5",
+      "block6",
+      "block7"
+    ],
+    "type" : "removeTargetsKeepStanding"
+  },
+  "gravity" : -9.8,
+  "id" : "c-079",
+  "index" : 79,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Keystone Set",
+    "tr" : "Kilit Yerinde"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : true,
+      "id" : "block1",
+      "material" : "stone",
+      "position" : {
+        "x" : -89,
+        "y" : -169.5
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 41,
+        "type" : "rect",
+        "w" : 64
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block2",
+      "material" : "stone",
+      "position" : {
+        "x" : 0,
+        "y" : -169.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 41,
+        "type" : "rect",
+        "w" : 64
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block3",
+      "material" : "stone",
+      "position" : {
+        "x" : 89,
+        "y" : -169.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 41,
+        "type" : "rect",
+        "w" : 64
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "shim1",
+      "material" : "wood",
+      "position" : {
+        "x" : -2,
+        "y" : -143
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 12,
+        "type" : "rect",
+        "w" : 230
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block4",
+      "material" : "stone",
+      "position" : {
+        "x" : -47,
+        "y" : -120
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 34,
+        "type" : "rect",
+        "w" : 66
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block5",
+      "material" : "stone",
+      "position" : {
+        "x" : 47,
+        "y" : -120
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 34,
+        "type" : "rect",
+        "w" : 66
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "shim2",
+      "material" : "wood",
+      "position" : {
+        "x" : -5,
+        "y" : -97
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 12,
+        "type" : "rect",
+        "w" : 130.06
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block6",
+      "material" : "stone",
+      "position" : {
+        "x" : -31,
+        "y" : -70
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 42,
+        "type" : "rect",
+        "w" : 43
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block7",
+      "material" : "stone",
+      "position" : {
+        "x" : 31,
+        "y" : -70
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 42,
+        "type" : "rect",
+        "w" : 43
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "shim3",
+      "material" : "wood",
+      "position" : {
+        "x" : -0,
+        "y" : -43
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 12,
+        "type" : "rect",
+        "w" : 86.9796
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "k",
+      "material" : "brass",
+      "position" : {
+        "x" : 12,
+        "y" : -14
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "points" : [
+          [
+            -18.599999999999998,
+            -23
+          ],
+          [
+            18.599999999999998,
+            -23
+          ],
+          [
+            31,
+            23
+          ],
+          [
+            -31,
+            23
+          ]
+        ],
+        "type" : "polygon"
+      }
+    }
+  ],
+  "region" : "keystone",
+  "schema" : 1,
+  "seed" : 179520,
+  "supportsAllowed" : 0
+}

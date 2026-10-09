@@ -1,0 +1,4 @@
+c-075	120hz j23 move 3 shim1: collapsed ≠ won
+c-075	drop7 j0 move 3 shim1: collapsed ≠ won
+c-075	45hz j1201 move 3 shim1: collapsed ≠ won
+p-pyramid-40355	drop7 j2411 move 3 shim1: collapsed ≠ won

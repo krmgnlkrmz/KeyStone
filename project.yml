@@ -1,0 +1,194 @@
+name: DengeNoktasi
+options:
+  bundleIdPrefix: com.Kerem
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+  developmentLanguage: en
+  groupSortPosition: top
+
+configs:
+  Debug: debug
+  Release: release
+
+# Project-level xcconfigs: every target (app, widget, tests) sees the same IDs.
+configFiles:
+  Debug: Config/Debug.xcconfig
+  Release: Config/Release.xcconfig
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    TARGETED_DEVICE_FAMILY: "1"
+    LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+    SWIFT_EMIT_LOC_STRINGS: YES
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    DEAD_CODE_STRIPPING: YES
+
+packages:
+  GoogleMobileAds:
+    url: https://github.com/googleads/swift-package-manager-google-mobile-ads
+    exactVersion: 12.14.0   # latest stable resolved 2026-10-08 (UMP 3.1.0 comes with it); see docs/ads-policy.md
+  BalanceCore:
+    path: Packages/BalanceCore
+  BalancePhysics:
+    path: Packages/BalancePhysics
+
+targets:
+  DengeNoktasi:
+    type: application
+    platform: iOS
+    sources:
+      - path: App
+        excludes:
+          - "Resources/Levels/**"
+          - "Resources/Configuration.storekit"
+      - path: App/Resources/Levels
+        type: folder
+        buildPhase: resources
+      - path: App/Resources/Configuration.storekit
+        buildPhase: none
+    dependencies:
+      - package: GoogleMobileAds
+      - package: BalanceCore
+      - package: BalancePhysics
+      - target: DailyWidget
+      - sdk: StoreKit.framework
+      - sdk: GameKit.framework
+      - sdk: JavaScriptCore.framework
+    preBuildScripts:
+      # Archives only: an App Store build must not ship Google's sample ad IDs or the placeholder privacy URL.
+      # A fresh clone builds and tests with them on purpose (scripts/bootstrap.sh copies the example config).
+      - name: Release placeholders
+        runOnlyWhenInstalling: true
+        basedOnDependencyAnalysis: false
+        script: |
+          [ "$CONFIGURATION" = "Release" ] || exit 0
+          failed=0
+          case "$GAD_APP_ID $AD_BANNER $AD_INTER $AD_REWARDED" in
+            *ca-app-pub-3940256099942544*) echo "error: Config/Release.xcconfig still has Google's sample AdMob IDs"; failed=1 ;;
+          esac
+          case "$PRIVACY_URL" in
+            *PLACEHOLDER*) echo "error: PRIVACY_URL in Config/Shared.xcconfig is still a placeholder"; failed=1 ;;
+          esac
+          case "$SUPPORT_EMAIL" in
+            *PLACEHOLDER*) echo "warning: SUPPORT_EMAIL is not set; the Settings row stays hidden" ;;
+          esac
+          exit $failed
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID)
+        PRODUCT_NAME: DengeNoktasi
+        INFOPLIST_FILE: App/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        CODE_SIGN_ENTITLEMENTS: App/DengeNoktasi.entitlements
+        CODE_SIGN_STYLE: Automatic
+        ENABLE_PREVIEWS: YES
+
+  DailyWidget:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: Widget
+    dependencies:
+      - package: BalanceCore
+      - sdk: WidgetKit.framework
+      - sdk: SwiftUI.framework
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID).DailyWidget
+        PRODUCT_NAME: DailyWidget
+        INFOPLIST_FILE: Widget/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Widget/DailyWidget.entitlements
+        CODE_SIGN_STYLE: Automatic
+        SKIP_INSTALL: YES
+        ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME: WidgetBackground
+
+  # Test bundles are hosted by the app and reach BalanceCore / BalancePhysics through it.
+  # They deliberately do not link the packages a second time (duplicate SKScene classes).
+  DengeNoktasiTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [Tests/AppTests]
+    dependencies:
+      - target: DengeNoktasi
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID).tests
+
+  # Launches the real app: smoke-walks the main screens and saves real-UI screenshots.
+  DengeNoktasiUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - Tests/UITests
+      # The soak test reads each curated level's verified solution path.
+      - path: App/Resources/Levels
+        type: folder
+        buildPhase: resources
+    dependencies:
+      - target: DengeNoktasi
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID).uitests
+        TEST_TARGET_NAME: DengeNoktasi
+
+  # Offline level generator + validator (see §5.4 and Tools/LevelForge/README.md).
+  LevelForgeTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Tools/LevelForge
+        excludes:
+          - "drafts/**"
+          - "*.md"
+      - path: Tools/LevelForge/drafts
+        type: folder
+        buildPhase: resources
+    dependencies:
+      - target: DengeNoktasi
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID).levelforge
+
+schemes:
+  DengeNoktasi:
+    build:
+      targets:
+        DengeNoktasi: all
+        DengeNoktasiTests: [test]
+    run:
+      config: Debug
+      storeKitConfiguration: App/Resources/Configuration.storekit
+    test:
+      config: Debug
+      targets: [DengeNoktasiTests]
+    profile:
+      config: Release
+    archive:
+      config: Release
+
+  UITests:
+    build:
+      targets:
+        DengeNoktasi: all
+        DengeNoktasiUITests: [test]
+    test:
+      config: Debug
+      targets: [DengeNoktasiUITests]
+
+  LevelForge:
+    build:
+      targets:
+        DengeNoktasi: all
+        LevelForgeTests: [test]
+    test:
+      config: Debug
+      targets: [LevelForgeTests]

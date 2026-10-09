@@ -1,0 +1,110 @@
+{
+  "floorY": -190.0,
+  "goal": {
+    "moveBudget": 2,
+    "starThresholds": [
+      1,
+      2,
+      2
+    ],
+    "targetPieceIds": [
+      "tb"
+    ],
+    "type": "removeTargetsKeepStanding"
+  },
+  "gravity": -9.8,
+  "id": "c-001",
+  "index": 1,
+  "joints": [],
+  "name": {
+    "en": "First Block",
+    "tr": "İlk Blok"
+  },
+  "pack": "curated",
+  "pieces": [
+    {
+      "fixed": true,
+      "id": "g1",
+      "material": "stone",
+      "position": {
+        "x": 0.0,
+        "y": -165.0
+      },
+      "removable": false,
+      "rotation": 0,
+      "shape": {
+        "h": 50.0,
+        "type": "rect",
+        "w": 140.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "p1",
+      "material": "wood",
+      "position": {
+        "x": -38.0,
+        "y": -100.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 80.0,
+        "type": "rect",
+        "w": 24.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "p2",
+      "material": "wood",
+      "position": {
+        "x": 38.0,
+        "y": -100.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 80.0,
+        "type": "rect",
+        "w": 24.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "bm",
+      "material": "wood",
+      "position": {
+        "x": 0.0,
+        "y": -51.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 18.0,
+        "type": "rect",
+        "w": 128.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "tb",
+      "material": "stone",
+      "position": {
+        "x": 0.0,
+        "y": -17.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 50.0,
+        "type": "rect",
+        "w": 50.0
+      }
+    }
+  ],
+  "region": "wood_scaffold",
+  "schema": 1,
+  "supportsAllowed": 0,
+  "tutorial": 1
+}

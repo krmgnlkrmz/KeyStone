@@ -1,0 +1,8 @@
+candidates: 1200 (shard 0/1), accepted: 196
+rejections: inconsistent=41, initialUnstable=23, narrowMargin=427, simulationError=300, tooShort=1, unsolvable=212
+samples: p-lintel-40010: 60hz move 2 block2: continuePlaying ≠ won | p-lintel-40030: 120hz move 3 beam1: collapsed ≠ won | p-lintel-40082: 60hz move 3 beam1: collapsed ≠ won | p-counterweight-40060: initial margin 1.19 | p-counterweight-40088: 60hz: w3 moved 5.82× tolerance | p-counterweight-40148: 60hz: w1 moved 5.49× tolerance | p-lintel-40002: margin 1.10 < 1.4 | p-pyramid-40003: margin 1.01 < 1.4 | p-lintel-40006: margin 1.04 < 1.4 | p-hanger-40001: move rejected: rope1 in p-hanger-40001 @ beam1,block1,load1,load2 | p-hanger-40005: move rejected: rope1 in p-hanger-40005 @ beam1,load1 | p-hanger-40009: move rejected: rope1 in p-hanger-40009 @ beam1,block1,load1 | p-pyramid-40123: solution has 1 moves | p-counterweight-40000: no solution within 7 moves | p-counterweight-40004: no solution within 7 moves | p-counterweight-40008: no solution within 7 moves
+archetypes: counterweight 127/300, hanger 0/300, lintel 35/300, pyramid 34/300
+mean margin: 12.60
+solution lengths: [(key: 2, value: 2), (key: 3, value: 53), (key: 4, value: 33), (key: 5, value: 85), (key: 6, value: 23)]
+seconds: 1381, frames: 29051451, evaluations: 243703
+fingerprint: spk-1-60hz-f029

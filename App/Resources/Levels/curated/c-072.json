@@ -1,0 +1,260 @@
+{
+  "annotation" : {
+    "difficulty" : 3.56,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 1.41,
+    "solutionPath" : [
+      "block1",
+      "block2",
+      "beam1"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "block1",
+          "block2"
+        ],
+        "severity" : {
+          "beam1" : 5.947,
+          "block1" : 0.125,
+          "block2" : 0.164,
+          "pillar1" : 9.32,
+          "pillar2" : 9.192
+        },
+        "state" : "",
+        "unsafe" : {
+          "beam1" : "block2",
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "block2"
+        ],
+        "severity" : {
+          "beam1" : 5.883,
+          "block2" : 0.125,
+          "pillar1" : 7.109,
+          "pillar2" : 7.638
+        },
+        "state" : "block1",
+        "unsafe" : {
+          "beam1" : "block2",
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "block1"
+        ],
+        "severity" : {
+          "beam1" : 5.871,
+          "block1" : 0.116,
+          "pillar1" : 7.693,
+          "pillar2" : 7.185
+        },
+        "state" : "block2",
+        "unsafe" : {
+          "beam1" : "block1",
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 0.006,
+          "pillar1" : 1.885,
+          "pillar2" : 1.887
+        },
+        "state" : "block1,block2",
+        "unsafe" : {
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        },
+        "win" : [
+          "beam1"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 5,
+    "starThresholds" : [
+      3,
+      4,
+      5
+    ],
+    "targetPieceIds" : [
+      "k"
+    ],
+    "type" : "dropOnlyTarget"
+  },
+  "gravity" : -9.8,
+  "id" : "c-072",
+  "index" : 72,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Springing",
+    "tr" : "Kemer Ayağı"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : true,
+      "id" : "base1",
+      "material" : "stone",
+      "position" : {
+        "x" : -77,
+        "y" : -166
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 48,
+        "type" : "rect",
+        "w" : 60
+      }
+    },
+    {
+      "fixed" : true,
+      "id" : "base2",
+      "material" : "stone",
+      "position" : {
+        "x" : 77,
+        "y" : -166
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 48,
+        "type" : "rect",
+        "w" : 60
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "pillar1",
+      "material" : "wood",
+      "position" : {
+        "x" : -77,
+        "y" : -99
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 86,
+        "type" : "rect",
+        "w" : 25
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "pillar2",
+      "material" : "wood",
+      "position" : {
+        "x" : 77,
+        "y" : -99
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 86,
+        "type" : "rect",
+        "w" : 25
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam1",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : -46
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 20,
+        "type" : "rect",
+        "w" : 201
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block1",
+      "material" : "stone",
+      "position" : {
+        "x" : -28,
+        "y" : -14.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 43,
+        "type" : "rect",
+        "w" : 24
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block2",
+      "material" : "stone",
+      "position" : {
+        "x" : 28,
+        "y" : -14.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 43,
+        "type" : "rect",
+        "w" : 24
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "k",
+      "material" : "brass",
+      "position" : {
+        "x" : 0,
+        "y" : 27.5
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "points" : [
+          [
+            -27.599999999999998,
+            -20.5
+          ],
+          [
+            27.599999999999998,
+            -20.5
+          ],
+          [
+            46,
+            20.5
+          ],
+          [
+            -46,
+            20.5
+          ]
+        ],
+        "type" : "polygon"
+      }
+    }
+  ],
+  "region" : "keystone",
+  "schema" : 1,
+  "seed" : 172013,
+  "supportsAllowed" : 0
+}

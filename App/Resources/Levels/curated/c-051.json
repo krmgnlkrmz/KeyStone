@@ -1,0 +1,1920 @@
+{
+  "annotation" : {
+    "difficulty" : 2.39,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 30.24,
+    "solutionPath" : [
+      "post2",
+      "+sup@-96",
+      "post1"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "post2",
+          "post3",
+          "load1",
+          "load2",
+          "+sup@-96",
+          "+sup@-40",
+          "+sup@0",
+          "+sup@64",
+          "+sup@96"
+        ],
+        "severity" : {
+          "+sup@-40" : 0.033,
+          "+sup@-96" : 0.033,
+          "+sup@0" : 0.033,
+          "+sup@64" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 6.054,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 7.117,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load1",
+          "load2",
+          "+sup@-96",
+          "+sup@-40",
+          "+sup@0",
+          "+sup@64",
+          "+sup@96"
+        ],
+        "severity" : {
+          "+sup@-40" : 0.033,
+          "+sup@-96" : 0.033,
+          "+sup@0" : 0.033,
+          "+sup@64" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 7.367,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 7.316,
+          "post3" : 6.853
+        },
+        "state" : "post2",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post1" : "beam1",
+          "post3" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load1",
+          "load2",
+          "+sup@-96",
+          "+sup@-40",
+          "+sup@0",
+          "+sup@48",
+          "+sup@56",
+          "+sup@64",
+          "+sup@96"
+        ],
+        "severity" : {
+          "+sup@-40" : 0.033,
+          "+sup@-96" : 0.033,
+          "+sup@0" : 0.033,
+          "+sup@48" : 0.033,
+          "+sup@56" : 0.033,
+          "+sup@64" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 4.579,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 9.207,
+          "post2" : 6.868
+        },
+        "state" : "post3",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post1" : "beam1",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "post3",
+          "load2",
+          "+sup@-96",
+          "+sup@-40",
+          "+sup@0",
+          "+sup@96"
+        ],
+        "severity" : {
+          "+sup@-40" : 0.033,
+          "+sup@-96" : 0.033,
+          "+sup@0" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 4.576,
+          "load2" : 0.033,
+          "post1" : 2.125,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "load1",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "load1",
+          "+sup@-96",
+          "+sup@0",
+          "+sup@64",
+          "+sup@96"
+        ],
+        "severity" : {
+          "+sup@-96" : 0.033,
+          "+sup@0" : 0.033,
+          "+sup@64" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 6.158,
+          "load1" : 0.033,
+          "post1" : 0.033,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "load2",
+        "unsafe" : {
+          "beam1" : "post3"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 6.116,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 0.033,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "+sup@-96",
+        "unsafe" : {
+          "beam1" : "post3"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 6.114,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.033,
+          "post3" : 0.032
+        },
+        "state" : "+sup@-40",
+        "unsafe" : {
+          "beam1" : "post3"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 6.245,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 0.071,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "+sup@0",
+        "unsafe" : {
+          "beam1" : "post3"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "post3",
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.577,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 7.162,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "+sup@64",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "post3",
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.577,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 7.273,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "+sup@96",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load2",
+          "+sup@-96",
+          "+sup@-40",
+          "+sup@0",
+          "+sup@96"
+        ],
+        "severity" : {
+          "+sup@-40" : 0.033,
+          "+sup@-96" : 0.033,
+          "+sup@0" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 4.576,
+          "load2" : 0.033,
+          "post1" : 2.131,
+          "post3" : 1.745
+        },
+        "state" : "load1,post2",
+        "unsafe" : {
+          "beam1" : "post1",
+          "post1" : "beam1",
+          "post3" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "load1",
+          "+sup@-96",
+          "+sup@0",
+          "+sup@64",
+          "+sup@96"
+        ],
+        "severity" : {
+          "+sup@-96" : 0.033,
+          "+sup@0" : 0.033,
+          "+sup@64" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 7.366,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post3" : 6.951
+        },
+        "state" : "load2,post2",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post3" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 7.379,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 0.032,
+          "post3" : 6.908
+        },
+        "state" : "+sup@-96,post2",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post3" : "beam1"
+        },
+        "win" : [
+          "post1"
+        ]
+      },
+      {
+        "safe" : [
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 7.366,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 0.032,
+          "post3" : 10.377
+        },
+        "state" : "+sup@-40,post2",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post3" : "beam1"
+        },
+        "win" : [
+          "post1"
+        ]
+      },
+      {
+        "safe" : [
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 7.154,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 0.072,
+          "post3" : 10.263
+        },
+        "state" : "+sup@0,post2",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post3" : "beam1"
+        },
+        "win" : [
+          "post1"
+        ]
+      },
+      {
+        "safe" : [
+          "post3",
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.577,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 7.302,
+          "post3" : 0.033
+        },
+        "state" : "+sup@64,post2",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post3",
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.577,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 7.302,
+          "post3" : 0.033
+        },
+        "state" : "+sup@96,post2",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load2",
+          "+sup@-96",
+          "+sup@-40",
+          "+sup@0",
+          "+sup@96"
+        ],
+        "severity" : {
+          "+sup@-40" : 0.033,
+          "+sup@-96" : 0.033,
+          "+sup@0" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 4.577,
+          "load2" : 0.033,
+          "post1" : 7.664,
+          "post2" : 1.746
+        },
+        "state" : "load1,post3",
+        "unsafe" : {
+          "beam1" : "post1",
+          "post1" : "beam1",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load1",
+          "+sup@-96",
+          "+sup@0",
+          "+sup@48",
+          "+sup@56",
+          "+sup@64",
+          "+sup@96"
+        ],
+        "severity" : {
+          "+sup@-96" : 0.033,
+          "+sup@0" : 0.033,
+          "+sup@48" : 0.033,
+          "+sup@56" : 0.033,
+          "+sup@64" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 4.578,
+          "load1" : 0.033,
+          "post1" : 1.785,
+          "post2" : 6.94
+        },
+        "state" : "load2,post3",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post1" : "beam1",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.579,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 0.032,
+          "post2" : 6.887
+        },
+        "state" : "+sup@-96,post3",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.579,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 0.032,
+          "post2" : 10.278
+        },
+        "state" : "+sup@-40,post3",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.578,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 0.037,
+          "post2" : 10.247
+        },
+        "state" : "+sup@0,post3",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.577,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 7.432,
+          "post2" : 0.032
+        },
+        "state" : "+sup@48,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.577,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 7.447,
+          "post2" : 0.033
+        },
+        "state" : "+sup@56,post3",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.577,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 9.332,
+          "post2" : 0.033
+        },
+        "state" : "+sup@64,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.578,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 9.993,
+          "post2" : 0.033
+        },
+        "state" : "+sup@96,post3",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "post3",
+          "beam1",
+          "+sup@-96",
+          "+sup@0",
+          "+sup@96"
+        ],
+        "severity" : {
+          "+sup@-96" : 0.033,
+          "+sup@0" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 0.033,
+          "post1" : 2.143,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "load1,load2",
+        "unsafe" : {
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.576,
+          "load2" : 0.033,
+          "post1" : 0.033,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "+sup@-96,load1",
+        "unsafe" : {
+          "beam1" : "post2"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "beam1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 0.723,
+          "load2" : 0.033,
+          "post1" : 0.036,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "+sup@-40,load1",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "post3",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.576,
+          "load2" : 0.033,
+          "post1" : 2.792,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "+sup@0,load1",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "post3",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.576,
+          "load2" : 0.033,
+          "post1" : 2.131,
+          "post2" : 0.033,
+          "post3" : 0.032
+        },
+        "state" : "+sup@96,load1",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "+sup@-96",
+          "+sup@0",
+          "+sup@64",
+          "+sup@96"
+        ],
+        "severity" : {
+          "+sup@-96" : 0.033,
+          "+sup@0" : 0.033,
+          "+sup@64" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 6.162,
+          "load1" : 2.146,
+          "post2" : 0.032,
+          "post3" : 1.795
+        },
+        "state" : "load2,post1",
+        "unsafe" : {
+          "beam1" : "post3",
+          "load1" : "beam1",
+          "post3" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 6.243,
+          "load1" : 0.033,
+          "post1" : 0.033,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "+sup@-96,load2",
+        "unsafe" : {
+          "beam1" : "post3"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 6.053,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "+sup@0,load2",
+        "unsafe" : {
+          "beam1" : "post3"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "beam1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 0.667,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "+sup@64,load2",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 2.873,
+          "load1" : 0.033,
+          "post1" : 0.033,
+          "post2" : 0.033,
+          "post3" : 0.032
+        },
+        "state" : "+sup@96,load2",
+        "unsafe" : {
+          "beam1" : "post3"
+        }
+      },
+      {
+        "safe" : [
+          "post3",
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 6.067,
+          "load1" : 0.031,
+          "load2" : 0.033,
+          "post2" : 0.032,
+          "post3" : 0.03
+        },
+        "state" : "+sup@-96,post1",
+        "unsafe" : {
+          "beam1" : "post3"
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "post3",
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 6.086,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post2" : 0.032,
+          "post3" : 0.033
+        },
+        "state" : "+sup@-40,post1",
+        "unsafe" : {
+          "beam1" : "post3"
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 6.243,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.033,
+          "post3" : 0.032
+        },
+        "state" : "+sup@-40,load2",
+        "unsafe" : {
+          "beam1" : "post3"
+        }
+      },
+      {
+        "safe" : [
+          "post3",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 7.618,
+          "load1" : 2.819,
+          "load2" : 0.037,
+          "post2" : 0.053,
+          "post3" : 0.033
+        },
+        "state" : "+sup@0,post1",
+        "unsafe" : {
+          "beam1" : "post3",
+          "load1" : "beam1"
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "post2",
+          "post3",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.576,
+          "load2" : 0.033,
+          "post1" : 2.125,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "+sup@64,load1",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "beam1",
+          "+sup@-96",
+          "+sup@0",
+          "+sup@96"
+        ],
+        "severity" : {
+          "+sup@-96" : 0.033,
+          "+sup@0" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 0.033,
+          "post1" : 2.132,
+          "post3" : 1.714
+        },
+        "state" : "load1,load2,post2",
+        "unsafe" : {
+          "post1" : "beam1",
+          "post3" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.576,
+          "load2" : 0.033,
+          "post1" : 0.033,
+          "post3" : 1.579
+        },
+        "state" : "+sup@-96,load1,post2",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post3" : "beam1"
+        },
+        "win" : [
+          "post1"
+        ]
+      },
+      {
+        "safe" : [
+          "beam1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 0.724,
+          "load2" : 0.033,
+          "post1" : 0.036,
+          "post3" : 8.057
+        },
+        "state" : "+sup@-40,load1,post2",
+        "unsafe" : {
+          "post3" : "beam1"
+        },
+        "win" : [
+          "post1"
+        ]
+      },
+      {
+        "safe" : [
+          "post3",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.576,
+          "load2" : 0.033,
+          "post1" : 2.836,
+          "post3" : 0.034
+        },
+        "state" : "+sup@0,load1,post2",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post3",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.576,
+          "load2" : 0.033,
+          "post1" : 2.125,
+          "post3" : 0.033
+        },
+        "state" : "+sup@96,load1,post2",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "+sup@-96" : 0.033,
+          "+sup@0" : 0.033,
+          "+sup@64" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 7.15,
+          "load1" : 2.145,
+          "post3" : 3.891
+        },
+        "state" : "load2,post1,post2",
+        "unsafe" : {
+          "beam1" : "post3",
+          "load1" : "beam1",
+          "post3" : "beam1"
+        },
+        "win" : [
+          "+sup@-96",
+          "+sup@0",
+          "+sup@64",
+          "+sup@96"
+        ]
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 7.366,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post3" : 6.986
+        },
+        "state" : "+sup@-96,load2,post2",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post3" : "beam1"
+        },
+        "win" : [
+          "post1"
+        ]
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 7.366,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post3" : 9.212
+        },
+        "state" : "+sup@0,load2,post2",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post3" : "beam1"
+        },
+        "win" : [
+          "post1"
+        ]
+      },
+      {
+        "safe" : [
+          "post3",
+          "beam1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 0.67,
+          "load1" : 0.033,
+          "post1" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "+sup@64,load2,post2",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "post1"
+        ]
+      },
+      {
+        "safe" : [
+          "post3",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 2.893,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post3" : 0.033
+        },
+        "state" : "+sup@96,load2,post2",
+        "unsafe" : {
+          "beam1" : "post3"
+        },
+        "win" : [
+          "post1"
+        ]
+      },
+      {
+        "safe" : [
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 7.366,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post3" : 8.489
+        },
+        "state" : "+sup@-40,load2,post2",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post3" : "beam1"
+        },
+        "win" : [
+          "post1"
+        ]
+      },
+      {
+        "safe" : [
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.585,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 7.377
+        },
+        "state" : "+sup@64,post2,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post3",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.576,
+          "load2" : 0.033,
+          "post1" : 2.131,
+          "post3" : 0.032
+        },
+        "state" : "+sup@64,load1,post2",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.591,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 8.841
+        },
+        "state" : "+sup@96,post2,post3",
+        "unsafe" : {
+          "beam1" : "load2",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "beam1",
+          "+sup@-96",
+          "+sup@0",
+          "+sup@96"
+        ],
+        "severity" : {
+          "+sup@-96" : 0.033,
+          "+sup@0" : 0.033,
+          "+sup@96" : 0.033,
+          "beam1" : 0.033,
+          "post1" : 1.715,
+          "post2" : 1.713
+        },
+        "state" : "load1,load2,post3",
+        "unsafe" : {
+          "post1" : "beam1",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.576,
+          "load2" : 0.033,
+          "post1" : 0.032,
+          "post2" : 1.579
+        },
+        "state" : "+sup@-96,load1,post3",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "beam1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 0.724,
+          "load2" : 0.033,
+          "post1" : 0.032,
+          "post2" : 8.07
+        },
+        "state" : "+sup@-40,load1,post3",
+        "unsafe" : {
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.577,
+          "load2" : 0.033,
+          "post1" : 2.822,
+          "post2" : 0.032
+        },
+        "state" : "+sup@0,load1,post3",
+        "unsafe" : {
+          "beam1" : "post1",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.577,
+          "load2" : 0.033,
+          "post1" : 8.619,
+          "post2" : 0.032
+        },
+        "state" : "+sup@96,load1,post3",
+        "unsafe" : {
+          "beam1" : "post1",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 4.578,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 6.997
+        },
+        "state" : "+sup@-96,load2,post3",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 4.578,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 9.201
+        },
+        "state" : "+sup@0,load2,post3",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 3.41,
+          "load1" : 0.033,
+          "post1" : 6.594,
+          "post2" : 0.033
+        },
+        "state" : "+sup@48,load2,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "beam1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 0.725,
+          "load1" : 0.033,
+          "post1" : 7.363,
+          "post2" : 0.033
+        },
+        "state" : "+sup@56,load2,post3",
+        "unsafe" : {
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 7.034,
+          "load1" : 0.033,
+          "post1" : 7.301,
+          "post2" : 0.033
+        },
+        "state" : "+sup@64,load2,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 4.578,
+          "load1" : 0.033,
+          "post1" : 3.846,
+          "post2" : 0.033
+        },
+        "state" : "+sup@96,load2,post3",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.591,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post2" : 6.947
+        },
+        "state" : "+sup@-96,post1,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.584,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post2" : 9.859
+        },
+        "state" : "+sup@-40,post1,post3",
+        "unsafe" : {
+          "beam1" : "load2",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 4.578,
+          "load1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 8.26
+        },
+        "state" : "+sup@-40,load2,post3",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.598,
+          "load1" : 2.809,
+          "load2" : 0.033,
+          "post2" : 10.115
+        },
+        "state" : "+sup@0,post1,post3",
+        "unsafe" : {
+          "beam1" : "load2",
+          "load1" : "beam1",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.585,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 7.42
+        },
+        "state" : "+sup@48,post2,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.576,
+          "load2" : 0.033,
+          "post1" : 1.978,
+          "post2" : 0.032
+        },
+        "state" : "+sup@48,load1,post3",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post1" : "load2"
+        }
+      },
+      {
+        "safe" : [
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.585,
+          "load1" : 0.03,
+          "load2" : 0.033,
+          "post1" : 7.366
+        },
+        "state" : "+sup@56,post2,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.576,
+          "load2" : 0.033,
+          "post1" : 2.086,
+          "post2" : 0.032
+        },
+        "state" : "+sup@56,load1,post3",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.576,
+          "load2" : 0.033,
+          "post1" : 2.165,
+          "post2" : 0.033
+        },
+        "state" : "+sup@64,load1,post3",
+        "unsafe" : {
+          "beam1" : "post2",
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3"
+        ],
+        "severity" : {
+          "post1" : 0.033,
+          "post2" : 0.033,
+          "post3" : 0.032
+        },
+        "state" : "beam1,load1,load2",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "+sup@-96,load1,load2",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.268,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "+sup@0,load1,load2",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "post3",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 2.133,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "+sup@96,load1,load2",
+        "unsafe" : {
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post3",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 4.587,
+          "load2" : 0.033,
+          "post2" : 0.028,
+          "post3" : 0.031
+        },
+        "state" : "+sup@-96,load1,post1",
+        "unsafe" : {
+          "beam1" : "post3"
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "post3",
+          "beam1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 0.739,
+          "load2" : 0.032,
+          "post2" : 0.029,
+          "post3" : 0.033
+        },
+        "state" : "+sup@-40,load1,post1",
+        "unsafe" : {
+
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "load2"
+        ],
+        "severity" : {
+          "load2" : 0.033,
+          "post1" : 0.726,
+          "post2" : 0.726,
+          "post3" : 0.726
+        },
+        "state" : "+sup@-40,beam1,load1",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 0.043,
+          "post2" : 0.033,
+          "post3" : 0.032
+        },
+        "state" : "+sup@-40,load1,load2",
+        "unsafe" : {
+
+        }
+      },
+      {
+        "safe" : [
+          "post3",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 6.164,
+          "load1" : 0.033,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "+sup@-96,load2,post1",
+        "unsafe" : {
+          "beam1" : "post3"
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "post3",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 6.162,
+          "load1" : 0.187,
+          "post2" : 0.032,
+          "post3" : 0.033
+        },
+        "state" : "+sup@0,load2,post1",
+        "unsafe" : {
+          "beam1" : "post3"
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.666,
+          "load1" : 2.146,
+          "post2" : 0.032,
+          "post3" : 7.368
+        },
+        "state" : "+sup@64,load2,post1",
+        "unsafe" : {
+          "load1" : "beam1",
+          "post3" : "beam1"
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 2.88,
+          "load1" : 2.146,
+          "post2" : 0.032,
+          "post3" : 3.027
+        },
+        "state" : "+sup@96,load2,post1",
+        "unsafe" : {
+          "beam1" : "post3",
+          "load1" : "beam1",
+          "post3" : "beam1"
+        },
+        "win" : [
+          "post2"
+        ]
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "load1"
+        ],
+        "severity" : {
+          "load1" : 0.04,
+          "post1" : 0.664,
+          "post2" : 0.664,
+          "post3" : 6.917
+        },
+        "state" : "+sup@64,beam1,load2",
+        "unsafe" : {
+          "post3" : "load1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "post3",
+          "beam1"
+        ],
+        "severity" : {
+          "beam1" : 0.033,
+          "post1" : 2.133,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "+sup@64,load1,load2",
+        "unsafe" : {
+          "post1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post3",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 6.162,
+          "load1" : 0.033,
+          "post2" : 0.032,
+          "post3" : 0.033
+        },
+        "state" : "+sup@-40,load2,post1",
+        "unsafe" : {
+          "beam1" : "post3"
+        },
+        "win" : [
+          "post2"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 4,
+    "requiredCount" : 2,
+    "starThresholds" : [
+      3,
+      4,
+      4
+    ],
+    "targetPieceIds" : [
+      "post1",
+      "post2"
+    ],
+    "type" : "placeSupportThenRemove"
+  },
+  "gravity" : -9.8,
+  "id" : "c-051",
+  "index" : 51,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "First Prop",
+    "tr" : "İlk Payanda"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : false,
+      "id" : "post1",
+      "material" : "wood",
+      "position" : {
+        "x" : -120,
+        "y" : -138.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 103,
+        "type" : "rect",
+        "w" : 24
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post2",
+      "material" : "wood",
+      "position" : {
+        "x" : 120,
+        "y" : -138.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 103,
+        "type" : "rect",
+        "w" : 24
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post3",
+      "material" : "wood",
+      "position" : {
+        "x" : 40,
+        "y" : -138.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 103,
+        "type" : "rect",
+        "w" : 20
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam1",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : -78
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 18,
+        "type" : "rect",
+        "w" : 284
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "load1",
+      "material" : "stone",
+      "position" : {
+        "x" : 56,
+        "y" : -42.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 53,
+        "type" : "rect",
+        "w" : 47
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "load2",
+      "material" : "stone",
+      "position" : {
+        "x" : -39,
+        "y" : -56
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 26,
+        "type" : "rect",
+        "w" : 26
+      }
+    }
+  ],
+  "region" : "counterweight",
+  "schema" : 1,
+  "seed" : 151004,
+  "supportsAllowed" : 1
+}

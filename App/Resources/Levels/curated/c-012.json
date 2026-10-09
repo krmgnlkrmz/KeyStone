@@ -1,0 +1,247 @@
+{
+  "annotation" : {
+    "difficulty" : 1.77,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 2.07,
+    "solutionPath" : [
+      "shim1",
+      "block3"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "shim1",
+          "block3",
+          "shim2"
+        ],
+        "severity" : {
+          "block3" : 0.016,
+          "block4" : 7.964,
+          "shim1" : 0.483,
+          "shim2" : 0.451
+        },
+        "state" : "",
+        "unsafe" : {
+          "block4" : "shim2"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block3" : 0.482,
+          "block4" : 8.104,
+          "shim2" : 0.892
+        },
+        "state" : "shim1",
+        "unsafe" : {
+          "block4" : "shim2"
+        },
+        "win" : [
+          "block3",
+          "shim2"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block4" : 1.575,
+          "shim1" : 6.919,
+          "shim2" : 0.459
+        },
+        "state" : "block3",
+        "unsafe" : {
+          "block4" : "shim2",
+          "shim1" : "shim2"
+        },
+        "win" : [
+          "shim2"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block3" : 0.404,
+          "block4" : 4.318,
+          "shim1" : 0.868
+        },
+        "state" : "shim2",
+        "unsafe" : {
+          "block4" : "block3"
+        },
+        "win" : [
+          "shim1",
+          "block3"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 3,
+    "requiredCount" : 2,
+    "starThresholds" : [
+      2,
+      3,
+      3
+    ],
+    "targetPieceIds" : [
+      "shim1",
+      "block3",
+      "block4",
+      "shim2"
+    ],
+    "type" : "removeTargetsKeepStanding"
+  },
+  "gravity" : -9.8,
+  "id" : "c-012",
+  "index" : 12,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Quiet Pyramid",
+    "tr" : "Sessiz Piramit"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : true,
+      "id" : "block1",
+      "material" : "stone",
+      "position" : {
+        "x" : -59,
+        "y" : -169.5
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 41,
+        "type" : "rect",
+        "w" : 90
+      }
+    },
+    {
+      "fixed" : true,
+      "id" : "block2",
+      "material" : "stone",
+      "position" : {
+        "x" : 59,
+        "y" : -169.5
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 41,
+        "type" : "rect",
+        "w" : 90
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "shim1",
+      "material" : "wood",
+      "position" : {
+        "x" : 10,
+        "y" : -143
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 12,
+        "type" : "rect",
+        "w" : 179
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block3",
+      "material" : "stone",
+      "position" : {
+        "x" : -39,
+        "y" : -117
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 40,
+        "type" : "rect",
+        "w" : 60
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block4",
+      "material" : "stone",
+      "position" : {
+        "x" : 39,
+        "y" : -117
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 40,
+        "type" : "rect",
+        "w" : 60
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "shim2",
+      "material" : "wood",
+      "position" : {
+        "x" : 6,
+        "y" : -91
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 12,
+        "type" : "rect",
+        "w" : 123.28
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "k",
+      "material" : "brass",
+      "position" : {
+        "x" : 11,
+        "y" : -66
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "points" : [
+          [
+            -19.2,
+            -19
+          ],
+          [
+            19.2,
+            -19
+          ],
+          [
+            32,
+            19
+          ],
+          [
+            -32,
+            19
+          ]
+        ],
+        "type" : "polygon"
+      }
+    }
+  ],
+  "region" : "stone_arch",
+  "schema" : 1,
+  "seed" : 112012,
+  "supportsAllowed" : 0
+}

@@ -1,0 +1,313 @@
+{
+  "annotation" : {
+    "difficulty" : 3.56,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 9.03,
+    "solutionPath" : [
+      "block2",
+      "block7",
+      "block5"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "block2",
+          "block7"
+        ],
+        "severity" : {
+          "block2" : 0.048,
+          "block4" : 7.385,
+          "block5" : 4.423,
+          "block6" : 7.336,
+          "block7" : 0.036
+        },
+        "state" : "",
+        "unsafe" : {
+          "block4" : "shim2",
+          "block5" : "shim3",
+          "block6" : "shim3"
+        }
+      },
+      {
+        "safe" : [
+          "block7"
+        ],
+        "severity" : {
+          "block4" : 7.474,
+          "block5" : 4.413,
+          "block6" : 7.859,
+          "block7" : 0.027
+        },
+        "state" : "block2",
+        "unsafe" : {
+          "block4" : "shim2",
+          "block5" : "shim3",
+          "block6" : "shim3"
+        }
+      },
+      {
+        "safe" : [
+          "block2"
+        ],
+        "severity" : {
+          "block2" : 0.05,
+          "block4" : 3.019,
+          "block5" : 6.992,
+          "block6" : 1.484
+        },
+        "state" : "block7",
+        "unsafe" : {
+          "block4" : "shim2",
+          "block5" : "shim3",
+          "block6" : "shim3"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "block4" : 3.345,
+          "block5" : 0.031,
+          "block6" : 1.477
+        },
+        "state" : "block2,block7",
+        "unsafe" : {
+          "block4" : "shim2",
+          "block6" : "shim3"
+        },
+        "win" : [
+          "block5"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-09"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 5,
+    "requiredCount" : 3,
+    "starThresholds" : [
+      3,
+      4,
+      5
+    ],
+    "targetPieceIds" : [
+      "block2",
+      "block4",
+      "block5",
+      "block6",
+      "block7"
+    ],
+    "type" : "removeTargetsKeepStanding"
+  },
+  "gravity" : -9.8,
+  "id" : "c-073",
+  "index" : 73,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Crown",
+    "tr" : "Tepe"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : true,
+      "id" : "block1",
+      "material" : "stone",
+      "position" : {
+        "x" : -88,
+        "y" : -173.5
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 33,
+        "type" : "rect",
+        "w" : 65
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block2",
+      "material" : "stone",
+      "position" : {
+        "x" : 0,
+        "y" : -173.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 33,
+        "type" : "rect",
+        "w" : 65
+      }
+    },
+    {
+      "fixed" : true,
+      "id" : "block3",
+      "material" : "stone",
+      "position" : {
+        "x" : 88,
+        "y" : -173.5
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 33,
+        "type" : "rect",
+        "w" : 65
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "shim1",
+      "material" : "wood",
+      "position" : {
+        "x" : -6,
+        "y" : -151
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 12,
+        "type" : "rect",
+        "w" : 231
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block4",
+      "material" : "stone",
+      "position" : {
+        "x" : -44,
+        "y" : -123.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 43,
+        "type" : "rect",
+        "w" : 71
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block5",
+      "material" : "stone",
+      "position" : {
+        "x" : 44,
+        "y" : -123.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 43,
+        "type" : "rect",
+        "w" : 71
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "shim2",
+      "material" : "wood",
+      "position" : {
+        "x" : 10,
+        "y" : -96
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 12,
+        "type" : "rect",
+        "w" : 138.72
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block6",
+      "material" : "stone",
+      "position" : {
+        "x" : -31,
+        "y" : -72
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 36,
+        "type" : "rect",
+        "w" : 43
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block7",
+      "material" : "stone",
+      "position" : {
+        "x" : 31,
+        "y" : -72
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 36,
+        "type" : "rect",
+        "w" : 43
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "shim3",
+      "material" : "wood",
+      "position" : {
+        "x" : -3,
+        "y" : -48
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 12,
+        "type" : "rect",
+        "w" : 83.4152
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "k",
+      "material" : "brass",
+      "position" : {
+        "x" : -11,
+        "y" : -20.5
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "points" : [
+          [
+            -24,
+            -21.5
+          ],
+          [
+            24,
+            -21.5
+          ],
+          [
+            40,
+            21.5
+          ],
+          [
+            -40,
+            21.5
+          ]
+        ],
+        "type" : "polygon"
+      }
+    }
+  ],
+  "region" : "keystone",
+  "schema" : 1,
+  "seed" : 173544,
+  "supportsAllowed" : 0
+}

@@ -1,0 +1,260 @@
+{
+  "annotation" : {
+    "difficulty" : 3.56,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 1.73,
+    "solutionPath" : [
+      "block1",
+      "block2",
+      "beam1"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "block1",
+          "block2"
+        ],
+        "severity" : {
+          "beam1" : 6.152,
+          "block1" : 0.02,
+          "block2" : 0.019,
+          "pillar1" : 8.309,
+          "pillar2" : 8.214
+        },
+        "state" : "",
+        "unsafe" : {
+          "beam1" : "block2",
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "block2"
+        ],
+        "severity" : {
+          "beam1" : 6.141,
+          "block2" : 0.015,
+          "pillar1" : 6.774,
+          "pillar2" : 6.842
+        },
+        "state" : "block1",
+        "unsafe" : {
+          "beam1" : "block2",
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "block1"
+        ],
+        "severity" : {
+          "beam1" : 6.14,
+          "block1" : 0.015,
+          "pillar1" : 5.551,
+          "pillar2" : 6.901
+        },
+        "state" : "block2",
+        "unsafe" : {
+          "beam1" : "block1",
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 0.007,
+          "pillar1" : 1.666,
+          "pillar2" : 1.666
+        },
+        "state" : "block1,block2",
+        "unsafe" : {
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        },
+        "win" : [
+          "beam1"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 5,
+    "starThresholds" : [
+      3,
+      4,
+      5
+    ],
+    "targetPieceIds" : [
+      "k"
+    ],
+    "type" : "dropOnlyTarget"
+  },
+  "gravity" : -9.8,
+  "id" : "c-074",
+  "index" : 74,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Haunch",
+    "tr" : "Kemer Omzu"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : true,
+      "id" : "base1",
+      "material" : "stone",
+      "position" : {
+        "x" : -105,
+        "y" : -167
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 46,
+        "type" : "rect",
+        "w" : 58
+      }
+    },
+    {
+      "fixed" : true,
+      "id" : "base2",
+      "material" : "stone",
+      "position" : {
+        "x" : 105,
+        "y" : -167
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 46,
+        "type" : "rect",
+        "w" : 58
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "pillar1",
+      "material" : "stone",
+      "position" : {
+        "x" : -105,
+        "y" : -95.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 97,
+        "type" : "rect",
+        "w" : 24
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "pillar2",
+      "material" : "stone",
+      "position" : {
+        "x" : 105,
+        "y" : -95.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 97,
+        "type" : "rect",
+        "w" : 24
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam1",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : -37.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 19,
+        "type" : "rect",
+        "w" : 263
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block1",
+      "material" : "stone",
+      "position" : {
+        "x" : -25,
+        "y" : -9.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 37,
+        "type" : "rect",
+        "w" : 26
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block2",
+      "material" : "stone",
+      "position" : {
+        "x" : 25,
+        "y" : -9.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 37,
+        "type" : "rect",
+        "w" : 26
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "k",
+      "material" : "brass",
+      "position" : {
+        "x" : 0,
+        "y" : 28.5
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "points" : [
+          [
+            -26.4,
+            -19.5
+          ],
+          [
+            26.4,
+            -19.5
+          ],
+          [
+            44,
+            19.5
+          ],
+          [
+            -44,
+            19.5
+          ]
+        ],
+        "type" : "polygon"
+      }
+    }
+  ],
+  "region" : "keystone",
+  "schema" : 1,
+  "seed" : 174001,
+  "supportsAllowed" : 0
+}

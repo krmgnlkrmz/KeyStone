@@ -1,0 +1,423 @@
+{
+  "annotation" : {
+    "difficulty" : 4.54,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 1.89,
+    "solutionPath" : [
+      "column1",
+      "block1",
+      "block2",
+      "beam1"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "pillar1",
+          "column1",
+          "block1",
+          "block2"
+        ],
+        "severity" : {
+          "beam1" : 4.765,
+          "block1" : 0.108,
+          "block2" : 0.196,
+          "column1" : 0.015,
+          "pillar1" : 0.032,
+          "pillar2" : 7.861
+        },
+        "state" : "",
+        "unsafe" : {
+          "beam1" : "column1",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "block2"
+        ],
+        "severity" : {
+          "beam1" : 4.767,
+          "block1" : 4.247,
+          "block2" : 0.355,
+          "column1" : 7.07,
+          "pillar2" : 7.834
+        },
+        "state" : "pillar1",
+        "unsafe" : {
+          "beam1" : "column1",
+          "block1" : "beam1",
+          "column1" : "beam1",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "block1",
+          "block2"
+        ],
+        "severity" : {
+          "beam1" : 4.786,
+          "block1" : 0.089,
+          "block2" : 0.109,
+          "pillar1" : 6.6,
+          "pillar2" : 6.627
+        },
+        "state" : "column1",
+        "unsafe" : {
+          "beam1" : "block1",
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "pillar2",
+          "column1",
+          "block2"
+        ],
+        "severity" : {
+          "beam1" : 8.155,
+          "block2" : 0.195,
+          "column1" : 0.142,
+          "pillar1" : 4.078,
+          "pillar2" : 0.227
+        },
+        "state" : "block1",
+        "unsafe" : {
+          "beam1" : "pillar1",
+          "pillar1" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "pillar1",
+          "column1",
+          "block1"
+        ],
+        "severity" : {
+          "beam1" : 4.752,
+          "block1" : 0.21,
+          "column1" : 0.197,
+          "pillar1" : 0.212,
+          "pillar2" : 7.394
+        },
+        "state" : "block2",
+        "unsafe" : {
+          "beam1" : "pillar2",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "block1"
+        ],
+        "severity" : {
+          "beam1" : 3.222,
+          "block1" : 0.298,
+          "column1" : 6.467,
+          "pillar2" : 7.145
+        },
+        "state" : "block2,pillar1",
+        "unsafe" : {
+          "beam1" : "block1",
+          "column1" : "beam1",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "block2"
+        ],
+        "severity" : {
+          "beam1" : 8.409,
+          "block2" : 0.093,
+          "pillar1" : 5.642,
+          "pillar2" : 6.666
+        },
+        "state" : "block1,column1",
+        "unsafe" : {
+          "beam1" : "pillar1",
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "block1"
+        ],
+        "severity" : {
+          "beam1" : 4.838,
+          "block1" : 0.122,
+          "pillar1" : 6.598,
+          "pillar2" : 1.386
+        },
+        "state" : "block2,column1",
+        "unsafe" : {
+          "beam1" : "pillar2",
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 10.47,
+          "block2" : 2.104,
+          "column1" : 9.976,
+          "pillar1" : 9.866
+        },
+        "state" : "block1,pillar2",
+        "unsafe" : {
+          "beam1" : "block2",
+          "block2" : "pillar1",
+          "column1" : "block2",
+          "pillar1" : "block2"
+        }
+      },
+      {
+        "safe" : [
+          "pillar1",
+          "column1"
+        ],
+        "severity" : {
+          "beam1" : 7.228,
+          "column1" : 0.007,
+          "pillar1" : 0.047,
+          "pillar2" : 2.109
+        },
+        "state" : "block1,block2",
+        "unsafe" : {
+          "beam1" : "pillar2",
+          "pillar2" : "pillar1"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 3.087,
+          "column1" : 1.28,
+          "pillar2" : 2.165
+        },
+        "state" : "block1,block2,pillar1",
+        "unsafe" : {
+          "beam1" : "column1",
+          "column1" : "beam1",
+          "pillar2" : "column1"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 0.01,
+          "pillar1" : 1.29,
+          "pillar2" : 1.29
+        },
+        "state" : "block1,block2,column1",
+        "unsafe" : {
+          "pillar1" : "beam1",
+          "pillar2" : "beam1"
+        },
+        "win" : [
+          "beam1"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 6,
+    "starThresholds" : [
+      4,
+      5,
+      6
+    ],
+    "targetPieceIds" : [
+      "k"
+    ],
+    "type" : "dropOnlyTarget"
+  },
+  "gravity" : -9.8,
+  "id" : "c-076",
+  "index" : 76,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Thrust",
+    "tr" : "İtki"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : true,
+      "id" : "base1",
+      "material" : "stone",
+      "position" : {
+        "x" : -80,
+        "y" : -167.5
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 45,
+        "type" : "rect",
+        "w" : 66
+      }
+    },
+    {
+      "fixed" : true,
+      "id" : "base2",
+      "material" : "stone",
+      "position" : {
+        "x" : 80,
+        "y" : -167.5
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 45,
+        "type" : "rect",
+        "w" : 66
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "pillar1",
+      "material" : "wood",
+      "position" : {
+        "x" : -80,
+        "y" : -114
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 62,
+        "type" : "rect",
+        "w" : 22
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "pillar2",
+      "material" : "wood",
+      "position" : {
+        "x" : 80,
+        "y" : -114
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 62,
+        "type" : "rect",
+        "w" : 22
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "column1",
+      "material" : "steel",
+      "position" : {
+        "x" : -9,
+        "y" : -136.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 107,
+        "type" : "rect",
+        "w" : 14
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam1",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : -73.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 19,
+        "type" : "rect",
+        "w" : 205
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block1",
+      "material" : "stone",
+      "position" : {
+        "x" : -31,
+        "y" : -45.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 37,
+        "type" : "rect",
+        "w" : 25
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "block2",
+      "material" : "stone",
+      "position" : {
+        "x" : 31,
+        "y" : -45.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 37,
+        "type" : "rect",
+        "w" : 25
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "k",
+      "material" : "brass",
+      "position" : {
+        "x" : 0,
+        "y" : -5.5
+      },
+      "removable" : false,
+      "rotation" : 0,
+      "shape" : {
+        "points" : [
+          [
+            -29.7,
+            -21.5
+          ],
+          [
+            29.7,
+            -21.5
+          ],
+          [
+            49.5,
+            21.5
+          ],
+          [
+            -49.5,
+            21.5
+          ]
+        ],
+        "type" : "polygon"
+      }
+    }
+  ],
+  "region" : "keystone",
+  "schema" : 1,
+  "seed" : 176009,
+  "supportsAllowed" : 0
+}

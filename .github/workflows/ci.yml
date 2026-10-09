@@ -1,0 +1,322 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      forge:
+        description: "LevelForge run: none | smoke | validate | curated | curate | pool | probe | screens | soak"
+        required: false
+        default: "none"
+      forge_count:
+        description: "Pool candidates to generate (forge=pool)"
+        required: false
+        default: "1200"
+      forge_seed_base:
+        description: "First generator seed (forge=pool)"
+        required: false
+        default: "9000"
+      forge_shard:
+        description: "Seed shard i/n (forge=pool)"
+        required: false
+        default: "0/1"
+      commit:
+        description: "Commit forge output back to this branch (true/false)"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+
+# Forge runs (each dispatch, or a "[forge:…]" commit) get their own group so later pushes never cancel them.
+concurrency:
+  group: ci-${{ github.ref }}-${{ github.event_name == 'workflow_dispatch' && format('dispatch-{0}', github.run_id) || (contains(github.event.head_commit.message, '[forge:') && github.sha || 'build') }}
+  cancel-in-progress: true
+
+jobs:
+  core-linux:
+    name: BalanceCore (Linux)
+    runs-on: ubuntu-latest
+    container: swift:6.2-noble
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift test --package-path Packages/BalanceCore
+      - name: String Catalog coverage
+        run: |
+          apt-get update -qq && apt-get install -y -qq python3 > /dev/null
+          python3 scripts/check_strings.py
+
+  # Prints the resolved Google Mobile Ads / UMP surface and Google's SKAdNetwork list.
+  # Kept as its own job so the whole report fits in a short log.
+  sdk-report:
+    name: Ads SDK report
+    runs-on: macos-15
+    timeout-minutes: 20
+    if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[sdk-report]') }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: brew install xcodegen
+      - run: |
+          XC=$(ls -d /Applications/Xcode_*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$XC"
+          cp Config/Release.example.xcconfig Config/Release.xcconfig
+          xcodegen generate
+          xcodebuild -resolvePackageDependencies -project DengeNoktasi.xcodeproj -scheme DengeNoktasi -clonedSourcePackagesDirPath SourcePackages > /dev/null
+          cat DengeNoktasi.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+          ./scripts/ci-sdk-report.sh SourcePackages
+
+  ios:
+    name: iOS build + tests
+    runs-on: macos-15
+    timeout-minutes: ${{ (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[forge:')) && 355 || 90 }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select newest Xcode
+        run: |
+          ls -d /Applications/Xcode*.app
+          XC=$(ls -d /Applications/Xcode_*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$XC"
+          xcodebuild -version
+          xcrun swift --version
+
+      - name: Tools
+        run: brew install xcodegen xcbeautify || brew install xcodegen
+
+      - name: BalanceCore tests (macOS)
+        run: swift test --package-path Packages/BalanceCore
+
+      - name: BalancePhysics tests (macOS SpriteKit)
+        run: |
+          rc=0; swift test --package-path Packages/BalancePhysics > physics.log 2>&1 || rc=$?
+          grep -E "error:|✘|✔|Test run with|skipped" physics.log | head -150 || true
+          exit $rc
+
+      - name: Generate project
+        run: |
+          cp Config/Release.example.xcconfig Config/Release.xcconfig
+          xcodegen generate
+
+      - name: Resolve packages
+        run: |
+          xcodebuild -resolvePackageDependencies -project DengeNoktasi.xcodeproj -scheme DengeNoktasi -clonedSourcePackagesDirPath SourcePackages
+          cat DengeNoktasi.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved || true
+
+      - name: Resolve forge mode
+        id: forge
+        env:
+          MSG: ${{ github.event.head_commit.message }}
+        run: |
+          FORGE="${{ inputs.forge }}"; COMMIT="${{ inputs.commit }}"; COUNT="${{ inputs.forge_count }}"
+          SEED="${{ inputs.forge_seed_base }}"; SHARD="${{ inputs.forge_shard }}"
+          TAG=$(printf '%s' "$MSG" | grep -oE '\[forge:[^]]+\]' | head -1 | tr -d '[]' || true)
+          if [ -n "$TAG" ]; then
+            FORGE=$(echo "$TAG" | sed -E 's/^forge:([a-z]+).*/\1/')
+            echo "$TAG" | grep -q ' commit' && COMMIT=true
+            echo "$TAG" | grep -q ' prune' && PRUNE=1
+            COUNT=$(echo "$TAG" | grep -oE 'count=[0-9]+' | cut -d= -f2)
+            SEED=$(echo "$TAG" | grep -oE 'seed=[0-9]+' | cut -d= -f2)
+            SHARD=$(echo "$TAG" | grep -oE 'shard=[0-9]+/[0-9]+' | cut -d= -f2)
+            ARCH=$(echo "$TAG" | grep -oE 'archetypes=[a-z,]+' | cut -d= -f2)
+            SOAK_LEVELS=$(echo "$TAG" | grep -oE 'levels=[0-9]+' | cut -d= -f2)
+            SOAK_MINUTES=$(echo "$TAG" | grep -oE 'minutes=[0-9]+' | cut -d= -f2)
+          fi
+          echo "mode=${FORGE:-none}" >> "$GITHUB_OUTPUT"
+          echo "commit=${COMMIT:-false}" >> "$GITHUB_OUTPUT"
+          echo "count=${COUNT:-1200}" >> "$GITHUB_OUTPUT"
+          echo "seed=${SEED:-9000}" >> "$GITHUB_OUTPUT"
+          echo "shard=${SHARD:-0/1}" >> "$GITHUB_OUTPUT"
+          echo "archetypes=${ARCH:-}" >> "$GITHUB_OUTPUT"
+          echo "prune=${PRUNE:-0}" >> "$GITHUB_OUTPUT"
+          echo "soak_levels=${SOAK_LEVELS:-50}" >> "$GITHUB_OUTPUT"
+          echo "soak_minutes=${SOAK_MINUTES:-30}" >> "$GITHUB_OUTPUT"
+          echo "forge mode: ${FORGE:-none} commit=${COMMIT:-false} count=${COUNT:-1200} seed=${SEED:-9000} shard=${SHARD:-0/1}"
+
+      - name: Pick and boot simulator
+        id: sim
+        timeout-minutes: 15
+        run: |
+          UDID=$(./scripts/ci-pick-simulator.sh)
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+          xcrun simctl boot "$UDID" || true
+          xcrun simctl bootstatus "$UDID" -b
+
+      - name: Build for testing
+        id: build
+        timeout-minutes: 30
+        run: |
+          set -o pipefail
+          xcodebuild build-for-testing -project DengeNoktasi.xcodeproj -scheme DengeNoktasi \
+            -destination "id=${{ steps.sim.outputs.udid }}" -clonedSourcePackagesDirPath SourcePackages \
+            -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO | tee build.log | xcbeautify --renderer github-actions || \
+            (grep -E "error:|warning:" build.log | sort -u | head -200; exit 1)
+          # Zero warnings in our own sources (Swift 6 strict concurrency included) is a release criterion,
+          # so any is a failure. Anchored at the workspace: SourcePackages/ (the Google SDK) is not ours.
+          W=$(grep -E "^${GITHUB_WORKSPACE}/(App|Widget|Packages|Tests|Tools)/[^:]+:[0-9]+:[0-9]+: warning:" build.log | sort -u || true)
+          echo "Warnings in our sources: $(printf '%s' "$W" | grep -c . || true)"
+          if [ -n "$W" ]; then echo "$W" | head -100; exit 1; fi
+
+      - name: Unit tests (simulator)
+        timeout-minutes: 20
+        continue-on-error: ${{ steps.forge.outputs.mode != 'none' }}
+        run: |
+          set -o pipefail
+          xcodebuild test-without-building -project DengeNoktasi.xcodeproj -scheme DengeNoktasi \
+            -destination "id=${{ steps.sim.outputs.udid }}" -clonedSourcePackagesDirPath SourcePackages \
+            -derivedDataPath DerivedData -resultBundlePath AppTests.xcresult CODE_SIGNING_ALLOWED=NO | xcbeautify --renderer github-actions
+
+      - name: UI smoke (real app)
+        timeout-minutes: ${{ steps.forge.outputs.mode == 'soak' && 120 || 25 }}
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        env:
+          TEST_RUNNER_SCREENSHOT_DIR: ${{ github.workspace }}/docs/screenshots
+          # [forge:soak]: also play 50 curated levels in a row and tap randomly for 30 minutes.
+          TEST_RUNNER_SOAK: ${{ steps.forge.outputs.mode == 'soak' && '1' || '0' }}
+          TEST_RUNNER_SOAK_LEVELS: ${{ steps.forge.outputs.soak_levels }}
+          TEST_RUNNER_SOAK_MINUTES: ${{ steps.forge.outputs.soak_minutes }}
+        run: |
+          rc=0
+          xcodebuild test -project DengeNoktasi.xcodeproj -scheme UITests \
+            -destination "id=${{ steps.sim.outputs.udid }}" -clonedSourcePackagesDirPath SourcePackages \
+            -test-timeouts-enabled YES -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 4000 \
+            -skip-testing:DengeNoktasiUITests/AccessibilityAuditTests \
+            -derivedDataPath DerivedData -resultBundlePath UITests.xcresult CODE_SIGNING_ALLOWED=NO > ui.log 2>&1 || rc=$?
+          grep -E "error:|failed|passed|Executed|XCTAssert|\[soak\]" ui.log | tail -120 || true
+          grep -E "^\[launch\]" ui.log || true
+          ls -R docs/screenshots 2>/dev/null | head -30 || true
+          exit $rc
+
+      - name: Screenshots on more devices
+        if: ${{ !cancelled() && steps.forge.outputs.mode == 'screens' }}
+        timeout-minutes: 70
+        env:
+          TEST_RUNNER_SCREENSHOT_DIR: ${{ github.workspace }}/docs/screenshots
+        run: |
+          # Commits after every device, so a simulator that hangs later never loses earlier shots.
+          commit_shots() {
+            [ "${{ steps.forge.outputs.commit }}" = "true" ] || return 0
+            git config user.name "Screenshots (CI)"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add docs/screenshots
+            git diff --cached --quiet && return 0
+            git commit -m "Screenshots from the real UI ($1)"
+            for i in 1 2 3 4; do git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break; sleep $((i * 5)); done
+          }
+          commit_shots "iPhone 16"
+          # One simulator at a time: a second boot next to the primary one stalled on "Waiting on BackBoard".
+          # Each size class takes the first device name the runner has; boots are bounded (perl alarm).
+          xcrun simctl shutdown all || true
+          for GROUP in "iPhone 17 Pro Max|iPhone 16 Pro Max" "iPhone 16 Plus|iPhone 17 Plus|iPhone Air" "iPhone SE (3rd generation)|iPhone 16e"; do
+            IFS='|' read -r -a NAMES <<< "$GROUP"
+            UDID=$(./scripts/ci-pick-simulator.sh "${NAMES[@]}" 2> pick.err || true)
+            [ -z "$UDID" ] && { echo "none of: $GROUP"; continue; }
+            NAME=$(sed -e 's/^Using //' -e 's/ on .*//' pick.err)
+            echo "::group::$NAME"
+            xcrun simctl boot "$UDID" || true
+            if ! perl -e 'alarm shift; exec @ARGV' 420 xcrun simctl bootstatus "$UDID" -b > boot.log 2>&1; then
+              tail -5 boot.log; echo "$NAME did not boot in 7 min"; xcrun simctl shutdown "$UDID" || true; echo "::endgroup::"; continue
+            fi
+            perl -e 'alarm shift; exec @ARGV' 900 xcodebuild test -project DengeNoktasi.xcodeproj -scheme UITests -destination "id=$UDID" \
+              -clonedSourcePackagesDirPath SourcePackages -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO \
+              -test-timeouts-enabled YES -default-test-execution-time-allowance 240 -maximum-test-execution-time-allowance 420 \
+              -only-testing:DengeNoktasiUITests/SmokeUITests/testWalkThroughMainScreens \
+              -only-testing:DengeNoktasiUITests/SmokeUITests/testDailySheetOpens \
+              -only-testing:DengeNoktasiUITests/SmokeUITests/testDarkLargeTextScreens \
+              -only-testing:DengeNoktasiUITests/SmokeUITests/testTurkishScreens > ui-$UDID.log 2>&1 || echo "UI run on $NAME failed"
+            grep -E "failed|passed" ui-$UDID.log | tail -6 || true
+            xcrun simctl shutdown "$UDID" || true
+            echo "::endgroup::"
+            commit_shots "$NAME"
+          done
+
+      - name: LevelForge smoke
+        timeout-minutes: 30
+        if: ${{ steps.forge.outputs.mode == 'none' || steps.forge.outputs.mode == 'smoke' }}
+        run: |
+          rc=0
+          xcodebuild test -project DengeNoktasi.xcodeproj -scheme LevelForge \
+            -destination "id=${{ steps.sim.outputs.udid }}" -clonedSourcePackagesDirPath SourcePackages \
+            -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO \
+            -only-testing:LevelForgeTests/ForgeRunner/testCuratedSmoke > forge.log 2>&1 || rc=$?
+          grep -E "\[forge\]|error:|failed|passed|Executed" forge.log | head -300 || true
+          exit $rc
+
+      - name: Accessibility audit (real app)
+        timeout-minutes: 20
+        if: ${{ !cancelled() && steps.build.outcome == 'success' && steps.forge.outputs.mode == 'none' }}
+        env:
+          # Report-only until the screens are clean; then '1', and any issue not accepted fails the build.
+          TEST_RUNNER_AUDIT_STRICT: '0'
+        run: |
+          rc=0
+          xcodebuild test -project DengeNoktasi.xcodeproj -scheme UITests \
+            -destination "id=${{ steps.sim.outputs.udid }}" -clonedSourcePackagesDirPath SourcePackages \
+            -test-timeouts-enabled YES -default-test-execution-time-allowance 600 \
+            -only-testing:DengeNoktasiUITests/AccessibilityAuditTests \
+            -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO > audit.log 2>&1 || rc=$?
+          grep -E "^\[a11y\]" audit.log | head -300 || true
+          grep -E "error:|Executed" audit.log | tail -5 || true
+          grep -E "^\[launch\]" ui.log 2>/dev/null || true   # cold-start timing from the UI smoke step
+          exit $rc
+
+      - name: LevelForge (${{ steps.forge.outputs.mode }})
+        id: forgerun
+        if: ${{ !cancelled() && steps.build.outcome == 'success' && steps.forge.outputs.mode != 'none' && steps.forge.outputs.mode != 'smoke' && steps.forge.outputs.mode != 'screens' && steps.forge.outputs.mode != 'soak' }}
+        env:
+          TEST_RUNNER_FORGE_OUT: ${{ github.workspace }}/forge-out
+          TEST_RUNNER_FORGE_COUNT: ${{ steps.forge.outputs.count }}
+          TEST_RUNNER_FORGE_SEED_BASE: ${{ steps.forge.outputs.seed }}
+          TEST_RUNNER_FORGE_SHARD: ${{ steps.forge.outputs.shard }}
+          TEST_RUNNER_FORGE_ARCHETYPES: ${{ steps.forge.outputs.archetypes }}
+          TEST_RUNNER_FORGE_PRUNE: ${{ steps.forge.outputs.prune }}
+          TEST_RUNNER_FORGE_PLAN: ${{ github.workspace }}/Tools/LevelForge/curation-plan.json
+        timeout-minutes: 340
+        run: |
+          rc=0
+          mkdir -p forge-out
+          case "${{ steps.forge.outputs.mode }}" in
+            validate) T="-only-testing:LevelForgeTests/ForgeRunner/testValidateShippedLevels" ;;
+            curated) T="-only-testing:LevelForgeTests/ForgeRunner/testAnnotateCurated" ;;
+            curate) T="-only-testing:LevelForgeTests/ForgeRunner/testAnnotateCurated -only-testing:LevelForgeTests/ForgeRunner/testCuratePlan" ;;
+            pool) T="-only-testing:LevelForgeTests/ForgeRunner/testGeneratePool" ;;
+            probe) T="-only-testing:LevelForgeTests/ForgeRunner/testAnnotateCurated -only-testing:LevelForgeTests/ForgeRunner/testGeneratePool" ;;
+          esac
+          xcodebuild test -project DengeNoktasi.xcodeproj -scheme LevelForge \
+            -destination "id=${{ steps.sim.outputs.udid }}" -clonedSourcePackagesDirPath SourcePackages \
+            -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO $T > forge.log 2>&1 || rc=$?
+          grep -E "\[forge\]|error:|failed|passed|Executed" forge.log | tail -400 || true
+          ls -R forge-out | head -50
+          exit $rc
+
+      - name: Commit forge output
+        # Also after a failed or timed-out forge run: everything written to forge-out is already verified.
+        if: ${{ !cancelled() && (steps.forgerun.outcome == 'success' || steps.forgerun.outcome == 'failure') && steps.forge.outputs.commit == 'true' }}
+        run: |
+          set -e
+          if [ -d forge-out/curated ]; then cp forge-out/curated/*.json App/Resources/Levels/curated/ 2>/dev/null || true; fi
+          if [ -d forge-out/pool ]; then mkdir -p App/Resources/Levels/pool; cp forge-out/pool/*.json App/Resources/Levels/pool/ 2>/dev/null || true; fi
+          mkdir -p Tools/LevelForge/reports
+          cp forge-out/*.txt forge-out/*.tsv Tools/LevelForge/reports/ 2>/dev/null || true
+          git config user.name "LevelForge (CI)"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add App/Resources/Levels Tools/LevelForge/reports
+          if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
+          git commit -m "LevelForge: ${{ steps.forge.outputs.mode }} output (shard ${{ steps.forge.outputs.shard }}, seeds from ${{ steps.forge.outputs.seed }})"
+          for i in 1 2 3 4; do git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break; sleep $((i * 5)); done
+
+      - name: Upload forge output
+        if: ${{ always() && steps.forge.outputs.mode != 'none' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: forge-out
+          path: forge-out
+          if-no-files-found: ignore
+
+      - name: Upload test results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xcresult
+          path: "*.xcresult"
+          if-no-files-found: ignore

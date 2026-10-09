@@ -1,0 +1,78 @@
+# App Store submission checklist
+
+Status legend: ✅ done in the repo · ⏳ needs the owner · 🔁 re-check right before release
+
+## Open questions for the owner (§14)
+
+| # | Question | Where it goes | Status |
+|---|---|---|---|
+| 1 | Bundle ID prefix and Team ID | `Config/Shared.xcconfig` | ✅ taken from the existing Xcode project: `com.Kerem.KeyStone`, team `8VQL32C8BD` (confirm) |
+| 2 | App name + subtitle (Keystone / Denge Noktası / Hold Up! / Load Bearing) | `APP_DISPLAY_NAME`, `InfoPlist.xcstrings`, App Store Connect | ⏳ build uses **Keystone** (EN) / **Denge Noktası** (TR) from the design |
+| 3 | **Privacy policy URL** (the portal's `/privacy` page) | `PRIVACY_URL` in `Config/Shared.xcconfig` | ⏳ `PLACEHOLDER_PRIVACY_HOST`; the Settings row shows a notice until set |
+| 4 | AdMob app ID + banner / interstitial / rewarded unit IDs | `Config/Release.xcconfig` (git-ignored) | ⏳ Google test IDs until then |
+| 5 | Remove Ads price tier | App Store Connect (price shown from StoreKit) | ⏳ |
+| 6 | Support e-mail | `SUPPORT_EMAIL` in `Config/Shared.xcconfig` | ⏳ row hidden until set |
+| 7 | Game Center achievements wanted? | App Store Connect (IDs: `<bundle id>.ach.<name>`, see `AchievementsService`) | ⏳ code ships them; remove the entitlement if not wanted |
+
+App Group: `group.com.Kerem.dengenoktasi` (`APP_GROUP_ID`) — register it in the developer portal for the
+app and the widget. In-app purchase product: `com.Kerem.KeyStone.removeads` (non-consumable).
+
+## Build & content gates
+
+- [x] Content: 80 curated + 1,388 pool levels, each with a verified annotation (solver, five frame
+      profiles × 16 allocation shifts for curated and × 8 for new pool levels, margin ≥ 1.4 at
+      generation, fingerprint `spk-1-60hz-f029`).
+- [x] `[forge:validate]` (the release gate) passed in a fresh process with no pruning (CI run 55,
+      `f14b733`): all 1,468 shipped levels under five frame profiles × eight allocation shifts, decisions
+      as verified and margin ≥ 1.25. Earlier runs found levels whose outcome depended on SpriteKit's
+      internal body order: pyramids won by dropping the upper tiers (the generator no longer makes such
+      levels; 6 curated slots re-curated, 73 pool pyramids replaced) and a few pool levels pruned.
+      Expect a later fresh-process run to flag a pool level now and then; prune it
+      (`[forge:validate commit prune]`), and treat any curated failure as a blocker.
+      🔁 Re-run after any physics or content change and before every release.
+- [x] Simulator unit tests green, including "every curated level solvable without rewarded ads" and the
+      cold-start catalog bound (latest: CI run 56 on `ce01dcd`).
+- [x] UI smoke in the real app green: walkthrough (win, collapse replay, pause, settings), daily sheet,
+      random taps, dark mode at Dynamic Type accessibility1, Turkish — on iPhone 16, and for screenshots
+      on iPhone 17 Pro Max (6.9"), iPhone 16 Plus and iPhone SE (3rd gen).
+- [x] `[forge:soak]` in the real app (CI run 54, `b7caf05`): curated levels 1–50 won in a row from their
+      verified solutions (731 s, struts placed at exactly the verified spot, ropes cut through their
+      accessibility elements), then 3,022 random taps in 30 min without a crash. Earlier runs found
+      two real bugs: neighbouring strut spots overlapped (a tap could place the wrong strut), and ropes
+      had no VoiceOver element (rope levels were unplayable without sight). Both fixed.
+- [x] Swift 6 strict concurrency: no warnings in our sources (CI prints them after the build; empty).
+- [ ] Release build with real `Config/Release.xcconfig` (needs the owner's AdMob IDs).
+
+## App Store Connect
+
+- [ ] Category **Games → Puzzle**; no secondary "Family"; **not** the Kids category.
+- [ ] Age rating questionnaire: no violence, gambling or medical content (4+).
+- [ ] Privacy labels: Identifiers (Device ID), Usage Data (Advertising Data, Product Interaction),
+      Diagnostics (Crash, Performance) → "Used to Track You" for the advertising ones; Purchase History →
+      App Functionality, not tracking. Game progress stays on device and is not "collected".
+      🔁 Compare with Google's current AdMob data-disclosure guidance before submitting.
+- [ ] `PrivacyInfo.xcprivacy` (app) present; SDK manifests/signatures OK (no Xcode privacy-report warning).
+      `NSPrivacyTrackingDomains` is empty in the app's manifest because the app itself contacts no
+      tracking domain; the Google SDK declares its own. 🔁 Re-read the SDK manifest (CI "Ads SDK report").
+- [ ] `GADApplicationIdentifier` real; `SKAdNetworkItems` refreshed (`scripts/update-skadnetworks.sh`).
+- [ ] `NSUserTrackingUsageDescription` honest (EN/TR in `InfoPlist.xcstrings`); ATT appears after UMP.
+- [ ] Privacy policy URL identical in Settings and App Store Connect, and live.
+- [ ] Support URL / e-mail ready.
+- [ ] IAP "Remove Ads" created, priced, review screenshot + description added.
+- [ ] Icon: 1024 px default + iOS 18 dark + tinted (generated by `scripts/gen_assets.py` from the design).
+- [ ] Screenshots 6.9" (and optionally 6.5"), **taken from the real app** (EN + TR). `[forge:screens commit]`
+      writes them to `docs/screenshots/<device>/` from the UI tests: iPhone 17 Pro Max (6.9") and
+      iPhone 16 sets are in the repo, plus whichever smaller devices the runner offers. Pick and frame
+      the final set by hand.
+- [ ] Description / keywords: "balance puzzle, physics puzzle, no timer, offline puzzle, logic, brain teaser,
+      structure". Say **"every level verified solvable"**; never claim levels are generated endlessly.
+- [ ] `ITSAppUsesNonExemptEncryption = false` (already in Info.plist).
+- [ ] TestFlight on two real devices (one older, one 120 Hz): play all curated levels, no physics drift.
+- [ ] Review note: "The game is fully offline and needs no account. Ads are AdMob; no ads are shown on
+      the game screen. Rewarded ads are optional; the whole game can be finished without them."
+
+## Before every release
+
+- [ ] Bump `MARKETING_VERSION` / `CURRENT_PROJECT_VERSION` in `project.yml`.
+- [ ] Re-run the SDK report; bump `exactVersion` deliberately (never floating).
+- [ ] If `PhysicsConstants` changed: `make forge-curated` + `make forge-pool`, commit, `make forge-validate`.

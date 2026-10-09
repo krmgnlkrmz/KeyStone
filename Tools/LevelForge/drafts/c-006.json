@@ -1,0 +1,176 @@
+{
+  "floorY": -190.0,
+  "goal": {
+    "moveBudget": 6,
+    "starThresholds": [
+      5,
+      6,
+      6
+    ],
+    "targetPieceIds": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "type": "placeSupportThenRemove"
+  },
+  "gravity": -9.8,
+  "id": "c-006",
+  "index": 6,
+  "joints": [],
+  "name": {
+    "en": "Counterweight",
+    "tr": "Karşı Ağırlık"
+  },
+  "pack": "curated",
+  "pieces": [
+    {
+      "fixed": false,
+      "id": "sc",
+      "material": "steel",
+      "position": {
+        "x": 0.0,
+        "y": -130.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 120.0,
+        "type": "rect",
+        "w": 20.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "bm",
+      "material": "wood",
+      "position": {
+        "x": 0.0,
+        "y": -62.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 16.0,
+        "type": "rect",
+        "w": 260.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "a",
+      "material": "stone",
+      "position": {
+        "x": -105.0,
+        "y": -39.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 30.0,
+        "type": "rect",
+        "w": 30.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "b",
+      "material": "stone",
+      "position": {
+        "x": -65.0,
+        "y": -39.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 30.0,
+        "type": "rect",
+        "w": 30.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "c",
+      "material": "stone",
+      "position": {
+        "x": 65.0,
+        "y": -39.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 30.0,
+        "type": "rect",
+        "w": 30.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "d",
+      "material": "stone",
+      "position": {
+        "x": 105.0,
+        "y": -39.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 30.0,
+        "type": "rect",
+        "w": 30.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "pd",
+      "material": "wood",
+      "position": {
+        "x": 0.0,
+        "y": -39.0
+      },
+      "removable": true,
+      "rotation": 0,
+      "shape": {
+        "h": 30.0,
+        "type": "rect",
+        "w": 30.0
+      }
+    },
+    {
+      "fixed": false,
+      "id": "k",
+      "material": "brass",
+      "position": {
+        "x": 0.0,
+        "y": -4.0
+      },
+      "removable": false,
+      "rotation": 0,
+      "shape": {
+        "points": [
+          [
+            -18.0,
+            -20.0
+          ],
+          [
+            18.0,
+            -20.0
+          ],
+          [
+            30.0,
+            20.0
+          ],
+          [
+            -30.0,
+            20.0
+          ]
+        ],
+        "type": "polygon"
+      }
+    }
+  ],
+  "region": "wood_scaffold",
+  "schema": 1,
+  "supportsAllowed": 1
+}

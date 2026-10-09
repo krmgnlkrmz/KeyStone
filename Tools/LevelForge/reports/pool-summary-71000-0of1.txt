@@ -1,0 +1,8 @@
+candidates: 500 (shard 0/1), accepted: 19
+rejections: inconsistent=5, narrowMargin=9, tooShort=3, unsolvable=464
+samples: p-pyramid-71067: 60hz j71 move 2 block4: collapsed ≠ continuePlaying | p-pyramid-71117: 120hz j71 move 2 block2: collapsed ≠ won | p-pyramid-71232: 120hz j23 move 2 block3: collapsed ≠ continuePlaying | p-pyramid-71024: margin 1.20 < 1.4 | p-pyramid-71035: margin 1.18 < 1.4 | p-pyramid-71059: margin 1.06 < 1.4 | p-pyramid-71342: solution has 1 moves | p-pyramid-71419: solution has 1 moves | p-pyramid-71483: solution has 1 moves | p-pyramid-71000: no solution within 6 moves | p-pyramid-71001: no solution within 4 moves | p-pyramid-71002: no solution within 2 moves
+archetypes: pyramid 19/500
+mean margin: 13.04
+solution lengths: [(key: 2, value: 5), (key: 3, value: 14)]
+seconds: 98, frames: 1481009, evaluations: 11008
+fingerprint: spk-1-60hz-f029

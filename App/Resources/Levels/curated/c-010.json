@@ -1,0 +1,359 @@
+{
+  "annotation" : {
+    "difficulty" : 2.18,
+    "engineFingerprint" : "spk-1-60hz-f029",
+    "marginRatio" : 30.53,
+    "solutionPath" : [
+      "load1",
+      "load2"
+    ],
+    "stateMoves" : [
+      {
+        "safe" : [
+          "post1",
+          "post2",
+          "post3",
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 6.274,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 0.032,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "",
+        "unsafe" : {
+          "beam1" : "post3"
+        }
+      },
+      {
+        "safe" : [
+          "post3",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 6.21,
+          "load1" : 2.994,
+          "load2" : 0.033,
+          "post2" : 2.321,
+          "post3" : 0.035
+        },
+        "state" : "post1",
+        "unsafe" : {
+          "beam1" : "post3",
+          "load1" : "load2",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "load1",
+          "load2"
+        ],
+        "severity" : {
+          "beam1" : 6.295,
+          "load1" : 0.033,
+          "load2" : 0.033,
+          "post1" : 2.322,
+          "post3" : 3.281
+        },
+        "state" : "post2",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post1" : "beam1",
+          "post3" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post1",
+          "load1"
+        ],
+        "severity" : {
+          "beam1" : 6.118,
+          "load1" : 0.033,
+          "load2" : 5.395,
+          "post1" : 0.033,
+          "post2" : 3.355
+        },
+        "state" : "post3",
+        "unsafe" : {
+          "beam1" : "post1",
+          "load2" : "load1",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+          "post2",
+          "post3"
+        ],
+        "severity" : {
+          "beam1" : 6.29,
+          "load2" : 0.033,
+          "post1" : 2.948,
+          "post2" : 0.033,
+          "post3" : 0.033
+        },
+        "state" : "load1",
+        "unsafe" : {
+          "beam1" : "post1",
+          "post1" : "load2"
+        },
+        "win" : [
+          "load2"
+        ]
+      },
+      {
+        "safe" : [
+          "post1",
+          "post2"
+        ],
+        "severity" : {
+          "beam1" : 6.173,
+          "load1" : 0.033,
+          "post1" : 0.033,
+          "post2" : 0.033,
+          "post3" : 5.373
+        },
+        "state" : "load2",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post3" : "load1"
+        },
+        "win" : [
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 3.246,
+          "load1" : 3.041,
+          "load2" : 5.372,
+          "post2" : 2.678
+        },
+        "state" : "post1,post3",
+        "unsafe" : {
+          "beam1" : "load1",
+          "load1" : "load2",
+          "load2" : "load1",
+          "post2" : "beam1"
+        }
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 6.181,
+          "load1" : 0.033,
+          "post2" : 1.507,
+          "post3" : 5.493
+        },
+        "state" : "load2,post1",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post2" : "post3",
+          "post3" : "load1"
+        },
+        "win" : [
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 6.234,
+          "load2" : 0.033,
+          "post1" : 2.286,
+          "post3" : 1.194
+        },
+        "state" : "load1,post2",
+        "unsafe" : {
+          "beam1" : "post1",
+          "post1" : "beam1",
+          "post3" : "post1"
+        },
+        "win" : [
+          "load2"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 6.173,
+          "load1" : 0.033,
+          "post1" : 1.5,
+          "post3" : 2.694
+        },
+        "state" : "load2,post2",
+        "unsafe" : {
+          "beam1" : "post3",
+          "post1" : "post3",
+          "post3" : "beam1"
+        },
+        "win" : [
+          "load1"
+        ]
+      },
+      {
+        "safe" : [
+
+        ],
+        "severity" : {
+          "beam1" : 6.236,
+          "load2" : 0.033,
+          "post1" : 2.948,
+          "post2" : 1.196
+        },
+        "state" : "load1,post3",
+        "unsafe" : {
+          "beam1" : "post1",
+          "post1" : "load2",
+          "post2" : "post1"
+        },
+        "win" : [
+          "load2"
+        ]
+      }
+    ],
+    "verifiedAt" : "2026-10-08"
+  },
+  "floorY" : -190,
+  "goal" : {
+    "moveBudget" : 3,
+    "starThresholds" : [
+      2,
+      3,
+      3
+    ],
+    "targetPieceIds" : [
+      "load1",
+      "load2"
+    ],
+    "type" : "removeTargetsKeepStanding"
+  },
+  "gravity" : -9.8,
+  "id" : "c-010",
+  "index" : 10,
+  "joints" : [
+
+  ],
+  "name" : {
+    "en" : "Loose Plank",
+    "tr" : "Gevşek Tahta"
+  },
+  "pack" : "curated",
+  "pieces" : [
+    {
+      "fixed" : false,
+      "id" : "post1",
+      "material" : "wood",
+      "position" : {
+        "x" : -98,
+        "y" : -155.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 69,
+        "type" : "rect",
+        "w" : 21
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post2",
+      "material" : "wood",
+      "position" : {
+        "x" : 5,
+        "y" : -155.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 69,
+        "type" : "rect",
+        "w" : 21
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "post3",
+      "material" : "wood",
+      "position" : {
+        "x" : 98,
+        "y" : -155.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 69,
+        "type" : "rect",
+        "w" : 21
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "beam1",
+      "material" : "wood",
+      "position" : {
+        "x" : 0,
+        "y" : -112.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 17,
+        "type" : "rect",
+        "w" : 227
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "load1",
+      "material" : "stone",
+      "position" : {
+        "x" : 77,
+        "y" : -83.5
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 41,
+        "type" : "rect",
+        "w" : 43
+      }
+    },
+    {
+      "fixed" : false,
+      "id" : "load2",
+      "material" : "stone",
+      "position" : {
+        "x" : -74,
+        "y" : -89
+      },
+      "removable" : true,
+      "rotation" : 0,
+      "shape" : {
+        "h" : 30,
+        "type" : "rect",
+        "w" : 38
+      }
+    }
+  ],
+  "region" : "wood_scaffold",
+  "schema" : 1,
+  "seed" : 110000,
+  "supportsAllowed" : 0
+}
