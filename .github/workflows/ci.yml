@@ -151,7 +151,11 @@ jobs:
             -destination "id=${{ steps.sim.outputs.udid }}" -clonedSourcePackagesDirPath SourcePackages \
             -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO | tee build.log | xcbeautify --renderer github-actions || \
             (grep -E "error:|warning:" build.log | sort -u | head -200; exit 1)
-          echo "Warnings in our sources:"; grep -E "^/.*(App|Widget|Packages|Tests|Tools)/.*warning:" build.log | sort -u | head -100 || true
+          # Zero warnings in our own sources (Swift 6 strict concurrency included) is a release criterion,
+          # so any is a failure. Anchored at the workspace: SourcePackages/ (the Google SDK) is not ours.
+          W=$(grep -E "^${GITHUB_WORKSPACE}/(App|Widget|Packages|Tests|Tools)/[^:]+:[0-9]+:[0-9]+: warning:" build.log | sort -u || true)
+          echo "Warnings in our sources: $(printf '%s' "$W" | grep -c . || true)"
+          if [ -n "$W" ]; then echo "$W" | head -100; exit 1; fi
 
       - name: Unit tests (simulator)
         timeout-minutes: 20
@@ -171,6 +175,8 @@ jobs:
           TEST_RUNNER_SOAK: ${{ steps.forge.outputs.mode == 'soak' && '1' || '0' }}
           TEST_RUNNER_SOAK_LEVELS: ${{ steps.forge.outputs.soak_levels }}
           TEST_RUNNER_SOAK_MINUTES: ${{ steps.forge.outputs.soak_minutes }}
+          # Accessibility audit: report-only until the screens are clean, then 1 (any new issue fails).
+          TEST_RUNNER_AUDIT_STRICT: '0'
         run: |
           rc=0
           xcodebuild test -project DengeNoktasi.xcodeproj -scheme UITests \
@@ -178,6 +184,7 @@ jobs:
             -test-timeouts-enabled YES -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 4000 \
             -derivedDataPath DerivedData -resultBundlePath UITests.xcresult CODE_SIGNING_ALLOWED=NO > ui.log 2>&1 || rc=$?
           grep -E "error:|failed|passed|Executed|XCTAssert|\[soak\]" ui.log | tail -120 || true
+          grep -E "^\[(a11y|launch)\]" ui.log | head -200 || true
           ls -R docs/screenshots 2>/dev/null | head -30 || true
           exit $rc
 

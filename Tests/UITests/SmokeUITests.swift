@@ -128,6 +128,26 @@ final class SmokeUITests: XCTestCase {
         shot(prefix + "08-daily")
     }
 
+    /// Cold start → main menu in the real app, four launches (the first, right after install, does
+    /// one-time work and is left out of the median). The release bound is 2 s on a device; the CI
+    /// simulator and XCTest's launch handshake add time, so this catches regressions and prints numbers.
+    func testColdStartReachesTheMenu() throws {
+        var times: [Double] = []
+        for _ in 0..<4 {
+            app = XCUIApplication()
+            app.launchArguments = ["-uitest"]
+            let start = Date()
+            app.launch()
+            XCTAssertTrue(app.buttons["menu.levels"].waitForExistence(timeout: 15), "main menu did not appear")
+            times.append(Date().timeIntervalSince(start))
+            app.terminate()
+        }
+        let later = times.dropFirst().sorted()
+        let median = later[later.count / 2]
+        print("[launch] menu after \(times.map { String(format: "%.2f", $0) }.joined(separator: ", ")) s; median \(String(format: "%.2f", median)) s")
+        XCTAssertLessThan(median, 4, "cold start to the menu took \(median) s on the simulator")
+    }
+
     func testDailySheetOpens() throws {
         launch()
         let daily = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] 'Daily Level'")).firstMatch

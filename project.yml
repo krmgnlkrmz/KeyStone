@@ -59,6 +59,25 @@ targets:
       - sdk: StoreKit.framework
       - sdk: GameKit.framework
       - sdk: JavaScriptCore.framework
+    preBuildScripts:
+      # Archives only: an App Store build must not ship Google's sample ad IDs or the placeholder privacy URL.
+      # A fresh clone builds and tests with them on purpose (scripts/bootstrap.sh copies the example config).
+      - name: Release placeholders
+        runOnlyWhenInstalling: true
+        basedOnDependencyAnalysis: false
+        script: |
+          [ "$CONFIGURATION" = "Release" ] || exit 0
+          failed=0
+          case "$GAD_APP_ID $AD_BANNER $AD_INTER $AD_REWARDED" in
+            *ca-app-pub-3940256099942544*) echo "error: Config/Release.xcconfig still has Google's sample AdMob IDs"; failed=1 ;;
+          esac
+          case "$PRIVACY_URL" in
+            *PLACEHOLDER*) echo "error: PRIVACY_URL in Config/Shared.xcconfig is still a placeholder"; failed=1 ;;
+          esac
+          case "$SUPPORT_EMAIL" in
+            *PLACEHOLDER*) echo "warning: SUPPORT_EMAIL is not set; the Settings row stays hidden" ;;
+          esac
+          exit $failed
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID)
