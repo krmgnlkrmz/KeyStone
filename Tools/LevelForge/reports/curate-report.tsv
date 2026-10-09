@@ -5,7 +5,7 @@
 12	kept	c-012	len 2
 13	kept	c-013	len 2
 14	kept	c-014	len 2
-15	pyramid	seed 115539	len 2	budget 3	margin 5.43	unsafe 0.43	tries 40	61s
+15	kept	c-015	len 2
 16	kept	c-016	len 2
 17	kept	c-017	len 3
 18	kept	c-018	len 3
@@ -61,13 +61,13 @@
 68	kept	c-068	len 3
 69	kept	c-069	len 5
 70	kept	c-070	len 3
-71	pyramid	seed 171506	len 3	budget 5	margin 4.57	unsafe 0.76	tries 7	74s
+71	kept	c-071	len 3
 72	kept	c-072	len 3
-73	pyramid	seed 173506	len 4	budget 6	margin 2.21	unsafe 0.57	tries 7	90s
+73	pyramid	seed 173544	len 3	budget 5	margin 9.03	unsafe 0.69	tries 45	10s
 74	kept	c-074	len 3
-75	pyramid	seed 175509	len 3	budget 5	margin 9.52	unsafe 0.54	tries 10	105s
+75	kept	c-075	len 3
 76	kept	c-076	len 4
-77	pyramid	seed 177517	len 4	budget 6	margin 2.17	unsafe 0.63	tries 18	137s
+77	pyramid	seed 177583	len 3	budget 5	margin 3.38	unsafe 0.75	tries 84	26s
 78	kept	c-078	len 4
-79	pyramid	seed 179520	len 3	budget 5	margin 7.83	unsafe 0.75	tries 21	168s
+79	kept	c-079	len 3
 80	kept	c-080	len 4

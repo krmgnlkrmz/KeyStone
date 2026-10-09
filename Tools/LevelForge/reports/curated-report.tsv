@@ -1,7 +1,7 @@
-c-001	ok	len=1	margin=422.16	unsafe=0.75	states=1	evals=89	0.6s	ok	tb
-c-002	ok	len=2	margin=30.05	unsafe=0.28	states=12	evals=208	1.4s	ok	pl,pr
-c-003	ok	len=3	margin=14.45	unsafe=0.25	states=25	evals=314	1.9s	ok	+sup@0,p1,p2
-c-004	ok	len=2	margin=1.65	unsafe=0.62	states=6	evals=194	1.5s	ok	sl,sc
-c-005	ok	len=3	margin=30.52	unsafe=0.74	states=13	evals=329	3.1s	ok	w1,w2,w5
-c-006	ok	len=5	margin=20.85	unsafe=0.64	states=117	evals=1032	7.4s	ok	b,c,+sup@-112,d,a
-c-007	ok	len=3	margin=3.34	unsafe=0.50	states=6	evals=267	2.7s	ok	cl,cr,sp
+c-001	ok	len=1	margin=422.16	unsafe=0.75	states=1	evals=89	0.4s	ok	tb
+c-002	ok	len=2	margin=30.05	unsafe=0.28	states=12	evals=208	1.0s	ok	pl,pr
+c-003	ok	len=3	margin=14.45	unsafe=0.25	states=25	evals=314	1.4s	ok	+sup@0,p1,p2
+c-004	ok	len=2	margin=1.65	unsafe=0.62	states=6	evals=194	1.2s	ok	sl,sc
+c-005	ok	len=3	margin=30.55	unsafe=0.74	states=13	evals=329	2.4s	ok	w1,w2,w5
+c-006	ok	len=5	margin=20.85	unsafe=0.64	states=117	evals=1032	5.7s	ok	b,c,+sup@-112,d,a
+c-007	ok	len=3	margin=3.34	unsafe=0.50	states=6	evals=267	2.1s	ok	cl,cr,sp
