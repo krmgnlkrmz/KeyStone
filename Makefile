@@ -8,15 +8,19 @@ FORGE_OUT ?= $(CURDIR)/forge-out
 FORGE_COUNT ?= 1200
 FORGE_SEED_BASE ?= 9000
 
-.PHONY: bootstrap build test core-test physics-test forge-smoke forge-validate forge-pool forge-curated clean
+.PHONY: project bootstrap build test core-test physics-test forge-smoke forge-validate forge-pool forge-curated clean
 
-bootstrap:
-	./scripts/bootstrap.sh
+# The project is committed; regenerate it after editing project.yml (needs XcodeGen, see .xcodegen-version).
+project:
+	./scripts/gen_project.sh
 
-build: bootstrap
+bootstrap: project
+	xcodebuild -resolvePackageDependencies -project $(PROJECT) -scheme DengeNoktasi
+
+build:
 	$(XCB) -scheme DengeNoktasi build
 
-test: bootstrap
+test:
 	$(XCB) -scheme DengeNoktasi test
 
 # Pure logic, runs anywhere Swift 6 runs (macOS or Linux).
@@ -24,24 +28,24 @@ core-test:
 	swift test --package-path Packages/BalanceCore
 
 # Fast daily gate: curated levels, solution path only.
-forge-smoke: bootstrap
+forge-smoke:
 	$(XCB) -scheme LevelForge test -only-testing:LevelForgeTests/ForgeRunner/testCuratedSmoke
 
 # Release gate: re-verifies every shipped level and its engine fingerprint.
-forge-validate: bootstrap
+forge-validate:
 	$(XCB) -scheme LevelForge test -only-testing:LevelForgeTests/ForgeRunner/testValidateShippedLevels
 
 # Offline pool generation. Env vars reach the test process through the TEST_RUNNER_ prefix.
-forge-pool: bootstrap
+forge-pool:
 	mkdir -p $(FORGE_OUT)
 	TEST_RUNNER_FORGE_OUT=$(FORGE_OUT) TEST_RUNNER_FORGE_COUNT=$(FORGE_COUNT) TEST_RUNNER_FORGE_SEED_BASE=$(FORGE_SEED_BASE) \
 	  $(XCB) -scheme LevelForge test -only-testing:LevelForgeTests/ForgeRunner/testGeneratePool
 
 # Re-solves and re-annotates the curated drafts in Tools/LevelForge/drafts.
-forge-curated: bootstrap
+forge-curated:
 	mkdir -p $(FORGE_OUT)
 	TEST_RUNNER_FORGE_OUT=$(FORGE_OUT) \
 	  $(XCB) -scheme LevelForge test -only-testing:LevelForgeTests/ForgeRunner/testAnnotateCurated
 
 clean:
-	rm -rf $(PROJECT) DerivedData build Packages/*/.build
+	rm -rf DerivedData build Packages/*/.build
