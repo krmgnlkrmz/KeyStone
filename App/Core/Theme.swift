@@ -60,8 +60,8 @@ enum Typo {
     static let caption = Font.footnote
     /// Monospaced, fixed size: game HUD only (exempt from Dynamic Type, see docs). Elsewhere use
     /// `.scaledFont(_, design: .monospaced, relativeTo:)`, which follows the player's text size.
-    static func mono(_ size: CGFloat = 11) -> Font {
-        .system(size: size, weight: .regular, design: .monospaced)
+    static func mono(_ size: CGFloat = 11, weight: Font.Weight = .regular) -> Font {
+        .system(size: size, weight: weight, design: .monospaced)
     }
     /// HUD counter: fixed size (HUD is exempt from Dynamic Type, see docs).
     static func counter(_ size: CGFloat = 28) -> Font {

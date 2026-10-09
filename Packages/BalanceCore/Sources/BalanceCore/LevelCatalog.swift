@@ -91,19 +91,48 @@ public struct LevelCatalog: Sendable {
     private static func levels(in directory: URL, _ sub: String) throws -> [Level] {
         let dir = directory.appendingPathComponent(sub, isDirectory: true)
         guard let files = try? FileManager.default.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil) else { return [] }
-        var out: [Level] = []
-        for url in files.sorted(by: { $0.lastPathComponent < $1.lastPathComponent }) where url.pathExtension == "json" {
-            out += try decodeLevels(Data(contentsOf: url))
+        let jsons = files.filter { $0.pathExtension == "json" }.sorted { $0.lastPathComponent < $1.lastPathComponent }
+        // Files decode independently, so they are spread over the cores (the cold start reads 80 of them);
+        // results keep file order.
+        let results = DecodeResults(count: jsons.count)
+        DispatchQueue.concurrentPerform(iterations: jsons.count) { i in
+            results.set(i, Result { try decodeLevels(Data(contentsOf: jsons[i])) })
         }
-        return out
+        return try results.all.flatMap { try $0.get() }
     }
 
-    /// Decodes a single level object or an array of levels.
+    /// Decodes a single level object or an array of levels. The first character decides which, so a
+    /// file is parsed once (trying an array first parsed every single-level file twice).
     public static func decodeLevels(_ data: Data) throws -> [Level] {
         let decoder = JSONDecoder()
-        if let many = try? decoder.decode([Level].self, from: data) { return many }
+        let first = data.first { !$0.isJSONWhitespace }
+        if first == UInt8(ascii: "[") { return try decoder.decode([Level].self, from: data) }
         return [try decoder.decode(Level.self, from: data)]
     }
+}
+
+/// Per-file decode results, written from `concurrentPerform`'s workers (each index exactly once).
+private final class DecodeResults: @unchecked Sendable {
+    private let lock = NSLock()
+    private var slots: [Result<[Level], Error>]
+
+    init(count: Int) { slots = Array(repeating: .success([]), count: count) }
+
+    func set(_ index: Int, _ result: Result<[Level], Error>) {
+        lock.lock()
+        slots[index] = result
+        lock.unlock()
+    }
+
+    var all: [Result<[Level], Error>] {
+        lock.lock()
+        defer { lock.unlock() }
+        return slots
+    }
+}
+
+private extension UInt8 {
+    var isJSONWhitespace: Bool { self == 0x20 || self == 0x0A || self == 0x0D || self == 0x09 }
 }
 
 /// Small deterministic PRNG for shuffles that must match on every device.

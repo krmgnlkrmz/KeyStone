@@ -48,6 +48,7 @@ final class AppModel {
     /// when the curated catalog was decoded, so a slow launch shows where its time went.
     @ObservationIgnored private(set) var launchToInit: TimeInterval?
     @ObservationIgnored private(set) var launchToCatalog: TimeInterval?
+    @ObservationIgnored private var poolRequested = false
     private(set) var launchPhase: LaunchPhase = .splash
     private(set) var toast: String?
     /// 0.3 s ink curtain before an interstitial; kept here so it survives the swap to the next level.
@@ -86,8 +87,14 @@ final class AppModel {
         haptics.enabled = s.haptics
     }
 
-    /// Called when the main menu first appears; later visits keep the cold-start figure.
+    /// Called when the main menu appears. The first time, the pool (~15 MB of JSON for Daily and
+    /// Endless, which wait for `poolReady`) starts loading at utility priority, so it does not compete
+    /// with the menu for the cores; and the cold-start figure is recorded.
     func noteMenuShown() {
+        if !poolRequested {
+            poolRequested = true
+            Task(priority: .utility) { await loadPool() }
+        }
         guard launchToMenu == nil, let start = AppConfig.processStart else { return }
         let seconds = Date().timeIntervalSince(start)
         launchToMenu = seconds
@@ -103,7 +110,6 @@ final class AppModel {
         // Prices and a fresh entitlement check need the App Store, which can take seconds (or fail) on a
         // slow network. The menu shows with the cached entitlement; `store.onChange` updates it after.
         Task { await store.load() }
-        Task { await loadPool() }
         achievements.authenticate()
 
         // Keep the splash up for at least 1.2 s so it reads as intentional.

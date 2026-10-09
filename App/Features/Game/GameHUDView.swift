@@ -13,7 +13,7 @@ struct GameHUDView: View {
                 if app.progress.settings.leftHanded { undoButton } else { pauseButton }
                 VStack(spacing: 3) {
                     Text(session.kicker)
-                        .font(Typo.mono(11)).tracking(1.5)
+                        .font(Typo.mono(11, weight: .semibold)).tracking(1.5)
                         .foregroundStyle(Palette.text2) // small mono over the blueprint grid: needs the stronger grey
                         .lineLimit(1)
                     Text(session.goalText)
@@ -33,7 +33,7 @@ struct GameHUDView: View {
                     .lineLimit(1)
                     .fixedSize()
                     Text(session.progressText)
-                        .font(Typo.mono(10)).tracking(1.5)
+                        .font(Typo.mono(10, weight: .semibold)).tracking(1.5)
                         .foregroundStyle(Palette.text2)
                         .lineLimit(1)
                 }

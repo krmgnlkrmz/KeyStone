@@ -55,6 +55,7 @@ struct SettingsView: View {
                                 SettingsLabel(icon: "rectangle.slash", title: "settings.removeAds")
                             }
                         }
+                        .foregroundStyle(Palette.text)
                         .disabled(app.store.state == .purchasing || app.store.state == .pending)
                         if app.store.state == .pending {
                             LabeledContent {
@@ -183,7 +184,7 @@ struct SettingsLabel: View {
     var body: some View {
         HStack(spacing: 12) {
             Image(systemName: icon)
-                .scaledFont(15, weight: .medium, relativeTo: .body)
+                .scaledFont(15, weight: .semibold, relativeTo: .body)
                 .foregroundStyle(tint)
                 .frame(width: tile, height: tile)
                 .background(soft, in: RoundedRectangle(cornerRadius: 7, style: .continuous))
