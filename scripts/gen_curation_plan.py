@@ -59,12 +59,12 @@ OVERRIDES = {
     66: {"minLength": 3}, 68: {"minLength": 3}, 70: {"minLength": 3},   # bridges solve in 3
     # Pyramids won by pulling a shim (the tiers above drop onto what is left) landed differently in other
     # processes (c-075, c-077 flipped). These slots were redone from fresh seeds once the generator stopped
-    # making shims removable; "recurate" marks the ones still to redo.
+    # making shims removable.
     15: {"seed": 115500, "attempts": 90},
     71: {"seed": 171500, "attempts": 90},
-    73: {"recurate": True, "seed": 173500, "attempts": 90},
+    73: {"seed": 173500, "attempts": 90},
     75: {"seed": 175500, "attempts": 90},
-    77: {"recurate": True, "seed": 177500, "attempts": 90, "minLength": 3},   # pyramids solve in 3
+    77: {"seed": 177500, "attempts": 90, "minLength": 3},   # pyramids solve in 3
     79: {"seed": 179500, "attempts": 90, "minLength": 3},
 }
 
